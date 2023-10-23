@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
+  const [isAuth, setAuth] = useState(false);  // 로그아웃상태
+  const [userInfo, setUserInfo] = useState({
+    username:''
+  }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
     </div>
   );
 }
