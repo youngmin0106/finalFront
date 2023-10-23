@@ -14,7 +14,7 @@ function MemberType() {
         <h4>STEP1</h4>
         <h4>STEP2</h4>
         <h4>STEP3</h4>
-        <h4>STEP4</h4>
+        <h4>STEP4444444</h4>
       </div>
 
       <AnimatedExample />
