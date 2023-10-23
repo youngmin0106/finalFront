@@ -20,21 +20,23 @@ function WriteNotice({userInfo}){
   }
 
   return(
+ <div class="form-group">
   <div>
     제목 : <input type="text" name="title" onChange={changeHandler}/><br/>
       내용 : <textarea name="content" onChange={changeHandler}></textarea><br/>
       <button onClick={()=>{
         axiosInstance.post('/notice',notice)
         .then(response=>{
-            alert(response.data);
-            // navigate('/');
-            console.log(response.data);
+          alert(response.data);
+          // navigate('/');
+          console.log(response.data);
         }).catch(error=>{
-           console.log(error);
-            
+          console.log(error);
+          
         })
-      }} >글작성</button>
+      }} >작성</button>
   </div>
+      </div>
   );
 }
 

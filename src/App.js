@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-       <Route path='/list' element={<Notice userInfo={userInfo}/>} />
+       <Route path='/' element={<Notice userInfo={userInfo}/>} />
        <Route path='/write' element={<WriteNotice userInfo={userInfo}/>} />
       </Routes>
     </div>
