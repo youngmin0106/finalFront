@@ -31,7 +31,9 @@ function MemberType() {
         <div className="ForeignMem">
           <h1>외국인 회원</h1>
           <p> 국내 거주 외국인 </p>
-          <Button variant="contained">가입하기(준비중)</Button>
+          <Button variant="contained" onClick={() => {
+            alert("준비중입니다.")
+          }}>가입하기(준비중)</Button>
         </div>
       </div>
     </div>
