@@ -3,41 +3,6 @@
   margin-left: 10%;
 }
 
-.SignupText {
-  margin-bottom: 2%;
-  margin-top: 2%;
-}
-
-.MemberStep {
-  display: flex;
-  justify-content: space-between;
-}
-.MemberStep h4 {
-  flex: 1;
-  text-align: center;
-}
-
-.MemberImg {
-  display: flex;
-  justify-content: space-between;
-  margin-top : 1%;
-  align-items: center;
-}
-.MemberImg h4 {
-  flex: 1;
-  text-align: center;
-}
-
-.MemberText {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.MemberText h4 {
-  flex: 1;
-  text-align: center;
-}
-
 .Subscription {
   display: flex;
   justify-content: space-around;
