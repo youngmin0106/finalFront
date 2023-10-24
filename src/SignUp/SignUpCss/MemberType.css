@@ -1,6 +1,5 @@
-.component {
+.container {
   width: 80%;
-  margin-left: 10%;
 }
 
 .Subscription {
@@ -28,4 +27,8 @@
   margin: 10px 0;
 }
 
-
+.typeText > p{
+  display: inline;
+  font-size: 15px;
+  font-weight: normal;
+}

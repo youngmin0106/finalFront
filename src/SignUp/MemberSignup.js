@@ -3,84 +3,131 @@ import TextField from '@mui/material/TextField';
 import './SignUpCss/MemberSignup.css';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function MemberSignup() {
-
   const navigate = useNavigate();
 
-  // const tfStyle = {
-  //   width : "75%"
-  // }
+  const tfStyle = {
+    width : "800px",
+    margin: "8px 0",
+  }
 
-  return(
+  const BtnStyle = {
+    width: "50px",
+    height: "50px",
+    fontSize: "12px",
+    margin: "0 10px",
+  };
+
+  const [MemberData, setMemberData] = useState({
+    id : '',
+    pw : '',
+    pwChk : '',
+    email : '',
+    birthday : '',
+    phoneNum : '',
+    address : '',
+    detailaddress : ''
+  });
+  
+  const [pwErrorMsg, setpwErrorMsg] = useState("");
+  const inputChangeHandler = (e) => {
+    const { id, value } = e.target;
+      setMemberData({
+      ...MemberData,
+      [id] : value
+    });
+    // console.log(`${id} : ${value}`);
+    if(id === "pwChk" && MemberData.pw !== value) {
+      setpwErrorMsg("비밀번호가 다릅니다")
+    } else if(id === "pwChk" && MemberData.pw !== value) {
+      setpwErrorMsg("비밀번호가 같습니다")
+    } else if(MemberData.pwChk === "") {
+      setpwErrorMsg("")
+    }
+  };
+
+  const presentYear = new Date().getFullYear(); // 현재 년도 계산
+  const age = presentYear - MemberData.birthday.substring(0, 2);
+
+  const completeCertified = () => {
+    if(presentYear - age >= 19) {
+      console.log("인증완료");
+    } else {
+      console.log("만 19세 미만 회원가입 불가");
+    }
+  }
+
+  return (
     <div className="component">
-
-      <MemberHeader progress={65}/>
+      <MemberHeader progress={65} />
 
       <div className="signupForm">
-        <table className="signupTable">
-          <tbody>
-            <tr>
-              <th>아이디</th>
-              <TextField fullWidth={true} id="outlined-id-input" label="ID를 입력하세요."
-              type="text" />
-            </tr> <br />
+        <div className="signupContainer">
 
-            <tr>
-              <th>비밀번호</th>
-              <TextField fullWidth={true} id="outlined-pw-input" label="비밀번호를 입력하세요."
-              type="password" autoComplete="current-password" />
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>아이디</p>
+            <TextField sx={tfStyle} id="id" value={MemberData.id} onChange = { inputChangeHandler } 
+              label="아이디 입력하세요." type="text" />
+          </div>
 
-            <tr>
-              <th>비밀번호 재확인</th>
-              <TextField fullWidth={true} id="outlined-pwchk-input" label="비밀번호를 한번 더 입력하세요."
-              type="password" autoComplete="current-password" />
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>비밀번호</p>
+            <TextField sx={tfStyle} id="pw" value={MemberData.pw} onChange = { inputChangeHandler } 
+              label="비밀번호 입력하세요." type="password" />
+          </div>
 
-            <tr>
-              <th>Email</th>
-              <TextField fullWidth={true} id="outlined-email-input" label="Email 입력하세요."
-              type="email" />
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>비밀번호 확인</p>
+            <TextField sx={tfStyle} id="pwChk" value={MemberData.pwChk} onChange = { inputChangeHandler } 
+              label="비밀번호 재확인" type="password" />
+          </div>
+          <p className =
+            {`errorMsg ${pwErrorMsg === '비밀번호가 다릅니다' ? 'redText' : 'blueText'}`}>
+        {pwErrorMsg}</p>
 
-            <tr>
-              <th>생년월일</th>
-              <TextField fullWidth={true} id="outlined-birthday-input" label="예시) 97xxxx"
-              type="text" />
-              <th><Button id = "signBtn" variant="contained">본인 인증</Button></th>
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>이메일</p>
+            <TextField sx={tfStyle} id="email" value={MemberData.email} onChange = { inputChangeHandler } 
+              label="Email 입력하세요." type="email" />
+          </div>
 
-            <tr>
-              <th>전화번호</th>
-              <TextField fullWidth={true} id="outlined-phoneNum-input" label="-없이 숫자만 입력하세요"
-              type="text" />
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>생년월일</p>
+            <TextField sx={tfStyle} id="birthday" value={MemberData.birthday} onChange = { inputChangeHandler }
+              label="생년월일 (예시: 97xxxx)" type="text" />
+            <Button id="signBtn" variant="contained" style={BtnStyle} onClick={ completeCertified }> 본인 인증 </Button>
+          </div>
 
-            <tr>
-              <th>주소</th>
-              <TextField fullWidth={true} id="outlined-address-input" label="주소를 검색하세요."
-              type="text" />
-              <th><Button id = "signBtn" variant="contained" endIcon>주소 검색</Button></th>
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>전화번호</p>
+            <TextField sx={tfStyle} id="phoneNum" value={MemberData.phoneNum} onChange = { inputChangeHandler } 
+              label="전화번호 (-없이 숫자만 입력하세요)" type="text" />
+          </div>
 
-            <tr>
-              <th>상세주소</th>
-              <TextField fullWidth={true} id="outlined-detailAddress-input" label="상세주소를 입력하세요."
-              type="text" />
-            </tr> <br />
+          <div className="textFieldContainer">
+            <p>주소</p>
+            <TextField sx={tfStyle} id="address" value={MemberData.address} onChange = { inputChangeHandler } 
+              label="주소 검색하세요." type="text" />
+            <Button id="signBtn" variant="contained" style={BtnStyle}> 주소 검색 </Button>
+          </div>
 
-          </tbody>
-        </table>
+          <div className="textFieldContainer">
+            <p>상세주소</p>
+            <TextField sx={tfStyle} id="detailaddress" value={MemberData.detailaddress} onChange = { inputChangeHandler } 
+              label="상세주소를 입력하세요." type="text" />
+          </div>
+
+        </div>
       </div>
-
-      <Button variant="outlined" onClick={() => {
-        navigate("/");
-      }}>취소</Button>
-      <Button variant="contained" onClick={() => {
-        navigate("/member-agree");
-      }}>이전</Button>
-      <Button variant="contained">가입하기</Button>
+      <div className="underBtn">
+        <Button variant="outlined" onClick={() => navigate("/member-agree")}> 이전 </Button>
+        <div className="rightBtn">
+          <Button variant="contained" onClick={() => navigate("/")}> 취소 </Button>
+          <Button variant="contained">가입하기</Button>
+        </div>
+      </div>
     </div>
   );
 }

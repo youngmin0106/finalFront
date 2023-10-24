@@ -11,30 +11,34 @@ function MemberAgree({ progress }) {
 
   const navigate = useNavigate();
 
-  const [allAgree, setAllAgree] = useState(false);
+  const [allAgree, setAllAgree] = useState(false); // 전체동의 여부 확인
   const [agrees, setAgrees] = useState ({
-    termAgree : false,
-    personalAgree : false
+    termAgree : false, //이용약관동의 여부 확인
+    personalAgree : false //개인정보 동의 여부 확인
   })
   
+  //체크박스 개별 동의여부 확인 핸들러.
   const agreeChangeHandler = (e) => {
     const { name, checked } = e.target;
 
-    setAgrees((prevAgrees) => ({ ...prevAgrees, [name]: checked }));
+    setAgrees((prevAgrees) => ({ ...prevAgrees, [name]: checked })); // 이전 동의 상태 복사
     const allChecked = Object.values({ ...agrees, [name]: checked }).every(
       (value) => value === true
-    );
-    setAllAgree(allChecked);
+    ); //모든 항목이 설정되었는 지, true로 바꼈는 지 확인
+
+    setAllAgree(allChecked); // 동의 상태를 업데이트함.
   }
 
+  //전체 체크박스 변경해주는 핸들러,
   const allAgreeChangeHandler = (e) => {
     const { checked } = e.target;
     setAgrees((prevAgrees) => ({
       termAgree: checked,
       personalAgree: checked
-    }));
+    })); //동의 체크박스를 전부 체크해줌.
     setAllAgree(checked);
   }
+
 
   return (
     <div className="component">
