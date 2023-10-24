@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import './App.css';
 import MyPage from './MyPage/MyPage';
-import { Route, Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import UpdateInfo from './UpdateInfo/UpdateInfo';
 
 function App() {
   const [isAuth, setAuth] = useState(false);  // 로그아웃상태
@@ -14,10 +15,9 @@ function App() {
     <div className="App">
       
     {/* <MyPage></MyPage> */}
-
-
       <Routes>
         <Route path='/mypage' element={<MyPage />}></Route>
+        <Route path='/updateInfo' element={<UpdateInfo />}></Route>
      </Routes>
 
     </div>
