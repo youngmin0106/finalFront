@@ -1,4 +1,8 @@
-  .ulList {
+div {
+  font-family: 'NanumSquareNeo-Variable';
+}
+
+.ulList {
   list-style-type: none;
   background-color: none;
   width: 10%;
@@ -11,6 +15,8 @@
   overflow: auto;
   border : 0.5px solid #eee;
   border-radius: 5px;
+  font-family: 'NanumSquareNeo-Variable';
+  font-size: 15px;
 }
 
 @font-face {
@@ -34,7 +40,7 @@ li a {
 }
 
 li a.job {
-  background-color: #40A940;
+  background-color: blue;
   font-weight: bold;
   color: #fff;
 }
@@ -50,43 +56,22 @@ div .main{
   margin-left: 20%;
   padding: 1px 16px;
   height: 1000px;
+  width: 55%;
 }
 
-.sellBox {
-  text-align: center;
-  padding: 60px;
+.beforeDelete {
   border: 0.5px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
+  height: 150px;
+  text-align: center;
 }
 
-.gradation1 {
-  background: #40A940;
-  opacity: 0.4;
-  color: white;
+div .delete1 {
+  padding-top: 20px;
+  margin: 5px;
 }
 
-.gradation2 {
-  background: #40A940;
-  opacity: 0.5;
-  color: white;
-}
-
-.gradation3 {
-  background: #40A940;
-  opacity: 0.6;
-  color: white;
-}
-
-.gradation4 {
-  background: #40A940;
-  opacity: 0.8;
-  color: white;
-}
-
-.round {
-  border-radius: 10px;
-  border: 1px solid white;
-}
-
-.sell div {
-  font-size: 19px;
+.selectForm {
+  width: 30%;
 }

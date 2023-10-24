@@ -1,36 +1,46 @@
+import { ListGroup } from 'react-bootstrap';
 import './MyPage.css';
-import tier from './tier.png'
+import tier from './tier.png';
+import MyPageBar from './MyPageBar';
+
 
 function MyPage() {
 
   return (
-    <div>
+    <div className='font'>
     
-    
-    <h2 style={{marginLeft : "10%", marginBottom : "2%"}}>- 마이페이지</h2>
+    <MyPageBar></MyPageBar>
 
-
-    <ul>
-	<li><a className="job" href="0">나의 판매 물품</a></li>
-	<li><a href="1">내가 등록한 물품</a></li>
-	<li><a href="2">판매중</a></li>
-	<li><a href="3">판매 취소 완료</a></li>
-	<li><a href='4'>판매 완료</a></li>
-  <li><a className="job" href="0">나의 구매 물품</a></li>
-	<li><a href="1">구매중</a></li>
-	<li><a href="2">구매 취소완료</a></li>
-	<li><a href="3">구매 취소</a></li>
-  <li><a className="job" href="0">마일리지 관리</a></li>
-	<li><a href="1">마일리지 내역</a></li>
-	<li><a href="2">마일리지 충전</a></li>
-  <li><a className="job" href="0">나의 정보 관리</a></li>
-	<li><a href="1">회원정보 수정</a></li>
-	<li><a href="2">관심 물품</a></li>
-	<li><a href="3">회원 탈퇴</a></li>
-</ul>
+    {/* <ul>
+    <ListGroup>
+      <ListGroup.Item>No style</ListGroup.Item>
+      <ListGroup.Item variant="primary">Primary</ListGroup.Item>
+      <ListGroup.Item action variant="secondary">
+        Secondary
+      </ListGroup.Item>
+      <ListGroup.Item action variant="success">
+        Success
+      </ListGroup.Item>
+      <ListGroup.Item action variant="danger">
+        Danger
+      </ListGroup.Item>
+      <ListGroup.Item action variant="warning">
+        Warning
+      </ListGroup.Item>
+      <ListGroup.Item action variant="info">
+        Info
+      </ListGroup.Item>
+      <ListGroup.Item action variant="light">
+        Light
+      </ListGroup.Item>
+      <ListGroup.Item action variant="dark">
+        Dark
+      </ListGroup.Item>
+    </ListGroup>
+    </ul> */}
   
   <div className="main">
-    <h3><span style={{color : ""}}>실버</span>등급까지 4건의 거래완료가 남았습니다!</h3>
+    <h3 style={{fontSize : "20px"}}><span>실버</span>등급까지 4건의 거래완료가 남았습니다!</h3>
       <img src={tier} style={{border : "0.5px solid #eee"}} alt="티어"></img>
    <p></p>
 
@@ -54,11 +64,11 @@ function MyPage() {
     </tr>
     </tbody>
 </table>
-
-<h3>▶ 거래현황</h3>
+<br></br>
+<h3 style={{fontSize : "20px"}}>▶ 거래현황</h3>
 
 <p/>
-<h3 style={{color : 'blue', opacity : 0.7, fontWeight : 'bold'}}>판매현황</h3>
+<h3 style={{color : '#40A940', opacity : 0.5, fontWeight : 'bold', fontSize : "20px"}}>판매현황</h3>
 <table className='sell' width={"882px"}> 
     <tbody>
       <tr>
@@ -88,8 +98,8 @@ function MyPage() {
       </tr>
     </tbody>
 </table>
-
-<h3 style={{color : 'blue', opacity : 0.7, fontWeight : 'bold'}}>구매현황</h3>
+<br></br>
+<h3 style={{color : '#40A940', opacity : 0.5, fontWeight : 'bold', fontSize : "20px"}}>구매현황</h3>
 <table className='sell' width={"882px"}> 
     <tbody>
       <tr>

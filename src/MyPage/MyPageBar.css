@@ -1,16 +1,17 @@
-  .ulList {
+.ulList {
   list-style-type: none;
   background-color: none;
   width: 10%;
   padding: 0px;
   padding-left: 0px;
   margin:  0px;
-  margin-left: 10%;
+  margin-left: 20%;
   position: absolute;
   height: 100%;
   overflow: auto;
   border : 0.5px solid #eee;
   border-radius: 5px;
+  font-family: 'NanumSquareNeo-Variable';
 }
 
 @font-face {
@@ -33,6 +34,11 @@ li a {
   font-weight: 300;
 }
 
+/* 1. #4AB34A
+2. #40A940
+3. #369F36
+4. #2C952C */
+
 li a.job {
   background-color: #40A940;
   font-weight: bold;
@@ -47,46 +53,7 @@ li a:hover:not(.job) {
 /* <div style="margin-left:25%;padding:1px 16px;height:1000px;"> */
 
 div .main{
-  margin-left: 20%;
+  margin-left: 30%;
   padding: 1px 16px;
   height: 1000px;
-}
-
-.sellBox {
-  text-align: center;
-  padding: 60px;
-  border: 0.5px solid #eee;
-}
-
-.gradation1 {
-  background: #40A940;
-  opacity: 0.4;
-  color: white;
-}
-
-.gradation2 {
-  background: #40A940;
-  opacity: 0.5;
-  color: white;
-}
-
-.gradation3 {
-  background: #40A940;
-  opacity: 0.6;
-  color: white;
-}
-
-.gradation4 {
-  background: #40A940;
-  opacity: 0.8;
-  color: white;
-}
-
-.round {
-  border-radius: 10px;
-  border: 1px solid white;
-}
-
-.sell div {
-  font-size: 19px;
 }

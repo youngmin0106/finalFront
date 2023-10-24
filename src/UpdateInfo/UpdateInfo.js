@@ -20,7 +20,7 @@ function UpdateInfo() {
         <Form.Label><div className="loginUserId">tester</div></Form.Label> {/* 로그인한 유저 ID 출려갷야함 */}
         <Form.Control type="password" placeholder="비밀번호" />
       </Form.Group>
-      <Button variant="primary" type="submit" style={{width : "350px"}}>
+      <Button variant="primary" type="submit" style={{width : "350px", backgroundColor : "#40A940", border : "none"}}>
         확인
       </Button>
     </Form>
