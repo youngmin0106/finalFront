@@ -1,16 +1,40 @@
 import MyPageBar from "./MyPageBar";
 import './ListPages.css';
 import { Button } from "react-bootstrap";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 
-function ListPages( {list} ) {
+function ListPages( {list, pageType} ) {
+
+  let {id} = useParams();
+  let content = '';
+  console.log({id})
+  
+  if ( id == '1' ) {
+    content = list[0].name;
+  } else if(id == '2') {
+    content = list[1].name;
+  } else if(id == '3') {
+    content = list[2].name;
+  } else if(id == '4') {
+    content = list[3].name;
+  } else if(id == '5') {
+    content = list[4].name;
+  } else if(id == '6') {
+    content = list[5].name;
+  } else if(id == '7') {
+    content = list[6].name;
+  }
+
   return (
-
     <div>
       <MyPageBar></MyPageBar>
+      
+      
 
       <div className="main">
-      <h6 style={{fontWeight : "bold"}}>tester님의 {list[0].name} 물품 (전체 : $개)</h6>
+      <h6 style={{fontWeight : "bold"}}>tester님의 {content} 물품 (전체 : $개)</h6>
       
 
       <table>

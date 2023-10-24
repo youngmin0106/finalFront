@@ -8,14 +8,14 @@ function MyPageBar() {
 
       <ul className='ulList'>
         <li><a className="job" href="0">나의 판매 물품</a></li>
-        <li><a href="/listPages">내가 등록한 물품</a></li>
-        <li><a href="/listPages">판매중</a></li>
-        <li><a href="/listPages">판매 취소 완료</a></li>
-        <li><a href="/listPages">판매 완료</a></li>
+        <li><a href="/listPages/1">내가 등록한 물품</a></li>
+        <li><a href="/listPages/2">판매중</a></li>
+        <li><a href="/listPages/3">판매 취소 완료</a></li>
+        <li><a href="/listPages/4">판매 완료</a></li>
         <li><a className="job" href="0">나의 구매 물품</a></li>
-        <li><a href="1">구매중</a></li>
-        <li><a href="2">구매 취소완료</a></li>
-        <li><a href="3">구매 취소</a></li>
+        <li><a href="/listPages/5">구매중</a></li>
+        <li><a href="/listPages/6">구매 취소완료</a></li>
+        <li><a href="/listPages/7">구매 취소</a></li>
         <li><a className="job" href="0">마일리지 관리</a></li>
         <li><a href="1">마일리지 내역</a></li>
         <li><a href="2">마일리지 충전</a></li>

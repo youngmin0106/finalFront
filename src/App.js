@@ -58,7 +58,9 @@ function App() {
         <Route path='/mypage' element={<MyPage list={list}/>}></Route>
         <Route path='/updateInfo' element={<UpdateInfo />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo />}></Route>
-        <Route path='/listPages' element={<ListPages list={list}/>}></Route>
+        {/* 보내주는 값들이 다 다름 */}
+        <Route path='/listPages/:id' element={<ListPages list={list}/>}></Route>
+        <Route path='/listPages/sell_ing'   element={<ListPages list={list}/>}></Route>
      </Routes>
 
     </div>
