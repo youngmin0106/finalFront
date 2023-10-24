@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.AccountSales {
+  margin: auto;
+}
+
+.AccountSales tr, th, td {
+  border: 1px solid lightgray;
+  /* box-shadow: 0px 0px 5px #444 */
+}
+
+.AccountSales th {
+  border-top-color: #40A940;
+}
+
+.AccountSales button {
+  border: none;
+  width: 120px;
+  height: 45px;
+  font-weight: bolder;
+  background-color: #40A940;
+  color: white;
+  border-radius: 6px;
+}
+
+.AccountSales input {
+  width: 300px;
+  height: 35px;
+}
+
+.AccountSales select {
+  width: 150px;
+  height: 25px;
+  border: none;
+}
+
+.AccountSales input, textarea {
+  border: none;
+}
+
+.AccountSales .notice, table, h1{
+  margin: 5rem;
+}
+
+.AccountSales .notice li {
+  color: rgb(99, 98, 98);
+}
+
+
