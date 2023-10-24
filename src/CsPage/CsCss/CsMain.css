@@ -1,0 +1,102 @@
+body {
+  background: #e2e1e0;
+  text-align: center;
+  margin: 0;
+
+}
+
+.boxcard{
+  display: flex;
+  justify-content: center;
+  /* position: relative; */
+  /* margin-top: 50%; */
+  text-align: center;
+  left: 0%;
+  
+  
+}
+
+.boxcard .card {
+  background: #fff;
+  border-radius: 2px;
+  display: flex;
+  height: 300px;
+  margin: 1rem;
+  position: relative;
+  width: 300px;
+  margin: 0;
+  
+}
+
+.boxcard .card-2 .card-1 .card-3{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  justify-content: space-evenly;
+}
+
+.boxcard .st{
+  border-bottom:  1px solid rgba(0,0,0,0.23);
+}
+
+.boxcard .sc{
+  border-bottom:  1px solid rgba(0,0,0,0.23);
+}
+
+.ulList {
+  list-style-type: none;
+  background-color: none;
+  width: 10%;
+  padding: 0px;
+  padding-left: 0px;
+  margin:  0px;
+  margin-left: 10%;
+  position: absolute;
+  /* height: 100%; */
+  overflow: auto;
+  border : 0.5px solid #eee;
+  border-radius: 5px;
+  font-family: 'NanumSquareNeo-Variable';
+}
+
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ulList .font {
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 15px;
+}
+
+.ulList li a {
+  text-decoration: none;
+  display: block;
+  color: #000;
+  padding: 8px 15px 8px 15px;
+  font-weight: 300;
+}
+
+.ulList li a.job {
+  background-color: blue;
+  color: #fff;
+}
+
+.ulList li a:hover:not(.job) {
+  background-color: #333;
+  color: #fff;
+}
+
+/* <div style="margin-left:25%;padding:1px 16px;height:1000px;"> */
+
+.ulList div .main{
+  margin-left: 20%;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+div>a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}

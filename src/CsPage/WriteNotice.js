@@ -20,7 +20,7 @@ function WriteNotice({userInfo}){
   }
 
   return(
- <div class="form-group">
+ <div className="form-group">
   <div>
     제목 : <input type="text" name="title" onChange={changeHandler}/><br/>
       내용 : <textarea name="content" onChange={changeHandler}></textarea><br/>

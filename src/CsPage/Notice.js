@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../axiosInstance";
 import "../CsPage/CsCss/Notice.css";
 import { Link } from "react-router-dom/dist";
+import CsMain from "./CsMain";
 
-function Notice( { userInfo } ) {
+function Notice() {
 
   
   // const [noticeList,setNoticeList] = useState();
@@ -21,36 +22,46 @@ function Notice( { userInfo } ) {
   //   })
   // }, [])
   return (
-    <section class="notice">
-  <div class="page-title">
-        <div class="container">
+      <div className="notice">
+
+<div>
+<ul className='ulList'>
+    <h2 style={{ fontSize : "25px"}}>- 공지사항</h2>
+  <li><a href="/cs">공지사항</a></li>
+  <li><a href="2">자주묻는질문</a></li>
+  <li><a href="3">1:1문의</a></li>
+</ul>
+</div>
+    <section className="noti">
+  <div className="page-title">
+        <div className="container">
             <h3>공지사항</h3>
         </div>
     </div>
     <div id="board-search">
-        <div class="container">
-            <div class="search-window">
+        <div className="container">
+            <div className="search-window">
                 <form action="">
-                    <div class="search-wrap">
-                        <label for="search" class="blind">공지사항 내용 검색</label>
+                    <div className="search-wrap">
+                        <div id="search" className="blind">공지사항 내용 검색</div>
                         <input id="search" type="search" name="" placeholder="검색어를 입력해주세요." />
-                        <button type="submit" class="btn btn-dark">검색</button>
+                        <button type="submit" className="btn btn-dark">검색</button>
                     </div>
                     <div>
-                      <Link to="/write"><button class="btn btn-dark add">글작성</button></Link>
+                      <Link to="/write"><button className="btn btn-dark add">글작성</button></Link>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <div id="board-list">
-        <div class="container">
-            <table class="board-table">
+        <div className="container">
+            <table className="board-table">
                 <thead>
                 <tr>
-                    <th scope="col" class="th-num">번호</th>
-                    <th scope="col" class="th-title">제목</th>
-                    <th scope="col" class="th-date">등록일</th>
+                    <th scope="col" className="th-num">번호</th>
+                    <th scope="col" className="th-title">제목</th>
+                    <th scope="col" className="th-date">등록일</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -78,6 +89,7 @@ function Notice( { userInfo } ) {
     </div>
 
 </section>
+</div>
   );
 }
 export default Notice;
