@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-function AnimatedExample(progress) {
-  const [changeProgress, setChangeProgress] = useState(progress);
+function AnimatedExample({ progress }) {
 
-  useEffect(() => {
-    setChangeProgress(progress);
-  }, [progress]);
-
+console.log('aa:' + progress)
   return (
     <div>
-      <ProgressBar animated now={changeProgress} />  
+      <ProgressBar animated now={progress} /> 
       {/*15, 40, 65, 90*/}
     </div>
   );

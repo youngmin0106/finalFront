@@ -3,6 +3,7 @@ import './SignUpCss/MemberHeader.css';
 
 
 function MemberHeader({ progress }) {
+
     return (
         <div>
             <h2 className="SignupText">- 회원가입 </h2>

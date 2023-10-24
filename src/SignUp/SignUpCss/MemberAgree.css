@@ -1,5 +1,54 @@
 .component {
-  width: 80%;
-  margin-left: 10%;
+  width: 70%;
+  margin-left : 15%;
 }
+
+
+.agreePage {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  overflow: auto;
+  margin-top: 5%;
+}
+
+.agreePage label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.agreePage ul {
+  list-style: none;
+  padding: 0;
+}
+
+.agreePage li {
+  margin-bottom: 10px;
+}
+
+.agreePage textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  resize: none;
+}
+
+.agreeButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  
+}
+
+.agreeButton #back {
+  margin-right: 3%;
+}
+
+
 

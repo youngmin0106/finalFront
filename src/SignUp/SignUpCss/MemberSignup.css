@@ -1,0 +1,31 @@
+
+.signupForm {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 95%; 
+  margin: auto;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.signupTable  {
+  width: 100%;
+}
+
+.signupTable th {
+  width: 20%;
+}
+
+#signBtn {
+  width: 50%;
+  height: 100%;
+
+}
+
+
+
+
+
+

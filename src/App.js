@@ -1,10 +1,11 @@
-
 import { useState } from 'react';
 import './App.css';
 import MemberType from './SignUp/MemberType';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import MemberAgree from './SignUp/MemberAgree';
+import MemberSignup from './SignUp/MemberSignup';
+
 
 function App() {
 
@@ -16,8 +17,9 @@ function App() {
   return (
       <div className="App">
         <Routes>
-          <Route path="/" element={<MemberType />} />
+          <Route path="/" element={<MemberType/>} />
           <Route path="/member-agree" element={<MemberAgree />} />
+          <Route path="/member-sign" element={<MemberSignup />} />
         </Routes>
       </div>
   );
