@@ -79,29 +79,36 @@ function MemberSignup() {
       }
     }
     if (blankField && isPersonalSuccess) {
-      alert("가입완료");
+      alert("회원가입 완료");
+
+      axiosInstance.post('/signup', MemberData)
+      .then((response) => {
+        console.log(response.data);
+        alert("전송");
+      }).catch((error) => {
+        console.log(error);
+        alert("실패");
+      })
     } else if (!blankField) {
       alert("빈 칸 확인");
     } else if (!isPersonalSuccess){
       alert("본인인증을 하세요");
-    } else {
-      axiosInstance.post('/signup', MemberData)
-      .then((response) => {
-        console.log(response.data);
-      }).catch((error) => {
-        console.log(error);
-      })
-    }
+    } 
+
   }
 
   // 아이디 중복체크를 위함.
   const overLapIdChk = () => {
 
-    axiosInstance.post('/idoverlap', MemberData.id)
+    axiosInstance.post('/idoverlap', { id : MemberData.id })
       .then((response) => {
-        console.log(response.data);
+        if (response.status === 200){
+          console.log(response);
+          alert("사용가능 아이디");
+        }
       }).catch((error) => {
         console.log(error);
+        alert("중복 아이디 입니다");
       })
 
   }
