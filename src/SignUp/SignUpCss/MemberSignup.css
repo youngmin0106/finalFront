@@ -35,7 +35,7 @@ p {
 
 .rightBtn {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 
 .errorMsg {
@@ -48,4 +48,13 @@ p {
 }
 .redText {
   color : red;
+}
+
+.BtnTextField {
+  display: flex;
+  width: 79%;
+}
+
+.signBtn {
+  margin-bottom: 5%;
 }

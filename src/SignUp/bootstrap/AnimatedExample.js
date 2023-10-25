@@ -1,8 +1,8 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
+// 부트스트랩으로 받아온 상단 바
 function AnimatedExample({ progress }) {
 
-console.log('aa:' + progress)
   return (
     <div>
       <ProgressBar animated now={progress} /> 

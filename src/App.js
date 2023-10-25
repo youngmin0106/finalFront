@@ -15,7 +15,7 @@ function App() {
   }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
 
   return (
-      <div className="App">
+    <div className="App">
         <Routes>
           <Route path="/" element={<MemberType/>} />
           <Route path="/member-agree" element={<MemberAgree />} />
