@@ -10,34 +10,6 @@ function MyPage() {
     <div className='font'>
     
     <MyPageBar></MyPageBar>
-
-    {/* <ul>
-    <ListGroup>
-      <ListGroup.Item>No style</ListGroup.Item>
-      <ListGroup.Item variant="primary">Primary</ListGroup.Item>
-      <ListGroup.Item action variant="secondary">
-        Secondary
-      </ListGroup.Item>
-      <ListGroup.Item action variant="success">
-        Success
-      </ListGroup.Item>
-      <ListGroup.Item action variant="danger">
-        Danger
-      </ListGroup.Item>
-      <ListGroup.Item action variant="warning">
-        Warning
-      </ListGroup.Item>
-      <ListGroup.Item action variant="info">
-        Info
-      </ListGroup.Item>
-      <ListGroup.Item action variant="light">
-        Light
-      </ListGroup.Item>
-      <ListGroup.Item action variant="dark">
-        Dark
-      </ListGroup.Item>
-    </ListGroup>
-    </ul> */}
   
   <div className="main">
     <h3 style={{fontSize : "20px"}}><span>실버</span>등급까지 4건의 거래완료가 남았습니다!</h3>

@@ -6,6 +6,7 @@ import UpdateInfo from './UpdateInfo/UpdateInfo';
 import DeleteInfo from './DeleteInfo/DeleteInfo';
 import MyPage from './MyPage/MyPage';
 import ListPages from './MyPage/ListPages';
+import Mileage from './Mileage/Mileage';
 
   // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -60,7 +61,7 @@ function App() {
         <Route path='/deleteInfo' element={<DeleteInfo />}></Route>
         {/* 보내주는 값들이 다 다름 */}
         <Route path='/listPages/:id' element={<ListPages list={list}/>}></Route>
-        <Route path='/listPages/sell_ing'   element={<ListPages list={list}/>}></Route>
+        <Route path='/mileage' element={<Mileage />}></Route>
      </Routes>
 
     </div>

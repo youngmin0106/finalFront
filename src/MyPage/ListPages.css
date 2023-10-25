@@ -4,3 +4,25 @@ div .main{
   height: 1000px;
 }
 
+
+.chat {
+  background-color: black;
+  opacity: 0.5;
+  border: none;
+}
+
+.chat:hover {
+  background-color: #40A940 ;
+  color: white;
+}
+
+.prevChat {
+  background-color: black;
+  opacity: 0.5;
+  border: none;
+}
+
+.prevChat:hover {
+  background-color: #40A940 ;
+  color: white;
+}
