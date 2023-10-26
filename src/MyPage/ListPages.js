@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 
-function ListPages( {list, pageType} ) {
+function ListPages( {list, pageType, point} ) {
 
   let {id} = useParams();
   let content = '';
@@ -29,7 +29,7 @@ function ListPages( {list, pageType} ) {
 
   return (
     <div>
-      <MyPageBar></MyPageBar>
+      <MyPageBar point={point}></MyPageBar>
     
       <div className="main">
       <h6 style={{fontWeight : "bold"}}>tester님의 {content} 물품 (전체 : $개)</h6>
@@ -45,9 +45,9 @@ function ListPages( {list, pageType} ) {
 
           <tfoot style={{textAlign : "center"}}>
             <tr style={{paddingTop : "20px"}}>
-          <td style={{paddingTop : "20px"}}>메이플 메소 팝니다<br></br> {/* 판매 제목 넣기 */} 
+               <td style={{paddingTop : "20px"}}>메이플 메소 팝니다<br></br> {/* 판매 제목 넣기 */} 
             2023-10-24 16:51:00 <br></br> {/* 판매 시간, 판매자, 연락처 데이터 넣기 */}
-            판매자 : tester1 &nbsp; 연락처 : 010-1234-5678
+            판매자 : tester &nbsp; 연락처 : 010-1234-5678
           </td> 
           <td><span style={{color : "#40A940", fontWeight : "bold"}}>1,000</span>원</td> {/* 판매 가격 넣을 자리*/} 
           <td><Button className="chat">채팅</Button>{' '}&nbsp;

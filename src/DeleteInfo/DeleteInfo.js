@@ -4,16 +4,28 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './DeleteInfo.css';
 import '../MyPage/MyPageBar.css';
 import MyPageBar from "../MyPage/MyPageBar";
+import axiosInstance from "../axiosInstance";
 
-function DeleteInfo() {
+// const deleteInfo = (() => {
+  
+// })
+
+
+
+function DeleteInfo( {point} ) {
 
   const [show, setShow] = useState(false);
   const target = useRef(null);
 
+  const [memberData, setMemberData] = useState({
+    id : 'test',
+    pw : '1234'
+  });
+
   return (
     
     <div>
-      <MyPageBar></MyPageBar>
+      <MyPageBar point={point} ></MyPageBar>
 
       <div className="main">
       <h3>회원탈퇴</h3>
@@ -61,7 +73,17 @@ function DeleteInfo() {
         )}
       </Overlay>
       &nbsp;
-      <Button>회원탈퇴</Button>
+      <Button onClick={() => {
+        axiosInstance.post('/unregister', {
+          id : 'test'
+        }) // 로그인에서 구현한 정보 추가해야함, MemberController
+        .then(response => {
+          alert(response.data);
+          console.log("회원탈퇴 완료")
+        }).catch(error => {
+          console.log(error);
+        })
+      }}>회원탈퇴</Button>
       </div>
         </div>
 

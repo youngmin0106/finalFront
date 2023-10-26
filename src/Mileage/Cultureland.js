@@ -1,5 +1,6 @@
 import { Button, Form } from "react-bootstrap";
 import './Toss.css';
+import { useState } from "react";
 
 
 function Cultureland() {
@@ -13,6 +14,24 @@ function Cultureland() {
     padding : '10px',
     fontWeight : 100
   };
+
+    const [serialNumber, setSerialNumber] = useState(['', '', '', '']);
+  
+
+    const handleInputChange = (index, e) => {
+      const value = e.target.value;
+      if (value.length <= 4 && /^\d*$/.test(value)) {
+        const newSerialNumber = [...serialNumber];
+        newSerialNumber[index] = value;
+        setSerialNumber(newSerialNumber);
+        // 번호입력 4번째 칸 전이면서 4자리수를 다 입력했으면 다음 입력칸으로 넘겨줌
+        if (value.length === 4 && index < 3) {
+          const nextInput = document.getElementById(`input-${index + 1}`);
+          nextInput && nextInput.focus();
+        }
+      }
+    };
+
 
   return (
     <div className="payMain">
@@ -50,7 +69,21 @@ function Cultureland() {
         <tbody>
           <tr>
             <td style={tdStyle}>충전신청금액</td>
-            <th style={thStyle}><Form.Control type="text" placeholder="1,000원 이상 결제가능" /></th>
+            <th style={thStyle}><Form.Control type="text" placeholder="1,000원 이상 결제가능"/></th>
+          </tr>
+          <tr>
+            <td style={tdStyle}>번호입력</td>
+            <th style={thStyle}>{serialNumber.map((value, index) => (
+        <Form.Control
+          key={index}
+          id={`input-${index}`}
+          type="text"
+          maxLength="4"
+          value={value}
+          onChange={(e) => handleInputChange(index, e)}
+          style={{ width: '70px', marginRight: '10px', float : 'left' }}
+        />
+      ))}</th>
           </tr>
         </tbody>
       </table>
@@ -62,5 +95,6 @@ function Cultureland() {
     </div>
   );
 }
+
 
 export default Cultureland;

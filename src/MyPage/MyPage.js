@@ -1,16 +1,26 @@
-import { ListGroup } from 'react-bootstrap';
+import { Button, ListGroup } from 'react-bootstrap';
 import './MyPage.css';
 import tier from './tier.png';
 import MyPageBar from './MyPageBar';
 
+const testLogin = (() => {
+  sessionStorage.setItem("test", JSON.stringify());
+})
 
-function MyPage() {
+const number = 1000
+const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
+
+function MyPage({ point }) {
+  
+  
   return (
     <div className='font'>
     
-    <MyPageBar></MyPageBar>
-  
+    <MyPageBar point={point}></MyPageBar>
+
+    {/* <Button onClick={testLogin}>임시 로그인</Button> */}
+
   <div className="main">
     <h3 style={{fontSize : "20px"}}><span>실버</span>등급까지 4건의 거래완료가 남았습니다!</h3>
       <img src={tier} style={{border : "0.5px solid #eee"}} alt="티어"></img>
@@ -23,8 +33,8 @@ function MyPage() {
     <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
       <div>~</div>
       <div>내 보유 마일리지</div>
-      <div style={{ fontWeight: "bold", fontSize: "25px" }}>1,000원</div>
-      <button style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold"}}>충전</button>
+      <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2}</div>
+      <a href='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</a>
     </td>
 
   <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
