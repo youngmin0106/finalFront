@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import MemberAgree from './SignUp/MemberAgree';
 import MemberSignup from './SignUp/MemberSignup';
+import SignupSuccess from './SignUp/SignUpSuccess';
+import Login from './Login/Login';
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path="/" element={<MemberType/>} />
           <Route path="/member-agree" element={<MemberAgree />} />
           <Route path="/member-sign" element={<MemberSignup />} />
+          <Route path="/signup-success" element={<SignupSuccess />} />
+          <Route path="/login-page" element = {<Login />} />
         </Routes>
       </div>
   );

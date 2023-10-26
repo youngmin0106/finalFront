@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axiosInstance from "../axiosInstance";
+import DaumPostcode from 'react-daum-postcode';
 
 function MemberSignup() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function MemberSignup() {
   const [pwErrorMsg, setpwErrorMsg] = useState("");
 
   // 입력값 받아오기
+  const [isPasswordChk, setIsPasswoardChk] = useState(false);
   const inputChangeHandler = (e) => {
     const { id, value } = e.target;
       setMemberData({
@@ -45,8 +47,10 @@ function MemberSignup() {
 
     if(id === "pwChk" && MemberData.pw !== value) {
       setpwErrorMsg("비밀번호가 다릅니다")
+      setIsPasswoardChk(false);
     } else if(id === "pwChk" && MemberData.pw === value) {
       setpwErrorMsg("비밀번호가 같습니다")
+      setIsPasswoardChk(true);
     } else if(MemberData.pwChk === "") {
       setpwErrorMsg("")
     }
@@ -67,37 +71,8 @@ function MemberSignup() {
     }
   }
 
-  //로그인 하기 위한 조건(1. 공란여부, 2.인증확인여부, 3. 비밀번호 다름여부)
-  const SignupSuccess = () => {
-
-    let blankField = true;
-
-    for(let id in MemberData) {
-      if(MemberData[id] === "") {
-        blankField = false;
-        break;
-      }
-    }
-    if (blankField && isPersonalSuccess) {
-      alert("회원가입 완료");
-
-      axiosInstance.post('/signup', MemberData)
-      .then((response) => {
-        console.log(response.data);
-        alert("전송");
-      }).catch((error) => {
-        console.log(error);
-        alert("실패");
-      })
-    } else if (!blankField) {
-      alert("빈 칸 확인");
-    } else if (!isPersonalSuccess){
-      alert("본인인증을 하세요");
-    } 
-
-  }
-
   // 아이디 중복체크를 위함.
+  const [isIdOverLapChk, setIsIdOverLapChk] = useState(false);
   const overLapIdChk = () => {
 
     axiosInstance.post('/idoverlap', { id : MemberData.id })
@@ -105,12 +80,63 @@ function MemberSignup() {
         if (response.status === 200){
           console.log(response);
           alert("사용가능 아이디");
+          setIsIdOverLapChk(true);
+        } else {
+          alert("중복 아이디 입니다");
+          setIsIdOverLapChk(false);
         }
       }).catch((error) => {
         console.log(error);
-        alert("중복 아이디 입니다");
       })
+  }
+  // 주소 검색창 열림 닫힘 여부
+  const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
+  // 주소 검색창이 열릴 때
+  const openDaumPost = () => {
+      setIsDaumPostOpen(true);
+  };
+
+  // 주소 선택이 완료되었을 때 실행될 함수
+  const handleComplete = (data) => {
+    setMemberData({
+      ...MemberData,
+      address: data.address,
+    });
+
+    setIsDaumPostOpen(false);
+  };
+
+  //로그인 하기 위한 조건(1. 공란여부, 2.인증확인여부, 3. 비밀번호 다름여부)
+  const SignupSuccess = () => {
+
+    let blankField = true;
+  
+    for(let id in MemberData) {
+      if(MemberData[id] === "") {
+        blankField = false;
+        break;
+      }
+    }
+    if (blankField && isPersonalSuccess && isPasswordChk && isIdOverLapChk) {
+      alert("회원가입 완료");
+  
+      axiosInstance.post('/signup', MemberData)
+      .then((response) => {
+        console.log(response.data);
+      }).catch((error) => {
+        console.log(error);
+      })
+      navigate("/signup-success");
+    } else if (!blankField) {
+      alert("빈 칸 확인");
+    } else if (!isPersonalSuccess){
+      alert("본인인증을 하세요");
+    } else if (!isPasswordChk) {
+      alert("비밀번호가 틀립니다.");
+    } else if (!isIdOverLapChk) {
+      alert("아이디 중복체크 하세요.");
+    }
   }
 
   return (
@@ -178,13 +204,25 @@ function MemberSignup() {
           <div className="textFieldContainer">
             <p>주소</p>
             <div className="BtnTextField">
-              <TextField sx={tfStyle} id="address" value={MemberData.address} onChange = { inputChangeHandler } 
+              <TextField sx={tfStyle} id="address" value={MemberData.address} onChange={inputChangeHandler}
                 label="주소 검색하세요." type="text" />
             </div>
             <div>
-              <Button id="signBtn" variant="contained" style={BtnStyle}> 주소 검색 </Button>
+              <Button id="signBtn" variant="contained" style={BtnStyle} onClick={openDaumPost}>
+                주소 검색 </Button>
             </div>
           </div>
+          {
+            isDaumPostOpen &&
+            <div>
+            <DaumPostcode style={{ 
+              display: isDaumPostOpen ? 'block' : 'none',
+              height : '200px',
+              width : '50px;'
+            }} 
+            onComplete={handleComplete}/>
+            </div>
+          }
 
           <div className="textFieldContainer">
             <p>상세주소</p>
@@ -192,8 +230,9 @@ function MemberSignup() {
               label="상세주소를 입력하세요." type="text" />
           </div>
 
-        </div>
       </div>
+    </div>
+
       <div className="underBtn">
         <Button variant="outlined" onClick={() => navigate("/member-agree")}> 이전 </Button>
         <div className="rightBtn">

@@ -1,0 +1,24 @@
+.signSuccessText {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 2%;
+}
+
+.successComponent {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.successBtn {
+  display: flex;
+  margin-left: 33%;
+  margin-top: 6%;
+  gap: 15px;
+}
+
