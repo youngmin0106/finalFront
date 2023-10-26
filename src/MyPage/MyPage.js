@@ -12,7 +12,24 @@ const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 
 function MyPage({ point }) {
-  
+
+  let nextTier;
+
+  const getTierValue = (point) => {
+    if (point > 100) {
+      nextTier = 301 - point;
+      return "플래티넘";
+    } else if (point > 50) {
+      nextTier = 101 - point;
+      return "다이아몬드";
+    } else if (point >= 5) {
+      nextTier = 51 - point;
+      return "골드";
+    } else {
+      nextTier = 6 - point
+      return "실버";
+    }
+  };
   
   return (
     <div className='font'>
@@ -22,7 +39,7 @@ function MyPage({ point }) {
     {/* <Button onClick={testLogin}>임시 로그인</Button> */}
 
   <div className="main">
-    <h3 style={{fontSize : "20px"}}><span>실버</span>등급까지 4건의 거래완료가 남았습니다!</h3>
+    <h3 style={{fontSize : "20px"}}><span style={{fontWeight : "bold"}}>{getTierValue(point)}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!</h3>
       <img src={tier} style={{border : "0.5px solid #eee"}} alt="티어"></img>
    <p></p>
 

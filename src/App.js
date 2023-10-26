@@ -43,7 +43,7 @@ const listOption = [
   }
 ]
 
-const tsPoints = 301;
+const tsPoints = 50;
 
 function App() {
   const [isAuth, setAuth] = useState(false);  // 로그아웃상태
