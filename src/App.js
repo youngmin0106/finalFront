@@ -2,7 +2,8 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useState } from 'react';
-import AccountSales from './Account Sales/AccountSales';
+import AccountSales from './Page/Account Sales/AccountSales';
+import AccountPost from './Page/Trans Post/TransPostList';
 
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/sales' element={<AccountSales userInfo={userInfo} />}></Route>
+        <Route path='/insertAccount' element={<AccountSales userInfo={userInfo} />} />
+        <Route path='/transPost' element={<AccountPost userInfo={userInfo} />} />
         
       </Routes>
     </div>

@@ -1,6 +1,5 @@
 let server = {
   ServerSelect : [
-    '서버 선택▼',
     '서버전체',
     '기타'
   ],
