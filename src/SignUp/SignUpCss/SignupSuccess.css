@@ -11,14 +11,17 @@
   border-radius: 10px;
   text-align: center;
   width: 100%;
-  margin: auto;
   margin-top: 10%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .successBtn {
   display: flex;
-  margin-left: 33%;
-  margin-top: 6%;
+  margin-top: 2vw;
+  justify-content: center;
   gap: 15px;
 }
 

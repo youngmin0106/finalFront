@@ -58,3 +58,8 @@ p {
 .signBtn {
   margin-bottom: 5%;
 }
+
+.myaddressBox {
+  width: 400px;
+  height: 400px;
+}

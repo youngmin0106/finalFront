@@ -11,35 +11,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import kakaoicon from './LoginImg/kakaoicon.png';
+import googleico from './LoginImg/googleicon.png';
+import navericon from './LoginImg/navericon.png';
+import './LoginCss/Login.css';
 
-function KakaoLoginButton() {
-  const kakaoButtonStyle = {
-    backgroundColor: '#FFEB00',
-    color: 'black',
-    '&:hover': {
-      backgroundColor: '#FFC100',
-    },
-  };
-
-  return (
-    <Button type="submit" fullWidth variant="contained" style={kakaoButtonStyle}
-      sx={{ mt: 0, mb: 1 }} > 카카오 로그인 </Button>
-  );
-}
-
-function GoogleLoginButton() {
-  const googleButtonStyle = {
-    backgroundColor: 'white',
-    color: 'black',
-    '&:hover': {
-      backgroundColor: 'blue',
-    },
-  };
-
-  return (<Button type="submit" fullWidth variant="contained" style={googleButtonStyle} 
-    sx={{ mt: 0, mb: 1 }} > 구글 로그인 </Button>
-  );
-}
 const defaultTheme = createTheme();
 
 function Login() {
@@ -54,6 +30,7 @@ function Login() {
   };
 
   return (
+
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -80,8 +57,12 @@ function Login() {
 
               <Button type="submit" fullWidth variant="contained" 
                 sx={{ mt: 3, mb: 1 }}> 로그인 </Button>
-              <KakaoLoginButton />
-              <GoogleLoginButton />
+              
+              <div className='loginBox'>
+                <a href="#!"><img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
+                <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
+                <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
+              </div>
 
             <Grid container>
               <Grid item xs>

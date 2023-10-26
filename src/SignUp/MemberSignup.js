@@ -214,13 +214,13 @@ function MemberSignup() {
           </div>
           {
             isDaumPostOpen &&
-            <div>
-            <DaumPostcode style={{ 
-              display: isDaumPostOpen ? 'block' : 'none',
-              height : '200px',
-              width : '50px;'
-            }} 
-            onComplete={handleComplete}/>
+            <div className="MyaddressBox">
+              <DaumPostcode style={{ 
+                display: isDaumPostOpen ? 'block' : 'none',
+                height : '400px',
+                margin : 'auto'
+              }} 
+              onComplete={handleComplete}/>
             </div>
           }
 
