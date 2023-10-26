@@ -98,7 +98,7 @@ function MemberSignup() {
   };
 
   // 주소 선택이 완료되었을 때 실행될 함수
-  const handleComplete = (data) => {
+  const completeHandle = (data) => {
     setMemberData({
       ...MemberData,
       address: data.address,
@@ -220,7 +220,7 @@ function MemberSignup() {
                 height : '400px',
                 margin : 'auto'
               }} 
-              onComplete={handleComplete}/>
+              onComplete={completeHandle}/>
             </div>
           }
 

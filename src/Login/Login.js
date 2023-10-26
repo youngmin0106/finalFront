@@ -15,19 +15,43 @@ import kakaoicon from './LoginImg/kakaoicon.png';
 import googleico from './LoginImg/googleicon.png';
 import navericon from './LoginImg/navericon.png';
 import './LoginCss/Login.css';
-
-const defaultTheme = createTheme();
+import { useState } from 'react';
+import axiosInstance from '../axiosInstance';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  
+  const defaultTheme = createTheme();
+  const navigate = useNavigate();
+  
+  const [loginData, setLoginData] = useState({
+    id : '',
+    pw : '',
+  });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+  const idPwInputHandler = (e) => {
+    const { id, value } = e.target;
+    setLoginData({
+      ...loginData,
+      [id]: value,
     });
   };
+  console.log(loginData.id);
+  console.log(loginData.pw);
+
+  const loginBtnClickHandler = (e) => {
+
+    e.preventDefault();
+
+    axiosInstance.post('/login', loginData)
+      .then((response) => {
+        console.log('로그인 성공');
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error('로그인 실패');
+      });
+  }
 
   return (
 
@@ -45,18 +69,23 @@ function Login() {
           </Avatar>
           <Typography component="h1" variant="h5"> 로그인 </Typography>
 
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" noValidate sx={{ mt: 1 }}>
             <TextField margin="normal" required fullWidth id="id"
-              label="아이디" name="id" autoComplete="id" autoFocus />
+              label="아이디" name="id" autoComplete="id" autoFocus
+              onChange={idPwInputHandler} value={loginData.id} />
 
-            <TextField margin="normal" required fullWidth name="password"
-              label="비밀번호" type="password" id="password" autoComplete="current-password" />
+            <TextField margin="normal" required fullWidth label="비밀번호" 
+              type="password" id="pw" autoComplete="current-password"
+              onChange={idPwInputHandler} value={loginData.pw}
+              />
 
             <FormControlLabel control={<Checkbox value="remember" color="primary" />}
               label="아이디 저장" />
 
               <Button type="submit" fullWidth variant="contained" 
-                sx={{ mt: 3, mb: 1 }}> 로그인 </Button>
+                sx={{ mt: 3, mb: 1 }} onClick={loginBtnClickHandler}> 
+                로그인 
+              </Button>
               
               <div className='loginBox'>
                 <a href="#!"><img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
