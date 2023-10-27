@@ -34,7 +34,7 @@ li a {
 }
 
 li a.job {
-  background-color: #40A940;
+  background-color: #519D9E;
   font-weight: bold;
   color: #fff;
 }
@@ -59,28 +59,50 @@ div .main{
 }
 
 .gradation1 {
-  background: #40A940;
+  background: #58C9B9;
   opacity: 0.4;
   color: white;
 }
 
 .gradation2 {
-  background: #40A940;
+  background: #58C9B9;
   opacity: 0.5;
   color: white;
 }
 
 .gradation3 {
-  background: #40A940;
+  background: #58C9B9;
   opacity: 0.6;
   color: white;
 }
 
 .gradation4 {
-  background: #40A940;
+  background: #58C9B9;
   opacity: 0.8;
   color: white;
 }
+
+.gradation5 {
+  background: #D1B6E1;
+  opacity: 0.6;
+  color: white;
+}
+
+.gradation6 {
+  background: #D1B6E1;
+  opacity: 0.8;
+  color: white;
+}
+
+.gradation7 {
+  background: #D1B6E1;
+  opacity: 1;
+  color: white;
+}
+
+
+/* #9DC8C8
+#58C9B9 */
 
 .round {
   border-radius: 10px;

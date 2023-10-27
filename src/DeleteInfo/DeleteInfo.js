@@ -12,7 +12,7 @@ import axiosInstance from "../axiosInstance";
 
 
 
-function DeleteInfo( {point} ) {
+function DeleteInfo( {point, userInfo} ) {
 
   const [show, setShow] = useState(false);
   const target = useRef(null);
@@ -25,7 +25,7 @@ function DeleteInfo( {point} ) {
   return (
     
     <div>
-      <MyPageBar point={point} ></MyPageBar>
+      <MyPageBar point={point} userInfo={userInfo} ></MyPageBar>
 
       <div className="main">
       <h3>회원탈퇴</h3>

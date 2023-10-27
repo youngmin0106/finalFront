@@ -9,7 +9,7 @@ import HPhone from './HPhone';
 import TeenCash from './TeenCash';
 import PayEtc from './PayEtc';
 
-function Mileage() {
+function Mileage( {userInfo, setUserInfo} ) {
 
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -60,7 +60,7 @@ function Mileage() {
         {selectedItem === "휴대폰" && <div className='payopt'><Phone></Phone></div>}
         {selectedItem === "무통장입금" && <div className='payopt'><BankTransfer></BankTransfer></div>}
         {selectedItem === "전화결제" && <div className='payopt'><HPhone></HPhone> </div>}
-        {selectedItem === "문화상품권" && <div className='payopt'><Cultureland></Cultureland></div>}
+        {selectedItem === "문화상품권" && <div className='payopt'><Cultureland userInfo={userInfo} setUserInfo={setUserInfo}></Cultureland></div>}
         {selectedItem === "틴캐시" && <div className='payopt'><TeenCash></TeenCash></div>}
         {selectedItem === "돈복사버그" && <div className='payopt'><PayEtc></PayEtc></div>}
       </div>

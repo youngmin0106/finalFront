@@ -8,11 +8,8 @@ import platinum from './Tier/platinum.png';
 
 
 
-function MyPageBar( {point} ) {
-
-
-  
-  
+function MyPageBar( { point, userInfo } ) {
+ 
   const getTier = () => {
     if (point > 300) {
       return <img src={platinum} style={{width : "100px", textAlign : "center"}} alt="플래티넘"></img>;
@@ -29,7 +26,7 @@ function MyPageBar( {point} ) {
 
   const getTierValue = () => {
     if (point > 300) {
-      return "플래티넘";
+      return "챌린저";
     } else if (point > 100) {
       return "다이아몬드";
     } else if (point > 50) {
@@ -50,10 +47,10 @@ function MyPageBar( {point} ) {
       <h2 style={{marginLeft : "10%", marginBottom : "2%", fontSize : "25px"}}><a href='/mypage'>- 마이페이지</a></h2>
 
 
-      <ul className='ulList' style={{borderTop : "2px solid #40A940"}}>
+      <ul className='ulList' style={{borderTop : "2px solid #519D9E"}}>
         <br></br>
         <li style={{textAlign : "center"}}>{getTier()}</li>
-        <li style={{textAlign : "center"}}><span style={{fontWeight : "bold"}}>tester</span>님의 등급은</li>
+        <li style={{textAlign : "center"}}><span style={{fontWeight : "bold"}}>{userInfo.id}</span>님의 등급은</li>
         <li style={{textAlign : "center"}}><span style={{fontWeight : "bold"}}>{getTierValue()}</span>({point}점)입니다</li>
         <br></br>
         <li><a className="job" href="0" onClick={(e) => {
@@ -78,7 +75,6 @@ function MyPageBar( {point} ) {
           e.preventDefault();
         }}>나의 정보 관리</a></li>
         <li><a href="/updateInfo">회원정보 수정</a></li>
-        <li><a href="/liked">관심 물품</a></li>
         <li><a href="/deleteInfo">회원 탈퇴</a></li>
       </ul>
     </div>

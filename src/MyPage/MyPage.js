@@ -1,24 +1,25 @@
 import { Button, ListGroup } from 'react-bootstrap';
 import './MyPage.css';
 import tier from './tier.png';
+import tier3 from './tier3.png';
 import MyPageBar from './MyPageBar';
-
-const testLogin = (() => {
-  sessionStorage.setItem("test", JSON.stringify());
-})
 
 const number = 1000
 const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 
-function MyPage({ point }) {
+function MyPage({ point, userInfo }) {
+  
+  // let testpoint = userInfo.tspoints;
 
   let nextTier;
-
+  
   const getTierValue = (point) => {
-    if (point > 100) {
+    if (point >= 301) {
+      return "와우";
+    } else if (point > 100) {
       nextTier = 301 - point;
-      return "플래티넘";
+      return "챌린저";
     } else if (point > 50) {
       nextTier = 101 - point;
       return "다이아몬드";
@@ -28,38 +29,47 @@ function MyPage({ point }) {
     } else {
       nextTier = 6 - point
       return "실버";
-    }
+    } 
   };
   
   return (
     <div className='font'>
     
-    <MyPageBar point={point}></MyPageBar>
+    <MyPageBar point={point} userInfo={userInfo}></MyPageBar>
 
     {/* <Button onClick={testLogin}>임시 로그인</Button> */}
-
   <div className="main">
-    <h3 style={{fontSize : "20px"}}><span style={{fontWeight : "bold"}}>{getTierValue(point)}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!</h3>
-      <img src={tier} style={{border : "0.5px solid #eee"}} alt="티어"></img>
+    {     
+          point < 301 && (
+          <h3 style={{ fontSize: "20px" }}>
+            <span style={{ fontWeight: "bold" }}>{getTierValue(point)}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!
+          </h3>
+        )}
+      <img src={tier3} className='showTier' style={{border : "0.5px solid #eee", borderTop : "2px solid #519D9E", borderRadius : "5px", display : "none"}} alt="티어"></img>
+      <Button onClick={() => {
+        const tierImage = document.querySelector('.showTier');
+        tierImage.style.display = "block"
+
+      }}>등급보기</Button>
    <p></p>
 
   <table width={"882px"}>
     <tbody>
 
     <tr>
-    <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
+    <td style={{ padding: "60px", border: "0.5px solid #eee", borderTop : "2px solid #519D9E", borderRadius : "5px", textAlign: "center" }}>
       <div>~</div>
       <div>내 보유 마일리지</div>
       <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2}</div>
       <a href='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</a>
     </td>
 
-  <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
+  {/* <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
       <div>♡</div>
       <div>관심물품</div>
       <div style={{ fontWeight: "bold", fontSize: "25px" }}>0 개</div>
       <div>&nbsp;</div>
-    </td>
+    </td> */}
     </tr>
     </tbody>
 </table>
@@ -67,7 +77,7 @@ function MyPage({ point }) {
 <h3 style={{fontSize : "20px"}}>▶ 거래현황</h3>
 
 <p/>
-<h3 style={{color : '#40A940', opacity : 0.5, fontWeight : 'bold', fontSize : "20px"}}>판매현황</h3>
+<h3 style={{color : '#58C9B9', opacity : 0.5, fontWeight : 'bold', fontSize : "20px"}}>판매현황</h3>
 <table className='sell' width={"882px"}> 
     <tbody>
       <tr>
@@ -98,23 +108,23 @@ function MyPage({ point }) {
     </tbody>
 </table>
 <br></br>
-<h3 style={{color : '#40A940', opacity : 0.5, fontWeight : 'bold', fontSize : "20px"}}>구매현황</h3>
+<h3 style={{color : '#D1B6E1', opacity : 0.5, fontWeight : 'bold', fontSize : "20px"}}>구매현황</h3>
 <table className='sell' width={"882px"}> 
     <tbody>
       <tr>
-        <td className='sellBox gradation1'>
+        <td className='sellBox gradation5'>
           <div className='round'>STEP 1</div>
           <div>구매중</div>
           <div>0 건</div>
         </td>
 
-        <td className='sellBox gradation2'>
+        <td className='sellBox gradation6'>
           <div className='round'>STEP 2</div>
           <div>구매 취소완료</div>
           <div>0 건</div>
         </td>
 
-        <td className='sellBox gradation4'>
+        <td className='sellBox gradation7'>
           <div className='round'>STEP 4</div>
           <div>구매 완료</div>
           <div>0 건</div>

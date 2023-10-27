@@ -43,12 +43,14 @@ const listOption = [
   }
 ]
 
-const tsPoints = 50;
+const tsPoints = 100;
 
 function App() {
   const [isAuth, setAuth] = useState(false);  // 로그아웃상태
   const [userInfo, setUserInfo] = useState({
-    username:'',
+    id :'test2',
+    phone : '010-2234-5678',
+    mileage : 1000
   }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
 
   const [point, setPoints] = useState(tsPoints);
@@ -62,11 +64,11 @@ function App() {
     {/* <MyPage></MyPage> */}
       <Routes>
         {/* <Route path='' element={<MyPageBar point={point}/>}></Route> */}
-        <Route path='/mypage' element={<MyPage list={list} point={point}/>}></Route>
-        <Route path='/updateInfo' element={<UpdateInfo />}></Route>
-        <Route path='/deleteInfo' element={<DeleteInfo point={point}/>}></Route>
-        <Route path='/listPages/:id' element={<ListPages list={list} point={point}/>}></Route> {/* 보내주는 값들이 다 다름 */}
-        <Route path='/mileage' element={<Mileage />}></Route>
+        <Route path='/mypage' element={<MyPage list={list} point={point} userInfo={userInfo}/>}></Route>
+        <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo}/>}></Route>
+        <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} point={point} />}></Route>
+        <Route path='/listPages/:id' element={<ListPages list={list} point={point} userInfo={userInfo}/>}></Route> {/* 보내주는 값들이 다 다름 */}
+        <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo}/>}></Route>
      </Routes>
 
     </div>

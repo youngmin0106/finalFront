@@ -1,12 +1,14 @@
 import { Button, Form } from "react-bootstrap";
 import './Toss.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axiosInstance from "../axiosInstance";
 
 
-function Cultureland() {
+function Cultureland( {userInfo, setUserInfo} ) {
+
 
   const tdStyle = {
-    padding: '10px', // 필요에 따라 적절한 패딩 값으로 조정하세요
+    padding: '10px', 
     fontWeight : 'bold'
   };
 
@@ -16,7 +18,8 @@ function Cultureland() {
   };
 
     const [serialNumber, setSerialNumber] = useState(['', '', '', '']);
-  
+
+    const [money, setMoney] = useState(userInfo.mileage);
 
     const handleInputChange = (index, e) => {
       const value = e.target.value;
@@ -32,6 +35,36 @@ function Cultureland() {
       }
     };
 
+    const setMoneyHandler = () => {
+
+      const d = document.querySelector('.mileage').value;
+
+      const oriMoney = parseInt(money);
+      const chargeMoney = parseInt(d);
+      const totalMoney = oriMoney + chargeMoney;
+
+      setMoney(totalMoney);
+
+        
+      console.log(totalMoney);
+      return totalMoney;
+    }
+    
+    const setTotalMoney = () => {
+
+      const totalMoney = setMoneyHandler()
+      
+      console.log(userInfo.id)
+      
+      axiosInstance.post('/payCultureland', {id : userInfo.id , userInfo:userInfo, mileage:totalMoney})
+      .then(response => {
+          alert(response.data);
+          console.log("마일리지 충전 완료");
+          setUserInfo(response.data);
+        }).catch(error => {
+          console.log(error);
+        });
+    }
 
   return (
     <div className="payMain">
@@ -69,7 +102,7 @@ function Cultureland() {
         <tbody>
           <tr>
             <td style={tdStyle}>충전신청금액</td>
-            <th style={thStyle}><Form.Control type="text" placeholder="1,000원 이상 결제가능"/></th>
+            <th style={thStyle}><Form.Control type="text" className="mileage" placeholder="1,000원 이상 결제가능"/></th>
           </tr>
           <tr>
             <td style={tdStyle}>번호입력</td>
@@ -89,7 +122,7 @@ function Cultureland() {
       </table>
       <hr></hr>
       <div style={{textAlign : "center"}}>
-      <Button className="payReq">충전신청</Button>
+      <Button className="payReq" onClick={setTotalMoney}>충전신청</Button>
       </div>
         
     </div>
