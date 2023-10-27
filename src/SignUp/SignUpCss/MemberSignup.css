@@ -40,7 +40,17 @@ p {
 
 .errorMsg {
   width: 20%;
+  margin-left: 8%;
+}
+.idInspection {
+  width: 40%;
   margin-left: 9%;
+  font-weight: normal;
+}
+.pwInspection {
+  width: 69%;
+  margin-left: 8%;
+  font-weight: normal;
 }
 
 .blueText {

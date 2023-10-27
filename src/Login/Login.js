@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -19,7 +18,7 @@ import { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Login( {setUserInfo, setIsAuth} ) {
   
   const defaultTheme = createTheme();
   const navigate = useNavigate();
@@ -36,8 +35,6 @@ function Login() {
       [id]: value,
     });
   };
-  console.log(loginData.id);
-  console.log(loginData.pw);
 
   const loginBtnClickHandler = (e) => {
 
@@ -45,11 +42,15 @@ function Login() {
 
     axiosInstance.post('/login', loginData)
       .then((response) => {
-        console.log('로그인 성공');
+        console.log("로그인 성공");
+        localStorage.setItem('id', loginData.id);
+        setUserInfo(loginData);
+        setIsAuth(true);
         navigate("/");
       })
       .catch((error) => {
-        console.error('로그인 실패');
+        console.error(error);
+        alert("아이디 패스워드를 확인하세요.")
       });
   }
 
@@ -65,42 +66,42 @@ function Login() {
           alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          </Avatar>
-          <Typography component="h1" variant="h5"> 로그인 </Typography>
 
-          <Box component="form" noValidate sx={{ mt: 1 }}>
-            <TextField margin="normal" required fullWidth id="id"
-              label="아이디" name="id" autoComplete="id" autoFocus
-              onChange={idPwInputHandler} value={loginData.id} />
+    <Typography component="h1" variant="h5"> 로그인 </Typography>
 
-            <TextField margin="normal" required fullWidth label="비밀번호" 
-              type="password" id="pw" autoComplete="current-password"
-              onChange={idPwInputHandler} value={loginData.pw}
-              />
+    <Box component="form" noValidate sx={{ mt: 1 }}>
+    <TextField margin="normal" required fullWidth id="id"
+      label="아이디" name="id" autoComplete="id" autoFocus 
+      onChange={idPwInputHandler} value={loginData.id} />
 
-            <FormControlLabel control={<Checkbox value="remember" color="primary" />}
-              label="아이디 저장" />
+    <TextField margin="normal" required fullWidth label="비밀번호" 
+      type="password" id="pw" autoComplete="current-password"
+      onChange={idPwInputHandler} value={loginData.pw} />
 
-              <Button type="submit" fullWidth variant="contained" 
-                sx={{ mt: 3, mb: 1 }} onClick={loginBtnClickHandler}> 
-                로그인 
-              </Button>
+    <FormControlLabel control={<Checkbox value="remember" color="primary" />}
+      label="아이디 저장" />
+
+    <Button type="submit" fullWidth variant="contained" 
+      style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }} 
+      onClick={loginBtnClickHandler}> 로그인 </Button>
               
-              <div className='loginBox'>
-                <a href="#!"><img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
-                <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
-                <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
-              </div>
+    <div className='loginBox'>
+      <a href="#!"><img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
+      <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
+      <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
+    </div>
 
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2"> 비밀번호 찾기 </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/" variant="body2"> {"회원가입"} </Link>
-              </Grid>
-            </Grid>
+    <Grid container>
+      <Grid item xs>
+        <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 아이디 찾기 </Link>
+      </Grid>
+      <Grid item xs>
+        <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 비밀번호 찾기 </Link>
+      </Grid>
+      <Grid item>
+        <Link href="/" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
+      </Grid>
+    </Grid>
           </Box>
         </Box>
       </Container>

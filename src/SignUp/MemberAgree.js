@@ -19,20 +19,22 @@ function MemberAgree({ progress }) {
   
   //체크박스 개별 동의여부 확인 핸들러.
   const agreeChangeHandler = (e) => {
+
     const { name, checked } = e.target;
+    // 이전 동의 상태 복사
+    setAgrees((data) => ({ ...data, [name] : checked })); 
 
-    setAgrees((prevAgrees) => ({ ...prevAgrees, [name]: checked })); // 이전 동의 상태 복사
-    const allChecked = Object.values({ ...agrees, [name]: checked }).every(
-      (value) => value === true
-    ); //모든 항목이 설정되었는 지, true로 바꼈는 지 확인
+    // agrees 객체를 가져와 every 메서드를 이용하여 전체가 true인 지 확인
+    const allChecked = Object.values({ ...agrees, [name]: checked })
+      .every((value) => value === true);
 
-    setAllAgree(allChecked); // 동의 상태를 업데이트함.
+    setAllAgree(allChecked); // true가 되면 동의 상태를 업데이트함.
   }
 
   //전체 체크박스 변경해주는 핸들러,
   const allAgreeChangeHandler = (e) => {
     const { checked } = e.target;
-    setAgrees((prevAgrees) => ({
+    setAgrees(() => ({
       termAgree: checked,
       personalAgree: checked
     })); //동의 체크박스를 전부 체크해줌.
@@ -58,10 +60,10 @@ function MemberAgree({ progress }) {
             <label htmlFor="agree_term_check"> [필수]이용 약관 동의 {'>'} </label>
 
             <input type="checkbox" id="agree_term_check" name="termAgree" required
-              checked={agrees.termAgree} onChange={agreeChangeHandler} /> 
+              checked={agrees.termAgree}  onChange={ agreeChangeHandler }/> 
           </li>
           <br />
-          <textarea name="opinion" cols="130" rows="5" readonly="readonly" >
+          <textarea name="opinion" cols="130" rows="5" readOnly >
             이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. 국회는 선전포고, 국군의 외국에의 파견 또는 외국군대의 대한민국 영역안에서의 주류에 대한 동의권을 가진다.
             국군의 조직과 편성은 법률로 정한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다.
             대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다. 중앙선거관리위원회는 대통령이 임명하는 3인, 국회에서 선출하는 3인과 대법원장이 지명하는 3인의 위원으로 구성한다. 위원장은 위원중에서 호선한다.
@@ -73,10 +75,10 @@ function MemberAgree({ progress }) {
           <li>
             <label htmlFor="agree_person_check">[필수]개인정보 수집 및 이용 동의 {'>'} </label>
             <input type="checkbox" id="agree_person_check" name="personalAgree" required
-              checked={agrees.personalAgree} onChange={agreeChangeHandler} />
+              checked={agrees.personalAgree} onChange={ agreeChangeHandler }/>
           </li> <br />
 
-          <textarea name="opinion" cols="130" rows="5" readonly="readonly" >
+          <textarea name="opinion" cols="130" rows="5" readOnly >
             이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. 국회는 선전포고, 국군의 외국에의 파견 또는 외국군대의 대한민국 영역안에서의 주류에 대한 동의권을 가진다.
             국군의 조직과 편성은 법률로 정한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다.
             대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다. 중앙선거관리위원회는 대통령이 임명하는 3인, 국회에서 선출하는 3인과 대법원장이 지명하는 3인의 위원으로 구성한다. 위원장은 위원중에서 호선한다.
@@ -87,13 +89,17 @@ function MemberAgree({ progress }) {
         </ul>
         </div>
         <div className ="agreeButton">
-          <Button id="back" variant="contained" onClick={() => {
-            navigate("/");
+          <Button style={{ backgroundColor: "#9DC8C8" }} id="back" variant="contained"
+            onClick={() => {
+              navigate("/");
           }}>이전</Button>
-          <Button id ="next" variant="contained" onClick={() => {
-            if(!(!allAgree || !(agrees.termAgree && agrees.personalAgree))) {
-              navigate("/member-sign");
-            }
+          <Button style={{ backgroundColor: "#9DC8C8" }} id ="next" variant="contained" 
+            onClick={() => {
+              if((allAgree)) {
+                navigate("/member-sign");
+              } else {
+                alert("동의 여부를 확인하세요.")
+              }
           }}>다음</Button>
           </div>
         </div>
