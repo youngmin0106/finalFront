@@ -1,42 +1,56 @@
-import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import "./CsCss/WriteNotice.css";
+import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 import { useState } from "react";
 
-function WriteNotice({userInfo}){
+function WriteNotice(){
 
-  const [notice,setnotice] = useState({
+  const [notice,setNotice] = useState({
     title : '',
-    content : '',
-    cnt : '',
-    writer : userInfo.id
+    content : ''
+ 
   });
   const navigate = useNavigate();
 
   const changeHandler = (e) =>{
-    setnotice({
+    setNotice({
       ...notice,
       [e.target.name] : e.target.value 
     })
   }
-
   return(
- <div class="form-group">
-  <div>
-    제목 : <input type="text" name="title" onChange={changeHandler}/><br/>
-      내용 : <textarea name="content" onChange={changeHandler}></textarea><br/>
-      <button onClick={()=>{
-        axiosInstance.post('/notice',notice)
-        .then(response=>{
-          alert(response.data);
-          // navigate('/');
-          console.log(response.data);
-        }).catch(error=>{
-          console.log(error);
-          
-        })
-      }} >작성</button>
-  </div>
+    <div className="write">
+      <div className="title-input">
+        <span className="titlespan">제목</span>
+        <input className="writetitle" type="text" name="title" onChange={changeHandler} />
       </div>
+      <br />
+
+      <div>
+        <span className="contentspan">내용</span>
+        <textarea className="contentarea" 
+          onChange={changeHandler}
+          name="content"
+          cols="74"
+          rows="15"   
+        ></textarea>
+      </div>
+      <br />
+      <div className="clickbtn">
+      <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
+          axiosInstance.post('/notice',notice)
+          .then(response=>{
+              alert(response.data);
+              navigate('/cs');
+          }).catch(error=>{
+              console.log(error);
+              // alert('로그인 후 사용하세요');
+          })
+      }}>작성</Button>{' '}
+      <Button variant="outline-danger" className="resetbtn" type="reset"><Link to={"/onetoone"} className="linknone">취소</Link></Button>{' '}
+      </div>
+    </div>
   );
 }
 

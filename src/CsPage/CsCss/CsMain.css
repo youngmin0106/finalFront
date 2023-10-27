@@ -1,0 +1,278 @@
+.boxcard body {
+  background: #e2e1e0;
+  text-align: center;
+  margin: 0;
+
+}
+
+.boxcard{
+  display: flex;
+  justify-content: center;
+  /* position: relative; */
+  /* margin-top: 50%; */
+  text-align: center;
+  left: 0%;
+  
+  
+}
+
+.boxcard .card {
+  background: #fff;
+  border-radius: 2px;
+  display: flex;
+  height: 300px;
+  border-radius: 5px;
+  position: relative;
+  width: 300px;
+  margin: 12px;
+  top: -100px;
+}
+
+.boxcard .card-2 .card-1 .card-3{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  justify-content: space-evenly;
+  
+}
+
+
+/* .boxcard .st{
+  /* border-bottom:  1px solid rgba(0,0,0,0.23); */
+
+
+.boxcard .sc{
+  border-bottom:  1px solid rgba(0,0,0,0.23);
+}
+
+.ulListcs {
+  list-style-type: none;
+  background-color: none;
+  width: 10%;
+  padding: 0px;
+  padding-left: 0px;
+  margin:  0px;
+  margin-left: 10%;
+  position: absolute;
+  /* height: 100%; */
+  overflow: auto;
+  border : 0.5px solid #eee;
+  border-radius: 5px;
+  font-family: 'NanumSquareNeo-Variable';
+  top: px;
+}
+
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.ulListcs .font {
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 15px;
+}
+
+.ulListcs li a {
+  text-decoration: none;
+  display: block;
+  color: #000;
+  padding: 8px 15px 8px 15px;
+  font-weight: 300;
+}
+
+.ulListcs li a.job {
+  background-color: blue;
+  color: #fff;
+}
+
+.ulListcs li a:hover:not(.job) {
+  background-color: #333;
+  color: #fff;
+}
+
+/* <div style="margin-left:25%;padding:1px 16px;height:1000px;"> */
+
+.ulListcs div .main{
+  margin-left: 20%;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+div>a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.plus{
+  float: right;
+  position: relative;
+  right: 10px;
+}
+
+.stcs{
+  border-bottom: 1px solid rgba(0,0,0,0.23);
+  height: 40px;
+  line-height: 40px;
+  background-color: #EFEFEF;
+  color: white;
+ 
+}
+
+.TfiAnnouncement{
+  float: left;
+  position: relative;
+  top: 5px;
+  left: -8px;
+  color: black;
+}
+
+.TfiComment{
+  float: left;
+  position: relative;
+  top: 7px;
+  left: -8px;
+  color: black;
+}
+
+.TfiCheck{
+  float: left;
+  position: relative;
+  top: 5px;
+  left: -8px;
+  color: black;
+}
+
+.csmain td:last-child {
+  border-right: 0px;
+}
+
+.csmain th.text-left {
+  text-align: left;
+  background-color: #EFEFEF;
+}
+
+.csmain th.text-center {
+  text-align: center;
+}
+
+.csmain th.text-right {
+  text-align: right;
+}
+
+.csmain td.text-left {
+  text-align: left;
+}
+
+.csmain td.text-center {
+  text-align: center;
+}
+
+.csmain td.text-right {
+  text-align: right;
+}
+.csmain .table-title h3 {
+  color: #fafafa;
+  font-size: 30px;
+  font-weight: 400;
+  font-style:normal;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.csmain .table-fill {
+ background: white;
+ border-radius: 3px;
+ border-collapse: collapse;
+ height: 169px;
+ margin: auto;
+ max-width: 354px;
+ padding: 5px;
+ width: 100%;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+ animation: float 5s infinite;
+}
+
+.csmain th {
+ color:#D5DDE5;;
+ background:#1b1e24;
+ border-bottom:3px solid #EBEBEB;
+ border-right: 1px solid #343a45;
+ font-size:23px;
+ font-weight: 100;
+ padding:15px;
+ text-align:left;
+ text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+ vertical-align: middle;
+}
+
+.csmain th:first-child {
+ border-top-left-radius:3px;
+}
+
+.csmain th:last-child {
+ border-top-right-radius:3px;
+ border-right:none;
+}
+ 
+.csmain tr {
+ border-top: 1px solid #C1C3D1;
+ border-bottom : 1px solid #C1C3D1;
+ color:#666B85;
+ font-size:16px;
+ font-weight:normal;
+ text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+.csmain tr:hover td {
+ background:#4E5066;
+ color: black;
+ border-top: 1px solid #EBEBEB;
+}
+
+.csmain tr:first-child {
+ border-top:none;
+}
+
+.csmain tr:last-child {
+ border-bottom:none;
+}
+
+.csmain tr:nth-child(odd) td {
+ background:whitesmoke;
+}
+
+.csmain tr:nth-child(odd):hover td {
+ background: #EBEBEB;
+}
+
+.csmain Link{
+  color: black;
+}
+
+.csmain .cstab{
+  position: absolute;
+  left: 450px;
+  bottom: 450px;
+}
+
+.csmain .questiontab{
+  position: absolute;
+  left: 850px;
+  bottom: 450px;
+}
+
+.csmain .onetoonetab{
+  position: absolute;
+  left: 1250px;
+  bottom: 450px;
+}
+
+.csmain .linktitle{
+  text-decoration: none;
+  color: black;
+}
