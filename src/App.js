@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useState } from 'react';
 import AccountSales from './Page/Account Sales/AccountSales';
-import AccountPost from './Page/Trans Post/TransPostList';
+import TransPost from './Page/Trans Post/TransPost';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/insertAccount' element={<AccountSales userInfo={userInfo} />} />
-        <Route path='/transPost' element={<AccountPost userInfo={userInfo} />} />
+        <Route path='/transPost' element={<TransPost userInfo={userInfo} />} />
         
       </Routes>
     </div>

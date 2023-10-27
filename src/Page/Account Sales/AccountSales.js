@@ -23,7 +23,7 @@ function AccountSales( {userInfo} ) {
     server: '',
     title: '',
     content: '',
-    memberid: 'pyh990422' //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
+    member: 'pyh990422' //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
   });
 
   const changeHandler = (e) => {
@@ -105,7 +105,8 @@ function AccountSales( {userInfo} ) {
         axiosInstance.post('/insertTrans', trans)
             .then(response => {
               alert(response.data);
-              navigate('/transPost'); // 거래게시물로 ㄱㄱ
+              console.log(response.data);
+              // navigate('/transPost'); // 거래게시물로 ㄱㄱ
             }).catch(error => {
               console.log(error);
               alert('로그인 후 작성 가능합니다.');

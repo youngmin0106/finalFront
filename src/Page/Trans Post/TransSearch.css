@@ -1,0 +1,85 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.TransSearch {
+  margin: auto;
+  padding: 100px;
+}
+
+.TransSearch .title, .btn {
+  text-align: center;
+}
+.TransSearch h1 {
+  margin-bottom: 50px;
+}
+
+.TransSearch tr, th, td {
+  box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
+}
+
+
+.TransSearch table {
+  width: 50%;
+  margin: auto;
+}
+
+.TransSearch tr {
+  height: 80px;
+}
+
+.TransSearch th {
+  border-top: 2px solid #519D9E;
+  width: 120px;
+}
+
+.TransSearch .square {
+  width: 100px;
+  margin: 10px;
+}
+
+.TransSearch input {
+  border: none;
+  padding: 5px;
+  height: 35px;
+}
+
+.TransSearch span, p {
+  margin-left: 10px;
+}
+
+.TransSearch .keywordSearch {
+  display: inline-block;
+  float: right;
+  margin-right: 40px;
+}
+
+.TransSearch input[placeholder] {
+  text-align: right;
+}
+
+.TransSearch .click {
+  border: 1px solid #F8F8FF;
+  width: 120px;
+  height: 45px;
+  font-weight: bolder;
+  background-color: #9DC8C8;
+  color: #3B4E32;
+  border-radius: 6px;
+  margin: 15px;
+  text-align: center;
+}
+
+.TransSearch .noClick {
+  border: 1px solid #e0e0e0;
+  width: 120px;
+  height: 45px;
+  font-weight: bolder;
+  background-color: white;
+  color: #3B4E32;
+  border-radius: 6px;
+  margin: 15px;
+  text-align: center;
+}

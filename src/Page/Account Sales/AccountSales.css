@@ -31,7 +31,7 @@
 }
 
 .AccountSales th {
-  border-top: 2px solid #40A940;
+  border-top: 2px solid #519D9E;
   width: 120px;
 }
 
@@ -75,8 +75,8 @@
   width: 120px;
   height: 45px;
   font-weight: bolder;
-  background-color: #40A940;
-  color: white;
+  background-color: #9DC8C8;
+  color: #3B4E32;
   border-radius: 6px;
   margin-top: 20px;
 }

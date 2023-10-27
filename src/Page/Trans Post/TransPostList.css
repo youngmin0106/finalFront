@@ -1,19 +1,11 @@
 *{
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .TransPostList {
   margin: auto;
-  padding: 100px;
-}
-
-.TransPostList .title, .btn {
-  text-align: center;
-}
-.TransPostList h1 {
-  margin-bottom: 50px;
 }
 
 .TransPostList tr, th, td {
@@ -22,48 +14,15 @@
 
 
 .TransPostList table {
-  width: 50%;
+  width: 80%;
   margin: auto;
 }
 
 .TransPostList tr {
-  height: 80px;
+  height: 50px;
 }
 
 .TransPostList th {
-  border-top: 2px solid #40A940;
+  /* border-top: 2px solid #519D9E; */
   width: 120px;
-}
-
-.TransPostList .square {
-  width: 50px;
-  margin: 10px;
-}
-
-.TransPostList input {
-  border: none;
-  padding: 5px;
-  height: 35px;
-}
-
-.TransPostList .click {
-  border: 1px solid #F8F8FF;
-  width: 120px;
-  height: 45px;
-  font-weight: bolder;
-  background-color: #519D9E;
-  color: #3B4E32;
-  border-radius: 6px;
-  margin: 15px;
-}
-
-.TransPostList .noClick {
-  border: 1px solid #F8F8FF;
-  width: 120px;
-  height: 45px;
-  font-weight: bolder;
-  background-color: #9DC8C8;
-  color: #3B4E32;
-  border-radius: 6px;
-  margin: 15px;
 }
