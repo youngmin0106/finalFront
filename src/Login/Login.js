@@ -83,14 +83,14 @@ function Login( {setUserInfo, setIsAuth} ) {
 
     <Button type="submit" fullWidth variant="contained" 
       style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }} 
-      onClick={loginBtnClickHandler}> 로그인 </Button>
+      onClick={loginBtnClickHandler}> 로그인ㅇㅇㅇㅇㅇㅇ </Button>
               
     <div className='loginBox'>
       <a href="#!"><img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
       <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
       <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
     </div>
-
+    
     <Grid container>
       <Grid item xs>
         <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 아이디 찾기 </Link>
