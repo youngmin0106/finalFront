@@ -1,7 +1,7 @@
 import TransPostList from "./TransPostList";
 import TransSearch from "./TransSearch";
 
-function TransPost () {
+function TransPost ({ isLoading, setIsLoding }) {
   return(
     <div className="TransPost">
       <div>
@@ -9,8 +9,7 @@ function TransPost () {
         <TransSearch />
       </div>
       <div>
-        
-        <TransPostList />
+        <TransPostList isLoading={isLoading} setIsLoding={setIsLoding}/>
       </div>
 
     </div>

@@ -23,7 +23,7 @@ function AccountSales( {userInfo} ) {
     server: '',
     title: '',
     content: '',
-    member: 'pyh990422' //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
+    memberid: 'pyh990422' //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
   });
 
   const changeHandler = (e) => {
@@ -42,7 +42,9 @@ function AccountSales( {userInfo} ) {
         <tbody>
         <tr>
           <th>판매 가격</th>
-          <td><input type="text" name="price" className="t-1" placeholder="판매 가격 입력" onChange={changeHandler}/>원</td>
+          <td className="priceInput">
+            <input type="text" name="price" className="t-1" placeholder="판매 가격 입력" onChange={changeHandler}/>원
+          </td>
         </tr>
         <tr>
           <th>캐릭터 종류</th>

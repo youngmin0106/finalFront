@@ -1,8 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
+import { Link } from "react-router-dom";
 
-function TransPostList () {
+function TransPostList ( {isLoading, setIsLoding} ) {
   const [transList, setTransList] = useState();
+
+  useEffect(() => {
+    axiosInstance.get('/transPost')
+        .then(respones => {
+          setTransList(respones.data);
+          setIsLoding(false);
+        }).catch(error => {
+          console.log(error);
+        })
+  }, [])
+
+  if(isLoading) {
+    return <div>로딩중 .....</div>
+  }
+
+  console.log(transList);
 
   return(
     <div className="TransPostList">
@@ -43,6 +61,21 @@ function TransPostList () {
             <td>price</td>
             <td>date</td>
           </tr>
+          {
+            transList.map((trans, i) => {
+              return(
+                
+                <tr key={i}>
+                  <td>{trans.server}</td>
+                  <td>{trans.game}</td>
+                  <td>{trans.title}</td>
+                  <td>{trans.price}</td>
+                  <td>{trans.createdate}</td>
+                </tr>
+               
+              )
+            })
+          }
         </tbody>
       </table>
     </div>

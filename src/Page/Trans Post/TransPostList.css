@@ -7,6 +7,24 @@
 .TransPostList {
   margin: auto;
 }
+.AccountSales .title {
+  text-align: center;
+}
+
+.TransPostList .select {
+  display: flex;
+  justify-content:space-between;
+}
+
+.TransPostList input[type=radio] {
+  margin-right: 5px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.TransPostList label {
+  line-height: 30px;
+}
 
 .TransPostList tr, th, td {
   box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);

@@ -6,7 +6,6 @@
 
 .AccountSales {
   margin: auto;
-  padding: 100px;
 }
 
 .AccountSales .title, .btn {
@@ -20,6 +19,13 @@
   box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
 }
 
+.AccountSales .priceInput > input[placeholder] {
+  text-align: right;
+}
+
+.AccountSales input, textarea {
+  outline: none;
+}
 
 .AccountSales table {
   width: 50%;

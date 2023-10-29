@@ -72,7 +72,7 @@ function TransSearch() {
               <span>제목 + 내용</span>
               <div className="keywordSearch">
                 <input name="keyword" type="text" placeholder="검색어를 입력해주세요." onChange={keywordHandler}/>
-                <button>🔍</button>
+                <button className="searchBtn">🔍</button>
               </div>
             </td>     
           </tr>
@@ -97,7 +97,7 @@ function TransSearch() {
           <tr>
             <th>게임명</th>
             <td> 
-            <div className="btn">
+       
               {
                 option.map((data, i) => {
                   return(
@@ -113,13 +113,13 @@ function TransSearch() {
                   )
                 })
               }
-              </div>
+           
             </td>
           </tr>
           <tr>
             <th>서버</th>
             <td>
-              <div className="btn">
+           
             {
                 selectedGame && server[selectedGame].map((data, i) => {
                   return(
@@ -133,7 +133,7 @@ function TransSearch() {
                   )
                 })
               }
-              </div>
+            
             </td>
           </tr>
         </tbody>
