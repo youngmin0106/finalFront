@@ -1,0 +1,21 @@
+
+.searchcomp #board-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  padding: 10px 20px;
+  background-color: #f4f4f4; 
+}
+
+.searchcomp .search-window {
+  display: flex;
+  align-items: center;
+}
+
+.searchcomp .search-wrap {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; 
+}
+

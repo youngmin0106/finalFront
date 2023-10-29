@@ -1,22 +1,20 @@
-// PaginationComponent.js
-
 import React from "react";
-import Pagination from "react-js-pagination";
-
-
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 function PaginationComponent({ currentPage, itemsPerPage, totalItems, onPageChange }) {
+  const pageCount = Math.ceil(totalItems / itemsPerPage);
+
   return (
-    <div className="pagination">
+    <Stack spacing={2}>
       <Pagination
-        activePage={currentPage}
-        itemsCountPerPage={itemsPerPage}
-        totalItemsCount={totalItems}
-        pageRangeDisplayed={5}
-        onChange={(page) => onPageChange(page)}
+      className="pagination"
+        count={pageCount}
+        page={currentPage}
+        onChange={(event, page) => onPageChange(page)}
+        shape="rounded"
       />
-    </div>
-    
+    </Stack>
   );
 }
 

@@ -1,27 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../CsPage/CsCss/Notice.css";
 
-function Search2({ increaseViews, data, setCurrentPage, currentPage ,itemsPerPage}) {
+function Search2({ increaseViews, data, setCurrentPage, currentPage, itemsPerPage }) {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(data); // Initialize searchResults with data
 
   const handleSearch = () => {
     const filteredResults = data.filter((item) =>
       item.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(filteredResults);
-    setCurrentPage(1);
+    // setCurrentPage(1);
   };
 
   const handleListClick = () => {
     setSearchTerm("");
-    setSearchResults(data);
+     // setSearchResults(data);
     setCurrentPage(1);
   };
- 
+
   return (
-    <div className="notice">
+    <div className="searchcomp">
       <div id="board-search">
         <div className="container">
           <div className="search-window">
@@ -73,11 +73,9 @@ function Search2({ increaseViews, data, setCurrentPage, currentPage ,itemsPerPag
               </tr>
             </thead>
             <tbody>
-              {
-              searchResults           
+              {searchResults
                 .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
                 .map((data, i) => (
-                  
                   <tr key={i}>
                     <td>{data.no}</td>
                     <th>
