@@ -1,55 +1,28 @@
+// 데이터 렌더링
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../CsPage/CsCss/Notice.css";
+import OnSearch from "./OnSearch";
 
-function Search2({ increaseViews, data, setCurrentPage, currentPage, itemsPerPage }) {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState(data); // Initialize searchResults with data
+function Search2({ increaseViews, data, currentPage, itemsPerPage }) {
+  const [searchResults, setSearchResults] = useState(data);
 
-  const handleSearch = () => {
-    const filteredResults = data.filter((item) =>
-      item.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(filteredResults);
-    // setCurrentPage(1);
-  };
-
-  const handleListClick = () => {
-    setSearchTerm("");
-     // setSearchResults(data);
-    setCurrentPage(1);
+  const handleSearch = (searchTerm) => {
+    if (searchTerm) {
+      const filteredResults = data.filter((item) =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    } else {
+      setSearchResults(data); 
+    }
   };
 
   return (
     <div className="searchcomp">
       <div id="board-search">
         <div className="container">
-          <div className="search-window">
-            <form action="">
-              <div className="search-wrap">
-                <div id="search" className="blind"></div>
-                <input
-                  id="search"
-                  type="search"
-                  name=""
-                  placeholder="검색어를 입력해주세요."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <button type="button" className="btn btn-dark" onClick={handleSearch}>
-                  검색
-                </button>
-              </div>
-              <div>
-                <Link to="/write">
-                  <button className="btn btn-dark add">글작성</button>
-                </Link>
-                <button className="btn btn-dark" onClick={handleListClick}>
-                  목록
-                </button>
-              </div>
-            </form>
-          </div>
+          <OnSearch onSearch={handleSearch} />
         </div>
       </div>
 
@@ -61,7 +34,7 @@ function Search2({ increaseViews, data, setCurrentPage, currentPage, itemsPerPag
                 <th scope="col" className="th-num">
                   번호
                 </th>
-                <th scope="col" className="th-title">
+                <th scope="col" className= "th-title">
                   제목
                 </th>
                 <th scope="col" className="th-date">

@@ -3,6 +3,7 @@ import axiosInstance from "../axiosInstance";
 import PaginationComponent from "../component/PaginationComponent";
 import Search2 from "../component/Search2";
 
+
 function Notice() {
   const [noticeList, setNoticeList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
@@ -14,6 +15,8 @@ function Notice() {
       loadNoticeList();
     }
   }, [isNoticeLoading]);
+
+ 
 
   const increaseViews = (postId) => {
     axiosInstance
@@ -30,7 +33,7 @@ function Notice() {
     axiosInstance
       .get("/notice")
       .then((response) => {
-        console.log(response.data);
+       
         setNoticeList(response.data);
         setIsNoticeLoading(false);
       })
@@ -61,6 +64,7 @@ function Notice() {
             <h3>공지사항</h3>
           </div>
         </div>
+
         <Search2
           increaseViews={increaseViews}
           data={noticeList}
