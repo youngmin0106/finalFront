@@ -43,7 +43,7 @@ function MemberAgree({ progress }) {
 
 
   return (
-    <div className="component">
+    <div className="MemberAgree">
       <MemberHeader progress={40} />
 
       <div className="agreePage">

@@ -24,8 +24,8 @@ function Login( {setUserInfo, setIsAuth} ) {
   const navigate = useNavigate();
   
   const [loginData, setLoginData] = useState({
-    id : '',
-    pw : '',
+    username : '',
+    password : '',
   });
 
   const idPwInputHandler = (e) => {
@@ -43,7 +43,7 @@ function Login( {setUserInfo, setIsAuth} ) {
     axiosInstance.post('/login', loginData)
       .then((response) => {
         console.log("로그인 성공");
-        localStorage.setItem('id', loginData.id);
+        localStorage.setItem('id', loginData.username);
         setUserInfo(loginData);
         setIsAuth(true);
         navigate("/");
@@ -52,6 +52,12 @@ function Login( {setUserInfo, setIsAuth} ) {
         console.error(error);
         alert("아이디 패스워드를 확인하세요.")
       });
+  }
+
+  const handleKakaoLoginClick = () => {
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao&response_type=code`;
+
+    window.location.href = kakaoAuthUrl;
   }
 
   return (
@@ -70,23 +76,25 @@ function Login( {setUserInfo, setIsAuth} ) {
     <Typography component="h1" variant="h5"> 로그인 </Typography>
 
     <Box component="form" noValidate sx={{ mt: 1 }}>
-    <TextField margin="normal" required fullWidth id="id"
-      label="아이디" name="id" autoComplete="id" autoFocus 
-      onChange={idPwInputHandler} value={loginData.id} />
+    <TextField margin="normal" required fullWidth id="username"
+      label="아이디" name="username" autoComplete="username" autoFocus 
+      onChange={idPwInputHandler} value={loginData.username} />
 
     <TextField margin="normal" required fullWidth label="비밀번호" 
-      type="password" id="pw" autoComplete="current-password"
-      onChange={idPwInputHandler} value={loginData.pw} />
+      type="password" id="password" autoComplete="current-password"
+      onChange={idPwInputHandler} value={loginData.password} />
 
     <FormControlLabel control={<Checkbox value="remember" color="primary" />}
       label="아이디 저장" />
 
     <Button type="submit" fullWidth variant="contained" 
       style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }} 
-      onClick={loginBtnClickHandler}> 로그인ㅇㅇㅇㅇㅇㅇ </Button>
+      onClick={loginBtnClickHandler}> 로그인 </Button>
               
     <div className='loginBox'>
-      <a href="#!"><img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
+      <a href="#!" onClick = { handleKakaoLoginClick }>
+      <img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
+      
       <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
       <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
     </div>

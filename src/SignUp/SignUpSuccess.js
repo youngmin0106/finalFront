@@ -10,7 +10,7 @@ function SignupSuccess() {
 
   return (
 
-    <div className="component">
+    <div className="SignUpSuccess">
       <MemberHeader progress={100} />
 
       <div className='successComponent'>

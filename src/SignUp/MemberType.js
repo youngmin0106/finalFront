@@ -12,7 +12,7 @@ function MemberType() {
 
   return(
 
-    <div className="container">
+    <div className="MemberType">
       <MemberHeader progress = {15}/>
 
       <div className="Subscription">

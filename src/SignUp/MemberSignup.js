@@ -24,10 +24,10 @@ function MemberSignup() {
   };
 
   const [memberData, setMemberData] = useState({
-    id : '',
-    pw : '',
-    pwChk : '',
     username : '',
+    password : '',
+    pwChk : '',
+    name : '',
     email : '',
     birthdate : '',
     phone : '',
@@ -56,10 +56,10 @@ function MemberSignup() {
       [id] : value
     });
 
-    if (id === "id" && idRegExp.test(value)) {
+    if (id === "username" && idRegExp.test(value)) {
       setIsIdInspection(true);
     }
-    if (id === "pw" && passwordRegExp.test(value)) {
+    if (id === "password" && passwordRegExp.test(value)) {
       setIsPwInspection(true);
     }
     if (id === "phone" && phoneRegExp.test(value)) {
@@ -69,10 +69,10 @@ function MemberSignup() {
       setIsEmailInspection(true);
     }
 
-    if(id === "pwChk" && memberData.pw !== value) {
+    if(id === "pwChk" && memberData.password !== value) {
       setpwErrorMsg("비밀번호가 다릅니다")
       setIsPasswoardChk(false);
-    } else if(id === "pwChk" && memberData.pw === value) {
+    } else if(id === "pwChk" && memberData.password === value) {
       setpwErrorMsg("비밀번호가 같습니다")
       setIsPasswoardChk(true);
     } else if(memberData.pwChk === "") {
@@ -97,24 +97,23 @@ function MemberSignup() {
 
   // 아이디 중복체크를 위함.
   const [isIdOverLapChk, setIsIdOverLapChk] = useState(false);
+
   const overLapIdChk = () => {
-
-    if(idRegExp.test(memberData.id)) {
-
-      axiosInstance.post('/idoverlap', { id : memberData.id })
+    if (idRegExp.test(memberData.username)) {
+      axiosInstance.post('/idoverlap', { username: memberData.username })
         .then((response) => {
-          if (response.status === 200){
+          if (response.status === 200) {
             alert("사용가능 아이디");
             setIsIdOverLapChk(true);
           }
         }).catch((error) => {
           alert("중복 아이디 입니다");
-        })
+        });
     } else {
       alert("아이디 형식을 확인하세요");
     }
+  };
 
-  }
   // 주소 검색창 열림 닫힘 여부
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
@@ -177,7 +176,7 @@ function MemberSignup() {
   }
 
   return (
-    <div className="component">
+    <div className="MemberSignup">
       <MemberHeader progress={65} />
 
       <div className="signupForm">
@@ -186,7 +185,7 @@ function MemberSignup() {
           <div className="textFieldContainer">
             <p>아이디</p>
             <div className="BtnTextField">
-              <TextField sx={tfStyle} id="id" value={memberData.id} onChange = { inputChangeHandler } 
+              <TextField sx={tfStyle} id="username" value={memberData.username} onChange = { inputChangeHandler } 
                 label="아이디 입력하세요." type="text" />
             </div>
             <div>
@@ -197,7 +196,7 @@ function MemberSignup() {
 
           <div className="textFieldContainer">
             <p>비밀번호</p>
-            <TextField sx={tfStyle} id="pw" value={memberData.pw} onChange = { inputChangeHandler } 
+            <TextField sx={tfStyle} id="password" value={memberData.password} onChange = { inputChangeHandler } 
               label="비밀번호 입력하세요." type="password" />
           </div>
           <p className="pwInspection"> 영문 포함 + 숫자 포함 + 특수문자 + 길이 1~10자리 사이 문자열(반드시 모두 포함) </p>
@@ -214,7 +213,7 @@ function MemberSignup() {
 
         <div className="textFieldContainer">
             <p>이름</p>
-            <TextField sx={tfStyle} id="username" value={memberData.username} onChange = { inputChangeHandler } 
+            <TextField sx={tfStyle} id="name" value={memberData.name} onChange = { inputChangeHandler } 
               label="이름을 입력하세요." type="text" />
           </div>
 
