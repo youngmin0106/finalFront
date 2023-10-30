@@ -5,16 +5,17 @@
 }
 
 .TransSearch {
+  width: 50vw;
   margin: auto;
-  padding: 100px;
 }
 
-.TransSearch input {
-  outline: none;
+.TransSearch .title {
+ text-align: center;
+ margin: 30px;
 }
 
-.TransSearch .title, .btn {
-  text-align: center;
+.TransSearch .btn {
+margin-bottom: 100px;
 }
 
 .TransSearch .searchBtn {
@@ -30,16 +31,12 @@
   background-color: #9DC8C8;
 }
 
-.TransSearch h1 {
-  margin-bottom: 50px;
-}
-
 .TransSearch tr, th, td {
   box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
 }
 
 .TransSearch table {
-  width: 50%;
+  width: 50vw;
   margin: auto;
 }
 
@@ -49,7 +46,7 @@
 
 .TransSearch th {
   border-top: 2px solid #519D9E;
-  width: 120px;
+  width: 8vw;
 }
 
 .TransSearch td {
@@ -57,23 +54,37 @@
 }
 
 .TransSearch .square {
-  width: 100px;
-  margin: 10px;
+  width: 10vw;
+  margin-right: 5px;
 }
 
 .TransSearch input {
+  outline: none;
   border: none;
   padding: 5px;
   height: 35px;
-}
-
-.TransSearch span, p {
+  width: 250px;
   margin-left: 10px;
 }
 
-.TransSearch input[placeholder], .keywordSearch {
+.TransSearch p {
+  margin-left: 10px;
+  width: 150px;
+}
+
+.TransSearch td > button {
+  margin: auto;
+} 
+
+.TransSearch .keywordSearch {
+  /* display: flex;
+  justify-content:space-between;
+  align-items: center;
+  height: 80px; */
+}
+
+.TransSearch input[placeholder] {
   text-align: right;
-  margin : 0px 20px;
 }
 
 .TransSearch .click {

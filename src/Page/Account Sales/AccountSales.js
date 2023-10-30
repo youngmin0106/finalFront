@@ -108,7 +108,7 @@ function AccountSales( {userInfo} ) {
             .then(response => {
               alert(response.data);
               console.log(response.data);
-              // navigate('/transPost'); // 거래게시물로 ㄱㄱ
+              navigate('/transPost'); // 거래게시물로 ㄱㄱ
             }).catch(error => {
               console.log(error);
               alert('로그인 후 작성 가능합니다.');

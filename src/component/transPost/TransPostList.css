@@ -5,9 +5,12 @@
 }
 
 .TransPostList {
+  width: 80vw;
   margin: auto;
 }
-.AccountSales .title {
+
+.TransPostList .title {
+  margin: 50px 30px;
   text-align: center;
 }
 
@@ -32,8 +35,7 @@
 
 
 .TransPostList table {
-  width: 80%;
-  margin: auto;
+  width: 100%;
 }
 
 .TransPostList tr {

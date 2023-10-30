@@ -1,27 +1,33 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
-import { Link } from "react-router-dom";
 
-function TransPostList ( {isLoading, setIsLoding} ) {
-  const [transList, setTransList] = useState();
+function TransPostList ( {isLoading, setIsLoading, search} ) {
+  const [transList, setTransList] = useState([]);
 
   useEffect(() => {
-    axiosInstance.get('/transPost')
-        .then(respones => {
-          setTransList(respones.data);
-          setIsLoding(false);
-        }).catch(error => {
-          console.log(error);
-        })
-  }, [])
+    axiosInstance.get("/transPost")
+      .then((response) => {
+        const filteredTransList = response.data.filter((trans) => {
+          return (
+            trans.title.includes(search.keyword) &&
+            (!search.game || trans.game === search.game) &&
+            (!search.server || trans.server === search.server) &&
+            (!search.price || trans.price === search.price)
+          );
+        });
 
-  if(isLoading) {
-    return <div>로딩중 .....</div>
+        setTransList(filteredTransList);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [search, setIsLoading]);
+
+  if (isLoading) {
+    return <div>로딩중 ...</div>;
   }
-
-  console.log(transList);
-
   return(
     <div className="TransPostList">
       <h3 className="title">물품리스트</h3>
@@ -54,13 +60,6 @@ function TransPostList ( {isLoading, setIsLoding} ) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>server</td>
-            <td>game</td>
-            <td>title</td>
-            <td>price</td>
-            <td>date</td>
-          </tr>
           {
             transList.map((trans, i) => {
               return(
@@ -69,7 +68,7 @@ function TransPostList ( {isLoading, setIsLoding} ) {
                   <td>{trans.server}</td>
                   <td>{trans.game}</td>
                   <td>{trans.title}</td>
-                  <td>{trans.price}</td>
+                  <td>{trans.price.toLocaleString('ko-KR')}</td>
                   <td>{trans.createdate}</td>
                 </tr>
                
