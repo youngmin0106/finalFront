@@ -7,7 +7,7 @@ function UpdateInfo( {userInfo} ) {
   return (
 
 
-    <div className="wrapper">
+    <div className="updateInfo">
     
     <Form style={{width : "350px"}} >
       <div className="bar">

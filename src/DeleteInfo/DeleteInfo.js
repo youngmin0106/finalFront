@@ -24,7 +24,7 @@ function DeleteInfo( {point, userInfo} ) {
 
   return (
     
-    <div>
+    <div className="deleteInfo">
       <MyPageBar point={point} userInfo={userInfo} ></MyPageBar>
 
       <div className="main">

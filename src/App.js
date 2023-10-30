@@ -64,11 +64,12 @@ function App() {
     {/* <MyPage></MyPage> */}
       <Routes>
         {/* <Route path='' element={<MyPageBar point={point}/>}></Route> */}
-        <Route path='/mypage' element={<MyPage list={list} point={point} userInfo={userInfo}/>}></Route>
+        <Route path='/' element={<MyPage list={list} point={point} userInfo={userInfo}/>}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo}/>}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} point={point} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} point={point} userInfo={userInfo}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo}/>}></Route>
+
      </Routes>
 
     </div>

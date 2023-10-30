@@ -7,7 +7,7 @@ import Phone from './Phone';
 import BankTransfer from './BankTransfer';
 import HPhone from './HPhone';
 import TeenCash from './TeenCash';
-import PayEtc from './PayEtc';
+import KakaoPay from './KakaoPay';
 
 function Mileage( {userInfo, setUserInfo} ) {
 
@@ -41,7 +41,7 @@ function Mileage( {userInfo, setUserInfo} ) {
   };
 
   return (
-    <div className="paymain">
+    <div className="Mileage">
       <h4>마일리지 충전</h4>
       <div className="choosePayment">충전수단 선택</div>
       <ul className='payul'>
@@ -52,17 +52,17 @@ function Mileage( {userInfo, setUserInfo} ) {
         <li onClick={() => handleItemClick("전화결제")}>전화결제</li>
         <li onClick={() => handleItemClick("문화상품권")}>문화상품권</li>
         <li onClick={() => handleItemClick("틴캐시")}>틴캐시</li>
-        <li onClick={() => handleItemClick("돈복사버그")}>돈복사버그</li>
+        <li onClick={() => handleItemClick("카카오페이")}>카카오페이</li>
       </ul>
       <div className="content">
-        {selectedItem === "토스페이" && <div className='payopt'><Toss></Toss></div>}
-        {selectedItem === "신용카드" && <div className='payopt'><CreditCard></CreditCard></div>}
+        {selectedItem === "토스페이" && <div className='payopt'><Toss userInfo={userInfo} setUserInfo={setUserInfo}></Toss></div>}
+        {selectedItem === "신용카드" && <div className='payopt'><CreditCard userInfo={userInfo} setUserInfo={setUserInfo}></CreditCard></div>}
         {selectedItem === "휴대폰" && <div className='payopt'><Phone></Phone></div>}
-        {selectedItem === "무통장입금" && <div className='payopt'><BankTransfer></BankTransfer></div>}
+        {selectedItem === "무통장입금" && <div className='payopt'><BankTransfer userInfo={userInfo} setUserInfo={setUserInfo}></BankTransfer></div>}
         {selectedItem === "전화결제" && <div className='payopt'><HPhone></HPhone> </div>}
         {selectedItem === "문화상품권" && <div className='payopt'><Cultureland userInfo={userInfo} setUserInfo={setUserInfo}></Cultureland></div>}
         {selectedItem === "틴캐시" && <div className='payopt'><TeenCash></TeenCash></div>}
-        {selectedItem === "돈복사버그" && <div className='payopt'><PayEtc></PayEtc></div>}
+        {selectedItem === "카카오페이" && <div className='paypot'><KakaoPay userInfo={userInfo} setUserInfo={setUserInfo}></KakaoPay></div> }
       </div>
     </div>
   );

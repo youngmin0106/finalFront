@@ -1,4 +1,4 @@
-.choosePayment {
+.Mileage .choosePayment {
   /* style={{width : "500px", textAlign : "center", color : "#40A940", fontWeight : "bold", borderTop : "1px solid #40A940 ", height : "50px"} */
   width: 790px;
   text-align: center;
@@ -10,7 +10,7 @@
   height: 50px;
 }
 
-div .paymain {
+.Mileage {
   margin-left: 25%;
   padding: 1px 16px;
   height: 1000px;
@@ -27,7 +27,7 @@ div .paymain {
 } */
 
 
-.payul {
+.Mileage .payul {
   float: left;
   width: 840px;
   margin: 0;
@@ -36,7 +36,7 @@ div .paymain {
   justify-content: center;
 }
 
-.payul li {
+.Mileage .payul li {
   float : left;
   justify-content: center;
   padding: 10px;
@@ -51,21 +51,21 @@ div .paymain {
   text-align: center;
 }
 
-.payul li:hover {
+.Mileage .payul li:hover {
   background-color: #40A940;
   opacity: 0.8;
   color: white;
 }
 
 
-div .payopt {
+.Mileage .payopt {
   margin-top: 25px;
   margin-left: 10px;
   height: 50px;
   border: none;
 }
 
-div .content {
+.Mileage .content {
   width: 790px;
   margin-top: 10%;
   border-bottom: 0px;

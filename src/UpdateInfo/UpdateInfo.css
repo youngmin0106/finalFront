@@ -1,20 +1,20 @@
-.wrapper {
+.updateInfo {
   display: grid;
   place-items: center;
   min-height: 100dvh;
   border: 1px solid #eee;
 }
 
-.userId {
+.updateInfo .userId {
   font-size: 15px;
 }
 
-.loginUserId {
+.updateInfo .loginUserId {
   font-size : 12px;
   font-weight: bold;
 }
 
-.bar {
+.updateInfo .bar {
   border-bottom: 1px solid #eee;
   margin: 15px;
 }

@@ -1,4 +1,4 @@
-  .ulList {
+.myPage .ulList {
   list-style-type: none;
   background-color: none;
   width: 10%;
@@ -20,12 +20,12 @@
   font-style: normal;
 }
 
-.font {
+.myPage .font {
   font-family: "NanumSquareNeo-Variable";
   font-size: 15px;
 }
 
-li a {
+.myPage li a {
   text-decoration: none;
   display: block;
   color: #000;
@@ -33,68 +33,79 @@ li a {
   font-weight: 300;
 }
 
-li a.job {
+.myPage li a.job {
   background-color: #519D9E;
   font-weight: bold;
   color: #fff;
 }
 
-li a:hover:not(.job) {
+.myPage li a:hover:not(.job) {
   background-color: #333;
   color: #fff;
 }
 
+.myPage .showImage {
+  margin-top: 5px;
+  background-color: #519D9E;
+  border: none;
+}
+
+.myPage .showImage:hover {
+  background: #519D9E;
+  opacity: 0.8;
+}
+
 /* <div style="margin-left:25%;padding:1px 16px;height:1000px;"> */
 
-div .main{
+.myPage div .main{
   margin-left: 20%;
   padding: 1px 16px;
   height: 1000px;
 }
 
-.sellBox {
+.myPage .sellBox {
   text-align: center;
   padding: 60px;
   border: 0.5px solid #eee;
 }
 
-.gradation1 {
+.myPage .gradation1 {
   background: #58C9B9;
   opacity: 0.4;
   color: white;
 }
 
-.gradation2 {
+.myPage .gradation2 {
   background: #58C9B9;
   opacity: 0.5;
   color: white;
 }
 
-.gradation3 {
+.myPage .gradation3 {
   background: #58C9B9;
   opacity: 0.6;
   color: white;
 }
 
-.gradation4 {
+.myPage .gradation4 {
   background: #58C9B9;
   opacity: 0.8;
   color: white;
 }
 
-.gradation5 {
+.myPage .gradation5 {
   background: #D1B6E1;
   opacity: 0.6;
   color: white;
 }
 
-.gradation6 {
+.myPage .gradation6 {
   background: #D1B6E1;
   opacity: 0.8;
   color: white;
 }
 
-.gradation7 {
+.myPage .gradation7 {
   background: #D1B6E1;
   opacity: 1;
   color: white;
@@ -104,11 +115,11 @@ div .main{
 /* #9DC8C8
 #58C9B9 */
 
-.round {
+.myPage .round {
   border-radius: 10px;
   border: 1px solid white;
 }
 
-.sell div {
+.myPage .sell div {
   font-size: 19px;
 }

@@ -1,28 +1,39 @@
-div .main{
+div {
+  font-family: 'NanumSquareNeo-Variable';
+}
+
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.listPages .main{
   margin-left: 20%;
   padding: 1px 16px;
   height: 1000px;
 }
 
 
-.chat {
+.listPages .chat {
   background-color: black;
   opacity: 0.5;
   border: none;
 }
 
-.chat:hover {
-  background-color: #40A940 ;
+.listPages .chat:hover {
+  background-color: #519D9E ;
   color: white;
 }
 
-.prevChat {
+.listPages .prevChat {
   background-color: black;
   opacity: 0.5;
   border: none;
 }
 
-.prevChat:hover {
-  background-color: #40A940 ;
+.listPages .prevChat:hover {
+  background-color: #519D9E ;
   color: white;
 }

@@ -28,7 +28,7 @@ function ListPages( {list, pageType, point, userInfo} ) {
   }
 
   return (
-    <div>
+    <div className="listPages">
       <MyPageBar point={point} userInfo={userInfo}></MyPageBar>
     
       <div className="main">
@@ -51,7 +51,7 @@ function ListPages( {list, pageType, point, userInfo} ) {
             2023-10-24 16:51:00 <br></br> {/* 판매 시간, 판매자, 연락처 데이터 넣기 */}
             판매자 : {userInfo.id} &nbsp; 연락처 : {userInfo.phone}
           </td> 
-          <td><span style={{color : "#40A940", fontWeight : "bold"}}>1,000</span>원</td> {/* 판매 가격 넣을 자리*/} 
+          <td><span style={{color : "blue", fontWeight : "bold"}}>1,000</span>원</td> {/* 판매 가격 넣을 자리*/} 
           <td><Button className="chat">채팅</Button>{' '}&nbsp;
               {/* <Button className="prevChat">이전채팅</Button>{' '}&nbsp; */}
           </td>

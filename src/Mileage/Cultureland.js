@@ -1,7 +1,8 @@
 import { Button, Form } from "react-bootstrap";
 import './Toss.css';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axiosInstance from "../axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 
 function Cultureland( {userInfo, setUserInfo} ) {
@@ -16,6 +17,8 @@ function Cultureland( {userInfo, setUserInfo} ) {
     padding : '10px',
     fontWeight : 100
   };
+
+  const navigate = useNavigate();
 
     const [serialNumber, setSerialNumber] = useState(['', '', '', '']);
 
@@ -54,13 +57,15 @@ function Cultureland( {userInfo, setUserInfo} ) {
 
       const totalMoney = setMoneyHandler()
       
-      console.log(userInfo.id)
+      console.log(userInfo.id);
+      console.log(userInfo.mileage);
       
       axiosInstance.post('/payCultureland', {id : userInfo.id , userInfo:userInfo, mileage:totalMoney})
       .then(response => {
           alert(response.data);
           console.log("마일리지 충전 완료");
-          setUserInfo(response.data);
+          setUserInfo({...userInfo, mileage : totalMoney});
+          navigate('/');
         }).catch(error => {
           console.log(error);
         });
@@ -84,7 +89,7 @@ function Cultureland( {userInfo, setUserInfo} ) {
             </tr>
             <tr>
               <td style={tdStyle}>충전 한도</td>
-              <th style={thStyle}>결제 가능 카드 별 문화상품권 한도 확인 </th>
+              <th style={thStyle}>문화상품권 한도 확인 </th>
             </tr>
           </tbody>
         </table>

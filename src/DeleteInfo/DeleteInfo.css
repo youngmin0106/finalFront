@@ -1,8 +1,8 @@
-div {
+.deleteInfo div {
   font-family: 'NanumSquareNeo-Variable';
 }
 
-.ulList {
+.deleteInfo .ulList {
   list-style-type: none;
   background-color: none;
   width: 10%;
@@ -26,12 +26,12 @@ div {
   font-style: normal;
 }
 
-.font {
+.deleteInfo .font {
   font-family: "NanumSquareNeo-Variable";
   font-size: 15px;
 }
 
-li a {
+.deleteInfo li a {
   text-decoration: none;
   display: block;
   color: #000;
@@ -39,27 +39,27 @@ li a {
   font-weight: 300;
 }
 
-li a.job {
+.deleteInfo li a.job {
   background-color: blue;
   font-weight: bold;
   color: #fff;
 }
 
-li a:hover:not(.job) {
+.deleteInfo li a:hover:not(.job) {
   background-color: #333;
   color: #fff;
 }
 
 /* <div style="margin-left:25%;padding:1px 16px;height:1000px;"> */
 
-div .main{
+.deleteInfo div .main{
   margin-left: 20%;
   padding: 1px 16px;
   height: 1000px;
   width: 55%;
 }
 
-.beforeDelete {
+.deleteInfo .beforeDelete {
   border: 0.5px solid #eee;
   padding-top: 10px;
   margin-top: 10px;
@@ -67,11 +67,11 @@ div .main{
   text-align: center;
 }
 
-div .delete1 {
+.deleteInfo div .delete1 {
   padding-top: 20px;
   margin: 5px;
 }
 
-.selectForm {
+.deleteInfo .selectForm {
   width: 30%;
 }

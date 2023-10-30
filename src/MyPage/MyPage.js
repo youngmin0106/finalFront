@@ -1,14 +1,31 @@
-import { Button, ListGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './MyPage.css';
 import tier from './tier.png';
 import tier3 from './tier3.png';
 import MyPageBar from './MyPageBar';
+import { useState } from 'react';
 
-const number = 1000
-const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
 
 function MyPage({ point, userInfo }) {
+  
+  console.log(userInfo.mileage);
+
+  const number = "" + userInfo.mileage;
+  const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+  const [showImage, setShowImage] = useState(false);
+
+  const toggleImage = () => {
+    const tierImage = document.querySelector('.showTier');
+
+    if(!showImage) {
+      tierImage.style.display = 'block'
+    } else {
+      tierImage.style.display = 'none'
+    }
+    setShowImage(!showImage);
+  }
   
   // let testpoint = userInfo.tspoints;
 
@@ -33,7 +50,8 @@ function MyPage({ point, userInfo }) {
   };
   
   return (
-    <div className='font'>
+    <div className='myPage'>
+      <div className='font'>
     
     <MyPageBar point={point} userInfo={userInfo}></MyPageBar>
 
@@ -46,11 +64,7 @@ function MyPage({ point, userInfo }) {
           </h3>
         )}
       <img src={tier3} className='showTier' style={{border : "0.5px solid #eee", borderTop : "2px solid #519D9E", borderRadius : "5px", display : "none"}} alt="티어"></img>
-      <Button onClick={() => {
-        const tierImage = document.querySelector('.showTier');
-        tierImage.style.display = "block"
-
-      }}>등급보기</Button>
+      <Button onClick={toggleImage} className='showImage'>{showImage  ? '닫기' : '등급보기'}</Button>
    <p></p>
 
   <table width={"882px"}>
@@ -146,6 +160,7 @@ function MyPage({ point, userInfo }) {
 
 
 
+    </div>
     </div>
   );
 }
