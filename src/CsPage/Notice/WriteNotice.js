@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
-import "./CsCss/WriteNotice.css";
+import "../CsCss/WriteNotice.css";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../axiosInstance";
+import axiosInstance from "../../axiosInstance";
 import { useState } from "react";
 
 function WriteNotice(){
@@ -12,7 +12,6 @@ function WriteNotice(){
  
   });
   const navigate = useNavigate();
-
   const changeHandler = (e) =>{
     setNotice({
       ...notice,
@@ -48,7 +47,7 @@ function WriteNotice(){
               // alert('로그인 후 사용하세요');
           })
       }}>작성</Button>{' '}
-      <Button variant="outline-danger" className="resetbtn" type="reset"><Link to={"/onetoone"} className="linknone">취소</Link></Button>{' '}
+      <Button variant="outline-danger" className="resetbtn" type="reset"><Link to={"/cs"} className="linknone">취소</Link></Button>{' '}
       </div>
     </div>
   );

@@ -1,18 +1,22 @@
 
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Notice from './CsPage/Notice';
+import Notice from './CsPage/Notice/Notice';
 import { useState } from 'react';
-import WriteNotice from './CsPage/WriteNotice';
 import Header from './component/Header';
-import CsMain from './CsPage/CsMain';
-import Questions from './CsPage/Question';
-import Onetoone from './CsPage/Onetoone';
-import WriteDetail from './CsPage/CsDetail';
-import CsDetail from './CsPage/CsDetail';
-import CsUpdate from './CsPage/CsUpdate';
-import PaginationRounded from './component/PaginationRounded';
 
+import Questions from './CsPage/Question/Question';
+import Onetoone from './CsPage/OnetoOne/Onetoone';
+import WriteNotice from './CsPage/Notice/WriteNotice';
+import WriteQuestion from './CsPage/Question/WriteQuestion';
+import QuestionDetail from './CsPage/Question/QuestionDetail';
+import NoticeDetail from './CsPage/Notice/NoticeDetail';
+import NoticeUpdate from './CsPage/Notice/NoticeUpdate';
+import QuestionUpdate from './CsPage/Question/QuestionUpdate';
+import WriteOnetoOne from './CsPage/OnetoOne/WriteOnetoOne';
+import OnetoOneUpdate from './CsPage/OnetoOne/OnetoOneUpdate';
+import OnetoOneDetail from './CsPage/OnetoOne/OnetoOneDetail';
+import Main from './CsPage/Main';
 
 function App() {
   const [isAuth, setAuth] = useState(false);  // 로그아웃상태
@@ -23,15 +27,19 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
-       <Route path='/csmain' element={<CsMain/>}/>
+       <Route path='/main' element={<Main/>}/>
        <Route path='/cs' element={<Notice />} />
        <Route path='/questions' element={<Questions/>}/>
        <Route path='/onetoone' element={<Onetoone/>}/>
-       <Route path='/write' element={<WriteNotice userInfo={userInfo}/>} />
-       <Route path='/writedetail' element={<WriteDetail/>}/>
-       <Route path='/notice/:no' element={<CsDetail userInfo={userInfo}/>} />
-       <Route path="/notice/:no/update" element={<CsUpdate />} />
-       <Route path='/notice/pages' element={<PaginationRounded/>}/>
+       <Route path='/onetoonewrite' element={<WriteOnetoOne/>}/>
+       <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo}/>} />
+       <Route path='/questionwrite' element={<WriteQuestion/>}/>
+       <Route path='/questions/:no' element={<QuestionDetail/>}/>
+       <Route path='/notice/:no' element={<NoticeDetail userInfo={userInfo}/>} />
+       <Route path='/onetoone/:no' element={<OnetoOneDetail/>}/>
+       <Route path="/notice/:no/update" element={<NoticeUpdate />} />
+       <Route path='/questions/:no/update' element={<QuestionUpdate/>}/>
+       <Route path='/onetoone/:no/update' element={<OnetoOneUpdate/>}/>
       </Routes>
     </div>
   );

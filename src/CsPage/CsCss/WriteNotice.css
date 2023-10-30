@@ -1,13 +1,14 @@
 .write{
   text-align: center;
+ 
 }
 
-.title-input{
+.write .title-input{
   margin-top: 80px;
   
 }
 
-.writetitle{
+.write .writetitle{
   width: 700px;
   height: 35px; 
   border: 3px solid #40A940;
@@ -20,43 +21,43 @@
   
 }
 
-.titlespan{
+.write .titlespan{
   font-size: 25px;
   font-weight: 600;
   margin-right: 16px;
 }
 
-.contentarea{
+.write .contentarea{
   border: 3px solid #40A940;
   padding: 5px;
   position: relative;
   left: 31px;
 }
-.contentspan{
+.write .contentspan{
   left: 578px;
   font-size: 25px;
   font-weight: 600;
   position: absolute;
 }
 
-.sumitbtn{
+.write .sumitbtn{
   width: 230px;
   margin-left: 55px;
 }
-.backbtn{
+.write .backbtn{
   width: 233px;
 }
 
-.resetbtn{
+.write .resetbtn{
   width: 233px;
 
 }
 
-.clickbtn{
+.write .clickbtn{
   text-align: center;
 }
 
-.linknone{
+.write .linknone{
   text-decoration: none;
   color: red;
 }

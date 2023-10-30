@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function OnSearch({ onSearch }) {
+function OnSearch({ onSearch,path }) {
   const [searchTerm, setSearchTerm] = useState("");
-
+  
   const handleSearch = () => {
     onSearch(searchTerm);
   };
@@ -27,14 +27,13 @@ function OnSearch({ onSearch }) {
           검색
         </button>
       </div>
-      <div>
-        <Link to="/write">
+       <Link to={path}>
           <button className="btn btn-dark add">글작성</button>
         </Link>
         <button className="btn btn-dark" onClick={handleReset}>
           초기화
         </button>
-      </div>
+   
     </div>
   );
 }

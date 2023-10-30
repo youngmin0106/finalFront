@@ -1,11 +1,11 @@
-.pagination {
+.stackpag .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
-.page-number {
+.stackpag .page-number {
   cursor: pointer;
   padding: 5px 10px;
   margin: 0 5px;
@@ -15,11 +15,12 @@
   color: #333;
 }
 
-.page-number:hover {
+.stackpag .page-number:hover {
   background-color: #f0f0f0;
 }
 
-.page-number.active {
+.stackpag .page-number.active {
   background-color: black;
   color: #fff;
 }
+

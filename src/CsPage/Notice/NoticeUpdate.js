@@ -1,10 +1,10 @@
 
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import axiosInstance from "../axiosInstance";
+import axiosInstance from "../../axiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
 
-function CsUpdate() {
+function NoticeUpdate() {
 
   const {no} = useParams();
   const navigate = useNavigate();
@@ -85,4 +85,4 @@ function CsUpdate() {
   );
 }
 
-export default CsUpdate;
+export default NoticeUpdate;

@@ -13,7 +13,7 @@ function Header() {
 					</div>
 					<div className="fl_right">
 						<ul className="topnav">
-							<li><a href="/csmain"><i className="fa fa-lg fa-home"></i>고객센터</a></li>
+							<li><a href="/main"><i className="fa fa-lg fa-home"></i>고객센터</a></li>
 							<li><a href="#">마이페이지</a></li>
 							<li><a href="#">물품등록</a></li>
 							<li><a href="#">채팅내역</a></li>

@@ -1,10 +1,11 @@
 
 import { Link } from "react-router-dom";
-import "../CsPage/CsCss/CsMain.css";
+import "../CsCss/NoticeMain.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { TfiCheck, TfiAnnouncement, TfiComment } from "react-icons/tfi";
+import {  TfiAnnouncement } from "react-icons/tfi";
 import { useEffect, useState } from "react";
-import axiosInstance from "../axiosInstance";
+import axiosInstance from "../../axiosInstance";
+
 function CsMain() {
   const [miniList, setMiniList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
@@ -29,14 +30,14 @@ function CsMain() {
         setIsNoticeLoading(false);
       });
   };
+  
 
   useEffect(() => {
     loadNoticeList(); // 페이지가 로드될 때 공지사항 데이터를 가져옵니다.
   }, []);
+ 
   return (
     <div className="csmain">
-
-
       <h2 style={{ marginLeft: "10%", marginBottom: "1%", fontSize: "25px", marginTop: "10%" }}>- 고객센터</h2>
       <ul className='ulListcs'>
         <li><a href="/cs">공지사항</a></li>
@@ -52,7 +53,7 @@ function CsMain() {
         {miniList.map((notice, i) => {
           return (
             <tbody className="table-hover" key={i}>
-              <tr>
+              <tr >
                 {/* 공지사항 제목을 클릭하면 상세 페이지로 이동하도록 수정 */}
                 <td className="text-left">
                   <Link to={`/notice/${notice.no}`} className="linktitle">
@@ -64,46 +65,7 @@ function CsMain() {
           );
         })}
       </table>
-      <table className="table-fill questiontab">
-        <thead>
-          <tr>
-            <th className="text-left"><TfiComment className="TfiComment" /><Link to={"/questions"} style={{ color: "black" }}>자주묻는질문</Link><Link to={"/cs"} style={{ color: "black" }} className="plus">+</Link></th>
-          </tr>
-        </thead>
-        {/* {
-        miniList.map((notice, i) => {
-          return (
-              <tbody className="table-hover" key={i}>
-                <tr>
-                  <td className="text-left">{notice.title}</td>
-                </tr>
-              </tbody>
-          );
-        })
-      } */}
-      </table>
-      <table className="table-fill onetoonetab">
-        <thead>
-          <tr>
-            <th className="text-left"><TfiCheck className="TfiCheck" /><Link to={"/onetoone"} style={{ color: "black" }}>1:1문의</Link><Link to={"/cs"} style={{ color: "black" }} className="plus">+</Link></th>
-          </tr>
-        </thead>
-        {/* {
-        miniList.map((notice, i) => {
-          return (
-              <tbody className="table-hover" key={i}>
-                <tr>
-                  <td className="text-left">{notice.title}</td>
-                </tr>
-              </tbody>
-          );
-        })
-      } */}
-      </table>
     </div>
-
-
-
   );
 }
 

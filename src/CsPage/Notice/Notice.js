@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import axiosInstance from "../axiosInstance";
-import PaginationComponent from "../component/PaginationComponent";
-import Search2 from "../component/Search2";
+import axiosInstance from "../../axiosInstance";
+import PaginationComponent from "../../component/PaginationComponent";
+import Search from "../../component/Search";
+
 
 
 function Notice() {
@@ -64,14 +65,18 @@ function Notice() {
             <h3>공지사항</h3>
           </div>
         </div>
-
-        <Search2
+     
+     
+        <Search         
           increaseViews={increaseViews}
           data={noticeList}
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
           itemsPerPage={itemsPerPage}
+          path={"/noticewirte"}
+          ad={"/notice"}
         />
+          
         <PaginationComponent
           currentPage={currentPage}
           itemsPerPage={itemsPerPage}
