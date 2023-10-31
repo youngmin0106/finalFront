@@ -18,28 +18,29 @@ function Mileage( {userInfo, setUserInfo} ) {
     setSelectedItem(item);
   };
 
-  const getContent = () => {
-    switch (selectedItem) {
-      case "토스페이":
-        return <div>토스페이 내용</div>;
-      case "신용카드":
-        return <div>신용카드 충전 내용</div>;
-      case "휴대폰":
-        return <div>휴대폰(ARS) 충전 내용</div>;
-      case "무통장입금":
-        return <div>무통장 입금 내용</div>;
-      case "페이코":
-        return <div>페이코</div>;
-      case "문화상품권":
-        return <div>문화상품권 충전 내용</div>;
-      case "틴캐시":
-        return <div>틴캐시 내용</div>;
-      case "돈복사버그":
-        return <div>돈복사버그 내용</div>;
-      default:
-        return null;
-    }
-  };
+  // 기존에 사용하려던 방식
+  // const getContent = () => {
+  //   switch (selectedItem) {
+  //     case "토스페이":
+  //       return <div>토스페이 내용</div>;
+  //     case "신용카드":
+  //       return <div>신용카드 충전 내용</div>;
+  //     case "휴대폰":
+  //       return <div>휴대폰(ARS) 충전 내용</div>;
+  //     case "무통장입금":
+  //       return <div>무통장 입금 내용</div>;
+  //     case "페이코":
+  //       return <div>페이코</div>;
+  //     case "문화상품권":
+  //       return <div>문화상품권 충전 내용</div>;
+  //     case "틴캐시":
+  //       return <div>틴캐시 내용</div>;
+  //     case "돈복사버그":
+  //       return <div>돈복사버그 내용</div>;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   return (
     <div className="Mileage">

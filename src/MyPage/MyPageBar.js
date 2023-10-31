@@ -37,11 +37,7 @@ function MyPageBar( { point, userInfo } ) {
       return "브론즈";
     }
   };
-  
-  
 
-  
-  
   return (
     <div className='myPageBar'>
       <h2 style={{marginLeft : "10%", marginBottom : "2%", fontSize : "25px"}}><a href='/mypage'>- 마이페이지</a></h2>

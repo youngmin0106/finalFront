@@ -5,6 +5,7 @@ import './DeleteInfo.css';
 import '../MyPage/MyPageBar.css';
 import MyPageBar from "../MyPage/MyPageBar";
 import axiosInstance from "../axiosInstance";
+import { useNavigate } from "react-router-dom";
 
 // const deleteInfo = (() => {
   
@@ -17,10 +18,7 @@ function DeleteInfo( {point, userInfo} ) {
   const [show, setShow] = useState(false);
   const target = useRef(null);
 
-  const [memberData, setMemberData] = useState({
-    id : 'test',
-    pw : '1234'
-  });
+  const navigate = useNavigate();
 
   return (
     
@@ -38,7 +36,8 @@ function DeleteInfo( {point, userInfo} ) {
           <br></br>
           <br></br>
           <h5 style={{textAlign : "left"}}>탈퇴사유</h5>
-          <Form.Select aria-label="Default select example" className="selectForm">
+          {/* 보통 통계내려고 탈퇴사유 받지만 아직 탈퇴사유 저장은 하고있지않음 */}
+          <Form.Select aria-label="Default select example" className="selectForm"> 
                  <option disabled defaultValue={"선택"}>선택</option>
                  <option value="1">기타</option>
                  <option value="2">더 이상 사용하지 않음</option>
@@ -75,11 +74,11 @@ function DeleteInfo( {point, userInfo} ) {
       &nbsp;
       <Button onClick={() => {
         axiosInstance.post('/unregister', {
-          id : 'test'
+          id : 'test2'
         }) // 로그인에서 구현한 정보 추가해야함, MemberController
         .then(response => {
-          alert(response.data);
-          console.log("회원탈퇴 완료")
+          alert("회원탈퇴 완료");
+          navigate('/');
         }).catch(error => {
           console.log(error);
         })

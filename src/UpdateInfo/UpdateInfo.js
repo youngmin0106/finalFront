@@ -17,7 +17,7 @@ function UpdateInfo( {userInfo} ) {
       </div>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <div className="userId">회원 아이디</div>
-        <Form.Label><div className="loginUserId">{userInfo.id}</div></Form.Label> {/* 로그인한 유저 ID 출려갷야함 */}
+        <Form.Label><div className="loginUserId">{userInfo.id}</div></Form.Label> {/* 로그인한 유저 ID 출력해야함 */}
         <Form.Control type="password" placeholder="비밀번호" />
       </Form.Group>
       <Button variant="primary" type="submit" style={{width : "350px", backgroundColor : "#40A940", border : "none"}}>

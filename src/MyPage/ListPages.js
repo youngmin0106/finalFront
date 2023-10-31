@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 
-function ListPages( {list, pageType, point, userInfo} ) {
+function ListPages( {list, pageType, point, userInfo, testTrans} ) {
 
   let {id} = useParams();
   let content = '';
@@ -44,19 +44,24 @@ function ListPages( {list, pageType, point, userInfo} ) {
         </tbody>
 
         {
-
-          <tfoot style={{textAlign : "center"}}>
-            <tr style={{paddingTop : "20px"}}>
-               <td style={{paddingTop : "20px"}}>메이플 메소 팝니다<br></br> {/* 판매 제목 넣기 */} 
-            2023-10-24 16:51:00 <br></br> {/* 판매 시간, 판매자, 연락처 데이터 넣기 */}
-            판매자 : {userInfo.id} &nbsp; 연락처 : {userInfo.phone}
-          </td> 
-          <td><span style={{color : "blue", fontWeight : "bold"}}>1,000</span>원</td> {/* 판매 가격 넣을 자리*/} 
-          <td><Button className="chat">채팅</Button>{' '}&nbsp;
-              {/* <Button className="prevChat">이전채팅</Button>{' '}&nbsp; */}
-          </td>
+          <tfoot style={{textAlign: "center"}}>
+          {testTrans.map((testTrans, index) => (
+            <tr key={index} style={{paddingTop: "20px"}}>
+              <td style={{paddingTop: "20px"}}>
+                <span style={{fontWeight : "bold"}}><a href="/testTrans">{testTrans.title}</a></span><br /> {/* 판매 제목 */}
+                {testTrans.date} <br /> {/* 판매 시간 */}
+                판매자: {userInfo.id} &nbsp; 연락처: {userInfo.phone}
+              </td>
+              <td>
+                <span style={{color: "blue", fontWeight: "bold"}}>{testTrans.price}</span>원
+              </td> {/* 판매 가격 */}
+              <td>
+                <Button className="chat">채팅</Button>{' '}&nbsp;
+                {/* <Button className="prevChat">이전채팅</Button>{' '}&nbsp; */}
+              </td>
             </tr>
-          </tfoot>
+          ))}
+        </tfoot>
         }
 
       </table>

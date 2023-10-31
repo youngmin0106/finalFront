@@ -27,7 +27,6 @@ function MyPage({ point, userInfo }) {
     setShowImage(!showImage);
   }
   
-  // let testpoint = userInfo.tspoints;
 
   let nextTier;
   
@@ -78,6 +77,7 @@ function MyPage({ point, userInfo }) {
       <a href='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</a>
     </td>
 
+  {/* 나중에 구현 할수도 있음 (게시글 즐겨찾기) */}
   {/* <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
       <div>♡</div>
       <div>관심물품</div>
