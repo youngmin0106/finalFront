@@ -107,7 +107,6 @@ function AccountSales( {userInfo} ) {
         axiosInstance.post('/insertTrans', trans)
             .then(response => {
               alert(response.data);
-              console.log(response.data);
               navigate('/transPost'); // 거래게시물로 ㄱㄱ
             }).catch(error => {
               console.log(error);

@@ -2,30 +2,36 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
 
-function TransPostList ( {isLoading, setIsLoading, search} ) {
+function TransPostList ( {isLoading, setIsLoading, search, priceFilter} ) {
   const [transList, setTransList] = useState([]);
   const [aa, setAa] = useState([]);
 
-  useEffect(() => {
-    const list = transList.filter(trans => trans.price <= 1000000);
+  // useEffect(() => {
+  //   const list = transList.filter(trans => trans.price <= 1000000);
 
-    setAa(list)
+  //   setAa(list)
 
-  }, [transList])
-  console.log(aa)
+  // }, [transList])
+  //console.log(aa)
+
+
+
+  const filteredTransList = transList.filter((trans) => {
+    const isMatch =
+      trans.title.includes(search.keyword) &&
+      (!search.game || trans.game === search.game) &&
+      (!search.server || trans.server === search.server) &&
+      (!search.price || priceFilter(trans.price, search.price));
+
+    return isMatch;
+  });
+
+
+  console.log(filteredTransList);
 
   useEffect(() => {
     axiosInstance.get("/transPost")
       .then((response) => {
-        // const filteredTransList = response.data.filter((trans) => {
-        //   return (
-        //     trans.title.includes(search.keyword) &&
-        //     (!search.game || trans.game === search.game) &&
-        //     (!search.server || trans.server === search.server) &&
-        //     (!search.price || trans.price === search.price)
-        //   );
-        // });
-
         setTransList(response.data);
         setIsLoading(false);
       })
@@ -34,7 +40,7 @@ function TransPostList ( {isLoading, setIsLoading, search} ) {
       });
   }, [search, setIsLoading]);
 
-console.log(transList);
+//console.log(transList);
 
   if (isLoading) {
     return <div>로딩중 ...</div>;
@@ -91,5 +97,7 @@ console.log(transList);
     </div>
   )
 }
+
+
 
 export default TransPostList;

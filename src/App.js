@@ -5,7 +5,6 @@ import { useState } from 'react';
 import AccountSales from './Page/Account Sales/AccountSales';
 import TransPost from './Page/Trans Post/TransPost';
 
-
 function App() {
   // 로딩중
   const [isLoading, setIsLoading] = useState(true);
