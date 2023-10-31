@@ -4,26 +4,37 @@ import './TransPostList.css';
 
 function TransPostList ( {isLoading, setIsLoading, search} ) {
   const [transList, setTransList] = useState([]);
+  const [aa, setAa] = useState([]);
+
+  useEffect(() => {
+    const list = transList.filter(trans => trans.price <= 1000000);
+
+    setAa(list)
+
+  }, [transList])
+  console.log(aa)
 
   useEffect(() => {
     axiosInstance.get("/transPost")
       .then((response) => {
-        const filteredTransList = response.data.filter((trans) => {
-          return (
-            trans.title.includes(search.keyword) &&
-            (!search.game || trans.game === search.game) &&
-            (!search.server || trans.server === search.server) &&
-            (!search.price || trans.price === search.price)
-          );
-        });
+        // const filteredTransList = response.data.filter((trans) => {
+        //   return (
+        //     trans.title.includes(search.keyword) &&
+        //     (!search.game || trans.game === search.game) &&
+        //     (!search.server || trans.server === search.server) &&
+        //     (!search.price || trans.price === search.price)
+        //   );
+        // });
 
-        setTransList(filteredTransList);
+        setTransList(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, [search, setIsLoading]);
+
+console.log(transList);
 
   if (isLoading) {
     return <div>로딩중 ...</div>;
@@ -68,7 +79,7 @@ function TransPostList ( {isLoading, setIsLoading, search} ) {
                   <td>{trans.server}</td>
                   <td>{trans.game}</td>
                   <td>{trans.title}</td>
-                  <td>{trans.price.toLocaleString('ko-KR')}</td>
+                  <td>{trans.price.toLocaleString('ko-KR')}원</td>
                   <td>{trans.createdate}</td>
                 </tr>
                
