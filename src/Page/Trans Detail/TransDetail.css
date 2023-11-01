@@ -1,0 +1,136 @@
+.TransDetail {
+  width: 50vw;
+  margin: auto;
+}
+.TransDetail .firstLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.TransDetail .card {
+  box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
+  border-top: 2px solid #519D9E;
+  border-bottom: 2px solid #519D9E;
+  height: 183px;
+}
+
+.TransDetail .img {
+  margin-top: 10px;
+  height: 100px;
+}
+
+
+.TransDetail .grade{
+  margin-bottom: 12px;
+}
+
+.TransDetail .itemTable {
+  width: 50vw;
+  border: none;
+}
+
+.TransDetail .tableLeft{
+  font-weight:  500;
+  font-size: 15px;
+  float: left;
+}
+
+.TransDetail tr, th, td {
+  box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
+}
+
+.TransDetail tr {
+  height: 60px;
+}
+
+.TransDetail th {
+  border-top: 2px solid #519D9E;
+  width: 8vw;
+}
+
+.TransDetail .bottom {
+  border-bottom: 2px solid #519D9E;
+}
+
+.TransDetail .secondLayout {
+  clear: both;
+}
+
+.TransDetail input {
+  outline: none;
+  border: none;
+  padding: 5px;
+  height: 35px;
+  width: 250px;
+  margin-left: 10px;
+}
+
+.TransDetail textarea {
+  height: 700px;
+  width: 1000px;
+  font-size: 19px;
+  padding-left: 30px;
+}
+
+.TransDetail h2 {
+  margin: 20px;
+}
+
+.TransDetail .secondLayout {
+  box-shadow: 1px 1px 3px 1px rgb(221, 221, 221);
+  margin: 20px 0px;
+ 
+  padding: 10px;
+}
+
+.TransDetail span {
+  float: right;
+  margin-top: 60px;
+  font-size: larger;
+  margin-right: 30px;
+}
+
+
+
+.TransDetail .thirdLayout {
+  box-shadow: 1px 1px 3px 1px rgb(221, 221, 221);
+  height: 200px;
+  padding: 10px;
+}
+
+.TransDetail .totalPrice{
+  width: 130px;
+  font-size: 20px;
+}
+
+.TransDetail .btn {
+  text-align: center;
+}
+
+
+
+.TransDetail .cancle {
+  border: 1px solid #e0e0e0;
+  width: 300px;
+  height: 45px;
+  font-weight: bolder;
+  background-color: white;
+  color: #3B4E32;
+  border-radius: 6px;
+  margin: 15px;
+  text-align: center;
+}
+
+.TransDetail .buy {
+  border: 1px solid #F8F8FF;
+  width: 300px;
+  height: 45px;
+  font-weight: bolder;
+  background-color: #9DC8C8;
+  color: #3B4E32;
+  border-radius: 6px;
+  margin: 15px;
+
+}

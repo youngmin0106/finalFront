@@ -20,8 +20,8 @@ let option = [
     id: 'BattleGrounds'
   },
   {
-    gameName: '피파',
-    id: 'Fifa'
+    gameName: 'FC온라인',
+    id: 'FcOnline'
   },
   {
     gameName: '던전앤파이트',

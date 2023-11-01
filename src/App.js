@@ -4,6 +4,7 @@ import './App.css';
 import { useState } from 'react';
 import AccountSales from './Page/Account Sales/AccountSales';
 import TransPost from './Page/Trans Post/TransPost';
+import TransDetail from './Page/Trans Detail/TransDetail';
 
 function App() {
   // 로딩중
@@ -19,7 +20,7 @@ function App() {
       <Routes>
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo}/>} />
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
-        
+        <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo}/>} />
       </Routes>
     </div>
   );
