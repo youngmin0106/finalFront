@@ -7,6 +7,7 @@ import MemberSignup from './SignUp/MemberSignup';
 import SignupSuccess from './SignUp/SignUpSuccess';
 import Login from './Login/Login';
 import { useState } from 'react';
+import KakaoLogin from './Login/KakaoLogin';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
           <Route path="/member-sign" element={<MemberSignup />} />
           <Route path="/signup-success" element={<SignupSuccess />} />
           <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo}/>} />
+          <Route path='/oauth/kakao' element={<KakaoLogin/>} />
+        
         </Routes>
       </div>
   );

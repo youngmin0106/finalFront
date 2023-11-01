@@ -54,12 +54,6 @@ function Login( {setUserInfo, setIsAuth} ) {
       });
   }
 
-  const handleKakaoLoginClick = () => {
-    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao&response_type=code`;
-
-    window.location.href = kakaoAuthUrl;
-  }
-
   return (
 
     <ThemeProvider theme={defaultTheme}>
@@ -92,7 +86,9 @@ function Login( {setUserInfo, setIsAuth} ) {
       onClick={loginBtnClickHandler}> 로그인 </Button>
               
     <div className='loginBox'>
-      <a href="#!" onClick = { handleKakaoLoginClick }>
+      <a href="#!" onClick={() => {
+        window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao`;
+      }}>
       <img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
       
       <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
