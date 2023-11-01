@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
+import './TestTrans.css';
 
 function TestTrans( {userInfo, testTrans, setTestTrans } ) {
 
@@ -51,37 +52,60 @@ function TestTrans( {userInfo, testTrans, setTestTrans } ) {
   }
 
   return (
-    <div style={{marginLeft : "20%", width : "1000px"}}>
+    <div className="TestTrans" style={{marginTop : "5%"}}>
       <table style={{textAlign : "center", border : "0.5px solid #eee", width : "800px"}}>
-        <tbody>
+        <thead>
           <tr>
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>거래번호</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].transId}</th>
+            <th className="testTh">물품제목</th>
+            <td className="testTd" colSpan={3}>{testTrans[0].title}</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th className="testTh">게임</th>
+            <td className="testTd">{testTrans[0].game}</td>
+            <th className="testTh" style={{borderLeft : "1px solid #eee"}}>서버</th>
+            <td className="testTd">{testTrans[0].server}</td>
+          </tr>
+
+          <tr>
+            <th className="testTh">거래번호</th>
+            <td className="testTd">{testTrans[0].transId}</td>
+            <th className="testTh" style={{borderLeft : "1px solid #eee"}}>가격</th>
+            <td className="testTd">{testTrans[0].price}</td>
+          </tr>
+
+          <tr>
+            <th className="testTh">판매자명</th>
+            <td className="testTd" colSpan={3}>{testTrans[0].name}</td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th className="testTh">연락처</th>
+            <td className="testTd" colSpan={3}>{testTrans[0].phone}</td>
+            <td></td>
           </tr>
           
-          <tr>
+
+
+
+        </thead>
+        <tbody>
+       
+          {/* <tr>
             <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>판매자명</td>
             <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].name}</th>
           </tr>
+
           <tr>
             <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>연락처</td>
             <th style={{borderBottom : "0.5px solid #eee"}}>{userInfo.phone}</th>
           </tr>
-          <tr>
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>게임이름</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].game}</th>
-          </tr>
-
-          <tr>
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>서버명</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].server}</th>
-          </tr>
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>가격</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].price}</th>
-          <tr>
+  
             <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>내용</td>
             <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].content}</th>
-          </tr>
+          </tr> */}
 
         </tbody>
       </table>
