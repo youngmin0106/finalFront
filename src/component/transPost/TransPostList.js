@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
-import PaginationRounded from "./Pagination/PaginationRounded";
+import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link } from "react-router-dom";
 
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
   const [searchList, setSearchList] = useState([]); // 필터링 데이터
-  const [searchTrem, setSearchTrem] = useState("");
+  // const [searchTrem, setSearchTrem] = useState("");
   const [currentPage, setCurrentPage] = useState(1); // 처음 현재페이지
   const itemsPerPage = 10; // 게시물 10개씩 
 
@@ -41,6 +41,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
     }
   }
 
+  // 검색결과 필터 핸들러
   const handlefilter = (searchTrem) => {
     if (searchTrem) {
       const filteredList = transList.filter((trans) => {
@@ -56,10 +57,6 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       setSearchList(transList);
     }
   }
-
-
-
-  console.log(searchList);
 
   // 취소 버튼 모든것을 초기화하는 함수
   const cancelHandler = () => {
