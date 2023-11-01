@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import {  useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
+import Reply from "../Reply/Reply";
 
 function OnetoOneDetail(){
 
@@ -9,7 +10,7 @@ function OnetoOneDetail(){
   const [oneDetail,setOneDetail] = useState();
   const [loding,setLoding] = useState(true);
   const navigate = useNavigate();
-
+  
   const onetooneupdatebtn=()=>{
     navigate(`/onetoone/${no}/update`);
   }
@@ -50,19 +51,20 @@ function OnetoOneDetail(){
         rows="15"   
       ></textarea>
     </div>
+    <Reply oneDetail={oneDetail}/>
     <br />
     <div className="clickbtn">
     <Button variant="outline-primary" className="sumitbtn" onClick={onetooneupdatebtn}>수정</Button>{' '}
     <Button variant="outline-danger" className="resetbtn" type="reset" 
       // onClick={()=>{
-      // if(유저아이디 != csDetail.no){
+      // if(유저아이디 != oneDetail.no){
       //   alert('작성자만 삭제가능합니다.');
       //   return;
       // }
-      // axiosInstance.delete('/notice', {params : {'id':csDetail.no}})
+      // axiosInstance.delete('/onetoone', {params : {'id':oneDetail.no}})
       // .then(response=>{ 
       //   alert(response.data);
-      //   navigate('/');
+      //   navigate('/onetoone');
       // }).catch(error=>{
       //   console.log(error);
       // })}}
