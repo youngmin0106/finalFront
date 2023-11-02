@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import { useState } from 'react';
 import './App.css';
@@ -88,10 +89,26 @@ const testBoardList = [
 ]
 
 const tsPoints = 100;
+=======
+import './App.css';
+import MemberType from './SignUp/MemberType';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from 'react-router-dom';
+import MemberAgree from './SignUp/MemberAgree';
+import MemberSignup from './SignUp/MemberSignup';
+import SignupSuccess from './SignUp/SignUpSuccess';
+import Login from './Login/Login';
+import { useState } from 'react';
+import KakaoLogin from './Login/KakaoLogin';
+import GoogleLogin from './Login/GoogleLogin';
+
+>>>>>>> develop
 
 function App() {
-  const [isAuth, setAuth] = useState(false);  // 로그아웃상태
+
+  const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
   const [userInfo, setUserInfo] = useState({
+<<<<<<< HEAD
     id :'test4',
     phone : '010-2234-5678',
     mileage : 1000
@@ -103,6 +120,11 @@ function App() {
 
   const [list, setList] = useState(listOption);
 
+=======
+    
+  }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
+
+>>>>>>> develop
   return (
 
     <div className="App">
@@ -115,12 +137,18 @@ function App() {
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} point={point} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} point={point} userInfo={userInfo} testTrans={testTrans}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo}/>}></Route>
-
+        <Route path="/member-type" element={<MemberType/>} />
+        <Route path="/member-agree" element={<MemberAgree />} />
+        <Route path="/member-sign" element={<MemberSignup />} />
+        <Route path="/signup-success" element={<SignupSuccess />} />
+        <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo}/>} />
+        <Route path='/oauth/kakao' element={<KakaoLogin/>} />
+        <Route path='/oauth/google' element={<GoogleLogin />} />
         <Route path='/testTrans' element={<TestTrans userInfo={userInfo} testTrans={testTrans} setTestTrans={setTestTrans}></TestTrans>}></Route>
      </Routes>
 
-    </div>
 
+      </div>
   );
 }
 
