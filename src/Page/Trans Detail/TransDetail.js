@@ -56,7 +56,29 @@ const TransDetail = () => {
             </tr>
           </tbody>
         </table>
-
+      </div>
+      <div className='write'>
+        <div className='writeBtn'>
+          <button className='updateBtn' onClick={() => {
+            axiosInstance.update('/updateTrans', {id})
+              .then(response => {
+                alert(response.data);
+                navigate('/transPost');
+              }).catch(error => {
+                console(error);
+              })
+          }}>수정</button>
+          <button className='deleteBtn' onClick={() => {
+            axiosInstance.delete('/deleteTrans', {id})
+              .then(response => {
+                alert(response.data);
+                navigate('/transPost');
+              }).catch(error => {
+                console(error);
+              })
+          }}>삭제</button>
+        </div>
+        <p>* 수정하시고 수정버튼 누르시면 됩니다.</p>
       </div>
       <div className='secondLayout'>
         <h2> · 상세내용</h2>

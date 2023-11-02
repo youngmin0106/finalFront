@@ -26,7 +26,7 @@ margin-bottom: 100px;
   background-color: #9DC8C8;
 }
 
-.TransPost tr, th, td {
+.TransPost tr, .TransPost th, .TransPost td {
   box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
 }
 

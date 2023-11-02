@@ -3,14 +3,14 @@
   margin: auto;
 }
 
-.AccountSales .title, .btn {
+.AccountSales .title, .AccountSales .btn {
   text-align: center;
 }
 .AccountSales h1 {
   margin-bottom: 50px;
 }
 
-.AccountSales tr, th, td {
+.AccountSales tr, .AccountSales th, .AccountSales td {
   box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
 }
 
@@ -18,7 +18,7 @@
   text-align: right;
 }
 
-.AccountSales input, textarea {
+.AccountSales input, .AccountSales textarea {
   outline: none;
 }
 
@@ -42,7 +42,7 @@
  
 }
 
-.AccountSales input, textarea {
+.AccountSales input, .AccountSales textarea {
   border: none;
   padding: 5px;
 }

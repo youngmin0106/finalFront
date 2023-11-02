@@ -37,7 +37,7 @@
   float: left;
 }
 
-.TransDetail tr, th, td {
+.TransDetail tr, .TransDetail th, .TransDetail td {
   box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
 }
 
@@ -54,6 +54,39 @@
   border-bottom: 2px solid #519D9E;
 }
 
+.TransDetail .write > p {
+  float: right;
+  margin: 8px;
+  line-height: 40px;
+}
+
+.TransDetail .writeBtn {
+  float: right;
+  margin: 8px;
+}
+
+.TransDetail .updateBtn {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  height: 35px;
+  font-size: 16px;
+}
+
+.TransDetail .deleteBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 50px;
+  height: 35px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+
 .TransDetail .secondLayout {
   clear: both;
   margin: 20px 0px;
@@ -67,6 +100,7 @@
   height: 35px;
   width: 250px;
   margin-left: 10px;
+  
 }
 
 .TransDetail textarea {
@@ -99,6 +133,7 @@
   font-size: 20px;
   font-weight: bolder;
   color: #af82c9;
+  text-align:right;
 }
 
 .TransDetail .btn {

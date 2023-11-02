@@ -24,13 +24,9 @@
   line-height: 30px;
 }
 
-/* .TransPostList tr, th, td {
-  box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
-} */
 
 .TransPostList .titleDetail {
   text-decoration: none;
-  /* border-bottom: 1px solid lightgray; */
 }
 
 
@@ -46,6 +42,10 @@
 .TransPostList th {
   border-top: 2px solid #519D9E;
   width: 120px;
+}
+
+.TransPostList .btn {
+  text-align: center;
 }
 
 .TransPostList .click {
