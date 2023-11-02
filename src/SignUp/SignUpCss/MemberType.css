@@ -1,0 +1,35 @@
+.MemberType {
+  width: 70%;
+  margin-left : 15%;
+}
+
+.Subscription {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 8%;
+}
+
+.GeneralMem, .ForeignMem {
+  width: 800px;
+  height: 250px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.GeneralMem h1, .ForeignMem h1,
+.GeneralMem p, .ForeignMem p,
+.GeneralMem Button, .ForeignMem Button {
+  margin: 10px 0;
+}
+
+.typeText > p{
+  display: inline;
+  font-size: 15px;
+  font-weight: normal;
+}
