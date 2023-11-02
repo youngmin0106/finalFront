@@ -2,8 +2,6 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -55,7 +53,10 @@ function Login({ setUserInfo, setIsAuth }) {
   }
 
   const open = () => {
-    window.open('http://localhost:3000/idserch', '_blank', 'width=800, height=600');
+    window.open(
+      'http://localhost:3000/idserch', 
+      '_blank', 
+      'width=800, height=600');
   }
 
   return (
@@ -81,9 +82,6 @@ function Login({ setUserInfo, setIsAuth }) {
             <TextField margin="normal" required fullWidth label="비밀번호"
               type="password" id="password" autoComplete="current-password"
               onChange={idPwInputHandler} value={loginData.password} />
-
-            <FormControlLabel control={<Checkbox value="remember" color="primary" />}
-              label="아이디 저장" />
 
             <Button type="submit" fullWidth variant="contained"
               style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }}
