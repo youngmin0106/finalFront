@@ -11,6 +11,7 @@ function MyPage({ point, userInfo }) {
   
   console.log(userInfo.mileage);
 
+  
   const number = "" + userInfo.mileage;
   const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
@@ -30,20 +31,20 @@ function MyPage({ point, userInfo }) {
 
   let nextTier;
   
-  const getTierValue = (point) => {
-    if (point >= 301) {
+  const getTierValue = () => {
+    if (userInfo.transactionPoints >= 301) {
       return "와우";
-    } else if (point > 100) {
-      nextTier = 301 - point;
+    } else if (userInfo.transactionPoints > 100) {
+      nextTier = 301 - userInfo.transactionPoints;
       return "챌린저";
-    } else if (point > 50) {
-      nextTier = 101 - point;
+    } else if (userInfo.transactionPoints > 50) {
+      nextTier = 101 - userInfo.transactionPoints;
       return "다이아몬드";
-    } else if (point >= 5) {
-      nextTier = 51 - point;
+    } else if (userInfo.transactionPoints >= 5) {
+      nextTier = 51 - userInfo.transactionPoints;
       return "골드";
     } else {
-      nextTier = 6 - point
+      nextTier = 6 - userInfo.transactionPoints
       return "실버";
     } 
   };
@@ -57,7 +58,7 @@ function MyPage({ point, userInfo }) {
     {/* <Button onClick={testLogin}>임시 로그인</Button> */}
   <div className="main">
     {     
-          point < 301 && (
+          userInfo.transactionPoints < 301 && (
           <h3 style={{ fontSize: "20px" }}>
             <span style={{ fontWeight: "bold" }}>{getTierValue(point)}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!
           </h3>
@@ -73,7 +74,7 @@ function MyPage({ point, userInfo }) {
     <td style={{ padding: "60px", border: "0.5px solid #eee", borderTop : "2px solid #519D9E", borderRadius : "5px", textAlign: "center" }}>
       <div>~</div>
       <div>내 보유 마일리지</div>
-      <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2}</div>
+      <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2} 원</div>
       <a href='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</a>
     </td>
 

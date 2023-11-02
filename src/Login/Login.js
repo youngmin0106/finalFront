@@ -41,12 +41,15 @@ function Login( {setUserInfo, setIsAuth} ) {
     e.preventDefault();
 
     axiosInstance.post('/login', loginData)
-      .then((response) => {
+    .then((response) => {
+        const jwt = response.headers.authorization;
         console.log("로그인 성공");
+        console.log(response.data.member[0])
         localStorage.setItem('id', loginData.username);
-        setUserInfo(loginData);
+        sessionStorage.setItem('jwt', jwt);
+        setUserInfo(response.data.member[0]);
         setIsAuth(true);
-        navigate("/");
+        navigate("/mypage");
       })
       .catch((error) => {
         console.error(error);
@@ -105,7 +108,7 @@ function Login( {setUserInfo, setIsAuth} ) {
         <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 비밀번호 찾기 </Link>
       </Grid>
       <Grid item>
-        <Link href="/" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
+        <Link href="/member-sign" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
       </Grid>
     </Grid>
           </Box>

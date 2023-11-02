@@ -57,15 +57,16 @@ function Cultureland( {userInfo, setUserInfo} ) {
 
       const totalMoney = setMoneyHandler()
       
-      console.log(userInfo.id);
-      console.log(userInfo.mileage);
+      console.log(userInfo)
+      console.log("이름 :" + userInfo.username);
+      console.log("마일리지 : " + money);
       
-      axiosInstance.post('/payCultureland', {id : userInfo.id , userInfo:userInfo, mileage:totalMoney})
+      axiosInstance.post('/payCultureland', userInfo)
       .then(response => {
           alert(response.data);
           console.log("마일리지 충전 완료");
           setUserInfo({...userInfo, mileage : totalMoney});
-          navigate('/');
+          navigate('/mypage');
         }).catch(error => {
           console.log(error);
         });

@@ -95,22 +95,15 @@ const testBoardList = [
   }
 ]
 
-const tsPoints = 100;
-
-
-
 function App() {
 
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
   const [userInfo, setUserInfo] = useState({
-    id :'test4',
-    phone : '010-2234-5678',
-    mileage : 1000
+    
   }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
   
   const [testTrans, setTestTrans] = useState(testBoardList)
   
-  const [point, setPoints] = useState(tsPoints);
   
   const [list, setList] = useState(listOption);
   
@@ -121,18 +114,18 @@ function App() {
     {/* <MyPage></MyPage> */}
       <Routes>
         {/* <Route path='' element={<MyPageBar point={point}/>}></Route> */}
-        <Route path='/' element={<MyPage list={list} point={point} userInfo={userInfo}/>}></Route>
+        <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo}/>}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo}/>}></Route>
-        <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} point={point} />}></Route>
-        <Route path='/listPages/:id' element={<ListPages list={list} point={point} userInfo={userInfo} testTrans={testTrans}/>}></Route> {/* 보내주는 값들이 다 다름 */}
+        <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo}  />}></Route>
+        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo}/>}></Route>
         <Route path="/member-type" element={<MemberType/>} />
         <Route path="/member-agree" element={<MemberAgree />} />
         <Route path="/member-sign" element={<MemberSignup />} />
         <Route path="/signup-success" element={<SignupSuccess />} />
         <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo}/>} />
-        <Route path='/oauth/kakao' element={<KakaoLogin/>} />
-        <Route path='/oauth/google' element={<GoogleLogin />} />
+        <Route path='/oauth/kakao' element={<KakaoLogin setUserInfo={setUserInfo}/>} />
+        <Route path='/oauth/google' element={<GoogleLogin setUserInfo={setUserInfo}/>} />
         <Route path='/testTrans' element={<TestTrans userInfo={userInfo} testTrans={testTrans} setTestTrans={setTestTrans}></TestTrans>}></Route>
      </Routes>
 
