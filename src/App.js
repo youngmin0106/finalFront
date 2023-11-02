@@ -8,6 +8,7 @@ import SignupSuccess from './SignUp/SignUpSuccess';
 import Login from './Login/Login';
 import { useState } from 'react';
 import KakaoLogin from './Login/KakaoLogin';
+import GoogleLogin from './Login/GoogleLogin';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/signup-success" element={<SignupSuccess />} />
           <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo}/>} />
           <Route path='/oauth/kakao' element={<KakaoLogin/>} />
+          <Route path='/oauth/google' element={<GoogleLogin />} />
         
         </Routes>
       </div>

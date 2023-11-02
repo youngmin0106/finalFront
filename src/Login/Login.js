@@ -91,7 +91,9 @@ function Login( {setUserInfo, setIsAuth} ) {
       }}>
       <img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
       
-      <a href="#!"><img src={googleico} alt = "googleLoginImg"></img></a>
+      <a href="#!" onClick={() => {
+         window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=677438077141-5kscmapicvkvh641v83fooil8lj4661s.apps.googleusercontent.com&redirect_uri=http://localhost:3000/oauth/google&response_type=token&scope=openid%20email%20profile`;
+      }}><img src={googleico} alt = "googleLoginImg"></img></a>
       <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
     </div>
     
