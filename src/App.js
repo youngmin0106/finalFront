@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 import { useState } from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
@@ -9,6 +7,15 @@ import MyPage from './MyPage/MyPage';
 import ListPages from './MyPage/ListPages';
 import Mileage from './Mileage/Mileage';
 import TestTrans from './MyPage/TestTrans';
+import './App.css';
+import MemberType from './SignUp/MemberType';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MemberAgree from './SignUp/MemberAgree';
+import MemberSignup from './SignUp/MemberSignup';
+import SignupSuccess from './SignUp/SignUpSuccess';
+import Login from './Login/Login';
+import KakaoLogin from './Login/KakaoLogin';
+import GoogleLogin from './Login/GoogleLogin';
 
   // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -89,42 +96,24 @@ const testBoardList = [
 ]
 
 const tsPoints = 100;
-=======
-import './App.css';
-import MemberType from './SignUp/MemberType';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes } from 'react-router-dom';
-import MemberAgree from './SignUp/MemberAgree';
-import MemberSignup from './SignUp/MemberSignup';
-import SignupSuccess from './SignUp/SignUpSuccess';
-import Login from './Login/Login';
-import { useState } from 'react';
-import KakaoLogin from './Login/KakaoLogin';
-import GoogleLogin from './Login/GoogleLogin';
 
->>>>>>> develop
+
 
 function App() {
 
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
   const [userInfo, setUserInfo] = useState({
-<<<<<<< HEAD
     id :'test4',
     phone : '010-2234-5678',
     mileage : 1000
   }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
-
+  
   const [testTrans, setTestTrans] = useState(testBoardList)
-
+  
   const [point, setPoints] = useState(tsPoints);
-
+  
   const [list, setList] = useState(listOption);
-
-=======
-    
-  }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
-
->>>>>>> develop
+  
   return (
 
     <div className="App">
