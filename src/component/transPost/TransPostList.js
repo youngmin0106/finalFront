@@ -100,7 +100,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
   }
   return (
     <div className="TransPostList">
-      <div className="btn">
+      <div className="postListBtn">
         <button type="reset" className="noClick" onClick={cancelHandler}>검색 초기화</button>
         <button className="click" onClick={handlefilter}>검색</button>
       </div>

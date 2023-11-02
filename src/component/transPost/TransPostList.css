@@ -32,7 +32,10 @@
 
 .TransPostList table {
   width: 100%;
-  /* border: none; */
+}
+
+.TransPostList tr, .TransPostList th, .TransPostList td {
+  box-shadow: 1px 1px 2px 0.1px rgb(221, 221, 221);
 }
 
 .TransPostList tr {
@@ -42,16 +45,21 @@
 .TransPostList th {
   border-top: 2px solid #519D9E;
   width: 120px;
+  text-align: center;
 }
 
-.TransPostList .btn {
+.TransPostList td {
+  text-align: center;
+}
+
+.TransPostList .postListBtn {
   text-align: center;
 }
 
 .TransPostList .click {
   border: 1px solid #F8F8FF;
-  width: 120px;
-  height: 45px;
+  width: 150px;
+  height: 50px;
   font-weight: bolder;
   background-color: #9DC8C8;
   color: #3B4E32;
@@ -62,8 +70,8 @@
 
 .TransPostList .noClick {
   border: 1px solid #e0e0e0;
-  width: 120px;
-  height: 45px;
+  width: 150px;
+  height: 50px;
   font-weight: bolder;
   background-color: white;
   color: #3B4E32;
@@ -74,8 +82,8 @@
 
 .TransPostList .noClick:hover {
   border: 1px solid #e0e0e0;
-  width: 120px;
-  height: 45px;
+  width: 150px;
+  height: 50px;
   font-weight: bolder;
   background-color: #9DC8C8;
   color: #3B4E32;

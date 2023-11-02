@@ -3,7 +3,7 @@
   margin: auto;
 }
 
-.AccountSales .title, .AccountSales .btn {
+.AccountSales .title, .AccountSales .insertbtn {
   text-align: center;
 }
 .AccountSales h1 {
@@ -29,11 +29,16 @@
 
 .AccountSales tr {
   height: 80px;
+
 }
 
 .AccountSales th {
   border-top: 2px solid #519D9E;
   width: 120px;
+  text-align: center;
+}
+.AccountSales td {
+ padding: 5px 0 5px 10px;
 }
 
 .AccountSales input {
@@ -48,8 +53,8 @@
 }
 
 .AccountSales textarea {
-  width: 535px;
-  height: 200px;
+  width: 700px;
+  height: 300px;
 }
 
 .AccountSales select {

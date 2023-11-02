@@ -23,7 +23,7 @@ function AccountSales( {userInfo} ) {
     server: '',
     title: '',
     content: '',
-    memberid: 'pyh990422' //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
+    memberid: userInfo.username  //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
   });
 
   const changeHandler = (e) => {
@@ -102,7 +102,7 @@ function AccountSales( {userInfo} ) {
         <li>상대방에 전자계약서 신청시 구매자가 인수처리 후 카카오톡으로 발송됩니다</li>
       </ol>
       </div>
-      <div className="btn">
+      <div className="insertbtn">
       <button onClick={() => {
         axiosInstance.post('/insertTrans', trans)
             .then(response => {
