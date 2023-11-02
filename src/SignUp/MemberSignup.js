@@ -42,7 +42,7 @@ function MemberSignup() {
 
   const idRegExp = /^[a-zA-Z0-9](?=.*[a-zA-Z])(?=.*[0-9]).{3,12}$/g;
   const passwordRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{1,10}$/;
-  const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+  const phoneRegExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
   const emailRegExp = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
 
   const [pwErrorMsg, setpwErrorMsg] = useState("");
@@ -237,7 +237,7 @@ function MemberSignup() {
           <div className="textFieldContainer">
             <p>전화번호</p>
             <TextField sx={tfStyle} id="phone" value={memberData.phone} onChange = { inputChangeHandler } 
-              label="전화번호 입력하세요" type="text" />
+              label="-없이 입력하세요" type="text" />
           </div>
 
           <div className="textFieldContainer">

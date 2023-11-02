@@ -9,6 +9,7 @@ import Login from './Login/Login';
 import { useState } from 'react';
 import KakaoLogin from './Login/KakaoLogin';
 import GoogleLogin from './Login/GoogleLogin';
+import IdSerch from './Login/IdSerch';
 
 
 function App() {
@@ -21,14 +22,14 @@ function App() {
   return (
     <div className="App">
         <Routes>
-          <Route path="/member-type" element={<MemberType/>} />
+          <Route path="/" element={<MemberType/>} />
           <Route path="/member-agree" element={<MemberAgree />} />
           <Route path="/member-sign" element={<MemberSignup />} />
           <Route path="/signup-success" element={<SignupSuccess />} />
           <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo}/>} />
           <Route path='/oauth/kakao' element={<KakaoLogin/>} />
           <Route path='/oauth/google' element={<GoogleLogin />} />
-        
+          <Route path='/idserch' element={<IdSerch />} />
         </Routes>
       </div>
   );
