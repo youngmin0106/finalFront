@@ -105,7 +105,7 @@ function Login( {setUserInfo, setIsAuth} ) {
         <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 비밀번호 찾기 </Link>
       </Grid>
       <Grid item>
-        <Link href="/" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
+        <Link href="/member-sign" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
       </Grid>
     </Grid>
           </Box>
