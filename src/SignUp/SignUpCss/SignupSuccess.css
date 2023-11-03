@@ -1,0 +1,32 @@
+.SignUpSuccess {
+  width: 70%;
+  margin-left : 15%;
+}
+
+.signSuccessText {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 2%;
+}
+
+.successComponent {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  margin-top: 10%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.successBtn {
+  display: flex;
+  margin-top: 2vw;
+  justify-content: center;
+  gap: 15px;
+}
+
