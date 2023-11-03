@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 import { Button } from "react-bootstrap";
 
-function QuestionUpdate(){
+function QuestionUpdate({userInfo,setAuth,cs}){
   const {no} = useParams();
   const navigate = useNavigate();
 
@@ -41,17 +41,34 @@ function QuestionUpdate(){
       [name]: value,
     });
   };
+  useEffect(()=>{
+    axiosInstance.get(`/questions/${no}`)
+    .then(response=>{
+      setQuestionUpdate(response.data);
+
+    }).catch(error =>{
+      console.log(error);
+
+    })
+  },[no])
 
   // 게시물 수정을 수행하는 함수
   const updatePost = () => {
-    axiosInstance.put(`/questions/${no}/update`, questionUpdate) // "/notice/:no/update"에 실제 게시물 ID를 전달
-      .then((response) => {
-        alert("게시물이 수정되었습니다.");
-        navigate('/questions');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    {
+      if(cs.member.username === questionUpdate.member.username){
+
+        axiosInstance.put(`/questions/${no}/update`, questionUpdate) // "/notice/:no/update"에 실제 게시물 ID를 전달
+        .then((response) => {
+          alert("게시물이 수정되었습니다.");
+          navigate('/questions');
+        })
+        .catch((error) => {
+            console.log(error);
+          });
+      }else{
+        <div></div>
+      }
+    }
   };
   return(
     <div className="write">

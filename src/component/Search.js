@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "../CsPage/CsCss/Notice.css";
 import OnSearch from "./OnSearch";
 
-function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad}) {
+function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,userInfo}) {
   const [searchResults, setSearchResults] = useState(data);
   
   useEffect(()=>{
@@ -21,12 +21,12 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad}) {
       setSearchResults(data); 
     }
   };
-
+  
   return (
     <div className="searchcomp">
       <div id="board-search">
         <div className="container">
-          <OnSearch onSearch={handleSearch} path={path}/>
+          <OnSearch onSearch={handleSearch} path={path} userInfo={userInfo}/>
         </div>
       </div>
 
@@ -40,6 +40,9 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad}) {
                 </th>
                 <th scope="col" className= "th-title">
                   제목
+                </th>
+                <th scope="col" className= "th-title">
+                  작성자
                 </th>
                 <th scope="col" className="th-date">
                   등록일
@@ -63,6 +66,8 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad}) {
                         {data.title}
                       </Link>
                     </th>
+                    {/* 나중에  <td>{data.member.username}</td> 로 고치셈 */}
+                    {data.member  ? <td>{data.member.username}</td> : <td></td>}  
                     <td>{data.createDate}</td>
                     <td>{data.cnt}</td>
                   </tr>

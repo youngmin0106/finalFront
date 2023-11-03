@@ -4,17 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 import { useState } from "react";
 
-function WriteOnetoOne(){
+function WriteOnetoOne({userInfo ,cs ,setCs}){
 
-  const [oneToone,setOnetoOne] = useState({
-    title : '',
-    content : ''
  
-  });
   const navigate = useNavigate();
   const changeHandler = (e) =>{
-    setOnetoOne({
-      ...oneToone,
+    setCs({
+      ...cs,
       [e.target.name] : e.target.value 
     })
   }
@@ -38,7 +34,7 @@ function WriteOnetoOne(){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/onetoone',oneToone)
+          axiosInstance.post('/onetoone',cs)
           .then(response=>{
               alert(response.data);
               navigate('/onetoone');

@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import {  useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 
-function NoticeDetail(){
+function NoticeDetail({userInfo,setAuth ,cs}){
 
   const {no} = useParams();
   const [noticeDetail,setNoticeDetail] = useState();
@@ -11,7 +11,10 @@ function NoticeDetail(){
   const navigate = useNavigate();
 
   const csupdatebtn=()=>{
-    navigate(`/notice/${no}/update`);
+
+      navigate(`/notice/${no}/update`);
+  
+
   }
 
   const backbtn=()=>{
@@ -22,6 +25,7 @@ function NoticeDetail(){
     axiosInstance.get(`/notice/${no}`)
     .then(response=>{
       setNoticeDetail(response.data);
+     
       setLoding(false);
     }).catch(error =>{
       console.log(error);
@@ -52,21 +56,32 @@ function NoticeDetail(){
     </div>
     <br />
     <div className="clickbtn">
-    <Button variant="outline-primary" className="sumitbtn" onClick={csupdatebtn}>수정</Button>{' '}
-    <Button variant="outline-danger" className="resetbtn" type="reset" 
-      // onClick={()=>{
-      // if(유저아이디 != csDetail.no){
-      //   alert('작성자만 삭제가능합니다.');
-      //   return;
-      // }
-      // axiosInstance.delete('/notice', {params : {'id':csDetail.no}})
-      // .then(response=>{ 
-      //   alert(response.data);
-      //   navigate('/');
-      // }).catch(error=>{
-      //   console.log(error);
-      // })}}
-      >삭제</Button>{' '}
+    {
+      cs.member.username == noticeDetail.member.username ?
+      <Button variant="outline-primary" className="sumitbtn" onClick={csupdatebtn}>수정</Button>   
+      :
+      <div></div>
+
+    }
+    {
+      cs.member.username == noticeDetail.member.username ? 
+      <Button variant="outline-danger" className="resetbtn" type="reset" 
+      onClick={()=>{
+        if(cs.member.username != noticeDetail.member.username){
+          alert('작성자만 삭제가능합니다.');
+        console.log(cs.member);
+        console.log(noticeDetail.member)
+        return;
+      }
+      axiosInstance.delete('/notice', {params : {'no':noticeDetail.no}})
+      .then(response=>{ 
+        alert(response.data);
+        navigate('/cs');
+      }).catch(error=>{
+        console.log(error);
+      })}}
+      >삭제</Button> : <div></div>
+    }
     <Button variant="outline-info" className="backbtn" onClick={backbtn}>목록</Button>{' '}
     </div>
   </div>

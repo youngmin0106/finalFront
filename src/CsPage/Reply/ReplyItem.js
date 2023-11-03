@@ -29,7 +29,7 @@ function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
   return (
     <div className="reply-item">
       <div className="comment-author">
-        작성자: {reply.memberid}
+        작성자: {reply.username}
       </div>
       <br />
       {isEditing ? (

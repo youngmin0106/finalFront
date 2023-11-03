@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import axiosInstance from "../../axiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
 
-function NoticeUpdate() {
+function NoticeUpdate({userInfo,setAuth ,cs}) {
 
   const {no} = useParams();
   const navigate = useNavigate();
@@ -30,6 +30,16 @@ function NoticeUpdate() {
         console.log(error);
       });
   };
+  useEffect(()=>{
+    axiosInstance.get(`/notice/${no}`)
+    .then(response=>{
+      setCsUpdate(response.data);
+
+    }).catch(error =>{
+      console.log(error);
+  
+    })
+  },[no])
 
   useEffect(() => {
     loadCsUpdateData();
@@ -46,14 +56,21 @@ function NoticeUpdate() {
 
   // 게시물 수정을 수행하는 함수
   const updatePost = () => {
-    axiosInstance.put(`/notice/${no}/update`, csupdate) // "/notice/:no/update"에 실제 게시물 ID를 전달
-      .then((response) => {
-        alert("게시물이 수정되었습니다.");
-        navigate('/cs');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    {
+      if(cs.member.username === csupdate.member.username){
+        axiosInstance.put(`/notice/${no}/update`, csupdate) // "/notice/:no/update"에 실제 게시물 ID를 전달
+          .then((response) => {
+            alert("게시물이 수정되었습니다.");
+            navigate('/cs');
+          })
+          .catch((error) => {
+            console.log(error);
+            alert("본인 게시물만 수정 가능합니다");
+          });
+      }else{
+        <div></div>
+      }
+    }
   };
 
 
@@ -78,6 +95,7 @@ function NoticeUpdate() {
     </div>
     <br />
     <div className="clickbtn">
+     
     <Button variant="outline-primary" className="sumitbtn" onClick={updatePost}>수정</Button>{' '}
     <Button variant="outline-danger" className="resetbtn" type="reset" onClick={backbtn}>취소</Button>{' '}
      </div>

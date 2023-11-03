@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 function Header() {
@@ -7,18 +8,18 @@ function Header() {
 				<div id="topbar" className="hoc clear">
 					<div className="fl_left">
 						<ul className="nospace">
-							<li><a href="/"><i className="fa fa-lg fa-home"></i>HOME</a></li>
+							<li><Link to={"/"}><i className="fa fa-lg fa-home"></i>HOME</Link></li>
 							<li><i className="fa fa-envelope-o"><img src="img/minilogo.png" /></i></li>
 						</ul>
 					</div>
 					<div className="fl_right">
 						<ul className="topnav">
-							<li><a href="/main"><i className="fa fa-lg fa-home"></i>고객센터</a></li>
-							<li><a href="#">마이페이지</a></li>
-							<li><a href="#">물품등록</a></li>
-							<li><a href="#">채팅내역</a></li>
-							<li><a href="#">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
+							<li><Link to={"/main"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
+							<li><Link to={"#"}>마이페이지</Link></li>
+							<li><Link to={"#"}>물품등록</Link></li>
+							<li><Link to={"#"}>채팅내역</Link></li>
+							<li><Link to={"login-page"}>로그인</Link></li>
+							<li><Link to={"#"}>회원가입</Link></li>
 						</ul>
 					</div>
 					<div>
@@ -33,15 +34,15 @@ function Header() {
 			<div className='bigheader'>
 					<nav id="nav">
 							<ul>
-								<li className='one'><a href="/" >판매등록</a></li>
+								<li className='one'><Link to={"#"} >판매등록</Link></li>
 							
-								<li className='one'><a href="#">캐릭터거래</a></li>
+								<li className='one'><Link to={"#"}>캐릭터거래</Link></li>
 						
-								<li className='one'><a href="left-sidebar.html">마이페이지</a></li>
+								<li className='one'><Link to={"#"}>마이페이지</Link></li>
 							
-								<li className='one'><a href="right-sidebar.html">마일리지</a></li>
+								<li className='one'><Link to={"#"}>마일리지</Link></li>
 							
-								<li className='two'><a href="no-sidebar.html">채팅</a></li>
+								<li className='two'><Link to={"#"}>채팅</Link></li>
 							</ul>
 						</nav>
 						</div>

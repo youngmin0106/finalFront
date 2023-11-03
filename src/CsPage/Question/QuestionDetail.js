@@ -3,7 +3,8 @@ import { Button } from "react-bootstrap";
 import {  useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 
-function QuestionDetail(){
+
+function QuestionDetail({userInfo, cs}){
 
   const {no} = useParams();
   const [questionDetail,setQuestionDetail] = useState();
@@ -50,23 +51,29 @@ function QuestionDetail(){
         rows="15"   
       ></textarea>
     </div>
+   
     <br />
     <div className="clickbtn">
-    <Button variant="outline-primary" className="sumitbtn" onClick={questionupdatebtn}>수정</Button>{' '}
-    <Button variant="outline-danger" className="resetbtn" type="reset" 
-      // onClick={()=>{
-      // if(유저아이디 != csDetail.no){
-      //   alert('작성자만 삭제가능합니다.');
-      //   return;
-      // }
-      // axiosInstance.delete('/questions', {params : {'id':questionDetail.no}})
-      // .then(response=>{ 
-      //   alert(response.data);
-      //   navigate('/');
-      // }).catch(error=>{
-      //   console.log(error);
-      // })}}
-      >삭제</Button>{' '}
+      {
+        cs.member.username == questionDetail.member.username ?
+        <Button variant="outline-primary" className="sumitbtn" onClick={questionupdatebtn}>수정</Button> :
+        <div></div>
+      }
+      {
+         cs.member.username == questionDetail.member.username ?
+        <Button variant="outline-danger" className="resetbtn" type="reset" 
+        onClick={()=>{
+          alert('작성자만 삭제가능합니다.');
+          axiosInstance.delete('/questions', {params : {'no':questionDetail.no}})
+          .then(response=>{ 
+            alert(response.data);
+            navigate('/');
+          }).catch(error=>{
+            console.log(error);
+          })}}
+          >삭제</Button>:
+          <div></div>
+        }
     <Button variant="outline-info" className="backbtn" onClick={backbtn}>목록</Button>{' '}
     </div>
   </div>

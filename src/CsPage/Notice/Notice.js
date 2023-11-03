@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "../../axiosInstance";
 import PaginationComponent from "../../component/PaginationComponent";
 import Search from "../../component/Search";
+import { Link } from "react-router-dom";
 
-
-
-function Notice() {
+function Notice({userInfo}) {
   const [noticeList, setNoticeList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
+ 
   useEffect(() => {
     if (isNoticeLoading) {
       loadNoticeList();
@@ -43,19 +42,19 @@ function Notice() {
         setIsNoticeLoading(false);
       });
   };
-
+  console.log(noticeList);
   return (
     <div className="notice">
       <ul className="ulList">
         <h2 style={{ fontSize: "25px" }}>- 공지사항</h2>
         <li>
-          <a href="/cs">공지사항</a>
+          <Link to={"/cs"}>공지사항</Link>
         </li>
         <li>
-          <a href="/questions">자주묻는질문</a>
+          <Link to={"/questions"}>자주묻는질문</Link>
         </li>
         <li>
-          <a href="/onetoone">1:1문의</a>
+          <Link to={"/onetoone"}>1:1문의</Link>
         </li>
       </ul>
 
@@ -75,6 +74,7 @@ function Notice() {
           itemsPerPage={itemsPerPage}
           path={"/noticewirte"}
           ad={"/notice"}
+          userInfo={userInfo}
         />
           
         <PaginationComponent

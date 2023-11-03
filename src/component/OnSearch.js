@@ -29,6 +29,7 @@ function OnSearch({ onSearch,path }) {
       </div>
        <Link to={path}>
           <button className="btn btn-dark add">글작성</button>
+      
         </Link>
         <button className="btn btn-dark" onClick={handleReset}>
           초기화

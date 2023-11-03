@@ -4,17 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 import { useState } from "react";
 
-function WriteQuestion(){
+function WriteQuestion({userInfo ,cs , setCs}){
 
-  const [question,setQuestion] = useState({
-    title : '',
-    content : ''
- 
-  });
   const navigate = useNavigate();
   const changeHandler = (e) =>{
-    setQuestion({
-      ...question,
+    setCs({
+      ...cs,
       [e.target.name] : e.target.value 
     })
   }
@@ -38,7 +33,7 @@ function WriteQuestion(){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/questions',question)
+          axiosInstance.post('/questions',cs)
           .then(response=>{
               alert(response.data);
               navigate('/questions');

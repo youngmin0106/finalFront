@@ -3,7 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 import { Button } from "react-bootstrap";
 
-function OnetoOneUpdate(){
+
+function OnetoOneUpdate({cs}){
   const {no} = useParams();
   const navigate = useNavigate();
 
@@ -19,15 +20,26 @@ function OnetoOneUpdate(){
 
   // 게시물 데이터를 불러와 상태 변수에 설정하는 함수
   const loadOneUpdateData = () => {
-    axiosInstance.get(`/onetoone/${no}`) 
-      .then((response) => {
-        const data = response.data;
-        setOneUpdate(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+   
+      axiosInstance.get(`/onetoone/${no}/`) 
+        .then((response) => {
+          const data = response.data;
+          setOneUpdate(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
+  useEffect(() => {
+    axiosInstance.get(`/onetoone/${no}`)
+      .then(response => {
+        setOneUpdate(response.data);
+       
+      }).catch(error => {
+        console.log(error);
+       
+      })
+  }, [no])
 
   useEffect(() => {
     loadOneUpdateData();
@@ -44,15 +56,23 @@ function OnetoOneUpdate(){
 
   // 게시물 수정을 수행하는 함수
   const updatePost = () => {
-    axiosInstance.put(`/onetoone/${no}/update`, oneUpdate) // "/notice/:no/update"에 실제 게시물 ID를 전달
-      .then((response) => {
-        alert("게시물이 수정되었습니다.");
-        navigate('/onetoone');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    {
+      if(cs.member.username === oneUpdate.member.username){
+
+        axiosInstance.put(`/onetoone/${no}/update`, oneUpdate) // "/notice/:no/update"에 실제 게시물 ID를 전달
+        .then((response) => {
+          alert("게시물이 수정되었습니다.");
+          navigate('/onetoone');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }else{
+        <div></div> 
+    }
+  }
   };
+  
   return(
     <div className="write">
       <input type="hidden" />

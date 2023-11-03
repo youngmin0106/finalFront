@@ -6,7 +6,7 @@ import {  TfiAnnouncement } from "react-icons/tfi";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 
-function CsMain() {
+function CsMain({cs,setCs}) {
   const [miniList, setMiniList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
   const [noticeList, setNoticeList] = useState([]);
@@ -40,9 +40,9 @@ function CsMain() {
     <div className="csmain">
       <h2 style={{ marginLeft: "10%", marginBottom: "1%", fontSize: "25px", marginTop: "10%" }}>- 고객센터</h2>
       <ul className='ulListcs'>
-        <li><a href="/cs">공지사항</a></li>
-        <li><a href="/questions">자주묻는질문</a></li>
-        <li><a href="/onetoone">1:1문의</a></li>
+        <li><Link to={"/cs"}>공지사항</Link></li>
+        <li><Link to={"/questions"}>자주묻는질문</Link></li>
+        <li><Link to={"/onetoone"}>1:1문의</Link></li>
       </ul>
       <table className="table-fill cstab">
         <thead>

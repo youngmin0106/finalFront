@@ -5,12 +5,12 @@ import ReplyItem from "./ReplyItem";
 import axiosInstance from "../../axiosInstance";
 
 function Reply({ oneDetail, userInfo }) {
+
   const [reply, setReply] = useState({
     content: "",
-    // memberid: userInfo.id, // 로그인한 사용자의 ID를 사용
-    oneid: oneDetail.id,
+    member : userInfo, // 로그인한 사용자의 ID를 사용
+    oneid: oneDetail.no
   });
-
   // 댓글 목록 상태 추가
   const [commentList, setCommentList] = useState([]);
 

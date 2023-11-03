@@ -4,17 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 import { useState } from "react";
 
-function WriteNotice(){
 
-  const [notice,setNotice] = useState({
-    title : '',
-    content : ''
- 
-  });
+function WriteNotice({userInfo ,cs , setCs}){
+  
+  
   const navigate = useNavigate();
+  
   const changeHandler = (e) =>{
-    setNotice({
-      ...notice,
+    setCs({
+      ...cs,
       [e.target.name] : e.target.value 
     })
   }
@@ -22,7 +20,7 @@ function WriteNotice(){
     <div className="write">
       <div className="title-input">
         <span className="titlespan">제목</span>
-        <input className="writetitle" type="text" name="title" onChange={changeHandler} />
+        <input className="writetitle" type="text" name="title" onChange={changeHandler}/>
       </div>
       <br />
 
@@ -38,9 +36,10 @@ function WriteNotice(){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/notice',notice)
+          axiosInstance.post('/notice',cs)
           .then(response=>{
               alert(response.data);
+             
               navigate('/cs');
           }).catch(error=>{
               console.log(error);

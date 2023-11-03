@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "../../axiosInstance";
 import PaginationComponent from "../../component/PaginationComponent";
 import Search from "../../component/Search";
+import { Link } from "react-router-dom";
 
 
 
@@ -49,13 +50,13 @@ function Onetoone() {
       <ul className="ulList">
         <h2 style={{ fontSize: "25px" }}>- 1:1문의</h2>
         <li>
-          <a href="/cs">공지사항</a>
+          <Link to={"/cs"}>공지사항</Link>
         </li>
         <li>
-          <a href="/questions">자주묻는질문</a>
+          <Link to={"/questions"}>자주묻는질문</Link>
         </li>
         <li>
-          <a href="/onetoone">1:1문의</a>
+          <Link to={"/onetoone"}>1:1문의</Link>
         </li>
       </ul>
 
