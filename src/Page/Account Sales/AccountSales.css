@@ -1,0 +1,89 @@
+
+.AccountSales {
+  margin: auto;
+}
+
+.AccountSales .title, .AccountSales .insertbtn {
+  text-align: center;
+}
+.AccountSales h1 {
+  margin-bottom: 50px;
+}
+
+.AccountSales tr, .AccountSales th, .AccountSales td {
+  box-shadow: 1px 1px 3px 0.1px rgb(221, 221, 221);
+}
+
+.AccountSales .priceInput > input[placeholder] {
+  text-align: right;
+}
+
+.AccountSales input, .AccountSales textarea {
+  outline: none;
+}
+
+.AccountSales table {
+  width: 50%;
+  margin: auto;
+}
+
+.AccountSales tr {
+  height: 80px;
+
+}
+
+.AccountSales th {
+  border-top: 2px solid #519D9E;
+  width: 120px;
+  text-align: center;
+}
+.AccountSales td {
+ padding: 5px 0 5px 10px;
+}
+
+.AccountSales input {
+  width: 300px;
+  height: 35px;
+ 
+}
+
+.AccountSales input, .AccountSales textarea {
+  border: none;
+  padding: 5px;
+}
+
+.AccountSales textarea {
+  width: 700px;
+  height: 300px;
+}
+
+.AccountSales select {
+  width: 150px;
+  height: 25px;
+  border: none;
+}
+
+.AccountSales .notice {
+  margin: 50px auto;
+  width: 820px;
+}
+
+.AccountSales .notice ol {
+  margin-top: 10px;
+}
+
+.AccountSales .notice li {
+  color: rgb(99, 98, 98);
+}
+
+.AccountSales button {
+  border: none;
+  width: 120px;
+  height: 45px;
+  font-weight: bolder;
+  background-color: #9DC8C8;
+  color: #3B4E32;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
