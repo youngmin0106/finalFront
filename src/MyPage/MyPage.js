@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 function MyPage({ point, userInfo }) {
   
   console.log(userInfo.mileage);
-
   
+
   const number = "" + userInfo.mileage;
   const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
@@ -59,7 +59,7 @@ function MyPage({ point, userInfo }) {
     {     
           userInfo.transactionPoints < 301 && (
           <h3 style={{ fontSize: "20px" }}>
-            <span style={{ fontWeight: "bold" }}>{getTierValue()}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!
+            <span style={{ fontWeight: "bold" }}>{getTierValue()}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다! {userInfo.username}
           </h3>
         )}
       <img src={tier3} className='showTier' style={{border : "0.5px solid #eee", borderTop : "2px solid #519D9E", borderRadius : "5px", display : "none"}} alt="티어"></img>

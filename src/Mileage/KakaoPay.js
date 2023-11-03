@@ -64,12 +64,12 @@ const KakaoPay = ({ userInfo, setUserInfo }) => {
         console.log(userInfo)
         console.log(totalMoney)
         console.log(data)
-        setUserInfo({ ...userInfo, mileage: totalMoney });
         if (rsp.paid_amount === data.response.amount) {
-          axiosInstance.post('/payCultureland', userInfo)
-            .then(response => {
-              alert(response.data);
-              console.log("마일리지 충전 완료");
+          axiosInstance.post('/payCultureland', {...userInfo, mileage : totalMoney})
+          .then(response => {
+            alert(response.data);
+            console.log("마일리지 충전 완료");
+            setUserInfo({ ...userInfo, mileage: totalMoney });
               navigate('/mypage');
             }).catch(error => {
               console.log(error);
