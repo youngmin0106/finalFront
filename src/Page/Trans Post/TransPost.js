@@ -16,7 +16,6 @@ function TransPost({ isLoading, setIsLoading }) {
   const [selectedGame, setSelectedGame] = useState('ServerSelect');
   const [isCheck, setIsCheck] = useState(false);
 
-
   const changeHandler = (e) => {
     setSearch({
       ...search,
@@ -24,7 +23,6 @@ function TransPost({ isLoading, setIsLoading }) {
     })
   }
 
-  
   const selectGame = (gameId) => {
     setSelectedGame(gameId);
     setSearch({

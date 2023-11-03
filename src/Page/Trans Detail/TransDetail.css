@@ -17,8 +17,8 @@
 }
 
 .TransDetail .gradeImg {
-  height: 130px;
-  width: 160px;
+  /* height: 130px; */
+  width: 100px;
   margin: 10px auto 0 auto;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .TransDetail tr {
-  height: 75px;
+  height: 70px;
 
 }
 

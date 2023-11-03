@@ -6,7 +6,7 @@ import server from "../../mockData/server";
 import { useNavigate } from "react-router-dom";
 
 // 계정 판매(등록) 페이지
-function AccountSales( {userInfo} ) {
+function AccountSales( {trans, setTrans} ) {
   const navigate = useNavigate();
 
   const [selectedOption, setSelectedOption] = useState('ServerSelect');  // 게임서버 담는 state
@@ -16,15 +16,6 @@ function AccountSales( {userInfo} ) {
     setSelectedOption(selectedValue);
     changeHandler(e); // selectedOption은 체인지될때마다 바뀌지않고 초기값으로 보이기 때문에 server도 바뀔때마다 바꿔달라는 핸들러 넣음
   };
-
-  const [trans, setTrans] = useState({
-    price: '',
-    game: '',
-    server: '',
-    title: '',
-    content: '',
-    memberid: userInfo.username  //userInfo.username -> 이게 자꾸 null로 뜸 해결해야함 ~!~!~!~!~!~!~!~!~!
-  });
 
   const changeHandler = (e) => {
     setTrans({
