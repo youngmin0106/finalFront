@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function DeleteInfo( {point, userInfo} ) {
+function DeleteInfo( {userInfo} ) {
 
   const [show, setShow] = useState(false);
   const target = useRef(null);
@@ -23,7 +23,7 @@ function DeleteInfo( {point, userInfo} ) {
   return (
     
     <div className="deleteInfo">
-      <MyPageBar point={point} userInfo={userInfo} ></MyPageBar>
+      <MyPageBar userInfo={userInfo} ></MyPageBar>
 
       <div className="main">
       <h3>회원탈퇴</h3>
@@ -73,9 +73,7 @@ function DeleteInfo( {point, userInfo} ) {
       </Overlay>
       &nbsp;
       <Button onClick={() => {
-        axiosInstance.post('/unregister', {
-          id : 'test2'
-        }) // 로그인에서 구현한 정보 추가해야함, MemberController
+        axiosInstance.post('/unregister', userInfo) // 로그인에서 구현한 정보 추가해야함, MemberController
         .then(response => {
           alert("회원탈퇴 완료");
           navigate('/');

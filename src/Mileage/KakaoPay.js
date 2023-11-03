@@ -5,7 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import './Toss.css';
 import { useNavigate } from 'react-router-dom';
 
-const KakaoPay = ( {userInfo, setUserInfo} ) => {
+const KakaoPay = ({ userInfo, setUserInfo }) => {
 
   useEffect(() => {
     const jquery = document.createElement("script");
@@ -19,15 +19,15 @@ const KakaoPay = ( {userInfo, setUserInfo} ) => {
       document.head.removeChild(iamport);
     };
   }, []);
-  
+
   const tdStyle = {
-    padding: '10px', 
-    fontWeight : 'bold'
+    padding: '10px',
+    fontWeight: 'bold'
   };
 
   const thStyle = {
-    padding : '10px',
-    fontWeight : 100
+    padding: '10px',
+    fontWeight: 100
   };
 
   const [money, setMoney] = useState(userInfo.mileage);
@@ -43,7 +43,6 @@ const KakaoPay = ( {userInfo, setUserInfo} ) => {
     const totalMoney = oriMoney + chargeMoney;
 
     setMoney(totalMoney);
-    console.log(totalMoney);
 
     const { IMP } = window;
     IMP.init('imp43772371');
@@ -62,14 +61,16 @@ const KakaoPay = ( {userInfo, setUserInfo} ) => {
     }, async (rsp) => {
       try {
         const { data } = await axios.post('http://localhost:8282/verifyIamport/' + rsp.imp_uid);
+        console.log(userInfo)
+        console.log(totalMoney)
         console.log(data)
+        setUserInfo({ ...userInfo, mileage: totalMoney });
         if (rsp.paid_amount === data.response.amount) {
-          axiosInstance.post('/payCultureland', {id : "test2" , userInfo:userInfo, mileage: totalMoney})
-          .then(response => {
+          axiosInstance.post('/payCultureland', userInfo)
+            .then(response => {
               alert(response.data);
               console.log("마일리지 충전 완료");
-              setUserInfo({...userInfo, mileage : totalMoney});
-              navigate('/');
+              navigate('/mypage');
             }).catch(error => {
               console.log(error);
             });
@@ -115,14 +116,19 @@ const KakaoPay = ( {userInfo, setUserInfo} ) => {
       <table>
         <tbody>
           <tr>
+            <td style={tdStyle}>보유중인 마일리지</td>
+            <th style={thStyle}>{userInfo.mileage}원</th>
+          </tr>
+
+          <tr>
             <td style={tdStyle}>충전신청금액</td>
-            <th style={thStyle}><Form.Control type="text" className="mileage" placeholder="1,000원 이상 결제가능"/></th>
+            <th style={thStyle}><Form.Control type="text" className="mileage" placeholder="1,000원 이상 결제가능" /></th>
           </tr>
         </tbody>
       </table>
       <hr></hr>
-      <div style={{textAlign : "center"}}>
-      <Button className="payReq" onClick={requestPay}>충전신청</Button>
+      <div style={{ textAlign: "center" }}>
+        <Button className="payReq" onClick={requestPay}>충전신청</Button>
       </div>
     </div>
   );

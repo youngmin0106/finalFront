@@ -32,7 +32,7 @@ function ListPages( {list, pageType, point, userInfo, testTrans} ) {
       <MyPageBar point={point} userInfo={userInfo}></MyPageBar>
     
       <div className="main">
-      <h6 style={{fontWeight : "bold"}}>{userInfo.id}님의 {content} 물품 (전체 : $개)</h6>
+      <h6 style={{fontWeight : "bold"}}>{userInfo.username}님의 {content} 물품 (전체 : $개)</h6>
       <table>
 
         <tbody style={{border : "0.5px solid #eee", borderTop : "0.5px solid #519D9E"}}>
@@ -46,11 +46,11 @@ function ListPages( {list, pageType, point, userInfo, testTrans} ) {
         {
           <tfoot style={{textAlign: "center"}}>
           {testTrans.map((testTrans, index) => (
-            <tr key={index} style={{paddingTop: "20px"}}>
+            <tr key={index} style={{paddingTop: "20px", borderBottom : "0.5px solid #eee"}}>
               <td style={{paddingTop: "20px"}}>
                 <span style={{fontWeight : "bold"}}><a href="/testTrans">{testTrans.title}</a></span><br /> {/* 판매 제목 */}
                 {testTrans.date} <br /> {/* 판매 시간 */}
-                판매자: {userInfo.id} &nbsp; 연락처: {userInfo.phone}
+                판매자: {userInfo.username} &nbsp; 연락처: {userInfo.phone}
               </td>
               <td>
                 <span style={{color: "blue", fontWeight: "bold"}}>{testTrans.price}</span>원

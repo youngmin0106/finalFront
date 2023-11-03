@@ -115,6 +115,11 @@ const Payco = ( {userInfo, setUserInfo} ) => {
       <table>
         <tbody>
           <tr>
+            <td style={tdStyle}>보유중인 마일리지</td>
+            <th style={thStyle}>{userInfo.mileage}원</th>
+          </tr>
+
+          <tr>
             <td style={tdStyle}>충전신청금액</td>
             <th style={thStyle}><Form.Control type="text" className="mileage" placeholder="1,000원 이상 결제가능"/></th>
           </tr>

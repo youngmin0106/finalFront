@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 
-function KakaoLogin({setUserInfo}) {
+function KakaoLogin({setUserInfo, userInfo}) {
   const URL = window.location.href;
   const match = /code=([^&]+)/.exec(URL);
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ function KakaoLogin({setUserInfo}) {
           sessionStorage.setItem('jwt', jwt);
           setUserInfo(response.data.member[0]);
           console.log(response.data.member[0]);
+          console.log(userInfo);
           navigate('/mypage');
         }
         

@@ -1,9 +1,9 @@
 import { Button } from 'react-bootstrap';
 import './MyPage.css';
-import tier from './tier.png';
 import tier3 from './tier3.png';
 import MyPageBar from './MyPageBar';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -53,14 +53,13 @@ function MyPage({ point, userInfo }) {
     <div className='myPage'>
       <div className='font'>
     
-    <MyPageBar point={point} userInfo={userInfo}></MyPageBar>
+    <MyPageBar userInfo={userInfo}></MyPageBar>
 
-    {/* <Button onClick={testLogin}>임시 로그인</Button> */}
   <div className="main">
     {     
           userInfo.transactionPoints < 301 && (
           <h3 style={{ fontSize: "20px" }}>
-            <span style={{ fontWeight: "bold" }}>{getTierValue(point)}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!
+            <span style={{ fontWeight: "bold" }}>{getTierValue()}</span> 등급까지 {nextTier}건의 거래완료가 남았습니다!
           </h3>
         )}
       <img src={tier3} className='showTier' style={{border : "0.5px solid #eee", borderTop : "2px solid #519D9E", borderRadius : "5px", display : "none"}} alt="티어"></img>
@@ -75,7 +74,7 @@ function MyPage({ point, userInfo }) {
       <div>~</div>
       <div>내 보유 마일리지</div>
       <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2} 원</div>
-      <a href='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</a>
+      <Link to='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</Link>
     </td>
 
   {/* 나중에 구현 할수도 있음 (게시글 즐겨찾기) */}

@@ -41,7 +41,7 @@ function MyPageBar( { point, userInfo } ) {
 
   return (
     <div className='myPageBar'>
-      <h2 style={{marginLeft : "10%", marginBottom : "2%", fontSize : "25px"}}><a href='/mypage'>- 마이페이지</a></h2>
+      <h2 style={{marginLeft : "10%", marginBottom : "2%", fontSize : "25px"}}><Link to = "/mypage">- 마이페이지</Link></h2>
 
 
       <ul className='ulList' style={{borderTop : "2px solid #519D9E"}}>
