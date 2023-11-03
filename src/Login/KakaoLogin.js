@@ -2,7 +2,9 @@
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 
-function KakaoLogin({setUserInfo, userInfo , setCs}) {
+
+function KakaoLogin({setIsAuth,setUserInfo, setTrans,setCs}) {
+
   const URL = window.location.href;
   const match = /code=([^&]+)/.exec(URL);
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ function KakaoLogin({setUserInfo, userInfo , setCs}) {
         console.log(response);
         setUserInfo(response.data.member[0]);
         setCs({member:response.data.member[0]});
+        setTrans({member:response.data.member[0]});
         if(jwt) {
           sessionStorage.setItem('jwt', jwt);
           navigate('/');
