@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 
-function KakaoLogin({setIsAuth,setUserInfo, setTrans, userInfo}) {
+function KakaoLogin({setIsAuth, setUserInfo, setTrans, userInfo}) {
 
   const URL = window.location.href;
   const match = /code=([^&]+)/.exec(URL);

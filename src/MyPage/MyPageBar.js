@@ -73,6 +73,11 @@ function MyPageBar( { point, userInfo } ) {
         }}>나의 정보 관리</a></li>
         <li><Link to ="/updateInfo">회원정보 수정</Link></li>
         <li><Link to ="/deleteInfo">회원 탈퇴</Link></li>
+        <li><a className='job' href="1" onClick={(e) => {
+          e.preventDefault(); // 임시 헤더용 li 태그
+        }}>임시 이동 li</a></li>
+        <li><Link to="/transPost">거래페이지</Link></li>
+        <li><Link to="/insertTrans">판매등록</Link></li>
       </ul>
     </div>
   );

@@ -61,7 +61,7 @@ function Cultureland({ userInfo, setUserInfo }) {
     console.log("이름 :" + userInfo.username);
     console.log("마일리지 : " + money);
 
-    axiosInstance.post('/payCultureland', userInfo)
+    axiosInstance.post('/payCultureland', {...userInfo, mileage : totalMoney})
       .then(response => {
         alert(response.data);
         console.log("마일리지 충전 완료");

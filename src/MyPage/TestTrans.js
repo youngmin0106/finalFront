@@ -3,10 +3,11 @@ import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 import './TestTrans.css';
 
-function TestTrans( {userInfo, testTrans, setTestTrans } ) {
+function TestTrans( {userInfo, testTrans, setTestTrans, trans } ) {
 
   // 인계
   console.log(testTrans[0].transId)
+  console.log(trans.sellerid)
 
   const navigate = useNavigate();
 
@@ -42,9 +43,9 @@ function TestTrans( {userInfo, testTrans, setTestTrans } ) {
   }
 
   const testButton = () => {
-    if (userInfo.id === testTrans[0].buyerId && testTrans[0].sellerChk === 'true') {
+    if (userInfo.username === testTrans[0].buyerId && testTrans[0].sellerChk === 'true') {
       return <Button onClick={takeOverBtn}>인수</Button>
-    } else if (userInfo.id === testTrans[0].sellerId) {
+    } else if (userInfo.username === trans.sellerId) {
       return <Button onClick={turnOverBtn}>인계</Button>
     } else {
       return null;
@@ -57,13 +58,13 @@ function TestTrans( {userInfo, testTrans, setTestTrans } ) {
         <thead>
           <tr>
             <th className="testTh">물품제목</th>
-            <td className="testTd" colSpan={3}>{testTrans[0].title}</td>
+            <td className="testTd" colSpan={3}>{trans.title}</td>
             <td></td>
           </tr>
 
           <tr>
             <th className="testTh">게임</th>
-            <td className="testTd">{testTrans[0].game}</td>
+            <td className="testTd">{trans.game}</td>
             <th className="testTh" style={{borderLeft : "1px solid #eee"}}>서버</th>
             <td className="testTd">{testTrans[0].server}</td>
           </tr>

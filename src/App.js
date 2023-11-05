@@ -20,6 +20,7 @@ import AccountSales from './Page/Account Sales/AccountSales'
 import TransPost from './Page/Trans Post/TransPost'
 import TransDetail from './Page/Trans Detail/TransDetail'
 import Main from './Page/Main/Main';
+import axiosInstance from './axiosInstance';
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -66,9 +67,9 @@ const testBoardList = [
     game: '메이플스토리',
     server: '루나',
     phone: '010-1234-5678',
-    buyerId: 'test4',
-    sellerId: 'test3',
-    transId: 5,
+    buyerId: 'test1234',
+    sellerId: '(k)celpic_@naver.com',
+    transId: 1,
     sellerChk: 'true'
   },
   {
@@ -137,23 +138,31 @@ function App() {
     <div>
 
       <Routes>
+
+        {/*  */}
         <Route path="/" element={<Main />} />
         <Route path="/member-type" element={<MemberType />} />
         <Route path="/member-agree" element={<MemberAgree />} />
         <Route path="/member-sign" element={<MemberSignup />} />
+
+        {/* 회원가입, 로그인, 카카오 로그인, 구글 로그인 */}
+        <Route path="/signup-success" element={<SignupSuccess />} />
         <Route path="/login-page" element={<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} />} />
         <Route path='/oauth/kakao' element={<KakaoLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
         <Route path='/oauth/google' element={<GoogleLogin />} />
+
+        {/* 게시글작성, 게시글 목록, 게시글 상세정보 */}
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} />} />
+
+        {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} />}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
-        <Route path="/signup-success" element={<SignupSuccess />} />
-        <Route path='/testTrans' element={<TestTrans userInfo={userInfo} testTrans={testTrans} setTestTrans={setTestTrans}></TestTrans>}></Route>
+        <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} setTestTrans={setTestTrans}></TestTrans>}></Route>
 
       </Routes>
     </div>
