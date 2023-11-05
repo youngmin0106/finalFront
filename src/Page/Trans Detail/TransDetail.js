@@ -17,6 +17,13 @@ const TransDetail = ({ trans, userInfo }) => {
     price: ''
   });
 
+  const [startTransInfo, setStartTransInfo] = useState({
+    sellerId : "",// 게시글 올린 사람 name
+    buyerId : userInfo.username,  //구매하려는 사용자 아이디 (현재 로그인 사용자)
+    postId : id // 원래 게시글 번호
+  })
+
+
  
   const changeHandler = (e) => {
     setTransDetail({
@@ -29,23 +36,24 @@ const TransDetail = ({ trans, userInfo }) => {
     axiosInstance.get(`/transDetail/${id}`)
       .then((response) => {
         setTransDetail(response.data);
+        setStartTransInfo(startTransInfo => ({
+          ...startTransInfo,
+          ...response.data
+        }));
+
       }).catch((error) => {
         console.log(error);
       })
   }, [])
 
-  const [startTransInfo, setStartTransInfo] = useState({
-    sellerId : "(k)celpic_@naver.com",// 게시글 올린 사람 name
-    buyerId : userInfo.username,  //구매하려는 사용자 아이디 (현재 로그인 사용자)
-    postId : id // 원래 게시글 번호
-  })
 
 
   const startTransHandler = () => {
-    axiosInstance.post('/startTrans', startTransInfo)
+    axiosInstance.post('/startTrans', {startTransInfo : startTransInfo, sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id})
     .then(response => {
       alert(response.data);
       console.log('구매요청 완료');
+      console.log(startTransInfo);
       navigate('/testTrans');
     }).catch(error => {
       console.log(error);
