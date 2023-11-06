@@ -14,7 +14,6 @@ function NoticeDetail({userInfo,setAuth ,cs}){
 
       navigate(`/notice/${no}/update`);
   
-
   }
 
   const backbtn=()=>{

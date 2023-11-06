@@ -67,7 +67,8 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
                       </Link>
                     </th>
                     {/* 나중에  <td>{data.member.username}</td> 로 고치셈 */}
-                    {data.member  ? <td>{data.member.username}</td> : <td></td>}  
+                    {/* {data.member  ? <td>{data.member.username}</td> : <td></td>}   */}
+                    <td>{data.member.username}</td>
                     <td>{data.createDate}</td>
                     <td>{data.cnt}</td>
                   </tr>

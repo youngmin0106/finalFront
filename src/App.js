@@ -33,7 +33,7 @@ import CsList from './CsPage/CsList';
 
 function App() {
  // 로딩중
- const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
 
   const [userInfo, setUserInfo] = useState({username:'', name:''}); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
@@ -54,7 +54,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} />
         <Routes>
 
           <Route path="/" element={<Main/>} />
@@ -81,13 +81,14 @@ function App() {
           <Route path="/member-sign" element={<MemberSignup />} />
           <Route path="/signup-success" element={<SignupSuccess />} />
 
-          <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo}/>} />
+          <Route path="/login-page" element = {<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans}/>} />
           <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans}/>} />
-          <Route path='/oauth/google' element={<GoogleLogin />} />
+          <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
           
           <Route path='/idserch' element={<IdSerch />} />
-        
+
         </Routes>
+        
       </div>
 
 

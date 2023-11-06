@@ -16,7 +16,7 @@ import { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
-function Login({ setUserInfo, setIsAuth }) {
+function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
 
   const defaultTheme = createTheme();
   const navigate = useNavigate();
@@ -41,9 +41,12 @@ function Login({ setUserInfo, setIsAuth }) {
     axiosInstance.post('/login', loginData)
       .then((response) => {
         console.log("로그인 성공");
-        localStorage.setItem('id', loginData.username);
-        setUserInfo(loginData.username);
+        localStorage.setItem(loginData.username);
+        setUserInfo(response.data.username);
+        setCs(loginData.username);
+        setTrans(response.data);
         setIsAuth(true);
+        console.log(isAuth)
         navigate("/");
       })
       .catch((error) => {
@@ -91,11 +94,13 @@ function Login({ setUserInfo, setIsAuth }) {
               <a href="#!" onClick={() => {
                 window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao`;
               }}>
-                <img src={kakaoicon} alt="kakaoLoginImg"></img></a>
+              <img src={kakaoicon} alt="kakaoLoginImg"></img></a>
 
               <a href="#!" onClick={() => {
                 window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=677438077141-5kscmapicvkvh641v83fooil8lj4661s.apps.googleusercontent.com&redirect_uri=http://localhost:3000/oauth/google&response_type=token&scope=openid%20email%20profile`;
-              }}><img src={googleico} alt="googleLoginImg"></img></a>
+              }}>
+              <img src={googleico} alt="googleLoginImg"></img></a>
+
               <a href="#!"><img src={navericon} alt="naverLoginImg"></img></a>
             </div>
 

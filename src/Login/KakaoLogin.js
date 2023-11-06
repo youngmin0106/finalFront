@@ -17,8 +17,9 @@ function KakaoLogin({setIsAuth,setUserInfo, setTrans,setCs}) {
         const jwt = response.headers.authorization;
         console.log(response);
         setUserInfo(response.data.member[0]);
-        setCs({member:response.data.member[0]});
+        setCs(response.data.member[0]);
         setTrans({member:response.data.member[0]});
+        setIsAuth(true);
         if(jwt) {
           sessionStorage.setItem('jwt', jwt);
           navigate('/');

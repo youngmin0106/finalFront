@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosInstance";
 
-function GoogleLogin() {
+function GoogleLogin({ setCs, setIsAuth, setUserInfo, setTrans }) {
   const URL = window.location.href;
   const match = /access_token=([^&]+)/.exec(URL);
   const navigate = useNavigate();
@@ -12,9 +12,12 @@ function GoogleLogin() {
     axiosInstance.post('/oauth/google', {accessToken : accessToken})
       .then(response => {
         const jwt = response.headers.authorization;
-        
+        setCs(response.data.member[0]);
+        setUserInfo(response.data.member[0]);
+        setTrans({member:response.data.member[0]});
         if(jwt){
           sessionStorage.setItem('jwt', jwt);
+          setIsAuth(true);
           navigate('/');
         }
 
