@@ -1,4 +1,5 @@
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 function Header() {
 	return (
@@ -13,12 +14,12 @@ function Header() {
 					</div>
 					<div className="fl_right">
 						<ul className="topnav">
-							<li><a href="/csmain"><i className="fa fa-lg fa-home"></i>고객센터</a></li>
-							<li><a href="#">마이페이지</a></li>
-							<li><a href="#">물품등록</a></li>
-							<li><a href="#">채팅내역</a></li>
-							<li><a href="#">로그인</a></li>
-							<li><a href="#">회원가입</a></li>
+							<li><Link to='/csList'><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
+							<li><Link to='/mypage'>마이페이지</Link></li>
+							<li><Link to='/insertTrans'>물품등록</Link></li>
+							<li><Link to=''>채팅내역</Link></li>
+							<li><Link to='/login-page'>로그인</Link></li>
+							<li><Link to='/member-type'>회원가입</Link></li>
 						</ul>
 					</div>
 					<div>
@@ -35,7 +36,7 @@ function Header() {
 							<ul>
 								<li className='one'><a href="/" >판매등록</a></li>
 							
-								<li className='one'><a href="#">캐릭터거래</a></li>
+								<li className='one'><Link to={"/transPost"}>계정거래</Link></li>
 						
 								<li className='one'><a href="left-sidebar.html">마이페이지</a></li>
 							
