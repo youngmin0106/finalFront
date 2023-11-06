@@ -4,6 +4,7 @@ function Main () {
   return(
     <>
       <Link to={'/insertTrans'} >dd</Link>
+      <div>zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</div>
     </>
   )
 }
