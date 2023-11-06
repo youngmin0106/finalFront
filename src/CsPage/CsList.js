@@ -2,7 +2,7 @@ import CsMain from "./Notice/NoticeMain";
 import OnetoOneMain from "./OnetoOne/OnetoOneMain";
 import QuestionMain from "./Question/QuestionMain";
 
-function Main({cs,setCs}){
+function CsList({cs,setCs}){
   return(
     <div>
     <CsMain cs={cs} setCs={setCs} />
@@ -12,4 +12,4 @@ function Main({cs,setCs}){
   );
 }
 
-export default Main;
+export default CsList;

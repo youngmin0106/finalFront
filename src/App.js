@@ -14,21 +14,19 @@ import QuestionUpdate from './CsPage/Question/QuestionUpdate';
 import WriteOnetoOne from './CsPage/OnetoOne/WriteOnetoOne';
 import OnetoOneUpdate from './CsPage/OnetoOne/OnetoOneUpdate';
 import OnetoOneDetail from './CsPage/OnetoOne/OnetoOneDetail';
-import Main from './CsPage/Main';
+
 import MemberType from './SignUp/MemberType';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MemberAgree from './SignUp/MemberAgree';
 import MemberSignup from './SignUp/MemberSignup';
 import SignupSuccess from './SignUp/SignUpSuccess';
 import Login from './Login/Login';
-import {  useState } from 'react';
 import KakaoLogin from './Login/KakaoLogin';
 import GoogleLogin from './Login/GoogleLogin';
 import AccountSales from './Page/Account Sales/AccountSales'
 import TransPost from './Page/Trans Post/TransPost'
 import TransDetail from './Page/Trans Detail/TransDetail'
-import axiosInstance from './axiosInstance';
-import Main from './Page/Main/Main';
+import CsList from './CsPage/CsList';
 
 function App() {
  // 로딩중
@@ -67,7 +65,7 @@ function App() {
     <div className="App">
       <Header />
         <Routes>
-        <Route path='/main' element={<Main setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/cs' element={<Notice setIsAuth={setIsAuth} userInfo={userInfo} />} />
         <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo}/>} />
         <Route path='/onetoone' element={<Onetoone setIsAuth={setIsAuth} userInfo={userInfo} />} />

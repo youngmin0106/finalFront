@@ -63,11 +63,11 @@ function QuestionDetail({userInfo, cs}){
          cs.member.username == questionDetail.member.username ?
         <Button variant="outline-danger" className="resetbtn" type="reset" 
         onClick={()=>{
-          alert('작성자만 삭제가능합니다.');
+       
           axiosInstance.delete('/questions', {params : {'no':questionDetail.no}})
           .then(response=>{ 
             alert(response.data);
-            navigate('/');
+            navigate('/questions');
           }).catch(error=>{
             console.log(error);
           })}}

@@ -51,7 +51,7 @@ function OnetoOneDetail({ userInfo, cs }) {
           rows="15"
         ></textarea>
       </div>
-      <Reply oneDetail={oneDetail} />
+      {/* <Reply oneDetail={oneDetail} /> */}
       <br />
       <div className="clickbtn">
         {cs.member.username == oneDetail.member.username ?
@@ -59,14 +59,11 @@ function OnetoOneDetail({ userInfo, cs }) {
           :
           <div></div>
         }
-        {cs.member.username === oneDetail.member.username ?
+        {cs.member.username == oneDetail.member.username ?
 
           <Button variant="outline-danger" className="resetbtn" type="reset"
             onClick={() => {
-              if (userInfo.username != oneDetail.no) {
-                alert('작성자만 삭제가능합니다.');
-                return;
-              }
+            
               axiosInstance.delete('/onetoone', { params: { 'no': oneDetail.no } })
                 .then(response => {
                   alert(response.data);

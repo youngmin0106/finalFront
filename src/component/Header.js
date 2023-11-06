@@ -14,12 +14,12 @@ function Header() {
 					</div>
 					<div className="fl_right">
 						<ul className="topnav">
-							<li><Link to={"/main"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
+							<li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
 							<li><Link to={"#"}>마이페이지</Link></li>
-							<li><Link to={"#"}>물품등록</Link></li>
+							<li><Link to={"/insertTrans"}>물품등록</Link></li>
 							<li><Link to={"#"}>채팅내역</Link></li>
-							<li><Link to={"login-page"}>로그인</Link></li>
-							<li><Link to={"#"}>회원가입</Link></li>
+							<li><Link to={"/login-page"}>로그인</Link></li>
+							<li><Link to={"/member-sign"}>회원가입</Link></li>
 						</ul>
 					</div>
 					<div>
@@ -34,9 +34,9 @@ function Header() {
 			<div className='bigheader'>
 					<nav id="nav">
 							<ul>
-								<li className='one'><Link to={"#"} >판매등록</Link></li>
+								<li className='one'><Link to={"/insertTrans"} >판매등록</Link></li>
 							
-								<li className='one'><Link to={"#"}>캐릭터거래</Link></li>
+								<li className='one'><Link to={"/transPost"}>계정거래</Link></li>
 						
 								<li className='one'><Link to={"#"}>마이페이지</Link></li>
 							
