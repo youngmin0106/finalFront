@@ -34,19 +34,22 @@ function App() {
     <div className="App">
         <Routes>
 
-          <Route path="/member-type" element={<MemberType/>} />
           <Route path="/" element={<Main/>} />
+          <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans}/>} />
+          <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
+          <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans}/>} />
+
+          <Route path="/member-type" element={<MemberType/>} />
           <Route path="/member-type" element={<MemberType/>} />
           <Route path="/member-agree" element={<MemberAgree />} />
           <Route path="/member-sign" element={<MemberSignup />} />
           <Route path="/signup-success" element={<SignupSuccess />} />
+
           <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo}/>} />
           <Route path='/oauth/kakao' element={<KakaoLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans}/>} />
           <Route path='/oauth/google' element={<GoogleLogin />} />
+          
           <Route path='/idserch' element={<IdSerch />} />
-          <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans}/>} />
-          <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
-          <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans}/>} />
         
         </Routes>
       </div>
