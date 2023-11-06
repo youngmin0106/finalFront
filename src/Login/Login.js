@@ -44,12 +44,12 @@ function Login( {setUserInfo, setIsAuth, setCs, setTrans} ) {
     .then((response) => {
         const jwt = response.headers.authorization;
         console.log("로그인 성공");
-        console.log(response.data.member[0])
+        console.log(response.data)
         localStorage.setItem('id', loginData.username);
         sessionStorage.setItem('jwt', jwt);
         setUserInfo(response.data.member[0]);
-        setCs(response.data.member[0]);
-        setTrans(response.data.member[0]);
+        setTrans({member : response.data.member[0]});
+        setCs({member : response.data.member[0]});
         setIsAuth(true);
         navigate("/mypage");
       })

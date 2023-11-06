@@ -119,8 +119,16 @@ const testBoardList = [
 
 
 
-
 function App() {
+  const [transDetails, setTransDetails] = useState({
+    id: '',
+    title: '',
+    content: '',
+    game: '',
+    server: '',
+    member: '',
+    price: ''
+  });
   // 로딩중
   const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
@@ -142,28 +150,26 @@ function App() {
     content : '',
     member : userInfo
   })
+
+  const [startTransInfo, setStartTransInfo] = useState({
+    sellerId : "",// 게시글 올린 사람 name
+    buyerId : "",  //구매하려는 사용자 아이디 (현재 로그인 사용자)
+    postId : '' // 원래 게시글 번호
+  })
  
+  console.log(startTransInfo);
 
 
   const [testTrans, setTestTrans] = useState(testBoardList)
 
 
   const [list, setList] = useState(listOption);
-  // useEffect(() => {
-  //   if(isAuth) {
-  //     axiosInstance.get('/userInfo')
-  //       .then(response => {
-  //         setUserInfo(response.data.member[0]);
-  //         console.log(response.data);
-  //         console.log(response.data.member.username);
-  //       }).catch(error => {
-  //         console.log(error);
-  //       })
-  //   }
-  // }, [isAuth])
+
 
   return (
     <div>
+
+        <Header></Header>
 
       <Routes>
 
@@ -175,24 +181,27 @@ function App() {
 
         {/* 회원가입, 로그인, 카카오 로그인, 구글 로그인 */}
         <Route path="/signup-success" element={<SignupSuccess />} />
-        <Route path="/login-page" element={<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setCs={setCs} setTrans={setTrans} />} />
+        <Route path="/login-page" element={<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} setCs={setCs} />} />
         <Route path='/oauth/kakao' element={<KakaoLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} setCs={setCs}/>} />
-        <Route path='/oauth/google' element={<GoogleLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setCs={setCs} setTrans={setTrans}/>} />
+        <Route path='/oauth/google' element={<GoogleLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} setCs={setCs}/>} />
+
+        <Route path='' element={<testTrans trans={trans} userInfo={userInfo}></testTrans>} />
 
         {/* 게시글작성, 게시글 목록, 게시글 상세정보 */}
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
-        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} trans={trans}/>} />
-        <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} />} />
+        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
+        <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} transDetails={transDetails} setTransDetails={setTransDetails} />} />
 
         {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
-        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} />}></Route> {/* 보내주는 값들이 다 다름 */}
+        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} />}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
-        <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} setTestTrans={setTestTrans}></TestTrans>}></Route>
+        <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans}></TestTrans>}></Route>
 
         {/* 헤더, 고객센터 . . */}
+        <Route path='/' element={<Header isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
         <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/cs' element={<Notice setIsAuth={setIsAuth} userInfo={userInfo} />} />
         <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo}/>} />

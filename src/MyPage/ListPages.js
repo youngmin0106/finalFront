@@ -3,9 +3,11 @@ import './ListPages.css';
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import axiosInstance from "../axiosInstance";
 
 
-function ListPages( {list, pageType, point, userInfo, testTrans} ) {
+function ListPages( {list, pageType, point, userInfo, testTrans, trans} ) {
 
   let {id} = useParams();
   let content = '';
@@ -26,6 +28,23 @@ function ListPages( {list, pageType, point, userInfo, testTrans} ) {
   } else if(id === '7') {
     content = list[6].name;
   }
+
+  const [intransList, setIntransList] = useState({
+
+  });
+
+  useEffect(() => {
+
+    axiosInstance.get('/testTrans/', {username : userInfo.username})
+    .then((response) => {
+      console.log(response.data);
+      setIntransList(response.data);
+
+    }).catch((error) => {
+      console.log(error);
+    })
+    
+  }, [])
 
   return (
     <div className="listPages">

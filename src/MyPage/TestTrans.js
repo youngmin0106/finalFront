@@ -3,11 +3,11 @@ import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 import './TestTrans.css';
 
-function TestTrans( {userInfo, testTrans, setTestTrans, trans } ) {
+function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, setStartTransInfo, transDetail } ) {
 
   // 인계
-  console.log(testTrans[0].transId)
-  console.log(trans.sellerid)
+  console.log(userInfo.username);
+  console.log(startTransInfo.sellerId)
 
   const navigate = useNavigate();
 
@@ -43,7 +43,7 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans } ) {
   }
 
   const testButton = () => {
-    if (userInfo.username === testTrans[0].buyerId && testTrans[0].sellerChk === 'true') {
+    if (userInfo.username === startTransInfo.buyerId && startTransInfo.sellerChk === 'true') {
       return <Button onClick={takeOverBtn}>인수</Button>
     } else if (userInfo.username === trans.sellerId) {
       return <Button onClick={turnOverBtn}>인계</Button>
@@ -58,33 +58,33 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans } ) {
         <thead>
           <tr>
             <th className="testTh">물품제목</th>
-            <td className="testTd" colSpan={3}>{trans.title}</td>
+            <td className="testTd" colSpan={3}>{startTransInfo.transDetail.title}</td>
             <td></td>
           </tr>
 
           <tr>
             <th className="testTh">게임</th>
-            <td className="testTd">{trans.game}</td>
+            <td className="testTd">{startTransInfo.transDetail.game}</td>
             <th className="testTh" style={{borderLeft : "1px solid #eee"}}>서버</th>
-            <td className="testTd">{testTrans[0].server}</td>
+            <td className="testTd">{startTransInfo.transDetail.server}</td>
           </tr>
 
           <tr>
             <th className="testTh">거래번호</th>
-            <td className="testTd">{testTrans[0].transId}</td>
+            <td className="testTd">{startTransInfo.postId}</td>
             <th className="testTh" style={{borderLeft : "1px solid #eee"}}>가격</th>
-            <td className="testTd">{testTrans[0].price}</td>
+            <td className="testTd">{startTransInfo.transDetail.price}</td>
           </tr>
 
           <tr>
             <th className="testTh">판매자명</th>
-            <td className="testTd" colSpan={3}>{testTrans[0].name}</td>
+            <td className="testTd" colSpan={3}>{startTransInfo.sellerId}</td>
             <td></td>
           </tr>
 
           <tr>
             <th className="testTh">연락처</th>
-            <td className="testTd" colSpan={3}>{testTrans[0].phone}</td>
+            <td className="testTd" colSpan={3}>{startTransInfo.postId}</td>
             <td></td>
           </tr>
           

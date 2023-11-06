@@ -48,7 +48,7 @@ function MyPageBar( { point, userInfo } ) {
       <ul className='ulList' style={{borderTop : "2px solid #519D9E"}}>
         <br></br>
         <li style={{textAlign : "center"}}>{getTier()}</li>
-        <li style={{textAlign : "center"}}><span style={{fontWeight : "bold"}}>{userInfo.username}</span>님의 등급은</li>
+        <li style={{textAlign : "center"}}><span style={{fontWeight : "bold"}}>{userInfo.name}</span>님의 등급은</li>
         <li style={{textAlign : "center"}}><span style={{fontWeight : "bold"}}>{getTierValue()}</span>({userInfo.transactionPoints}점)입니다</li>
         <br></br>
         <li><a className="job" href="0" onClick={(e) => {
@@ -74,11 +74,6 @@ function MyPageBar( { point, userInfo } ) {
         }}>나의 정보 관리</a></li>
         <li><Link to ="/updateInfo">회원정보 수정</Link></li>
         <li><Link to ="/deleteInfo">회원 탈퇴</Link></li>
-        <li><a className='job' href="1" onClick={(e) => {
-          e.preventDefault(); // 임시 헤더용 li 태그
-        }}>임시 이동 li</a></li>
-        <li><Link to="/transPost">거래페이지</Link></li>
-        <li><Link to="/insertTrans">판매등록</Link></li>
       </ul>
     </div>
   );

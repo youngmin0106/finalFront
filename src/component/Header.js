@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-function Header() {
+function Header({isAuth, setIsAuth}) {
 	return (
 		<div className='headercontainer'>
 			<div className="wrapper row0">
@@ -15,7 +15,7 @@ function Header() {
 					<div className="fl_right">
 						<ul className="topnav">
 							<li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
-							<li><Link to={"#"}>마이페이지</Link></li>
+							<li><Link to={"/mypage"}>마이페이지</Link></li>
 							<li><Link to={"/insertTrans"}>물품등록</Link></li>
 							<li><Link to={"#"}>채팅내역</Link></li>
 							<li><Link to={"/login-page"}>로그인</Link></li>
@@ -38,9 +38,9 @@ function Header() {
 							
 								<li className='one'><Link to={"/transPost"}>계정거래</Link></li>
 						
-								<li className='one'><Link to={"#"}>마이페이지</Link></li>
+								<li className='one'><Link to={"/mypage"}>마이페이지</Link></li>
 							
-								<li className='one'><Link to={"#"}>마일리지</Link></li>
+								<li className='one'><Link to={"/mileage"}>마일리지</Link></li>
 							
 								<li className='two'><Link to={"#"}>채팅</Link></li>
 							</ul>

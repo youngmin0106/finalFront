@@ -15,16 +15,14 @@ function KakaoLogin( {setIsAuth, setUserInfo, setTrans, userInfo, setCs} ) {
     axiosInstance.post('/oauth/kakao', {code:code})
       .then(response => {
         const jwt = response.headers.authorization;
-        console.log(response);
+        console.log(response.data.member[0]);
         setUserInfo(response.data.member[0]);
-        setTrans(response.data.member[0]);
-        setCs(response.data.member[0]);
+        setTrans({member : response.data.member[0]});
+        setCs({member : response.data.member[0]});
 
         if(jwt) {
           sessionStorage.setItem('jwt', jwt);
-          setUserInfo(response.data.member[0]);
           console.log(response.data.member[0]);
-          console.log(userInfo);
           navigate('/mypage');
         }
         
