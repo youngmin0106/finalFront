@@ -36,9 +36,6 @@ const TransDetail = ({ trans }) => {
   const isDisabled = trans.member.username !== transDetail.member.username;
 
   return (
-    // 로그인한 사람과 작성자가 같지 않으면 disabled 조건 걸기
-    // 같으면 수정삭제 버튼 보이게 하기???
-
     <div className="TransDetail">
       <div className='firstLayout'>
         <Card style={{ width: '15rem', height: '212px' }}>
@@ -55,7 +52,7 @@ const TransDetail = ({ trans }) => {
           <tbody>
             <tr>
               <th>제목</th>
-              <td><input type="text" defaultValue={transDetail.title} className='tableLeft' name='title' onChange={changeHandler} disabled={isDisabled}/></td>
+              <td><input type="text" defaultValue={transDetail.title} className='tableLeft' name='title' onChange={changeHandler} disabled={isDisabled} /></td>
             </tr>
             <tr>
               <th>게임</th>
@@ -70,33 +67,33 @@ const TransDetail = ({ trans }) => {
       </div>
       {
         trans.member.username === transDetail.member.username ?
-        <>
-          <div className='write'>
-            <div className='writeBtn'>
-              <button className='updateBtn' onClick={() => {
-                axiosInstance.put('/updateTrans', transDetail)
-                  .then(response => {
-                    alert(response.data);
-                    navigate('/transPost');
-                  }).catch(error => {
-                    console(error);
-                    console(transDetail);
-                  })
-              }}>수정</button>
-              <button className='deleteBtn' onClick={() => {
-                axiosInstance.delete(`/deleteTrans/${id}`)
-                  .then(response => {
-                    alert(response.data);
-                    navigate('/transPost');
-                  }).catch(error => {
-                    console.log(error);
-                  })
-              }}>삭제</button>
+          <>
+            <div className='write'>
+              <div className='writeBtn'>
+                <button className='updateBtn' onClick={() => {
+                  axiosInstance.put('/updateTrans', transDetail)
+                    .then(response => {
+                      alert(response.data);
+                      navigate('/transPost');
+                    }).catch(error => {
+                      console(error);
+                      console(transDetail);
+                    })
+                }}>수정</button>
+                <button className='deleteBtn' onClick={() => {
+                  axiosInstance.delete(`/deleteTrans/${id}`)
+                    .then(response => {
+                      alert(response.data);
+                      navigate('/transPost');
+                    }).catch(error => {
+                      console.log(error);
+                    })
+                }}>삭제</button>
+              </div>
+              <p>* 수정하시고 수정버튼 누르시면 됩니다.</p>
             </div>
-            <p>* 수정하시고 수정버튼 누르시면 됩니다.</p>
-          </div>
-        </>
-        : <div />
+          </>
+          : <div />
       }
       <div className='secondLayout'>
         <h2> · 상세내용</h2>
@@ -106,9 +103,9 @@ const TransDetail = ({ trans }) => {
       </div>
       <div className='thirdLayout'>
         <h2>결제금액</h2>
-        <span>총 결제금액 
-          <input type='text' defaultValue={transDetail.price.toLocaleString('ko-KR')} className='totalPrice' name='price' onChange={changeHandler} disabled={isDisabled}/>원
-          </span>
+        <span>총 결제금액
+          <input type='text' defaultValue={transDetail.price.toLocaleString('ko-KR')} className='totalPrice' name='price' onChange={changeHandler} disabled={isDisabled} />원
+        </span>
       </div>
       <div className='detailBtn'>
         <button className='cancel' onClick={() => {

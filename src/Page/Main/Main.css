@@ -1,0 +1,31 @@
+.Main {
+  /* border: 1px solid red; */
+  width: 67%;
+  margin: auto;
+}
+
+.Main .carouselImg {
+  /* border: 1px solid black; */
+  width: 100%;
+  margin-top: 15px;
+}
+
+.Main .thirdLayout {
+  /* border: 1px solid black; */
+  display: flex;
+  margin-top: 15px;
+}
+
+.Main .thirdItem {
+ margin: 5px 10px;
+ width: 50%;
+}
+
+.Main .cs {
+text-align: center;
+}
+
+.Main h2 {
+ color: #519D9E;
+ margin: 50px 0;
+}
