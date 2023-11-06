@@ -175,13 +175,13 @@ function App() {
 
         {/* 회원가입, 로그인, 카카오 로그인, 구글 로그인 */}
         <Route path="/signup-success" element={<SignupSuccess />} />
-        <Route path="/login-page" element={<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} />} />
-        <Route path='/oauth/kakao' element={<KakaoLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
-        <Route path='/oauth/google' element={<GoogleLogin />} />
+        <Route path="/login-page" element={<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setCs={setCs} setTrans={setTrans} />} />
+        <Route path='/oauth/kakao' element={<KakaoLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} setCs={setCs}/>} />
+        <Route path='/oauth/google' element={<GoogleLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setCs={setCs} setTrans={setTrans}/>} />
 
         {/* 게시글작성, 게시글 목록, 게시글 상세정보 */}
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
-        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
+        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} trans={trans}/>} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} />} />
 
         {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}

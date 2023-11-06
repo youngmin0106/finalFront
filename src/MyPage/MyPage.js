@@ -4,6 +4,7 @@ import tier3 from './tier3.png';
 import MyPageBar from './MyPageBar';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from '../Header';
 
 
 
@@ -51,6 +52,7 @@ function MyPage({ point, userInfo }) {
   
   return (
     <div className='myPage'>
+      <Header></Header>
       <div className='font'>
     
     <MyPageBar userInfo={userInfo}></MyPageBar>

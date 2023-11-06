@@ -4,7 +4,7 @@ import axiosInstance from '../../axiosInstance';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
-const TransDetail = ({ trans, userInfo }) => {
+const TransDetail = ({ trans }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [transDetail, setTransDetail] = useState({
@@ -17,14 +17,6 @@ const TransDetail = ({ trans, userInfo }) => {
     price: ''
   });
 
-  const [startTransInfo, setStartTransInfo] = useState({
-    sellerId : "",// 게시글 올린 사람 name
-    buyerId : userInfo.username,  //구매하려는 사용자 아이디 (현재 로그인 사용자)
-    postId : id // 원래 게시글 번호
-  })
-
-
- 
   const changeHandler = (e) => {
     setTransDetail({
       ...transDetail,
@@ -36,29 +28,10 @@ const TransDetail = ({ trans, userInfo }) => {
     axiosInstance.get(`/transDetail/${id}`)
       .then((response) => {
         setTransDetail(response.data);
-        setStartTransInfo(startTransInfo => ({
-          ...startTransInfo,
-          ...response.data
-        }));
-
       }).catch((error) => {
         console.log(error);
       })
   }, [])
-
-
-
-  const startTransHandler = () => {
-    axiosInstance.post('/startTrans', {startTransInfo : startTransInfo, sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id})
-    .then(response => {
-      alert(response.data);
-      console.log('구매요청 완료');
-      console.log(startTransInfo);
-      navigate('/testTrans');
-    }).catch(error => {
-      console.log(error);
-    })
-  }
 
   const isDisabled = trans.member.username !== transDetail.member.username;
 
@@ -141,7 +114,7 @@ const TransDetail = ({ trans, userInfo }) => {
         <button className='cancel' onClick={() => {
           navigate('/transPost');
         }}>취소</button>
-        <button className='buy' onClick={startTransHandler}>구매요청</button>
+        <button className='buy'>구매요청</button>
       </div>
     </div>
   )
