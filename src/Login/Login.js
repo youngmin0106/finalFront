@@ -16,6 +16,7 @@ import { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
+
 function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
 
   const defaultTheme = createTheme();
@@ -40,14 +41,17 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
 
     axiosInstance.post('/login', loginData)
       .then((response) => {
+        const jwt = response.headers.authorization;
         console.log("로그인 성공");
-        localStorage.setItem(loginData.username);
-        setUserInfo(response.data.username);
-        setCs(loginData.username);
-        setTrans(response.data);
+        localStorage.setItem('id', loginData.username);
+        sessionStorage.setItem('jwt', jwt);
+        setUserInfo(response.data.member[0]);
+        setTrans({ member: response.data.member[0] });
+        setCs({ member: response.data.member[0] });
         setIsAuth(true);
         console.log(isAuth)
         navigate("/");
+
       })
       .catch((error) => {
         console.error(error);
@@ -57,8 +61,8 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
 
   const open = () => {
     window.open(
-      'http://localhost:3000/idserch', 
-      '_blank', 
+      'http://localhost:3000/idserch',
+      '_blank',
       'width=800, height=600');
   }
 
@@ -94,19 +98,19 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
               <a href="#!" onClick={() => {
                 window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao`;
               }}>
-              <img src={kakaoicon} alt="kakaoLoginImg"></img></a>
+                <img src={kakaoicon} alt="kakaoLoginImg"></img></a>
 
               <a href="#!" onClick={() => {
                 window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=677438077141-5kscmapicvkvh641v83fooil8lj4661s.apps.googleusercontent.com&redirect_uri=http://localhost:3000/oauth/google&response_type=token&scope=openid%20email%20profile`;
               }}>
-              <img src={googleico} alt="googleLoginImg"></img></a>
+                <img src={googleico} alt="googleLoginImg"></img></a>
 
               <a href="#!"><img src={navericon} alt="naverLoginImg"></img></a>
             </div>
 
             <Grid container>
               <Grid item xs>
-                <Link href="#!" onClick = {open} style={{ textDecoration: "none" }} variant="body2"> 아이디/비밀번호 찾기 </Link>
+                <Link href="#!" onClick={open} style={{ textDecoration: "none" }} variant="body2"> 아이디/비밀번호 찾기 </Link>
               </Grid>
 
               <Grid item>

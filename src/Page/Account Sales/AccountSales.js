@@ -24,6 +24,8 @@ function AccountSales( {trans, setTrans} ) {
     })
   }
 
+  console.log(trans);
+
   return(
     <div className="AccountSales">
       <div className="title">
