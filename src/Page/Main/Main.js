@@ -32,27 +32,49 @@ function Main() {
           </Carousel.Item>
         </Carousel>
       </div>
+
       <div className="firstLayout">
-
-      </div>
-      <div className="secondLayout">
-
-      </div>
-      <div className="thirdLayout">
-        <div className="thirdItem">
-          <h5>자주묻는질문</h5>
+        <div className="firstItem one">
+          <h6>🎬 동영상 컨텐츠</h6>
+          <hr />
+          <div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/sBPMbjMc-7E?si=4FZk-3qbn3HrYC3n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/ppCt2J6rGvg?si=1lzjs09SQK7SDqB4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div className="firstItem two">
+          <h6>검색순위 또는 마일리지충전 또는 아이콘</h6>
           <hr />
           <div>
 
           </div>
         </div>
-        <div className="thirdItem cs">
-          <h4>고객센터</h4>
+      </div>
+
+      <div className="secondLayout">
+      <h6>공지사항</h6>
+          <hr />
+          <div>
+
+          </div>
+      </div>
+
+      <div className="thirdLayout">
+        <div className="thirdItem one">
+          <h6>자주묻는질문</h6>
+          <hr />
+          <div>
+
+          </div>
+        </div>
+        <div className="thirdItem two cs">
+          <h6>고객센터</h6>
           <hr />
           <h2>☎ 1997-1999</h2>
           {/* <p>📞 1997-1999</p> */}
           <p>365일 24시간 연중무휴</p>
         </div>
+
       </div>
     </div>
   )

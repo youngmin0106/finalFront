@@ -10,15 +10,38 @@
   margin-top: 15px;
 }
 
-.Main .thirdLayout {
-  /* border: 1px solid black; */
-  display: flex;
-  margin-top: 15px;
+.Main h6 {
+  font-weight: bolder;
 }
 
-.Main .thirdItem {
- margin: 5px 10px;
- width: 50%;
+.Main .one {
+ margin-right: 30px;
+}
+
+.Main .firstLayout, .Main .thirdLayout  {
+  /* border: 1px solid black; */
+ 
+  display: flex;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.Main .firstItem, .Main .thirdItem, .Main .secondLayout {
+  box-shadow: 1px 1px 3px 1px rgb(221, 221, 221);
+  padding: 20px 20px;
+  width: 50%;
+}
+
+.Main iframe {
+  width: 49.8%;
+  height: 200px;
+  margin: 0.5px;
+}
+
+.Main .secondLayout {
+  width: 100%;
+  padding-top: 15px;
+  margin-top: 25px;
 }
 
 .Main .cs {

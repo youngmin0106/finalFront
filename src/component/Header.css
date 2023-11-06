@@ -129,10 +129,10 @@
 
 .headercontainer .mainlogo{
   width: 200px;
-  height: 200px;
+  height: 170px;
   position: absolute;
   left: 130px;
-  top: 25px;
+  top: 35px;
 }
 
 .headercontainer #nav{

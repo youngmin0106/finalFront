@@ -2,41 +2,43 @@
 import './App.css';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import UpdateInfo from './UpdateInfo/UpdateInfo';
-import DeleteInfo from './DeleteInfo/DeleteInfo';
-import MyPage from './MyPage/MyPage';
-import ListPages from './MyPage/ListPages';
-import Mileage from './Mileage/Mileage';
-import TestTrans from './MyPage/TestTrans';
-import './App.css';
-import Notice from './CsPage/Notice/Notice';
+
 import Header from './component/Header';
-import Questions from './CsPage/Question/Question';
-import Onetoone from './CsPage/OnetoOne/Onetoone';
-import WriteNotice from './CsPage/Notice/WriteNotice';
-import WriteQuestion from './CsPage/Question/WriteQuestion';
-import QuestionDetail from './CsPage/Question/QuestionDetail';
+import Main from './Page/Main/Main';
+
+import CsList from './CsPage/CsList';
+import Notice from './CsPage/Notice/Notice';
 import NoticeDetail from './CsPage/Notice/NoticeDetail';
 import NoticeUpdate from './CsPage/Notice/NoticeUpdate';
+import Questions from './CsPage/Question/Question';
+import QuestionDetail from './CsPage/Question/QuestionDetail';
 import QuestionUpdate from './CsPage/Question/QuestionUpdate';
-import WriteOnetoOne from './CsPage/OnetoOne/WriteOnetoOne';
-import OnetoOneUpdate from './CsPage/OnetoOne/OnetoOneUpdate';
+import Onetoone from './CsPage/OnetoOne/Onetoone';
 import OnetoOneDetail from './CsPage/OnetoOne/OnetoOneDetail';
+import OnetoOneUpdate from './CsPage/OnetoOne/OnetoOneUpdate';
+import WriteNotice from './CsPage/Notice/WriteNotice';
+import WriteQuestion from './CsPage/Question/WriteQuestion';
+import WriteOnetoOne from './CsPage/OnetoOne/WriteOnetoOne';
 
-import MemberType from './SignUp/MemberType';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import MemberType from './SignUp/MemberType';
 import MemberAgree from './SignUp/MemberAgree';
 import MemberSignup from './SignUp/MemberSignup';
 import SignupSuccess from './SignUp/SignUpSuccess';
 import Login from './Login/Login';
 import KakaoLogin from './Login/KakaoLogin';
 import GoogleLogin from './Login/GoogleLogin';
+
 import AccountSales from './Page/Account Sales/AccountSales'
 import TransPost from './Page/Trans Post/TransPost'
 import TransDetail from './Page/Trans Detail/TransDetail'
-import CsList from './CsPage/CsList';
-import Main from './Page/Main/Main';
-import axiosInstance from './axiosInstance';
+
+import UpdateInfo from './UpdateInfo/UpdateInfo';
+import DeleteInfo from './DeleteInfo/DeleteInfo';
+import MyPage from './MyPage/MyPage';
+import ListPages from './MyPage/ListPages';
+import Mileage from './Mileage/Mileage';
+import TestTrans from './MyPage/TestTrans';
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
