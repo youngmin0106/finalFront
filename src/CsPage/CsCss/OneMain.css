@@ -1,0 +1,148 @@
+.onemain .plus{
+  float: right;
+  position: relative;
+  right: 10px;
+}
+
+.onemain .stcs{
+  border-bottom: 1px solid rgba(0,0,0,0.23);
+  height: 40px;
+  line-height: 40px;
+  background-color: #EFEFEF;
+  color: white;
+ 
+}
+
+
+.onemain  .TfiCheck{
+  float: left;
+  position: relative;
+  top: 5px;
+  left: -8px;
+  color: black;
+}
+
+.onemain  td:last-child {
+  border-right: 0px;
+}
+
+.onemain  th.text-left {
+  text-align: left;
+  background-color: #9DC8C8;
+}
+
+.onemain  th.text-center {
+  text-align: center;
+}
+
+.onemain  th.text-right {
+  text-align: right;
+}
+
+.onemain  td.text-left {
+  text-align: left;
+}
+
+.onemain  td.text-center {
+  text-align: center;
+}
+
+.onemain  td.text-right {
+  text-align: right;
+}
+.onemain  .table-title h3 {
+  color: #fafafa;
+  font-size: 30px;
+  font-weight: 400;
+  font-style:normal;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.onemain .table-fill {
+ background: white;
+ border-radius: 3px;
+ border-collapse: collapse;
+ height: 169px;
+ margin: auto;
+ max-width: 354px;
+ padding: 5px;
+ width: 100%;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+ animation: float 5s infinite;
+}
+
+.onemain  th {
+ color:#D5DDE5;;
+ background:#1b1e24;
+ border-bottom:3px solid #EBEBEB;
+ border-right: 1px solid #343a45;
+ font-size:23px;
+ font-weight: 100;
+ padding:15px;
+ text-align:left;
+ text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+ vertical-align: middle;
+}
+
+.onemain  th:first-child {
+ border-top-left-radius:3px;
+}
+
+.onemain  th:last-child {
+ border-top-right-radius:3px;
+ border-right:none;
+}
+ 
+.onemain  tr {
+ border-top: 1px solid #C1C3D1;
+ border-bottom : 1px solid #C1C3D1;
+ color:#666B85;
+ font-size:16px;
+ font-weight:normal;
+ text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+.onemain  tr:hover td {
+ background:#4E5066;
+ color: black;
+ border-top: 1px solid #EBEBEB;
+}
+
+.onemain tr:first-child {
+ border-top:none;
+}
+
+.onemain tr:last-child {
+ border-bottom:none;
+}
+
+.onemain tr:nth-child(odd) td {
+ background:whitesmoke;
+}
+
+.onemain  tr:nth-child(odd):hover td {
+ background: #EBEBEB;
+}
+
+.onemain  Link{
+  color: black;
+}
+
+
+
+.onemain  .onetoonetab{
+  position: absolute;
+  left: 1250px;
+  bottom: 390px;
+  height: 250px;
+}
+
+.onemain  .linktitle{
+  text-decoration: none;
+  color: black;
+}
