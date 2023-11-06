@@ -1,0 +1,26 @@
+.stackpag .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.stackpag .page-number {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.stackpag .page-number:hover {
+  background-color: #f0f0f0;
+}
+
+.stackpag .page-number.active {
+  background-color: black;
+  color: #fff;
+}
+
