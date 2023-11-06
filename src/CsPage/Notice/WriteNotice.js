@@ -16,6 +16,8 @@ function WriteNotice({userInfo ,cs , setCs}){
       [e.target.name] : e.target.value 
     })
   }
+  console.log("cs : " + cs);
+  console.log("userInfo : " + userInfo);
   return(
     <div className="write">
       <div className="title-input">
@@ -36,7 +38,8 @@ function WriteNotice({userInfo ,cs , setCs}){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/notice',cs)
+          axiosInstance.post('/notice', {cs : cs, username : cs.username, title : cs.title})
+
           .then(response=>{
               alert(response.data);
              

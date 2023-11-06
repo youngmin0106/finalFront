@@ -4,7 +4,7 @@ import server from "../../mockData/server";
 import option from "../../mockData/option";
 import './TransPost.css';
 
-function TransPost({ isLoading, setIsLoading }) {
+function TransPost({ isLoading, setIsLoading, trans }) {
   const [search, setSearch] = useState({
     keyword: '',
     price: '',
@@ -156,7 +156,7 @@ function TransPost({ isLoading, setIsLoading }) {
           </tbody>
         </table>
       </div>
-      <TransPostList isLoading={isLoading} setIsLoading={setIsLoading} search={search} setIsCheck={setIsCheck} setSelectedGame={setSelectedGame} setSearch={setSearch} />
+      <TransPostList isLoading={isLoading} setIsLoading={setIsLoading} search={search} setIsCheck={setIsCheck} setSelectedGame={setSelectedGame} setSearch={setSearch} trans={trans}/>
     </>
   )
 

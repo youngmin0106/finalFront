@@ -41,15 +41,17 @@ function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
     e.preventDefault();
 
     axiosInstance.post('/login', loginData)
-      .then((response) => {
+    .then((response) => {
+        const jwt = response.headers.authorization;
         console.log("로그인 성공");
+        console.log(response.data)
         localStorage.setItem('id', loginData.username);
-        setUserInfo(loginData);
-        console.log(response)
-        setTrans({member:response.data});
-        setCs({member:response.data})
+        sessionStorage.setItem('jwt', jwt);
+        setUserInfo(response.data.member[0]);
+        setTrans({member : response.data.member[0]});
+        setCs({member : response.data.member[0]});
         setIsAuth(true);
-        navigate("/");
+        navigate("/mypage");
       })
       .catch((error) => {
         console.error(error);

@@ -4,7 +4,7 @@ import axiosInstance from '../../axiosInstance';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
-const TransDetail = ({ trans }) => {
+const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, transDetails, setTransDetails }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [transDetail, setTransDetail] = useState({
@@ -17,6 +17,8 @@ const TransDetail = ({ trans }) => {
     price: ''
   });
 
+ 
+ 
   const changeHandler = (e) => {
     setTransDetail({
       ...transDetail,
@@ -28,12 +30,36 @@ const TransDetail = ({ trans }) => {
     axiosInstance.get(`/transDetail/${id}`)
       .then((response) => {
         setTransDetail(response.data);
+        setTransDetails(response.data);
+        setStartTransInfo(startTransInfo => ({
+          ...startTransInfo,
+          ...response.data
+        }));
+
       }).catch((error) => {
         console.log(error);
       })
   }, [])
 
+  console.log("trans : " + trans);
+  console.log("transDetail : " + transDetail)
+  
   const isDisabled = trans.member.username !== transDetail.member.username;
+
+
+  const startTransHandler = () => {
+    axiosInstance.post('/startTrans', {startTransInfo : startTransInfo, sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
+    .then(response => {
+      alert(response.data);
+      console.log('구매요청 완료');
+      console.log(startTransInfo);
+      setStartTransInfo({sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
+      navigate('/testTrans');
+    }).catch(error => {
+      console.log(error);
+    })
+
+  }
 
   return (
     <div className="TransDetail">
@@ -111,7 +137,9 @@ const TransDetail = ({ trans }) => {
         <button className='cancel' onClick={() => {
           navigate('/transPost');
         }}>취소</button>
-        <button className='buy'>구매요청</button>
+       {trans.member.username !== transDetail.member.username && (
+      <button className='buy' onClick={startTransHandler}>구매요청</button>
+    )}
       </div>
     </div>
   )
