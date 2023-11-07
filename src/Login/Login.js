@@ -47,7 +47,10 @@ function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
         console.log(response.data)
         localStorage.setItem('id', loginData.username);
         sessionStorage.setItem('jwt', jwt);
-        setUserInfo(response.data.member[0]);
+        setUserInfo({
+          username : response.data.member[0].username,
+          name: response.data.member[0].name
+        });
         setTrans({member : response.data.member[0]});
         setCs({member : response.data.member[0]});
         setIsAuth(true);

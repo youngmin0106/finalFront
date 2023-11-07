@@ -5,7 +5,7 @@ import axiosInstance from "../../axiosInstance";
 import { useState } from "react";
 
 
-function WriteNotice({userInfo ,cs , setCs}){
+function WriteNotice({userInfo , cs , setCs}){
   
   
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ function WriteNotice({userInfo ,cs , setCs}){
       [e.target.name] : e.target.value 
     })
   }
-  console.log("cs : " + cs);
-  console.log("userInfo : " + userInfo);
+  console.log(cs);
+  console.log(userInfo);
   return(
     <div className="write">
       <div className="title-input">
@@ -38,7 +38,7 @@ function WriteNotice({userInfo ,cs , setCs}){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/notice', {cs : cs, username : cs.username, title : cs.title})
+          axiosInstance.post('/notice', cs)
 
           .then(response=>{
               alert(response.data);

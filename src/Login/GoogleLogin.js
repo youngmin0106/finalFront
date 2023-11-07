@@ -12,14 +12,15 @@ function GoogleLogin({setUserInfo, setCs, setTrans}) {
     axiosInstance.post('/oauth/google', {accessToken : accessToken})
       .then(response => {
         const jwt = response.headers.authorization;
+        setUserInfo({
+          username : response.data.member[0].username,
+          name: response.data.member[0].name
+        });
         setTrans({member:response.data.member[0]});
         setCs({member:response.data.member[0]});
         if(jwt){
           sessionStorage.setItem('jwt', jwt);
-          console.log(response.data.member[0]);
-          setUserInfo(response.data.member[0]);
-          setCs(response.data.member[0]);
-          setTrans(response.data.member[0]);
+    
           navigate('/mypage');
         }
 

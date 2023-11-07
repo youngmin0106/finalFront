@@ -28,14 +28,19 @@
 
 .Main .firstItem, .Main .thirdItem, .Main .secondLayout {
   box-shadow: 1px 1px 3px 1px rgb(221, 221, 221);
-  padding: 20px 20px;
+  padding: 20px 18px;
   width: 50%;
+  /* height: 300px; */
 }
 
 .Main iframe {
-  width: 49.8%;
-  height: 200px;
   margin: 0.5px;
+  height: 200px;
+  width: 300px;
+}
+
+.Main .youtube {
+  display: flex;
 }
 
 .Main .secondLayout {

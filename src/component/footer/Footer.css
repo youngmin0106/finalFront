@@ -1,0 +1,31 @@
+.Footer {
+  width: 80%;
+  margin: 100px auto 50px auto;
+  font-size: 14px;
+}
+
+.Footer .firstLayout, .Footer .secondLayout {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 40px 0;
+}
+
+ /* {
+  display: flex;
+  justify-content: space-evenly;
+
+} */
+
+.Footer .logo {
+  margin-right: 60px;
+}
+
+.Footer p {
+  margin: 0px 10px;
+  color: rgb(110, 110, 110);
+  font-size: 12px;
+}
+
+.Footer .firstItem, .Footer .scondItem {
+  display: flex;
+}
