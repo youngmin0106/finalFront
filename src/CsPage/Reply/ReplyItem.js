@@ -5,9 +5,10 @@ import { Button } from "react-bootstrap";
 import "../CsCss/Replyitem.css";
 import axiosInstance from "../../axiosInstance";
 
-function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
+function ReplyItem({ reply, oneDetail , setReply }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(reply.content);
+ 
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -19,6 +20,7 @@ function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
       .put(`/reply`, { ...reply, content: editedContent })
       .then((response) => {
         alert(response.data);
+        setReply(response.data);
         setIsEditing(false);
       })
       .catch((error) => {
@@ -39,12 +41,12 @@ function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
             type="text"
             rows={2}
             cols={50}
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
+            value={reply.content}
+            onChange={(e) =>  setEditedContent(e.target.value)}
           ></textarea>{" "}
-          <Button variant="outline-success" onClick={handleSaveClick}>
+          <button className="click" onClick={handleSaveClick}>
             저장
-          </Button>
+          </button>
         </div>
       ) : (
         <div>
@@ -53,17 +55,13 @@ function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
             type="text"
             rows={2}
             cols={50}
-            value={reply.content}
-            disabled={!isCurrentUserComment} // 현재 사용자의 댓글이면 활성화, 아니면 비활성화
+            value={reply.content}     
           ></textarea>{" "}
-          {isCurrentUserComment && (
-            <Button variant="outline-primary" onClick={handleEditClick} className="replyupdate">
+            <button  onClick={handleEditClick} className="click">
               수정
-            </Button>
-          )}{" "}
-          <Button
-            className="replydelete"
-            variant="outline-danger"
+            </button>{" "}
+          <button
+            className="noClick"
             type="reset"
             onClick={() => {
               axiosInstance
@@ -77,7 +75,7 @@ function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
             }}
           >
             삭제
-          </Button>
+          </button>
         </div>
       )}
     </div>

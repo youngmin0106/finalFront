@@ -37,35 +37,35 @@ function NoticeDetail({userInfo,setAuth ,cs}){
   
 
   return(
-    <div className="write">
-    <div className="title-input">
-      <span className="titlespan">제목</span>
-      <input className="writetitle" type="text" name="title"  value={noticeDetail.title} disabled/>
+    <div className="WriteNotice">
+    <div className="table">
+      <div className="title">
+        <p className="th">제목</p>
+        <input className="writetitle" type="text" name="title" value={noticeDetail.title} disabled />
+      </div>
+      <div className="writer">
+        <p className="th">작성자</p>
+        <p className="writename">{cs.member.name}</p>
+      </div>
     </div>
-    <br />
-
-    <div>
-      <span className="contentspan" >내용</span>
-      <textarea className="contentarea"
-        disabled
+    <div className="content">
+      <textarea
         value={noticeDetail.content}
-        name="contents"
-        cols="74"
-        rows="15"   
+        disabled
+        name="content"
       ></textarea>
     </div>
-    <br />
     <div className="clickbtn">
     {
       cs.member.username == noticeDetail.member.username ?
-      <Button variant="outline-primary" className="sumitbtn" onClick={csupdatebtn}>수정</Button>   
+      <button  className="click" onClick={csupdatebtn}>수정</button>   
       :
       <div></div>
 
     }
     {
       cs.member.username == noticeDetail.member.username ? 
-      <Button variant="outline-danger" className="resetbtn" type="reset" 
+      <button className="noClick" type="reset" 
       onClick={()=>{
         if(cs.member.username != noticeDetail.member.username){
           alert('작성자만 삭제가능합니다.');
@@ -80,9 +80,9 @@ function NoticeDetail({userInfo,setAuth ,cs}){
       }).catch(error=>{
         console.log(error);
       })}}
-      >삭제</Button> : <div></div>
+      >삭제</button> : <div></div>
     }
-    <Button variant="outline-info" className="backbtn" onClick={backbtn}>목록</Button>{' '}
+    <button  className="backClick" onClick={backbtn}>목록</button>{' '}
     </div>
   </div>
   );

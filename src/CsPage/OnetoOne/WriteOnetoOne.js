@@ -15,26 +15,26 @@ function WriteOnetoOne({userInfo ,cs ,setCs}){
     })
   }
   return(
-    <div className="write">
-      <div className="title-input">
-        <span className="titlespan">제목</span>
-        <input className="writetitle" type="text" name="title" onChange={changeHandler} />
-      </div>
-      <br />
-
-      <div>
-        <span className="contentspan">내용</span>
-        <textarea className="contentarea" 
-          onChange={changeHandler}
-          name="content"
-          cols="74"
-          rows="15"   
-        ></textarea>
-      </div>
-      <br />
+      <div className="WriteNotice">
+        <div className="table">
+          <div className="title">
+            <p className="th">제목</p>
+            <input className="writetitle" type="text" name="title" onChange={changeHandler} />
+          </div>
+          <div className="writer">
+            <p className="th">작성자</p>
+            <p className="writename">{cs.member.name}</p>
+          </div>
+        </div>
+        <div className="content">
+          <textarea
+            onChange={changeHandler}
+            name="content"
+          ></textarea>
+        </div>
       <div className="clickbtn">
-      <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/onetoone',cs)
+      <button  className="click" onClick={()=>{
+          axiosInstance.post('/onetoone', {cs : cs, username : cs.username, title : cs.title, content : cs.content , member : userInfo})
           .then(response=>{
               alert(response.data);
               navigate('/onetoone');
@@ -42,8 +42,8 @@ function WriteOnetoOne({userInfo ,cs ,setCs}){
               console.log(error);
               // alert('로그인 후 사용하세요');
           })
-      }}>작성</Button>{' '}
-      <Link to={"/onetoone"} className="linknone"><Button variant="outline-danger" className="resetbtn" type="reset">취소</Button>{' '}</Link>
+      }}>작성</button>{' '}
+      <Link to={"/onetoone"} className="linknone"><button className="noClick" type="reset">취소</button>{' '}</Link>
       </div>
     </div>
   );

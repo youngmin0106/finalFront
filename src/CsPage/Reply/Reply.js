@@ -4,85 +4,85 @@ import "../CsCss/Reply.css";
 import ReplyItem from "./ReplyItem";
 import axiosInstance from "../../axiosInstance";
 
-function Reply({ oneDetail, userInfo,cs }) {
+
+function Reply({ oneDetail, cs }) {
 
   const [reply, setReply] = useState({
     content: "",
-   
+ 
   });
   // 댓글 목록 상태 추가
-  const [commentList, setCommentList] = useState([]);
+  const [replyList, setReplyList] = useState([]);
 
-  // 현재 사용자와 댓글 작성자를 비교하기 위한 상태 추가
-  const [isCurrentUserComment, setIsCurrentUserComment] = useState(false);
-
-  // const fetchCurrentUser = async () => {
-  //   setIsCurrentUserComment(userInfo.id === reply.memberid);
-  // };
-
-  // useEffect(() => {
-  //   fetchCurrentUser();
-
-  //   axiosInstance
-  //     .get(`/reply/${oneDetail.id}`) 
-  //     .then((response) => {
-  //       setCommentList(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("댓글 목록을 불러오는 데 실패했습니다: ", error);
-  //     });
-  // }, [oneDetail, userInfo]);
 
   const handleAddComment = () => {
-    if (cs.member.username != oneDetail.member.username) {
-     
-      alert("본인 게시물에만 작성가능 합니다.");
-    } else {
       // 댓글 작성 
+      const replyData = {
+        ...reply,
+        no: oneDetail.no,
+        member: {
+          username: cs.member.username,
+        },
+      };
       axiosInstance
         .post(`/reply/${oneDetail.no}`, reply)
         .then((response) => {
           alert(response.data);
+          setReply({ content: "" });
+          console.log(response.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }
-  };
+        
+      };
+
+        useEffect(() => {
+          // 댓글 목록을 서버에서 가져오는 부분
+          axiosInstance
+            .get(`/reply/${oneDetail.no}/list`)
+            .then((response) => {
+              setReplyList(response.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }, [oneDetail.no]);
 
   return (
-    <div className="write">
-      <div className="reply-section">
+    <div className="replyWrite">
+    <div className="reply-section">
         <div className="add-reply">
           <textarea
-            value={reply.content}
+            defaultValue={reply.content}
             onChange={(e) => setReply({ ...reply, content: e.target.value })}
             className="reply-textarea"
             placeholder="댓글을 입력하세요"
           ></textarea>
-          <Button
+          <button
             variant="outline-success"
-            className="reply-btn"
+            className="click"
             onClick={handleAddComment}
           >
             등록
-          </Button>
+          </button>
         </div>
-
-        {commentList.length > 0 && (
+        </div>
+        {replyList.length > 0 && (
           <div className="comment-list">
             <h4>댓글 목록</h4>
-            {commentList.map((comment) => (
+            <div className="replyListmap">
+            {replyList.map((reply ,i) => (
               <ReplyItem
-                key={comment.id}
-                reply={comment}
-                oneDetail={oneDetail}
-                isCurrentUserComment={isCurrentUserComment}
+              key={i}
+              reply={reply}
+              oneDetail={oneDetail}
+              setReply={setReplyList} //댓글 목록 업데이트
               />
-            ))}
+              ))}
+              </div>
           </div>
         )}
-      </div>
     </div>
   );
 }

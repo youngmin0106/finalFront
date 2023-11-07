@@ -24,12 +24,12 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
       setSearchResults(data); 
     }
   };
-  
+  console.log(data)
   return (
     <div className="searchcomp">
       <div id="board-search">
         <div className="container">
-          <OnSearch onSearch={handleSearch} path={path} userInfo={userInfo}/>
+          <OnSearch onSearch={handleSearch} path={path} userInfo={userInfo} cs={cs}/>
         </div>
       </div>
 
@@ -69,7 +69,8 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
                        {data.title}
                       </Link>
                     </th>
-                    {/* <td>{data.member.username}</td>    {data.member  ? <td>{data.member.username}</td> : <td></td>}   */}
+                   {/* <td>{data.member ? data.member.username : data.username}</td>  */}
+                    {/* {data.member  ? <td>{data.member.username}</td> : <td></td>}    */}
                     <td>{data.member ? data.member.username : ""}</td>
 
                     <td>{data.createDate}</td>
