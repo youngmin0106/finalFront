@@ -4,7 +4,8 @@ import Carousel from 'react-bootstrap/Carousel';
 import { useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import { useEffect } from "react";
-import announcement from "../../mockData/data";
+import announcement from "../../mockData/announcement";
+import question from "../../mockData/question";
 
 function Main() {
   const [miniList, setMiniList] = useState([]);
@@ -68,7 +69,15 @@ function Main() {
           <h6>자주묻는질문</h6>
           <hr />
           <div>
-
+          {question.map((data, i) => {
+              return(
+                <div key={i}>
+                  <Link to={`/notice/${data.no}`} className="linktitle">
+                    <div>{data.title}</div>
+                  </Link>
+                </div>
+              )
+            })}
           </div>
         </div>
 
@@ -76,9 +85,19 @@ function Main() {
           <h6>공지사항</h6>
           <hr />
           <div>
+            {/* 공지사항 들어가면 내용뽑을때 이렇게 해야 Tab키나 enter키가 먹음
             <pre>
               {announcement[0].content}
-            </pre>
+            </pre> */}
+            {announcement.map((data, i) => {
+              return(
+                <div key={i}>
+                  <Link to={`/notice/${data.no}`} className="linktitle">
+                    <div>{data.title}</div>
+                  </Link>
+                </div>
+              )
+            })}
           </div>
           <div>
           {miniList.map((notice, i) => {
