@@ -7,7 +7,8 @@ import { useState } from "react";
 
 function WriteNotice({userInfo ,cs , setCs}){
   
-  
+  console.log(cs)
+
   const navigate = useNavigate();
   
   const changeHandler = (e) =>{
@@ -38,7 +39,7 @@ function WriteNotice({userInfo ,cs , setCs}){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/notice', {cs : cs, username : cs.username, title : cs.title})
+          axiosInstance.post('/notice', cs)
 
           .then(response=>{
               alert(response.data);

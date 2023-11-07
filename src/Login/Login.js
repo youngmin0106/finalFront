@@ -42,14 +42,14 @@ function Login( {setUserInfo, setIsAuth, setCs, setTrans} ) {
 
     axiosInstance.post('/login', loginData)
     .then((response) => {
-        const jwt = response.headers.authorization;
-        console.log("로그인 성공");
-        console.log(response.data)
-        localStorage.setItem('id', loginData.username);
-        sessionStorage.setItem('jwt', jwt);
-        setUserInfo(response.data.member[0]);
-        setTrans({member : response.data.member[0]});
-        setCs({member : response.data.member[0]});
+      const jwt = response.headers.authorization;
+      console.log("로그인 성공");
+      console.log(response.data)
+      localStorage.setItem('id', loginData.username);
+      sessionStorage.setItem('jwt', jwt);
+      setUserInfo({username : response.data.member[0].username, name : response.data.member[0].name, mileage : response.data.member[0].mileage});
+      setTrans({member : response.data.member[0]});
+      setCs({member : response.data.member[0]});
         setIsAuth(true);
         navigate("/mypage");
       })

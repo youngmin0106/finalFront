@@ -1,15 +1,41 @@
 import { Button } from "react-bootstrap";
 import axiosInstance from "../axiosInstance";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import './TestTrans.css';
+import { useEffect } from "react";
+import { useState } from "react";
 
-function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, setStartTransInfo, transDetail } ) {
+function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
+
+  const [transInfo, setTransInfo] = useState({
+
+  })
+
+  const [intransInfo, setIntransInfo] = useState({
+
+  })
 
   // 인계
   console.log(userInfo.username);
   console.log(startTransInfo.sellerId)
+  console.log(IntransList);
+
+  const { id } = useParams();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axiosInstance.get(`/intransInfo/${id}`)
+    .then((response) => {
+      console.log(response.data);
+      setTransInfo(response.data.trans);
+      setIntransInfo(response.data.intrans);
+    }).catch((error) => {
+      console.log(error);
+    })
+    
+  }, [])
+
 
   const turnOverBtn = () => {
     let transId = testTrans[0].transId;
@@ -43,9 +69,9 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
   }
 
   const testButton = () => {
-    if (userInfo.username === startTransInfo.buyerId && startTransInfo.sellerChk === 'true') {
+    if (userInfo.username === intransInfo.buyerId && intransInfo.sellerChk === 'true') {
       return <Button onClick={takeOverBtn}>인수</Button>
-    } else if (userInfo.username === trans.sellerId) {
+    } else if (userInfo.username === intransInfo.sellerId) {
       return <Button onClick={turnOverBtn}>인계</Button>
     } else {
       return null;
@@ -58,33 +84,33 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
         <thead>
           <tr>
             <th className="testTh">물품제목</th>
-            <td className="testTd" colSpan={3}>{startTransInfo.transDetail.title}</td>
+            <td className="testTd" colSpan={3}>{transInfo.title}</td>
             <td></td>
           </tr>
 
           <tr>
             <th className="testTh">게임</th>
-            <td className="testTd">{startTransInfo.transDetail.game}</td>
+            <td className="testTd">{transInfo.game}</td>
             <th className="testTh" style={{borderLeft : "1px solid #eee"}}>서버</th>
-            <td className="testTd">{startTransInfo.transDetail.server}</td>
+            <td className="testTd">{transInfo.server}</td>
           </tr>
 
           <tr>
             <th className="testTh">거래번호</th>
-            <td className="testTd">{startTransInfo.postId}</td>
+            <td className="testTd">{transInfo.id}</td>
             <th className="testTh" style={{borderLeft : "1px solid #eee"}}>가격</th>
-            <td className="testTd">{startTransInfo.transDetail.price}</td>
+            <td className="testTd">{transInfo.price}</td>
           </tr>
 
           <tr>
             <th className="testTh">판매자명</th>
-            <td className="testTd" colSpan={3}>{startTransInfo.sellerId}</td>
+            <td className="testTd" colSpan={3}>{intransInfo.sellerId}</td>
             <td></td>
           </tr>
 
           <tr>
             <th className="testTh">연락처</th>
-            <td className="testTd" colSpan={3}>{startTransInfo.postId}</td>
+            <td className="testTd" colSpan={3}>{transInfo.phone}</td>
             <td></td>
           </tr>
           
@@ -93,20 +119,7 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
 
         </thead>
         <tbody>
-       
-          {/* <tr>
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>판매자명</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].name}</th>
-          </tr>
-
-          <tr>
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>연락처</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{userInfo.phone}</th>
-          </tr>
-  
-            <td style={{borderRight : "0.5px solid #eee", borderBottom : "0.5px solid #eee", backgroundColor : "green", opacity : "0.5", color : "white"}}>내용</td>
-            <th style={{borderBottom : "0.5px solid #eee"}}>{testTrans[0].content}</th>
-          </tr> */}
+      
 
         </tbody>
       </table>

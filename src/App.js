@@ -43,34 +43,42 @@ const listOption = [
   // 나의 판매 물품 항목
   {
     id: 1,
-    name: '등록한'
+    name: '등록한',
+    url : '/listPages1'
   },
   {
     id: 2,
-    name: '거래중인'
+    name: '거래중인',
+    url : '/listPages2'
   },
   {
     id: 3,
-    name: '판매 취소된'
+    name: '판매 취소된',
+    url : '/listPages3'
   },
   {
     id: 4,
-    name: '판매 완료된'
+    name: '판매 완료된',
+    url : '/listPages4'
   },
   // 나의 구매 물품 항목
   {
     id: 5,
-    name: '구매중인'
+    name: '구매중인',
+    url : '/listPages5'
   },
   {
     id: 6,
-    name: '구매 취소된'
+    name: '구매 취소된',
+    url : '/listPages6'
   },
   {
     id: 7,
-    name: '구매 완료된'
+    name: '구매 완료된',
+    url : '/listPages7'
   }
 ]
+
 
 const testBoardList = [
   {
@@ -116,9 +124,6 @@ const testBoardList = [
   }
 ]
 
-
-
-
 function App() {
   const [transDetails, setTransDetails] = useState({
     id: '',
@@ -135,6 +140,12 @@ function App() {
 
 
   const [userInfo, setUserInfo] = useState({username:'', name:''}); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
+
+  // 거래중 게시글 받아놓는 state
+  const [IntransList, setIntransList] = useState([ 
+    
+  ]); 
+  
 
   const [trans, setTrans] = useState({
     price: '',
@@ -193,12 +204,12 @@ function App() {
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} transDetails={transDetails} setTransDetails={setTransDetails} />} />
 
         {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}
-        <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
+        <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} IntransList={IntransList} />}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
-        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} />}></Route> {/* 보내주는 값들이 다 다름 */}
+        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
-        <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans}></TestTrans>}></Route>
+        <Route path='/testTrans/:id' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans} IntransList={IntransList} setIntransList={setIntransList}></TestTrans>}></Route>
 
         {/* 헤더, 고객센터 . . */}
         <Route path='/' element={<Header isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>

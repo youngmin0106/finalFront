@@ -57,7 +57,7 @@ function NoticeDetail({userInfo,setAuth ,cs}){
     <br />
     <div className="clickbtn">
     {
-      cs.member.username == noticeDetail.member.username ?
+      cs.member[0].username == noticeDetail.member.username ?
       <Button variant="outline-primary" className="sumitbtn" onClick={csupdatebtn}>수정</Button>   
       :
       <div></div>

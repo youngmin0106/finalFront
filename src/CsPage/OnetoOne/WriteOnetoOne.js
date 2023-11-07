@@ -34,7 +34,7 @@ function WriteOnetoOne({userInfo ,cs ,setCs}){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/onetoone',cs)
+          axiosInstance.post('/onetoone', cs)
           .then(response=>{
               alert(response.data);
               navigate('/onetoone');

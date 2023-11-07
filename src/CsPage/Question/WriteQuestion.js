@@ -6,6 +6,8 @@ import { useState } from "react";
 
 function WriteQuestion({userInfo ,cs , setCs}){
 
+  console.log(cs);
+
   const navigate = useNavigate();
   const changeHandler = (e) =>{
     setCs({
@@ -33,7 +35,7 @@ function WriteQuestion({userInfo ,cs , setCs}){
       <br />
       <div className="clickbtn">
       <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/questions',cs)
+          axiosInstance.post('/questions', cs)
           .then(response=>{
               alert(response.data);
               navigate('/questions');
