@@ -73,7 +73,7 @@ function App() {
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
-        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs}/>} />
+        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
         <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
         <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />
@@ -83,9 +83,9 @@ function App() {
           <Route path="/member-agree" element={<MemberAgree />} />
           <Route path="/member-sign" element={<MemberSignup />} />
           <Route path="/signup-success" element={<SignupSuccess />} />
-          <Route path="/login-page" element = {<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo}/>} />
+          <Route path="/login-page" element = {<Login setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo}/>} />
           <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans}/>} />
-          <Route path='/oauth/google' element={<GoogleLogin />} />
+          <Route path='/oauth/google' element={<GoogleLogin setCs={setCs}/>} />
           <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans}/>} />
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans}/>} />

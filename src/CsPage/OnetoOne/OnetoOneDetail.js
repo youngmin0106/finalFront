@@ -51,7 +51,7 @@ function OnetoOneDetail({ userInfo, cs }) {
           rows="15"
         ></textarea>
       </div>
-      {/* <Reply oneDetail={oneDetail} /> */}
+      <Reply oneDetail={oneDetail} cs={cs} />
       <br />
       <div className="clickbtn">
         {cs.member.username == oneDetail.member.username ?

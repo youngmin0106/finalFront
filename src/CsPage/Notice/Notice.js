@@ -4,7 +4,7 @@ import PaginationComponent from "../../component/PaginationComponent";
 import Search from "../../component/Search";
 import { Link } from "react-router-dom";
 
-function Notice({userInfo}) {
+function Notice({userInfo ,cs ,setCs}) {
   const [noticeList, setNoticeList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,7 +42,7 @@ function Notice({userInfo}) {
         setIsNoticeLoading(false);
       });
   };
-  console.log(noticeList);
+
   return (
     <div className="notice">
       <ul className="ulList">
@@ -75,6 +75,8 @@ function Notice({userInfo}) {
           path={"/noticewirte"}
           ad={"/notice"}
           userInfo={userInfo}
+          cs={cs}
+          setCs={setCs}
         />
           
         <PaginationComponent

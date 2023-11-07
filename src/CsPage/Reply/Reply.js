@@ -4,12 +4,11 @@ import "../CsCss/Reply.css";
 import ReplyItem from "./ReplyItem";
 import axiosInstance from "../../axiosInstance";
 
-function Reply({ oneDetail, userInfo }) {
+function Reply({ oneDetail, userInfo,cs }) {
 
   const [reply, setReply] = useState({
     content: "",
-    member : userInfo, // 로그인한 사용자의 ID를 사용
-    oneid: oneDetail.no
+   
   });
   // 댓글 목록 상태 추가
   const [commentList, setCommentList] = useState([]);
@@ -34,11 +33,10 @@ function Reply({ oneDetail, userInfo }) {
   //     });
   // }, [oneDetail, userInfo]);
 
-  // 로그인하지 않은 경우 댓글 작성 못하게
   const handleAddComment = () => {
-    if (!userInfo.isAuth) {
-      // 로그인하지 않은 경우에는 댓글 작성 막음
-      alert("댓글을 작성하려면 로그인이 필요합니다.");
+    if (cs.member.username != oneDetail.member.username) {
+     
+      alert("본인 게시물에만 작성가능 합니다.");
     } else {
       // 댓글 작성 
       axiosInstance

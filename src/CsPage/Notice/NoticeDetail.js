@@ -13,10 +13,9 @@ function NoticeDetail({userInfo,setAuth ,cs}){
   const csupdatebtn=()=>{
 
       navigate(`/notice/${no}/update`);
-  
 
   }
-
+  
   const backbtn=()=>{
     navigate('/cs');
   }
@@ -25,13 +24,14 @@ function NoticeDetail({userInfo,setAuth ,cs}){
     axiosInstance.get(`/notice/${no}`)
     .then(response=>{
       setNoticeDetail(response.data);
-     
+      
       setLoding(false);
     }).catch(error =>{
       console.log(error);
       setLoding(false);
     })
   },[no])
+
   if(loding)
   return <div>로딩중</div>
   
