@@ -18,7 +18,7 @@ import { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
-function Login( {setUserInfo, setIsAuth , setCs} ) {
+function Login( {setUserInfo, setIsAuth, setCs, setTrans} ) {
   
   const defaultTheme = createTheme();
   const navigate = useNavigate();
@@ -41,14 +41,17 @@ function Login( {setUserInfo, setIsAuth , setCs} ) {
     e.preventDefault();
 
     axiosInstance.post('/login', loginData)
-      .then((response) => {
+    .then((response) => {
+        const jwt = response.headers.authorization;
         console.log("로그인 성공");
-        console.log({member:response.data})
+        console.log(response.data)
         localStorage.setItem('id', loginData.username);
-        setUserInfo(loginData);
-        setCs({member:response.data});
+        sessionStorage.setItem('jwt', jwt);
+        setUserInfo(response.data.member[0]);
+        setTrans({member : response.data.member[0]});
+        setCs({member : response.data.member[0]});
         setIsAuth(true);
-        navigate("/");
+        navigate("/mypage");
       })
       .catch((error) => {
         console.error(error);
