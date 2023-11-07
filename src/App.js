@@ -1,4 +1,4 @@
-import './App.css';
+
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import UpdateInfo from './UpdateInfo/UpdateInfo';
@@ -35,9 +35,10 @@ import TransPost from './Page/Trans Post/TransPost'
 import TransDetail from './Page/Trans Detail/TransDetail'
 import CsList from './CsPage/CsList';
 import Main from './Page/Main/Main';
-import axiosInstance from './axiosInstance';
 
 import IdSerch from './Login/IdSerch';
+import UpdateMember from './SignUp/UpdateMember';
+import KaGooSignup from './SignUp/KaGooSignup';
 
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
@@ -124,8 +125,6 @@ const testBoardList = [
 
 function App() {
 
-  // 로딩중
-
   const [transDetails, setTransDetails] = useState({
     id: '',
     title: '',
@@ -138,7 +137,6 @@ function App() {
   // 로딩중
   const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
-
 
   const [userInfo, setUserInfo] = useState({ username: '', name: '' }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
 
@@ -195,9 +193,11 @@ function App() {
         <Route path="/member-agree" element={<MemberAgree />} />
         <Route path="/member-sign" element={<MemberSignup />} />
         <Route path="/signup-success" element={<SignupSuccess />} />
-
+        <Route path="/update-member" element={<UpdateMember userInfo={userInfo}/>} />
+        <Route path="/kaGoo-signup" element={<KaGooSignup userInfo = {userInfo} />} />
+    
         <Route path="/login-page" element={<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
-        <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
+        <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
 
         <Route path='/idserch' element={<IdSerch />} />
@@ -209,6 +209,7 @@ function App() {
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
         <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans}></TestTrans>}></Route>
 
+        
       </Routes>
 
     </div>

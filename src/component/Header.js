@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 function Header({ isAuth, setIsAuth, userInfo }) {
 
+	const navigate = useNavigate();
+
 	const handleLogout = () => {
 		setIsAuth(false);
 		sessionStorage.removeItem("jwt");
+		navigate("/");
 	};
 
 	return (
@@ -21,7 +24,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 					<div className="fl_right">
 						<ul className="topnav">
 							<li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
-							<li><Link to={"#"}>마이페이지</Link></li>
+							<li><Link to={"/mypage"}>마이페이지</Link></li>
 							<li><Link to={"/insertTrans"}>물품등록</Link></li>
 							<li><Link to={"#"}>채팅내역</Link></li>
 

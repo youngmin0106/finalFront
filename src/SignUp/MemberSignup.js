@@ -80,7 +80,7 @@
       } else if (id === "password") {
         setpwErrorMsg("비밀번호가 다릅니다");
 
-        if (memberData.pwChk && memberData.pwChk === value) {
+        if (memberData.password && memberData.pwChk === value) {
           setpwErrorMsg("비밀번호가 같습니다");
           setIsPasswoardChk(true);
         }

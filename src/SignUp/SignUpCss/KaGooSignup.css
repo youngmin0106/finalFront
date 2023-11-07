@@ -1,0 +1,74 @@
+.kaGooSignup {
+  width: 70%;
+  margin-left : 15%;
+}
+
+.kaGooSignup .signupForm {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%; 
+  margin: auto;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.kaGooSignup .textFieldContainer {
+  display: flex;
+  align-items: center;
+}
+
+.kaGooSignup .textFieldContainer p {
+  margin-right: 10px;
+}
+
+.kaGooSignup p {
+  width: 10%;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.kaGooSignup .rightBtn {
+  display: flex;
+  gap: 5px;
+  margin-left: 79%;
+  margin-top: 1%;
+}
+
+.kaGooSignup .errorMsg {
+  width: 20%;
+  margin-left: 8%;
+}
+
+.kaGooSignup .idInspection {
+  width: 40%;
+  margin-left: 9%;
+  font-weight: normal;
+}
+.kaGooSignup  .pwInspection {
+  width: 69%;
+  margin-left: 8%;
+  font-weight: normal;
+}
+
+.kaGooSignup .blueText {
+  color : blue;
+}
+.kaGooSignup .redText {
+  color : red;
+}
+
+.kaGooSignup .BtnTextField {
+  display: flex;
+  width: 79%;
+}
+
+.kaGooSignup .signBtn {
+  margin-bottom: 5%;
+}
+
+.kaGooSignup .myaddressBox {
+  width: 400px;
+  height: 400px;
+}

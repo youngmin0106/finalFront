@@ -43,7 +43,6 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
       .then((response) => {
         const jwt = response.headers.authorization;
         console.log("로그인 성공");
-        localStorage.setItem('id', loginData.username);
         sessionStorage.setItem('jwt', jwt);
         setUserInfo(response.data.member[0]);
         setTrans({ member: response.data.member[0] });
@@ -114,7 +113,7 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
               </Grid>
 
               <Grid item>
-                <Link href="/" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
+                <Link href="/member-sign" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
               </Grid>
             </Grid>
           </Box>
