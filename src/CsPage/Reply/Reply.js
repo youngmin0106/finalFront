@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import "../CsCss/Reply.css";
 import ReplyItem from "./ReplyItem";
 import axiosInstance from "../../axiosInstance";
@@ -25,16 +24,24 @@ function Reply({ oneDetail, cs }) {
         },
       };
       axiosInstance
-        .post(`/reply/${oneDetail.no}`, reply)
+        .post(`/reply/${oneDetail.no}`, replyData)
         .then((response) => {
-          alert(response.data);
-          setReply({ content: "" });
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-        
+          axiosInstance
+          .get(`/reply/${oneDetail.no}/list`)
+          .then((response) => {
+            setReplyList(response.data);
+            setReply({ content: "" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          
+        alert(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });        
       };
 
         useEffect(() => {
@@ -54,7 +61,7 @@ function Reply({ oneDetail, cs }) {
     <div className="reply-section">
         <div className="add-reply">
           <textarea
-            defaultValue={reply.content}
+            value={reply.content}
             onChange={(e) => setReply({ ...reply, content: e.target.value })}
             className="reply-textarea"
             placeholder="댓글을 입력하세요"
@@ -69,8 +76,7 @@ function Reply({ oneDetail, cs }) {
         </div>
         </div>
         {replyList.length > 0 && (
-          <div className="comment-list">
-            <h4>댓글 목록</h4>
+          <div className="comment-list">   
             <div className="replyListmap">
             {replyList.map((reply ,i) => (
               <ReplyItem

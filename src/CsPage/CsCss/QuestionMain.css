@@ -135,11 +135,8 @@
 }
 
 
-.questionmain  .questiontab{
-  position: absolute;
-  left: 850px;
-  bottom: 390px;
-  height: 250px;
+.questionmain {
+  width: 20%;
 }
 
 

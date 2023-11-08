@@ -136,13 +136,15 @@
 
 
 .onemain  .onetoonetab{
-  position: absolute;
-  left: 1250px;
-  bottom: 390px;
-  height: 250px;
+
 }
 
 .onemain  .linktitle{
   text-decoration: none;
   color: black;
+}
+
+.onemain{
+  width: 20%;
+
 }
