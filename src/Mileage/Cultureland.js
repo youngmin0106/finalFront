@@ -5,7 +5,7 @@ import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 
-function Cultureland({ userInfo, setUserInfo }) {
+function Cultureland({ userInfo, setUserInfo, trans, setTrans }) {
 
 
   const tdStyle = {
@@ -17,6 +17,9 @@ function Cultureland({ userInfo, setUserInfo }) {
     padding: '10px',
     fontWeight: 100
   };
+
+  console.log(trans)
+  console.log({...trans.member})
 
   const navigate = useNavigate();
 

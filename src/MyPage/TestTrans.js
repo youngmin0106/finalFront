@@ -5,7 +5,7 @@ import './TestTrans.css';
 import { useEffect } from "react";
 import { useState } from "react";
 
-function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
+function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setTrans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
 
   const [transInfo, setTransInfo] = useState({
 
@@ -16,9 +16,12 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
   })
 
   // 인계
-  console.log(userInfo.username);
-  console.log(startTransInfo.sellerId)
-  console.log(IntransList);
+  console.log("접속한 사용자 : " + userInfo.username);
+  console.log("거래중 게시글 구매자 :  " + intransInfo.buyerId)
+  console.log("거래중 게시글 인계여부 : " + intransInfo.sellerChk)
+  console.log(transInfo)
+  console.log(intransInfo)
+  
 
   const { id } = useParams();
 
@@ -30,6 +33,7 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
       console.log(response.data);
       setTransInfo(response.data.trans);
       setIntransInfo(response.data.intrans);
+      setTrans({...trans, trans : "DONE"}); // 거래완료되서 trans정보도 갱신
     }).catch((error) => {
       console.log(error);
     })
@@ -38,15 +42,16 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
 
 
   const turnOverBtn = () => {
-    let transId = testTrans[0].transId;
-    axiosInstance.post('/testSellTrans', transId)
+    let transId = {id}
+    console.log({id});
+    axiosInstance.post('/sellTrans', intransInfo)
       .then(response => {
         alert(response.data);
         console.log(response.data);
   
-        setTestTrans((testTrans) => ({
-          ...testTrans,
-          sellerChk : 'true'
+        setIntransInfo((intransInfo) => ({
+          ...intransInfo,
+          sellerChk : true
         }));
         
       }).catch(error => {
@@ -56,22 +61,22 @@ function TestTrans( {userInfo, testTrans, setTestTrans, trans, startTransInfo, s
 
   // 인수
   const takeOverBtn = () => {
-    let transId = testTrans[0].transId;
-    axiosInstance.post('/testBuyTrans', transId)
+    let transId = {id}
+    axiosInstance.post('/buyTrans', {id : id, trans : transInfo, intrans : intransInfo})
       .then(response => {
         alert(response.data);
-        alert('거래완료');
-        navigate('/')
-        console.log(response.data);
+        alert('거래가 완료되었습니다');
+        navigate('/mypage')
+        setUserInfo({...userInfo, mileage : userInfo.mileage - transInfo.price})
       }).catch(error => {
         console.log(error);
       });
   }
 
   const testButton = () => {
-    if (userInfo.username === intransInfo.buyerId && intransInfo.sellerChk === 'true') {
+    if (userInfo.username === intransInfo.buyerId && intransInfo.sellerChk && intransInfo.trans === "ING") {
       return <Button onClick={takeOverBtn}>인수</Button>
-    } else if (userInfo.username === intransInfo.sellerId) {
+    } else if (userInfo.username === intransInfo.sellerId && !intransInfo.sellerChk) {
       return <Button onClick={turnOverBtn}>인계</Button>
     } else {
       return null;

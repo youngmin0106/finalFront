@@ -5,7 +5,7 @@ import { Button, Form } from 'react-bootstrap';
 import './Toss.css';
 import { useNavigate } from 'react-router-dom';
 
-const CreditCard = ( {userInfo, setUserInfo} ) => {
+const CreditCard = ( {userInfo, setUserInfo, trans, setTrans} ) => {
 
   useEffect(() => {
     const jquery = document.createElement("script");

@@ -10,7 +10,7 @@ import TeenCash from './TeenCash';
 import KakaoPay from './KakaoPay';
 import Payco from './Payco';
 
-function Mileage( {userInfo, setUserInfo} ) {
+function Mileage( {userInfo, setUserInfo, trans, setTrans} ) {
 
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -57,14 +57,14 @@ function Mileage( {userInfo, setUserInfo} ) {
         <li onClick={() => handleItemClick("카카오페이")}>카카오페이</li>
       </ul>
       <div className="content">
-        {selectedItem === "토스페이" && <div className='payopt'><Toss userInfo={userInfo} setUserInfo={setUserInfo}></Toss></div>}
-        {selectedItem === "신용카드" && <div className='payopt'><CreditCard userInfo={userInfo} setUserInfo={setUserInfo}></CreditCard></div>}
-        {selectedItem === "휴대폰" && <div className='payopt'><Phone userInfo={userInfo} setUserInfo={setUserInfo}></Phone></div>}
-        {selectedItem === "무통장입금" && <div className='payopt'><BankTransfer userInfo={userInfo} setUserInfo={setUserInfo}></BankTransfer></div>}
-        {selectedItem === "페이코" && <div className='payopt'><Payco userInfo={userInfo} setUserInfo={setUserInfo}></Payco></div>}
-        {selectedItem === "문화상품권" && <div className='payopt'><Cultureland userInfo={userInfo} setUserInfo={setUserInfo}></Cultureland></div>}
+        {selectedItem === "토스페이" && <div className='payopt'><Toss userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></Toss></div>}
+        {selectedItem === "신용카드" && <div className='payopt'><CreditCard userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></CreditCard></div>}
+        {selectedItem === "휴대폰" && <div className='payopt'><Phone userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></Phone></div>}
+        {selectedItem === "무통장입금" && <div className='payopt'><BankTransfer userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></BankTransfer></div>}
+        {selectedItem === "페이코" && <div className='payopt'><Payco userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></Payco></div>}
+        {selectedItem === "문화상품권" && <div className='payopt'><Cultureland userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></Cultureland></div>}
         {selectedItem === "틴캐시" && <div className='payopt'><TeenCash></TeenCash></div>}
-        {selectedItem === "카카오페이" && <div className='paypot'><KakaoPay userInfo={userInfo} setUserInfo={setUserInfo}></KakaoPay></div> }
+        {selectedItem === "카카오페이" && <div className='paypot'><KakaoPay userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></KakaoPay></div> }
         {/* {selectedItem === "전화결제" && <div className='payopt'><HPhone userInfo={userInfo} setUserInfo={setUserInfo}></HPhone> </div>} */}
       </div>
     </div>

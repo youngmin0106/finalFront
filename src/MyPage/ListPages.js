@@ -14,6 +14,8 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans, setIntra
   let url = '';
   console.log({id})
   
+  
+  
   if ( id === '1' ) {
     content = list[0].name;
     url = list[0].url;
@@ -36,12 +38,11 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans, setIntra
     content = list[6].name;
     url = list[6].url
   }
-
-
-
+  
   useEffect(() => {
+    let encodedUsername = encodeURIComponent(userInfo.username);
 
-    axiosInstance.get(url + `/${userInfo.username}`)
+    axiosInstance.get(url + `/${encodedUsername}`)
     .then((response) => {
       console.log(response.data);
       setIntransList(response.data);
@@ -50,7 +51,7 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans, setIntra
       console.log(error);
     })
     
-  }, [])
+  }, [id, list, setIntransList, userInfo.username])
 
   return (
     <div className="listPages">

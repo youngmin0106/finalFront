@@ -5,6 +5,7 @@ import MyPageBar from './MyPageBar';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../component/Header';
+import { useEffect } from 'react';
 
 
 
@@ -12,6 +13,9 @@ function MyPage({ point, userInfo }) {
   
   console.log(userInfo.mileage);
   
+  useEffect(() => {
+    
+  }, [])
 
   const number = "" + userInfo.mileage;
   const number2 = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")

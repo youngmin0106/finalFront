@@ -208,8 +208,8 @@ function App() {
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
-        <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
-        <Route path='/testTrans/:id' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans} IntransList={IntransList} setIntransList={setIntransList}></TestTrans>}></Route>
+        <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} />}></Route>
+        <Route path='/testTrans/:id' element={<TestTrans userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans} IntransList={IntransList} setIntransList={setIntransList}></TestTrans>}></Route>
 
         {/* 헤더, 고객센터 . . */}
         <Route path='/' element={<Header isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>
