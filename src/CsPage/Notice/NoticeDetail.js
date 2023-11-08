@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import {  useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
+import announcement from "../../mockData/announcement";
 
 function NoticeDetail({userInfo,setAuth ,cs}){
 
@@ -21,19 +22,32 @@ function NoticeDetail({userInfo,setAuth ,cs}){
     navigate('/cs');
   }
   
-  useEffect(()=>{
-    axiosInstance.get(`/notice/${no}`)
-    .then(response=>{
-      setNoticeDetail(response.data);
-     
-      setLoding(false);
-    }).catch(error =>{
-      console.log(error);
-      setLoding(false);
-    })
-  },[no])
-  if(loding)
-  return <div>로딩중</div>
+  useEffect(() => {
+    if (no.startsWith('공지')) {
+      // '공지'인 경우, 파싱된 번호를 찾아서 설정
+      const noticeNo = parseInt(no.replace('공지', ''), 10);
+      const mockData = announcement.find(item => item.no === `공지${noticeNo}`);
+
+      if (mockData) {
+        setNoticeDetail(mockData);
+        setLoding(false);
+      } else {
+        // 묵 데이터가 없다면 404 페이지로 이동 또는 다른 처리 수행
+        setLoding(false);
+      }
+    } else {
+      // '공지'가 아닌 경우, 실제 데이터를 서버에서 가져오기
+      axiosInstance.get(`/questions/${no}`)
+        .then(response => {
+          setNoticeDetail(response.data);
+          setLoding(false);
+        })
+        .catch(error => {
+          console.log(error);
+          setLoding(false);
+        });
+    }
+  }, [no]);
   
 
   return(

@@ -3,13 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../CsPage/CsCss/Notice.css";
 import OnSearch from "./OnSearch";
+import question from "../mockData/question";
+import announcement from "../mockData/announcement";
 
 function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,userInfo}) {
-  const [searchResults, setSearchResults] = useState(data);
+  const [searchResults, setSearchResults] = useState([]);
   
   useEffect(()=>{
-    setSearchResults(data)
-  },[data])
+    setSearchResults([...question, ...announcement, ...data])
+  },[question,announcement,data])
 
   const handleSearch = (searchTerm) => {
     if (searchTerm) {
@@ -18,7 +20,7 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
       );
       setSearchResults(filteredResults);
     } else {
-      setSearchResults(data); 
+      setSearchResults([...question, ...announcement, ...data])
     }
   };
   

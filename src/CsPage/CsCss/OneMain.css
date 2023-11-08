@@ -136,9 +136,9 @@
 
 
 .onemain  .onetoonetab{
-  position: absolute;
-  left: 1250px;
-  bottom: 390px;
+  width: 30%; /* 각 박스의 너비를 조절합니다. */
+  float: inline-end; /* 왼쪽으로 부유하도록 설정합니다. */
+  margin: 10px; 
   height: 250px;
 }
 

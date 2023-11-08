@@ -27,11 +27,18 @@ function Main() {
       })
       .catch((error) => {
         console.error(error);
-        setIsNoticeLoading(false); 
+        setIsNoticeLoading(false);
       });
   };
   useEffect(() => {
     loadNoticeList(); // 페이지가 로드될 때 공지사항 데이터를 가져옵니다.
+  }, []);
+  useEffect(() => {
+    // 묵 데이터 목록에서 제목만 추출
+    const truncatedList = question.map((data) => {
+      return { no: data.no, title: data.title };
+    });
+    setMiniList(truncatedList);
   }, []);
 
   return (
@@ -69,13 +76,13 @@ function Main() {
           <h6>자주묻는질문</h6>
           <hr />
           <div>
-          {question.map((data, i) => {
-              return(
+            {question.map((data, i) => {
+              return (
                 <div key={i}>
-                  <Link to={`/notice/${data.no}`} className="linktitle">
-                    <div>{data.title}</div>
-                  </Link>
-                </div>
+                <Link to={data.no === `질문${i}` ? `/questions/질문${i}` : `/questions/${data.no}`} className="linkTitle">
+                  <div>{data.title}</div>
+                </Link>
+              </div>
               )
             })}
           </div>
@@ -90,30 +97,14 @@ function Main() {
               {announcement[0].content}
             </pre> */}
             {announcement.map((data, i) => {
-              return(
+              return (
                 <div key={i}>
-                  <Link to={`/notice/${data.no}`} className="linktitle">
-                    <div>{data.title}</div>
-                  </Link>
+                     <Link to={data.no === `공지${i}` ? `/announcement/공지${i}` : `/announcement/${data.no}`} className="linkTitle">
+                  <div>{data.title}</div>
+                </Link>
                 </div>
               )
             })}
-          </div>
-          <div>
-          {miniList.map((notice, i) => {
-          return (
-            <div className="table-hover" key={i}>
-              <div >
-                {/* 공지사항 제목을 클릭하면 상세 페이지로 이동하도록 수정 */}
-                <div className="text-left">
-                  <Link to={`/notice/${notice.no}`} className="linktitle">
-                    {notice.title}
-                  </Link>
-                </div>
-              </div>
-            </div>
-          );
-        })}
           </div>
         </div>
       </div>

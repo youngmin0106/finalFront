@@ -4,7 +4,7 @@ import QuestionMain from "./Question/QuestionMain";
 
 function CsList({cs,setCs}){
   return(
-    <div>
+    <div className="csList">
     <CsMain cs={cs} setCs={setCs} />
     <QuestionMain cs={cs} setCs={setCs} />
     <OnetoOneMain cs={cs} setCs={setCs} />

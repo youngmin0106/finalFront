@@ -4,7 +4,6 @@ import Search from "../../component/Search";
 import axiosInstance from "../../axiosInstance";
 import { Link } from "react-router-dom";
 
-
 function Questions() {
     const [questionList, setQuestionList] = useState([]);
     const [isQuestionLoading, setIsQuestionLoading] = useState(true);
@@ -67,6 +66,7 @@ function Questions() {
         <Search
           increaseViews={increaseViews}
           data={questionList}
+
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
           itemsPerPage={itemsPerPage}

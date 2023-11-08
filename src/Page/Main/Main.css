@@ -30,7 +30,20 @@
   box-shadow: 1px 1px 3px 1px rgb(221, 221, 221);
   padding: 20px 18px;
   width: 50%;
-  /* height: 300px; */
+}
+
+.Main .linkTitle {
+  text-decoration: none;
+  color: black;
+}
+
+.Main .linkTitle:hover {
+  text-decoration: none;
+  color: #D1B6E1;
+ /* #9DC8C8
+    #58C9B9
+    #519D9E
+    #D1B6E1 */
 }
 
 .Main iframe {

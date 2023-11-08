@@ -77,7 +77,6 @@ function TransPost({ isLoading, setIsLoading, trans }) {
   return (
     <>
       <div className="TransPost">
-        <h1 className="title">캐릭터 거래</h1>
         <table>
           <tbody>
             <tr>

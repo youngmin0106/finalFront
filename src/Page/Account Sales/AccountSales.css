@@ -1,18 +1,11 @@
 
 .AccountSales {
-  margin: 100px auto auto auto;
+  margin: 50px auto auto auto;
   width: 50%;
-}
-
-.AccountSales .title {
-  margin: auto;
 }
 
 .AccountSales .insertbtn {
   text-align: center;
-}
-.AccountSales h1 {
-  margin-bottom: 50px;
 }
 
 .AccountSales tr, .AccountSales th, .AccountSales td {
