@@ -1,15 +1,28 @@
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
+import { useEffect } from 'react';
 
 function Header({ isAuth, setIsAuth, userInfo }) {
 
 	const navigate = useNavigate();
 
-	const handleLogout = () => {
-		setIsAuth(false);
-		sessionStorage.removeItem("jwt");
-		navigate("/");
-	};
+	useEffect(() => {
+		const storedIsAuth = sessionStorage.getItem("jwt");
+		if (storedIsAuth) {
+			setIsAuth(true);
+		}
+  }, [setIsAuth]);
+
+  const handleLogout = () => {
+    setIsAuth(false);
+    sessionStorage.removeItem("jwt");
+    navigate("/");
+  };
+
+	const notLoginAlert = () => {
+		alert("로그인 후 이용하세요");
+		navigate("/login-page");
+	}
 
 	return (
 		<div className='headercontainer'>
@@ -23,36 +36,43 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 					</div>
 					<div className="fl_right">
 						<ul className="topnav">
-							<li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
-							<li><Link to={"/mypage"}>마이페이지</Link></li>
-							<li><Link to={"/insertTrans"}>물품등록</Link></li>
-							<li><Link to={"#"}>채팅내역</Link></li>
-
 							{isAuth ?
-								<li>{userInfo.name}님 환영합니다.</li>
-								:
-								<li><Link to={"/login-page"}>로그인</Link></li>
+								<>
+									<li style={{ cursor: 'pointer' }} onClick={()=>{navigate("/mypage")}}>마이페이지</li>
+									<li style={{ cursor: 'pointer' }} onClick={()=>{navigate("/insertTrans")}}>판매등록</li>
+									<li>{userInfo.name}님 환영합니다.</li>
+									<li style={{ cursor: 'pointer' }} onClick={handleLogout}>로그아웃</li>
+								</>
+							 : 
+								<>
+									<li><Link to={"/login-page"}>로그인</Link></li>
+									<li><Link to={"/member-type"}>회원가입</Link></li>
+								</>
 							}
-							{isAuth ? <li style={{ cursor: 'pointer' }} onClick={handleLogout}>로그아웃</li> : ""}
-							<li><Link to={"/member-sign"}>회원가입</Link></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div className='headsh'>
-				<img className='mainlogo' src="/img/mainlogo.png" alt="logo" />
+				<img style = {{height : "150px"}} className='mainlogo' src="/img/mainlogo.png" alt="logo" />
 				<input id="search" type="search" name="" placeholder="검색어를 입력해주세요." />
 				<button type="submit" className="searchButton">검색</button>
 			</div>
 			<div className='bigheader'>
 				<nav id="nav">
 					<ul>
-						<li className='one'><Link to={"/insertTrans"}>판매등록</Link></li>
-						<li className='one'><Link to={"/transPost"}>계정거래</Link></li>
-						<li className='one'><Link to={"/mypage"}>마이페이지</Link></li>
+						{isAuth ? <li style={{ cursor: 'pointer' }} className='one'> <Link to={"/insertTrans"}>판매등록</Link></li> 
+										: <li onClick={notLoginAlert} className='one'> <Link onClick={notLoginAlert}>판매등록</Link></li>}
 
-						<li className='one'><Link to={"/mileage"}>마일리지</Link></li>
-						<li className='two'><Link to={"#"}>채팅</Link></li>
+						<li className='one'><Link to={"/transPost"}>물품목록</Link></li>
+
+						{isAuth ? <li className='one'><Link to={"/mypage"}>마이페이지</Link></li> 
+										: <li onClick={notLoginAlert} className='one'><Link>마이페이지</Link></li>}
+
+						{isAuth ? <li className='one'><Link to={"/mileage"}>마일리지 충전</Link></li>
+										:	<li onClick={notLoginAlert} className='one'><Link>마일리지 충전</Link></li>}
+
+						<li className='one'><Link to={"/csList"}>고객센터</Link></li>
 					</ul>
 				</nav>
 			</div>

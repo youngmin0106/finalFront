@@ -95,19 +95,15 @@
   color: white;
 }
 
-
 .headercontainer .bigheader{
-  
     text-align: center;
     top: 30px;
     margin-top: 50px;
     height: 60px;
     background-color:#519D9E ;
     justify-content: center;
- 
-    
- 
 }
+
 @font-face {
   font-family: 'NanumSquareNeo-Variable';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
@@ -143,6 +139,7 @@
   padding:0;
   text-align:center;
 }
+
 .headercontainer #nav li{
   display:inline;
 }
@@ -155,6 +152,8 @@
 .headercontainer .one{
   margin-left: 100px;
   color: white;
+  font-size: 20px;
+  margin-top: 15%;
 }
 
 

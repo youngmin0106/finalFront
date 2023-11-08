@@ -39,6 +39,7 @@ import Main from './Page/Main/Main';
 import IdSerch from './Login/IdSerch';
 import UpdateMember from './SignUp/UpdateMember';
 import KaGooSignup from './SignUp/KaGooSignup';
+import { useEffect } from 'react';
 
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
@@ -119,10 +120,6 @@ const testBoardList = [
   }
 ]
 
-
-
-
-
 function App() {
 
   const [transDetails, setTransDetails] = useState({
@@ -165,9 +162,15 @@ function App() {
 
   const [list, setList] = useState(listOption);
 
+  const [isHeader, setIsHeader] = useState(true);
+
+  useEffect(() => {
+    
+  }, []);
+
   return (
     <div className="App">
-      <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} />
+      {isHeader ? <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} /> : ""}
       <Routes>
 
         <Route path="/" element={<Main />} />
@@ -194,13 +197,13 @@ function App() {
         <Route path="/member-sign" element={<MemberSignup />} />
         <Route path="/signup-success" element={<SignupSuccess />} />
         <Route path="/update-member" element={<UpdateMember userInfo={userInfo}/>} />
-        <Route path="/kaGoo-signup" element={<KaGooSignup userInfo = {userInfo} />} />
+        <Route path="/kaGoo-signup" element={<KaGooSignup userInfo = {userInfo} setIsAuth={setIsAuth} setIsHeader={setIsHeader}/>} />
     
         <Route path="/login-page" element={<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
 
-        <Route path='/idserch' element={<IdSerch />} />
+        <Route path='/idserch' element={<IdSerch setIsHeader={setIsHeader}/>} />
 
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>

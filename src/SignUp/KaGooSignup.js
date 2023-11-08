@@ -5,8 +5,15 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import DaumPostcode from 'react-daum-postcode';
 import './SignUpCss/KaGooSignup.css';
+import { useEffect } from "react";
+import MemberHeader from "./MemberHeader";
 
-function KaGooSignup({ userInfo }) {
+function KaGooSignup({ userInfo, setIsAuth, setIsHeader }) {
+
+  useEffect(() => {
+    setIsHeader(false);
+  },[setIsHeader])
+
   const [isPhoneInspection, setIsPhoneInspection] = useState(false);
   const [isEmailInspection, setIsEmailInspection] = useState(false);
 
@@ -69,38 +76,6 @@ function KaGooSignup({ userInfo }) {
     }
   };
 
-  const KaGooSuccess = () => {
-    let blankField = true;
-
-    for (let id in KaGooData) {
-      if (KaGooData[id] === "") {
-        blankField = false;
-        break;
-      }
-    }
-
-    if (blankField && isPhoneInspection && isEmailInspection) {
-      axiosInstance.put('/kagoosignup', KaGooData)
-        .then((response) => {
-          alert(response.data);
-          console.log(response.data);
-          
-          navigate("/");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else if (!blankField) {
-      alert("빈 칸 확인");
-    } else if (!isPhoneInspection) {
-      alert("전화번호 형식을 확인하세요.");
-    } else if (!isEmailInspection) {
-      alert("이메일 형식을 확인하세요.");
-    } else {
-
-    }
-  };
-
   const presentYear = new Date().getFullYear();
   const age = presentYear - KaGooData.birthdate.substring(0, 4);
   const [isPersonalSuccess, setIsPersonalSuccess] = useState(false);
@@ -120,8 +95,40 @@ function KaGooSignup({ userInfo }) {
     }
   };
 
+  const KaGooSuccess = () => {
+    let blankField = true;
+
+    for (let id in KaGooData) {
+      if (KaGooData[id] === "") {
+        blankField = false;
+        break;
+      }
+    }
+
+    if (blankField && isPhoneInspection && isEmailInspection && isPersonalSuccess) {
+      axiosInstance.put('/kagoosignup', KaGooData)
+        .then((response) => {
+          alert(response.data);
+          console.log(response.data);
+          setIsAuth(true);
+          setIsHeader(true);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (!blankField) {
+      alert("빈 칸 확인");
+    } else if (!isPhoneInspection) {
+      alert("전화번호 형식을 확인하세요.");
+    } else if (!isEmailInspection) {
+      alert("이메일 형식을 확인하세요.");
+    }
+  };
+
   return (
     <div className="kaGooSignup">
+      <MemberHeader progress={65} />
       <div className="signupForm">
         <div className="signupContainer">
           <div className="textFieldContainer">
@@ -196,9 +203,10 @@ function KaGooSignup({ userInfo }) {
 
       <div className="rightBtn">
         <Button style={{ backgroundColor: "#9DC8C8" }} variant="contained" onClick={() => {
+          setIsHeader(true);
           navigate("/");
         }}> 취소 </Button>
-        <Button style={{ backgroundColor: "#9DC8C8" }} variant="contained" onClick={KaGooSuccess} >수정하기</Button>
+        <Button style={{ backgroundColor: "#9DC8C8" }} variant="contained" onClick={KaGooSuccess} >가입하기</Button>
       </div>
 
     </div>

@@ -2,8 +2,13 @@ import { Button, TextField } from "@mui/material";
 import { useState } from 'react';
 import './LoginCss/IdSerch.css';
 import axiosInstance from "../axiosInstance";
+import { useEffect } from "react";
 
-function IdSerch() {
+function IdSerch( {setIsHeader} ) {
+
+  useEffect(() => {
+    setIsHeader(false);
+  }, [setIsHeader])
 
   const [PhoneData, setPhoneData] = useState({
     phone: '',
