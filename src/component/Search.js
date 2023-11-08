@@ -10,8 +10,8 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
   const [searchResults, setSearchResults] = useState([]);
   
   useEffect(()=>{
-    setSearchResults([...question, ...announcement, ...data])
-  },[question,announcement,data])
+    setSearchResults(data) 
+  },[data]) 
 
   const handleSearch = (searchTerm) => {
     if (searchTerm) {
@@ -20,7 +20,7 @@ function Search({ increaseViews, data, currentPage, itemsPerPage ,path , ad ,use
       );
       setSearchResults(filteredResults);
     } else {
-      setSearchResults([...question, ...announcement, ...data])
+      setSearchResults(data);
     }
   };
   

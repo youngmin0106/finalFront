@@ -99,7 +99,7 @@ function Main() {
             {announcement.map((data, i) => {
               return (
                 <div key={i}>
-                     <Link to={data.no === `공지${i}` ? `/announcement/공지${i}` : `/announcement/${data.no}`} className="linkTitle">
+                     <Link to={data.no === `공지${i}` ? `/notice/공지${i}` : `/notice/${data.no}`} className="linkTitle">
                   <div>{data.title}</div>
                 </Link>
                 </div>

@@ -3,9 +3,10 @@ import PaginationComponent from "../../component/PaginationComponent";
 import Search from "../../component/Search";
 import axiosInstance from "../../axiosInstance";
 import { Link } from "react-router-dom";
+import question from "../../mockData/question";
 
 function Questions() {
-    const [questionList, setQuestionList] = useState([]);
+    const [questionList, setQuestionList] = useState(question);
     const [isQuestionLoading, setIsQuestionLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -33,7 +34,10 @@ function Questions() {
           .get("/questions")
           .then((response) => {
            
-            setQuestionList(response.data);
+            setQuestionList([
+              ...question,  
+              ...response.data
+            ]);
             setIsQuestionLoading(false);
           })
           .catch((error) => {

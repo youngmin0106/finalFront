@@ -2,7 +2,7 @@ let announcement = [
   {
     no: '공지1',
     member:{username: '관리자', name: "admin"},
-    createdate: "2023-11-07",
+    createDate: "2023-11-07",
     title: "[공지사항] (주) oooo 소개",
     content: 
       `
@@ -20,7 +20,7 @@ let announcement = [
   {
     no: '공지2',
     member:{username: '관리자', name: "admin"},
-    createdate: "2023-11-07",
+    createDate: "2023-11-07",
     title: "[공지사항] 반드시 지켜야 될 사항에 대해 알려드립니다.",
     content: 
       `
@@ -62,7 +62,7 @@ let announcement = [
   {
     no: '공지3',
     member:{username: '관리자', name: "admin"},
-    createdate: "2023-11-07",
+    createDate: "2023-11-07",
     title: "[공지사항] 오픈 이벤트",
     content: 
       `
@@ -80,7 +80,7 @@ let announcement = [
   {
     no: '공지4',
     member:{username: '관리자', name: "admin"},
-    createdate: "2023-11-07",
+    createDate: "2023-11-07",
     title: "[공지사항] 공지4",
     content: 
       `
@@ -96,7 +96,7 @@ let announcement = [
   {
   no: '공지5',
   member:{username: '관리자', name: "admin"},
-  createdate: "2023-11-07",
+  createDate: "2023-11-07",
   title: "[공지사항] 공지5",
   content: 
     `
