@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import {  useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
 
@@ -54,12 +53,12 @@ function QuestionDetail({userInfo, cs}){
     </div>
     <div className="clickbtn">
       {
-        cs.member.username == questionDetail.member.username ?
+        cs.member.username === questionDetail.member.username ?
         <button  className="click" onClick={questionupdatebtn}>수정</button> :
         <div></div>
       }
       {
-         cs.member.username == questionDetail.member.username ?
+         cs.member.username === questionDetail.member.username ?
         <button  className="noClick" type="reset" 
         onClick={()=>{
        

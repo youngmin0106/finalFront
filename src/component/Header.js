@@ -55,7 +55,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 					</div>
 				</div>
 				<div className='headsh'>
-					<img src="/img/gamepng.png" className='gameimg' />
+					<img src="/img/gamepng.png" className='gameimg' alt=''/>
 					<input id="search" type="search" name="" placeholder="아이디바다" disabled />
 					<button type="submit" className="searchButton" disabled>검색</button>
 				</div>
@@ -82,5 +82,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 	}
 
 export default Header;
+
+
 
 

@@ -22,9 +22,6 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
   const defaultTheme = createTheme();
   const navigate = useNavigate();
 
-  const KakaoApiKey = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao`;
-  const GoogleApiKey = `https://accounts.google.com/o/oauth2/auth?client_id=677438077141-5kscmapicvkvh641v83fooil8lj4661s.apps.googleusercontent.com&redirect_uri=http://localhost:3000/oauth/google&response_type=token&scope=openid%20email%20profile`;
-
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -68,6 +65,7 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
       'width=800, height=600');
   }
 
+
   return (
 
     <div className='LoginComponent'>
@@ -98,15 +96,25 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
                 style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }}
                 onClick={loginBtnClickHandler}> 로그인 </Button>
 
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#!" onClick={idPwSerchOpen} style={{ textDecoration: "none" }} variant="body2"> 아이디/비밀번호 찾기 </Link>
+                </Grid>
+
+                <Grid item>
+                  <Link href="/member-type" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
+                </Grid>
+              </Grid><br />
+
               <div className='loginBox'>
                 <a href="#!" onClick={() => {
-                    window.location.href = KakaoApiKey;
-                  }}>
+                  window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
+                }}>
                   <img src={kakaoicon} alt="kakaoLoginImg"></img>
                 </a>
 
                 <a href="#!" onClick={() => {
-                  window.location.href = GoogleApiKey;
+                  window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=token&scope=openid%20email%20profile`;
                 }}>
                   <img src={googleico} alt="googleLoginImg"></img></a>
 
@@ -114,18 +122,7 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
                   alert("카카오 or 구글을 이용하세요");
                 }}><img src={navericon} alt="naverLoginImg"></img></a>
               </div>
-                <span className = "socialtext">간편 회원가입</span>
-  
-
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#!" onClick = { idPwSerchOpen } style={{ textDecoration: "none" }} variant="body2"> 아이디/비밀번호 찾기 </Link>
-                </Grid>
-
-                <Grid item>
-                  <Link href="/member-type" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
-                </Grid>
-              </Grid>
+              <span className="socialtext">간편 회원가입</span>
             </Box>
           </Box>
         </Container>

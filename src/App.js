@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import UpdateInfo from './UpdateInfo/UpdateInfo';
 import DeleteInfo from './DeleteInfo/DeleteInfo';
 import MyPage from './MyPage/MyPage';
 import ListPages from './MyPage/ListPages';
@@ -39,8 +38,6 @@ import IdSerch from './Login/IdSerch';
 import UpdateMember from './SignUp/UpdateMember';
 import KaGooSignup from './SignUp/KaGooSignup';
 import { useEffect } from 'react';
-import axiosInstance from './axiosInstance';
-import Reply from './CsPage/Reply/Reply';
 
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
@@ -137,6 +134,18 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
 
   const [userInfo, setUserInfo] = useState({ username: '', name: '' }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
+  
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem('userInfo');
+    if (storedUserInfo) {
+      setUserInfo(JSON.parse(storedUserInfo));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  }, [userInfo]);
+
 
   const [trans, setTrans] = useState({
     price: '',
@@ -207,7 +216,6 @@ function App() {
         <Route path='/idserch' element={<IdSerch setIsHeader={setIsHeader}/>} />
 
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
-        <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} />}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
@@ -221,3 +229,5 @@ function App() {
 }
 
 export default App;
+
+
