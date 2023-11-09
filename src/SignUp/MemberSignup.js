@@ -256,7 +256,7 @@
               <p>주소</p>
               <div className="BtnTextField">
                 <TextField sx={tfStyle} id="address" value={memberData.address} onChange={inputChangeHandler}
-                  label="주소 검색하세요." type="text" />
+                  label="주소 검색하세요." type="text" disabled/>
               </div>
               <div>
                 <Button id="signBtn" variant="contained" style={BtnStyle} onClick={openDaumPost}>

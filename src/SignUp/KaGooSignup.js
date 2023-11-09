@@ -171,7 +171,7 @@ function KaGooSignup({ userInfo, setIsAuth, setIsHeader }) {
             <p>주소</p>
             <div className="BtnTextField">
               <TextField sx={tfStyle} id="address" label="주소 검색하세요."
-                value={KaGooData.address} onChange={inputChangeHandler} type="text" />
+                value={KaGooData.address} onChange={inputChangeHandler} type="text" disabled/>
             </div>
             <div>
               <Button id="signBtn" variant="contained" style={BtnStyle} onClick={openDaumPost}>
