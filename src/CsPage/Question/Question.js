@@ -5,6 +5,7 @@ import axiosInstance from "../../axiosInstance";
 import { Link } from "react-router-dom";
 
 
+
 function Questions() {
     const [questionList, setQuestionList] = useState([]);
     const [isQuestionLoading, setIsQuestionLoading] = useState(true);
@@ -44,8 +45,8 @@ function Questions() {
       };
     return (
         <div className="notice">
+        <h2 style={{marginLeft : "10%", fontSize : "25px", marginTop : "10%" ,width : "10%"}}>- 자주묻는질문</h2>
       <ul className="ulList">
-        <h2 style={{ fontSize: "25px" }}>- 자주묻는질문</h2>
         <li>
           <Link to={"/cs"}>공지사항</Link>
         </li>

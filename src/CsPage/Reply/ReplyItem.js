@@ -1,16 +1,16 @@
 // ReplyItem.js
-
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
 import "../CsCss/Replyitem.css";
 import axiosInstance from "../../axiosInstance";
 
-function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
+function ReplyItem({ reply, oneDetail, setReply }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedContent, setEditedContent] = useState(reply.content);
 
+
   const handleEditClick = () => {
     setIsEditing(true);
+    setEditedContent(reply.content);
   };
 
   const handleSaveClick = () => {
@@ -19,67 +19,81 @@ function ReplyItem({ reply, oneDetail, isCurrentUserComment }) {
       .put(`/reply`, { ...reply, content: editedContent })
       .then((response) => {
         alert(response.data);
-        setIsEditing(false);
-      })
+        setReply((prevReplyList) =>
+        prevReplyList.map((r) =>
+          r.id === reply.id ? { ...r, content: editedContent } : r
+        )
+      );
+      setIsEditing(false);
+    })
       .catch((error) => {
         console.log(error);
       });
   };
-
+  const handleCancelClick = () => {
+    setIsEditing(false);
+  };
   return (
     <div className="reply-item">
-      <div className="comment-author">
-        작성자: {reply.username}
+      <div className="replyListBox">
+
+        <div>
+          작성자: {oneDetail.member.name}
+        </div>
+        <div>
+
+          {isEditing ? (
+            <div className="replyFlex ">
+              <textarea
+                className="reply-submit"
+                type="text"
+                rows={2}
+                cols={50}
+                onChange={(e) => setEditedContent(e.target.value)}
+              > value={reply.content}</textarea>{" "}
+              <button className="click" onClick={handleSaveClick}>
+                저장
+              </button>
+              <button className="noClick" onClick={handleCancelClick}>
+                취소
+              </button>
+            </div>
+          ) : (
+            <div className="replyFlex">
+              <textarea
+                className="reply-content"
+                type="text"
+                rows={2}
+                cols={50}
+                value={reply.content}
+                readOnly
+              ></textarea>{" "}
+              <div className="btn">
+                <button onClick={handleEditClick} className="click">
+                  수정
+                </button>{" "}
+                <button
+                  className="noClick"
+                  type="reset"
+                  onClick={() => {
+                    axiosInstance
+                      .delete(`/reply/${reply.id}`)
+                      .then((response) => {
+                        alert(response.data);
+                        setReply((deleteReplyList) => deleteReplyList.filter((r) => r.id !== reply.id));
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                      });
+                  }}
+                >
+                  삭제
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      <br />
-      {isEditing ? (
-        <div>
-          <textarea
-            className="reply-content"
-            type="text"
-            rows={2}
-            cols={50}
-            value={editedContent}
-            onChange={(e) => setEditedContent(e.target.value)}
-          ></textarea>{" "}
-          <Button variant="outline-success" onClick={handleSaveClick}>
-            저장
-          </Button>
-        </div>
-      ) : (
-        <div>
-          <textarea
-            className="reply-content"
-            type="text"
-            rows={2}
-            cols={50}
-            value={reply.content}
-            disabled={!isCurrentUserComment} // 현재 사용자의 댓글이면 활성화, 아니면 비활성화
-          ></textarea>{" "}
-          {isCurrentUserComment && (
-            <Button variant="outline-primary" onClick={handleEditClick} className="replyupdate">
-              수정
-            </Button>
-          )}{" "}
-          <Button
-            className="replydelete"
-            variant="outline-danger"
-            type="reset"
-            onClick={() => {
-              axiosInstance
-                .delete(`/reply/${reply.id}`)
-                .then((response) => {
-                  alert(response.data);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            }}
-          >
-            삭제
-          </Button>
-        </div>
-      )}
     </div>
   );
 }

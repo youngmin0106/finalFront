@@ -37,6 +37,7 @@ import TransDetail from './Page/Trans Detail/TransDetail'
 import CsList from './CsPage/CsList';
 import Main from './Page/Main/Main';
 import axiosInstance from './axiosInstance';
+import Reply from './CsPage/Reply/Reply';
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -210,7 +211,7 @@ function App() {
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
-        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs}/>} />
+        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
         <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
         <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />
