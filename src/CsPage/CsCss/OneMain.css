@@ -14,6 +14,9 @@
 }
 
 
+
+
+
 .onemain  .TfiCheck{
   float: left;
   position: relative;
@@ -133,16 +136,17 @@
   color: black;
 }
 
-
-
-.onemain  .onetoonetab{
-  position: absolute;
-  left: 1250px;
-  bottom: 390px;
-  height: 250px;
-}
-
 .onemain  .linktitle{
   text-decoration: none;
   color: black;
+}
+
+.onemain{
+  width: 20%;
+
+}
+
+
+.onemain .onetoonetab{
+  height : 250px;
 }

@@ -35,11 +35,12 @@ import TransPost from './Page/Trans Post/TransPost'
 import TransDetail from './Page/Trans Detail/TransDetail'
 import CsList from './CsPage/CsList';
 import Main from './Page/Main/Main';
-
 import IdSerch from './Login/IdSerch';
 import UpdateMember from './SignUp/UpdateMember';
 import KaGooSignup from './SignUp/KaGooSignup';
 import { useEffect } from 'react';
+import axiosInstance from './axiosInstance';
+import Reply from './CsPage/Reply/Reply';
 
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
@@ -172,25 +173,25 @@ function App() {
     <div className="App">
       {isHeader ? <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} /> : ""}
       <Routes>
-
+        
         <Route path="/" element={<Main />} />
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} />} />
 
-        <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs} />} />
+        <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/cs' element={<Notice setIsAuth={setIsAuth} userInfo={userInfo} />} />
-        <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo} />} />
+        <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo}/>} />
         <Route path='/onetoone' element={<Onetoone setIsAuth={setIsAuth} userInfo={userInfo} />} />
-        <Route path='/onetoonewrite' element={<WriteOnetoOne userInfo={userInfo} cs={cs} setCs={setCs} />} />
+        <Route path='/onetoonewrite' element={<WriteOnetoOne  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
-        <Route path='/questionwrite' element={<WriteQuestion userInfo={userInfo} cs={cs} setCs={setCs} />} />
-        <Route path='/questions/:no' element={<QuestionDetail userInfo={userInfo} cs={cs} />} />
-        <Route path='/notice/:no' element={<NoticeDetail userInfo={userInfo} cs={cs} />} />
-        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs} />} />
-        <Route path="/notice/:no/update" element={<NoticeUpdate userInfo={userInfo} cs={cs} />} />
-        <Route path='/questions/:no/update' element={<QuestionUpdate cs={cs} />} />
-        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate cs={cs} />} />
+        <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
+        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
+        <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
+        <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />
+        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate  cs={cs}/>} />
 
         <Route path="/member-type" element={<MemberType />} />
         <Route path="/member-agree" element={<MemberAgree />} />
@@ -212,7 +213,6 @@ function App() {
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
         <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans}></TestTrans>}></Route>
 
-        
       </Routes>
 
     </div>

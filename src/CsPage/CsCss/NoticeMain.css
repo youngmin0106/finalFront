@@ -1,5 +1,19 @@
-.ulListcs {
-  list-style-type: none;
+.ulListcs{
+    list-style-type: none;
+    background-color: none;
+    width: 10%;
+    padding: 0px;
+    padding-left: 0px;
+    margin:  0px;
+    margin-left: 10%;
+    position: absolute;
+    overflow: auto;
+    border : 0.5px solid #eee;
+    border-radius: 5px;
+    font-family: 'NanumSquareNeo-Variable';
+  }
+  
+  /* list-style-type: none;
   background-color: none;
   width: 10%;
   padding: 0px;
@@ -7,13 +21,12 @@
   margin:  0px;
   margin-left: 10%;
   position: absolute;
-  /* height: 100%; */
   overflow: auto;
   border : 0.5px solid #eee;
   border-radius: 5px;
   font-family: 'NanumSquareNeo-Variable';
-  top: px;
-}
+  top: px; */
+
 
 @font-face {
   font-family: 'NanumSquareNeo-Variable';
@@ -194,24 +207,6 @@
   color: black;
 }
 
-.csmain .cstab{
-  position: absolute;
-  left: 450px;
-  bottom: 390px;
-}
-
-.csmain .questiontab{
-  position: absolute;
-  left: 850px;
-  bottom: 390px;
-}
-
-.csmain .onetoonetab{
-  position: absolute;
-  left: 1250px;
-  bottom: 390px;
-}
-
 .csmain .linktitle{
   text-decoration: none;
   color: black;
@@ -219,4 +214,22 @@
 
 .csmain .cstab{
   height: 250px;
+}
+
+.csmain {
+  width: 20%;
+  margin-left: 65px;
+  
+}
+
+.csList{
+  width: 80%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 140px;
+}
+
+.sidebar{
+  width: 20%;
 }

@@ -60,7 +60,7 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
         alert("아이디 패스워드를 확인하세요.")
       });
   }
-  
+
   const idPwSerchOpen = () => {
     window.open(
       'http://localhost:3000/idserch',
