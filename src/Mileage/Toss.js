@@ -156,7 +156,7 @@ function Toss() {
             </tr>
             <tr>
               <td style={tdStyle}>충전 수수료</td>
-              <th style={thStyle}>20%</th>
+              <th style={thStyle}>0%</th>
             </tr>
             <tr>
               <td style={tdStyle}>충전 한도</td>

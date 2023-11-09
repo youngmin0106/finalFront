@@ -139,7 +139,9 @@
   width: 20%;
 }
 
-
+.questionmain .questiontab{
+  height : 250px; 
+}
 
 .questionmain  .linktitle{
   text-decoration: none;

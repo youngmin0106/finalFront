@@ -89,7 +89,7 @@ function Cultureland({ userInfo, setUserInfo, trans, setTrans }) {
             </tr>
             <tr>
               <td style={tdStyle}>충전 수수료</td>
-              <th style={thStyle}>30%</th>
+              <th style={thStyle}>0%</th>
             </tr>
             <tr>
               <td style={tdStyle}>충전 한도</td>

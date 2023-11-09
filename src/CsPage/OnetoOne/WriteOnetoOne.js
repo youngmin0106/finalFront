@@ -33,13 +33,8 @@ function WriteOnetoOne({userInfo ,cs ,setCs}){
           ></textarea>
         </div>
       <div className="clickbtn">
-<<<<<<< HEAD
-      <Button variant="outline-primary" className="sumitbtn" onClick={()=>{
-          axiosInstance.post('/onetoone', cs)
-=======
       <button  className="click" onClick={()=>{
           axiosInstance.post('/onetoone', {cs : cs, username : cs.username, title : cs.title, content : cs.content , member : userInfo})
->>>>>>> develop
           .then(response=>{
               alert(response.data);
               navigate('/onetoone');

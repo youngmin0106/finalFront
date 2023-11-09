@@ -28,6 +28,7 @@ function AccountSales( {trans, setTrans} ) {
 
   return(
     <div className="AccountSales">
+      <br></br>
       <div className="title">
         <h1>계정 등록</h1>
       </div>

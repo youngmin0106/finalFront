@@ -45,7 +45,7 @@ function NoticeDetail({userInfo,setAuth ,cs}){
       </div>
       <div className="writer">
         <p className="th">작성자</p>
-        <p className="writename">{cs.member.name}</p>
+        <p className="writename">{noticeDetail.member.name}</p>
       </div>
     </div>
     <div className="content">

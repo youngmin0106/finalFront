@@ -26,9 +26,10 @@ function Header({ isAuth, setIsAuth }) {
 				</div>
 			</div>
 			<div className='headsh'>
-				<img src="/img/gamepng.png" className='gameimg'/>
+				<img src="/img/gamepng.png" className='gameimg' alt='게임이미지'/>
 				<input id="search" type="search" name="" placeholder="아이디바다" disabled />
 				<button type="submit" className="searchButton" disabled>검색</button>
+				<div style={{fontSize : "15px", marginLeft : "7%"}}>#메이플스토리 &nbsp; #리그오브레전드 &nbsp; #서든어택 &nbsp; #로스트아크 &nbsp; #쿠키런 &nbsp; #던전앤파이터 &nbsp; #FC온라인 </div>
 			</div>
 			<div className='bigheader'>
 				<nav id="nav">
