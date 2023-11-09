@@ -70,3 +70,10 @@ text-align: center;
  color: #519D9E;
  margin: 50px 0;
 }
+
+.Main .gameImg {
+  height: 133px;
+  margin: 10px;
+  border: 2px solid lightgray;
+  border-radius: 50%;
+}

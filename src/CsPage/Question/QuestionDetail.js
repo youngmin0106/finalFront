@@ -54,52 +54,50 @@ function QuestionDetail({ userInfo, cs }) {
     return <div>로딩중</div>
 
 
-  return (
-    <div className="write">
-      <div className="title-input">
-        <span className="titlespan">제목</span>
-        <input className="writetitle" type="text" name="title" value={questionDetail.title} disabled />
+    return(
+      <div className="WriteNotice">
+      <div className="table">
+        <div className="title">
+          <p className="th">제목</p>
+          <input className="writetitle" type="text" name="title" value={questionDetail.title} disabled />
+        </div>
+        <div className="writer">
+          <p className="th">작성자</p>
+          <p className="writename">{questionDetail.member.name}</p>
+        </div>
       </div>
-      <br />
-
-      <div>
-        <span className="contentspan" >내용</span>
-        <textarea className="contentarea"
-          disabled
+      <div className="content">
+        <textarea
           value={questionDetail.content}
-          name="contents"
-          cols="74"
-          rows="15"
+          disabled
+          name="content"
         ></textarea>
       </div>
-
-      <br />
       <div className="clickbtn">
         {
-          cs && cs.member && cs.member.username == questionDetail.member.username ?
-            <Button variant="outline-primary" className="sumitbtn" onClick={questionupdatebtn}>수정</Button> :
-            <div></div>
+          cs.member.username == questionDetail.member.username ?
+          <button  className="click" onClick={questionupdatebtn}>수정</button> :
+          <div></div>
         }
         {
-          cs && cs.member && cs.member.username == questionDetail.member.username ?
-            <Button variant="outline-danger" className="resetbtn" type="reset"
-              onClick={() => {
-
-                axiosInstance.delete('/questions', { params: { 'no': questionDetail.no } })
-                  .then(response => {
-                    alert(response.data);
-                    navigate('/questions');
-                  }).catch(error => {
-                    console.log(error);
-                  })
-              }}
-            >삭제</Button> :
+           cs.member.username == questionDetail.member.username ?
+          <button  className="noClick" type="reset" 
+          onClick={()=>{
+         
+            axiosInstance.delete('/questions', {params : {'no':questionDetail.no}})
+            .then(response=>{ 
+              alert(response.data);
+              navigate('/questions');
+            }).catch(error=>{
+              console.log(error);
+            })}}
+            >삭제</button>:
             <div></div>
-        }
-        <Button variant="outline-info" className="backbtn" onClick={backbtn}>목록</Button>{' '}
+          }
+      <button  className="backClick" onClick={backbtn}>목록</button>{' '}
       </div>
     </div>
-  );
-}
-
-export default QuestionDetail;
+    );
+  }
+  
+  export default QuestionDetail;

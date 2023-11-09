@@ -5,19 +5,19 @@ import Search from "../../component/Search";
 import { Link } from "react-router-dom";
 import announcement from "../../mockData/announcement";
 
-function Notice({ userInfo, cs, setCs }) {
-  const [noticeList, setNoticeList] = useState(announcement);
+function Notice({userInfo ,cs ,setCs}) {
+  const [noticeList, setNoticeList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
+ 
   useEffect(() => {
     if (isNoticeLoading) {
       loadNoticeList();
     }
   }, [isNoticeLoading]);
 
-
+ 
 
   const increaseViews = (postId) => {
     axiosInstance
@@ -34,12 +34,12 @@ function Notice({ userInfo, cs, setCs }) {
     axiosInstance
       .get("/notice")
       .then((response) => {
-
-        // setNoticeList(response.data);
+       
         setNoticeList([
-          ...noticeList,
+          ...announcement,
           ...response.data
         ]);
+
         setIsNoticeLoading(false);
       })
       .catch((error) => {
@@ -69,9 +69,9 @@ function Notice({ userInfo, cs, setCs }) {
             <h3>공지사항</h3>
           </div>
         </div>
-
-
-        <Search
+     
+     
+        <Search         
           increaseViews={increaseViews}
           data={noticeList}
           setCurrentPage={setCurrentPage}
@@ -83,7 +83,7 @@ function Notice({ userInfo, cs, setCs }) {
           cs={cs}
           setCs={setCs}
         />
-
+          
         <PaginationComponent
           currentPage={currentPage}
           itemsPerPage={itemsPerPage}

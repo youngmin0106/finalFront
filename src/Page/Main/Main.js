@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import './Main.css';
 import Carousel from 'react-bootstrap/Carousel';
 import { useState } from "react";
@@ -8,6 +8,7 @@ import announcement from "../../mockData/announcement";
 import question from "../../mockData/question";
 
 function Main() {
+  const navigate = useNavigate();
   const [miniList, setMiniList] = useState([]);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
   const [noticeList, setNoticeList] = useState([]);
@@ -111,10 +112,20 @@ function Main() {
 
 
       <div className="secondLayout">
-        <h6>아이콘 or 마일리지충전 or 검색순위</h6>
+        <h6>바로가기</h6>
         <hr />
         <div>
-
+        <img className="gameImg" src="./img/gameIcon/FC온라인.png" onClick={() => {
+            navigate("/transPost");
+          }}/>
+          <img className="gameImg" src="./img/gameIcon/리그오브레전드.png" />
+          <img className="gameImg" src="./img/gameIcon/메이플스토리.png" />
+          <img className="gameImg" src="./img/gameIcon/로스트아크.png" />
+          
+          <img className="gameImg" src="./img/gameIcon/서든어택.png" />
+          <img className="gameImg" src="./img/gameIcon/던전앤파이터.png" />
+          <img className="gameImg"  src="./img/gameIcon/배틀그라운드.jpg" />
+          <img className="gameImg" src="./img/gameIcon/쿠키런.png" />
         </div>
       </div>
 

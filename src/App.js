@@ -204,7 +204,7 @@ function App() {
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
         <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
-        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/notice/:no' element={<NoticeDetail  cs={cs}/>} />
         <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
         <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
         <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />

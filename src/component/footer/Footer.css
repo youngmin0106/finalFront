@@ -10,14 +10,9 @@
   margin: 40px 0;
 }
 
- /* {
-  display: flex;
-  justify-content: space-evenly;
-
-} */
-
-.Footer .logo {
-  margin-right: 60px;
+.Footer img {
+  height: 50px;
+  width: 120px;
 }
 
 .Footer p {

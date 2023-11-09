@@ -21,7 +21,7 @@ function GoogleLogin({setUserInfo, setCs, setTrans}) {
         if(jwt){
           sessionStorage.setItem('jwt', jwt);
     
-          navigate('/mypage');
+          navigate('/');
         }
 
       }).catch(error => {

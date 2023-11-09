@@ -66,7 +66,7 @@
 
 .headercontainer .headsh {
   text-align: center;
-  margin-top: 30px;
+  margin: 50px auto;
 }
 
 .headercontainer .headsh #search{
@@ -125,7 +125,6 @@
 
   text-align: center;
   top: 30px;
-  margin-top: 50px;
   height: 60px;
   background-color: #519D9E;
   justify-content: center;

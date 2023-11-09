@@ -13,10 +13,12 @@ function Footer() {
         <b>고객센터</b>
       </div>
       <div className="secondLayout">
-        <div className="logo">로고</div>
+        <div className="logo">
+          <img src="/img/로고.png"/>
+        </div>
         <div>
           <div className="firstItem">
-            <p>상호명: 사이트명</p>
+            <p>상호명: 바로로그인</p>
             <p>|</p>
             <p>개발자: 최상운, 조준수, 안영민, 박윤희</p>
             <p>|</p>

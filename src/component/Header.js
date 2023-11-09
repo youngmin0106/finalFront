@@ -9,7 +9,7 @@ function Header({ isAuth, setIsAuth }) {
 					<div className="fl_left">
 						<ul className="nospace">
 							<li><Link to={"/"}><i className="fa fa-lg fa-home"></i>HOME</Link></li>
-							<li><i className="fa fa-envelope-o"><img src="img/minilogo.png" /></i></li>
+							<li><i className="fa fa-envelope-o"><img src={`${process.env.PUBLIC_URL}/img/minilogo.png`} /></i></li>
 						</ul>
 					</div>
 					<div className="fl_right">
@@ -26,8 +26,10 @@ function Header({ isAuth, setIsAuth }) {
 				</div>
 			</div>
 			<div className='headsh'>
-				<img src="/img/gamepng.png" className='gameimg'/>
-				<input id="search" type="search" name="" placeholder="아이디바다" disabled />
+				<img src="/img/로고.png" className='gameimg'/>
+				<br></br>
+				{/* <img src="/img/gamepng.png" className='gameimg'/> */}
+				<input id="search" type="search" name="" placeholder="바로그인" disabled />
 				<button type="submit" className="searchButton" disabled>검색</button>
 			</div>
 			<div className='bigheader'>

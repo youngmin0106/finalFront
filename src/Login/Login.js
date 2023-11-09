@@ -54,7 +54,7 @@ function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
         setTrans({member : response.data.member[0]});
         setCs({member : response.data.member[0]});
         setIsAuth(true);
-        navigate("/mypage");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
