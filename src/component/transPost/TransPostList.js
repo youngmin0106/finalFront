@@ -56,6 +56,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       setSearchList(transList);
     }
   }
+  
 
   // 취소 버튼 모든것을 초기화하는 함수
   const cancelHandler = () => {

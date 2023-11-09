@@ -6,14 +6,30 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../component/Header';
 import { useEffect } from 'react';
+import axiosInstance from '../axiosInstance';
 
 
 
-function MyPage({ point, userInfo }) {
+function MyPage({ point, userInfo, IntransList }) {
   
   console.log(userInfo.mileage);
+  console.log(IntransList)
   
+  const [mypage, setMypage] = useState({
+   ready : '',
+    ing : '',
+   done : '' 
+  })
+
+
   useEffect(() => {
+    axiosInstance.get(`/mypage/${userInfo.username}`)
+    .then((response) => {
+      setMypage(response.data);
+      console.log(response.data);
+    }).catch((error) => {
+      console.log(error);
+    })
     
   }, [])
 
@@ -103,25 +119,19 @@ function MyPage({ point, userInfo }) {
         <td className='sellBox gradation1'>
           <div className='round'>STEP 1</div>
           <div>등록</div>
-          <div>0 건</div>
+          <div>{mypage.ready} 건</div>
         </td>
 
         <td className='sellBox gradation2'>
           <div className='round'>STEP 2</div>
           <div>판매중</div>
-          <div>0 건</div>
-        </td>
-
-        <td className='sellBox gradation3'>
-          <div className='round'>STEP 3</div>
-          <div>판매 취소 완료</div>
-          <div>0 건</div>
+          <div>{mypage.ing} 건</div>
         </td>
 
         <td className='sellBox gradation4'>
           <div className='round'>STEP 4</div>
           <div>판매 완료</div>
-          <div>0 건</div>
+          <div>{mypage.done} 건</div>
         </td>
       </tr>
     </tbody>
@@ -134,12 +144,6 @@ function MyPage({ point, userInfo }) {
         <td className='sellBox gradation5'>
           <div className='round'>STEP 1</div>
           <div>구매중</div>
-          <div>0 건</div>
-        </td>
-
-        <td className='sellBox gradation6'>
-          <div className='round'>STEP 2</div>
-          <div>구매 취소완료</div>
           <div>0 건</div>
         </td>
 

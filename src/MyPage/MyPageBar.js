@@ -56,14 +56,11 @@ function MyPageBar( { point, userInfo } ) {
         }}>나의 판매 물품</a></li>
         <li><Link to = "/listPages/1">내가 등록한 물품</Link></li>
         <li><Link to = "/listPages/2">판매중</Link></li>
-        <li><Link to = "/listPages/3">판매 취소완료</Link></li>
         <li><Link to = "/listPages/4">판매 완료</Link></li>
         <li><a className="job" href="0" onClick={(e) => {
           e.preventDefault();
         }}>나의 구매 물품</a></li>
         <li><Link to = "/listPages/5">구매중</Link></li>
-        <li><Link to = "/listPages/6">구매 취소완료</Link></li>
-        <li><Link to = "/listPages/7">구매 취소</Link></li>
         <li><a className="job" href="0" onClick={(e) => {
           e.preventDefault();
         }}>마일리지 관리</a></li>
