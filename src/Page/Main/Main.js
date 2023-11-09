@@ -1,48 +1,15 @@
 import { Link, useNavigate } from "react-router-dom"
 import './Main.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { useState } from "react";
-import axiosInstance from "../../axiosInstance";
-import { useEffect } from "react";
 import announcement from "../../mockData/announcement";
 import question from "../../mockData/question";
 
+
 function Main() {
   const navigate = useNavigate();
-  const [miniList, setMiniList] = useState([]);
-  const [isNoticeLoading, setIsNoticeLoading] = useState(true);
-  const [noticeList, setNoticeList] = useState([]);
-
-  const loadNoticeList = () => {
-    axiosInstance.get("/notice")
-      .then((response) => {
-        setNoticeList(response.data);
-        const truncatedList = response.data.slice(0, 5).map((notice) => {
-          if (notice.title.length > 27) {
-            notice.title = notice.title.slice(0, 27) + " ..."; // 제목 길이 제한
-          }
-          return notice;
-        });
-        setMiniList(truncatedList.slice(0, 5)); // 처음 5개 항목만 miniList에 설정
-        setIsNoticeLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsNoticeLoading(false);
-      });
-  };
-  useEffect(() => {
-    loadNoticeList(); // 페이지가 로드될 때 공지사항 데이터를 가져옵니다.
-  }, []);
-  useEffect(() => {
-    // 묵 데이터 목록에서 제목만 추출
-    const truncatedList = question.map((data) => {
-      return { no: data.no, title: data.title };
-    });
-    setMiniList(truncatedList);
-  }, []);
 
   return (
+
     <div className="Main">
       <div className="carouselImg">
         <Carousel>
@@ -80,10 +47,10 @@ function Main() {
             {question.map((data, i) => {
               return (
                 <div key={i}>
-                <Link to={data.no === `질문${i}` ? `/questions/질문${i}` : `/questions/${data.no}`} className="linkTitle">
-                  <div>{data.title}</div>
-                </Link>
-              </div>
+                  <Link to={data.no === `질문${i}` ? `/questions/질문${i}` : `/questions/${data.no}`} className="linkTitle">
+                    <div>{data.title}</div>
+                  </Link>
+                </div>
               )
             })}
           </div>
@@ -93,16 +60,12 @@ function Main() {
           <h6>공지사항</h6>
           <hr />
           <div>
-            {/* 공지사항 들어가면 내용뽑을때 이렇게 해야 Tab키나 enter키가 먹음
-            <pre>
-              {announcement[0].content}
-            </pre> */}
             {announcement.map((data, i) => {
               return (
                 <div key={i}>
-                     <Link to={data.no === `공지${i}` ? `/notice/공지${i}` : `/notice/${data.no}`} className="linkTitle">
-                  <div>{data.title}</div>
-                </Link>
+                  <Link to={data.no === `공지${i}` ? `/notice/공지${i}` : `/notice/${data.no}`} className="linkTitle">
+                    <div>{data.title}</div>
+                  </Link>
                 </div>
               )
             })}
@@ -115,16 +78,16 @@ function Main() {
         <h6>바로가기</h6>
         <hr />
         <div>
-        <img className="gameImg" src="./img/gameIcon/FC온라인.png" onClick={() => {
+          <img className="gameImg" src="./img/gameIcon/FC온라인.png" onClick={() => {
             navigate("/transPost");
-          }}/>
+          }} />
           <img className="gameImg" src="./img/gameIcon/리그오브레전드.png" />
           <img className="gameImg" src="./img/gameIcon/메이플스토리.png" />
           <img className="gameImg" src="./img/gameIcon/로스트아크.png" />
-          
+
           <img className="gameImg" src="./img/gameIcon/서든어택.png" />
           <img className="gameImg" src="./img/gameIcon/던전앤파이터.png" />
-          <img className="gameImg"  src="./img/gameIcon/배틀그라운드.jpg" />
+          <img className="gameImg" src="./img/gameIcon/배틀그라운드.jpg" />
           <img className="gameImg" src="./img/gameIcon/쿠키런.png" />
         </div>
       </div>
@@ -148,6 +111,7 @@ function Main() {
 
       </div>
     </div>
+
   )
 }
 

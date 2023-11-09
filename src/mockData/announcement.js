@@ -1,14 +1,14 @@
 let announcement = [
   {
     no: '공지1',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
-    title: "[공지사항] (주) oooo 소개",
+    title: "[공지사항] (주) 바㉣로그인 소개",
     content: 
       `
-      안녕하세요 OOOO 입니다.
+      안녕하세요 바로로그인입니다.
 
-      OOOO은 2023년 11월 16일에 설립하여 쉬지 않고 달릴 예정입니다.
+      바로로그인은 2023년 11월 16일에 설립하여 쉬지 않고 달릴 예정입니다.
 
       거래에 가장 중요한 안전성, 신뢰를 우선으로,
       고객님들의 말에 귀를 기울여 다양한 서비스로 보답하겠습니다.
@@ -19,7 +19,7 @@ let announcement = [
 
   {
     no: '공지2',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "[공지사항] 반드시 지켜야 될 사항에 대해 알려드립니다.",
     content: 
@@ -61,14 +61,14 @@ let announcement = [
 
   {
     no: '공지3',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "[공지사항] 오픈 이벤트",
     content: 
       `
       안녕하세요 
 
-      게임 거래소 사이트명입니다.
+      게임 거래소 바로로그인입니다.
 
       우선 저희 사이트를 이용해주셔서 감사합니다.
 
@@ -79,14 +79,14 @@ let announcement = [
   },
   {
     no: '공지4',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "[공지사항] 공지4",
     content: 
       `
       안녕하세요 
 
-      게임 거래소 사이트명입니다.
+      게임 거래소 바로로그인입니다.
 
       우선 저희 사이트를 이용해주셔서 감사합니다.
 
@@ -95,14 +95,14 @@ let announcement = [
   },
   {
   no: '공지5',
-  member:{username: '관리자', name: "admin"},
+  member:{username: 'admin', name: "관리자"},
   createDate: "2023-11-07",
   title: "[공지사항] 공지5",
   content: 
     `
     안녕하세요 
 
-    게임 거래소 사이트명입니다.
+    게임 거래소 바로로그인입니다.
 
     우선 저희 사이트를 이용해주셔서 감사합니다.
 

@@ -1,14 +1,14 @@
 let question = [
   {
     no: `질문1`,
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "Q. 어떻게 거래하는 건가요?",
     content: 
       `
       안녕하세요 
   
-      게임 거래소 사이트명입니다.
+      게임 거래소 바로로그인입니다.
   
       우선 저희 사이트를 이용해주셔서 감사합니다.
   
@@ -27,7 +27,7 @@ let question = [
   },
   {
     no: '질문2',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "Q. 입출금 수수료는 얼마인가요?",
     content: 
@@ -41,7 +41,7 @@ let question = [
   },
   {
     no: '질문3',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "Q. 거래등급별 혜택은 어떤게 있나요?",
     content: 
@@ -55,7 +55,7 @@ let question = [
   },
   {
     no: '질문4',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "Q. 구매자가 인수처리를 안해요",
     content: 
@@ -74,7 +74,7 @@ let question = [
   },
   {
     no: '질문5',
-    member:{username: '관리자', name: "admin"},
+    member:{username: 'admin', name: "관리자"},
     createDate: "2023-11-07",
     title: "Q. 비밀번호를 잊어버렸어요",
     content: 

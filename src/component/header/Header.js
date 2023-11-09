@@ -14,11 +14,11 @@ function Header({ isAuth, setIsAuth }) {
 					</div>
 					<div className="fl_right">
 						<ul className="topnav">
-							<li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
+							{/* <li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
 							<li><Link to={"/mypage"}>마이페이지</Link></li>
-							<li><Link to={"/insertTrans"}>물품등록</Link></li>
+							<li><Link to={"/insertTrans"}>물품등록</Link></li> */}
 							<li><Link to={"/login-page"}>로그인</Link></li>
-							<li><Link to={"/member-sign"}>회원가입</Link></li>
+							<li><Link to={"/member-type"}>회원가입</Link></li>
 						</ul>
 					</div>
 					<div>
@@ -26,11 +26,12 @@ function Header({ isAuth, setIsAuth }) {
 				</div>
 			</div>
 			<div className='headsh'>
-				<img src="/img/로고.png" className='gameimg'/>
-				<br></br>
-				{/* <img src="/img/gamepng.png" className='gameimg'/> */}
-				<input id="search" type="search" name="" placeholder="바로그인" disabled />
-				<button type="submit" className="searchButton" disabled>검색</button>
+				<Link to={'/'}>
+					<img src="/img/로고.png" className='gameimg' />
+					<br />
+					<input id="search" type="search" name="" placeholder="바로그인" disabled />
+					<button type="submit" className="searchButton" disabled>검색</button>
+				</Link>
 			</div>
 			<div className='bigheader'>
 				<nav id="nav">

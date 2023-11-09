@@ -1,20 +1,25 @@
+import { Link, useNavigate } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div className="Footer">
       <div className="firstLayout">
-        <b>회사소개</b>
+        <Link to={'/'} className="linkTag">
+          <b>회사소개</b>
+        </Link>
         <b>이용약관</b>
         <b>개인정보 처리방침</b>
         <b>청소년 보호정책</b>
-        <b>이메일수집거부?</b>
-        <b>제휴문의</b>
-        <b>고객센터</b>
+        <b>이메일수집거부</b>
+        <Link to={'/csList'} className="linkTag">
+          <b>고객센터</b>
+        </Link>
       </div>
       <div className="secondLayout">
         <div className="logo">
-          <img src="/img/로고.png"/>
+          <img src="/img/로고.png" />
         </div>
         <div>
           <div className="firstItem">
@@ -32,7 +37,7 @@ function Footer() {
           <div className="scondItem">
             <p>주소: 서울특별시 강서구 화곡로 149 3층, 4층, 5층</p>
             <p>|</p>
-            <p>copyright ⓒ 2023 사이트명 All right reserved</p>
+            <p>copyright ⓒ 2023 바로로그인 All right reserved</p>
             <p></p>
           </div>
 

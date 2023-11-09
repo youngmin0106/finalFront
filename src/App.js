@@ -3,7 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import Header from './component/Header';
+import Header from './component/header/Header';
 import Main from './Page/Main/Main';
 
 import CsList from './CsPage/CsList';

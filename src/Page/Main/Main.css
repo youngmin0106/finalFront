@@ -1,11 +1,9 @@
 .Main {
-  /* border: 1px solid red; */
   width: 67%;
   margin: auto;
 }
 
 .Main .carouselImg {
-  /* border: 1px solid black; */
   width: 100%;
   margin-top: 15px;
 }
@@ -19,8 +17,6 @@
 }
 
 .Main .firstLayout, .Main .thirdLayout  {
-  /* border: 1px solid black; */
- 
   display: flex;
   padding-top: 15px;
   margin-top: 10px;
@@ -40,10 +36,6 @@
 .Main .linkTitle:hover {
   text-decoration: none;
   color: #D1B6E1;
- /* #9DC8C8
-    #58C9B9
-    #519D9E
-    #D1B6E1 */
 }
 
 .Main iframe {
@@ -72,7 +64,7 @@ text-align: center;
 }
 
 .Main .gameImg {
-  height: 133px;
+  height: 134.5px;
   margin: 10px;
   border: 2px solid lightgray;
   border-radius: 50%;
