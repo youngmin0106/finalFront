@@ -133,16 +133,15 @@
   color: black;
 }
 
-
-
-.onemain  .onetoonetab{
-  width: 30%; /* 각 박스의 너비를 조절합니다. */
-  float: inline-end; /* 왼쪽으로 부유하도록 설정합니다. */
-  margin: 10px; 
-  height: 250px;
-}
-
 .onemain  .linktitle{
   text-decoration: none;
   color: black;
+}
+
+.onemain{
+  width: 20%;
+
+}
+.onemain .onetoonetab{
+  height: 250px;
 }

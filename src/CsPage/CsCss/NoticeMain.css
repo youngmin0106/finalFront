@@ -1,5 +1,19 @@
-.ulListcs {
-  list-style-type: none;
+.ulListcs{
+    list-style-type: none;
+    background-color: none;
+    width: 10%;
+    padding: 0px;
+    padding-left: 0px;
+    margin:  0px;
+    margin-left: 10%;
+    position: absolute;
+    overflow: auto;
+    border : 0.5px solid #eee;
+    border-radius: 5px;
+    font-family: 'NanumSquareNeo-Variable';
+  }
+  
+  /* list-style-type: none;
   background-color: none;
   width: 10%;
   padding: 0px;
@@ -7,13 +21,12 @@
   margin:  0px;
   margin-left: 10%;
   position: absolute;
-  /* height: 100%; */
   overflow: auto;
   border : 0.5px solid #eee;
   border-radius: 5px;
   font-family: 'NanumSquareNeo-Variable';
-  top: px;
-}
+  top: px; */
+
 
 @font-face {
   font-family: 'NanumSquareNeo-Variable';
@@ -194,13 +207,6 @@
   color: black;
 }
 
-
-  .csmain .cstab{
-    width: 30%; /* 각 박스의 너비를 조절합니다. */
-    float: inline-end; /* 왼쪽으로 부유하도록 설정합니다. */
-    margin: 10px; 
-  }
-
 .csmain .linktitle{
   text-decoration: none;
   color: black;
@@ -209,11 +215,21 @@
 .csmain .cstab{
   height: 250px;
 }
+
 .csmain {
-  width: 80%;
+  width: 20%;
+  margin-left: 65px;
+  
 }
 
 .csList{
-  width: 100%;
+  width: 80%;
   height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 140px;
+}
+
+.sidebar{
+  width: 20%;
 }

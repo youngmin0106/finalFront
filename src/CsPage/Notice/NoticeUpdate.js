@@ -75,29 +75,28 @@ function NoticeUpdate({userInfo,setAuth ,cs}) {
 
 
   return(
-    <div className="write">
-      <input type="hidden" />
-    <div className="title-input">
-      <span className="titlespan">제목</span>
-      <input className="writetitle" type="text" name="title" value={csupdate.title} onChange={changeHandler}/>
+    <div className="WriteNotice">
+    <div className="table">
+      <div className="title">
+        <p className="th">제목</p>
+        <input className="writetitle" type="text" name="title" value={csupdate.title} onChange={changeHandler}   />
+      </div>
+      <div className="writer">
+        <p className="th">작성자</p>
+        <p className="writename">{cs.member.name}</p>
+      </div>
     </div>
-    <br/>
-
-    <div>
-      <span className="contentspan">내용</span>
-      <textarea className="contentarea"
-        name="content"
-        cols="74"
-        rows="15"
+    <div className="content">
+      <textarea
         value={csupdate.content}   
         onChange={changeHandler}
+        name="content"
       ></textarea>
     </div>
-    <br />
     <div className="clickbtn">
      
-    <Button variant="outline-primary" className="sumitbtn" onClick={updatePost}>수정</Button>{' '}
-    <Button variant="outline-danger" className="resetbtn" type="reset" onClick={backbtn}>취소</Button>{' '}
+    <button  className="click" onClick={updatePost}>수정</button>{' '}
+    <button className="noClick" type="reset" onClick={backbtn}>취소</button>{' '}
      </div>
    </div>
   );

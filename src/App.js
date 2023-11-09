@@ -7,6 +7,7 @@ import Header from './component/Header';
 import Main from './Page/Main/Main';
 
 import CsList from './CsPage/CsList';
+import Reply from './CsPage/Reply/Reply';
 import Notice from './CsPage/Notice/Notice';
 import NoticeDetail from './CsPage/Notice/NoticeDetail';
 import NoticeUpdate from './CsPage/Notice/NoticeUpdate';
@@ -201,14 +202,13 @@ function App() {
         <Route path='/onetoone' element={<Onetoone setIsAuth={setIsAuth} userInfo={userInfo} />} />
         <Route path='/onetoonewrite' element={<WriteOnetoOne userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
-        <Route path='/questionwrite' element={<WriteQuestion userInfo={userInfo} cs={cs} setCs={setCs} />} />
-        <Route path='/questions/:no' element={<QuestionDetail userInfo={userInfo} cs={cs} />} />
-        <Route path='/notice/:no' element={<NoticeDetail userInfo={userInfo} cs={cs} />} />
-        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs} />} />
-        <Route path="/notice/:no/update" element={<NoticeUpdate userInfo={userInfo} cs={cs} />} />
-        <Route path='/questions/:no/update' element={<QuestionUpdate cs={cs} />} />
-        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate cs={cs} />} />
-
+        <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
+        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
+        <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
+        <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />
+        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate  cs={cs}/>} />
       </Routes>
 
       <Footer />

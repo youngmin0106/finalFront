@@ -47,8 +47,8 @@ function Onetoone() {
 
   return (
     <div className="notice">
+        <h2 style={{ marginLeft : "10%", fontSize : "25px", marginTop : "10%" ,width : "10%"}}>- 1:1문의</h2>
       <ul className="ulList">
-        <h2 style={{ fontSize: "25px" }}>- 1:1문의</h2>
         <li>
           <Link to={"/cs"}>공지사항</Link>
         </li>

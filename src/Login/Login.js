@@ -61,7 +61,7 @@ function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
         alert("아이디 패스워드를 확인하세요.")
       });
   }
-
+console.log(setCs);
   return (
 
     <ThemeProvider theme={defaultTheme}>

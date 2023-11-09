@@ -5,7 +5,7 @@ import Search from "../../component/Search";
 import { Link } from "react-router-dom";
 import announcement from "../../mockData/announcement";
 
-function Notice({ userInfo }) {
+function Notice({ userInfo, cs, setCs }) {
   const [noticeList, setNoticeList] = useState(announcement);
   const [isNoticeLoading, setIsNoticeLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,11 +47,11 @@ function Notice({ userInfo }) {
         setIsNoticeLoading(false);
       });
   };
-  console.log(noticeList);
+
   return (
     <div className="notice">
+        <h2 style={{ marginLeft : "10%", fontSize : "25px", marginTop : "10%" ,width : "10%"}}>- 공지사항</h2>
       <ul className="ulList">
-        <h2 style={{ fontSize: "25px" }}>- 공지사항</h2>
         <li>
           <Link to={"/cs"}>공지사항</Link>
         </li>
@@ -80,6 +80,8 @@ function Notice({ userInfo }) {
           path={"/noticewirte"}
           ad={"/notice"}
           userInfo={userInfo}
+          cs={cs}
+          setCs={setCs}
         />
 
         <PaginationComponent
