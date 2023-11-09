@@ -34,34 +34,34 @@ function OnetoOneDetail({ userInfo, cs }) {
 
 
   return (
-    <div className="write">
-      <div className="title-input">
-        <span className="titlespan">제목</span>
+    <>
+    <div className="WriteNotice">
+    <div className="table">
+      <div className="title">
+        <p className="th">제목</p>
         <input className="writetitle" type="text" name="title" value={oneDetail.title} disabled />
       </div>
-      <br />
-
-      <div>
-        <span className="contentspan" >내용</span>
-        <textarea className="contentarea"
-          disabled
-          value={oneDetail.content}
-          name="contents"
-          cols="74"
-          rows="15"
-        ></textarea>
+      <div className="writer">
+        <p className="th">작성자</p>
+        <p className="writename">{oneDetail.member.name}</p>
       </div>
-      {/* <Reply oneDetail={oneDetail} /> */}
-      <br />
+    </div>
+    <div className="content">
+      <textarea
+        value={oneDetail.content}
+        disabled
+        name="content"
+      ></textarea>
+    </div>
       <div className="clickbtn">
         {cs.member.username == oneDetail.member.username ?
-          <Button variant="outline-primary" className="sumitbtn" onClick={onetooneupdatebtn}>수정</Button>
+          <button className="click" onClick={onetooneupdatebtn}>수정</button>
           :
           <div></div>
         }
         {cs.member.username == oneDetail.member.username ?
 
-          <Button variant="outline-danger" className="resetbtn" type="reset"
+          <button  className="noClick" type="reset"
             onClick={() => {
             
               axiosInstance.delete('/onetoone', { params: { 'no': oneDetail.no } })
@@ -72,13 +72,23 @@ function OnetoOneDetail({ userInfo, cs }) {
                   console.log(error);
                 })
             }}
-          >삭제</Button>
+          >삭제</button>
           :
           <div></div>
         }
-        <Button variant="outline-info" className="backbtn" onClick={backbtn}>목록</Button>{' '}
+        <button  className="backClick" onClick={backbtn}>목록</button>{' '}
       </div>
     </div>
+        {
+          cs.member.username == oneDetail.member.username ?
+          <Reply oneDetail={oneDetail} cs={cs}/>
+          :
+          <div></div>
+          
+        }
+        </>
+    
+
   );
 }
 

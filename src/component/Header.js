@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-function Header({isAuth, setIsAuth}) {
+function Header({ isAuth, setIsAuth }) {
 	return (
 		<div className='headercontainer'>
 			<div className="wrapper row0">
@@ -17,7 +17,6 @@ function Header({isAuth, setIsAuth}) {
 							<li><Link to={"/csList"}><i className="fa fa-lg fa-home"></i>고객센터</Link></li>
 							<li><Link to={"/mypage"}>마이페이지</Link></li>
 							<li><Link to={"/insertTrans"}>물품등록</Link></li>
-							<li><Link to={"#"}>채팅내역</Link></li>
 							<li><Link to={"/login-page"}>로그인</Link></li>
 							<li><Link to={"/member-sign"}>회원가입</Link></li>
 						</ul>
@@ -27,25 +26,25 @@ function Header({isAuth, setIsAuth}) {
 				</div>
 			</div>
 			<div className='headsh'>
-				<img className='mainlogo' src="/img/mainlogo.png"/>
-				<input id="search" type="search" name="" placeholder="검색어를 입력해주세요." />
-				<button type="submit" className="searchButton">검색</button>
+				<img src="/img/gamepng.png" className='gameimg'/>
+				<input id="search" type="search" name="" placeholder="아이디바다" disabled />
+				<button type="submit" className="searchButton" disabled>검색</button>
 			</div>
 			<div className='bigheader'>
-					<nav id="nav">
-							<ul>
-								<li className='one'><Link to={"/insertTrans"} >판매등록</Link></li>
-							
-								<li className='one'><Link to={"/transPost"}>계정거래</Link></li>
-						
-								<li className='one'><Link to={"/mypage"}>마이페이지</Link></li>
-							
-								<li className='one'><Link to={"/mileage"}>마일리지</Link></li>
-							
-								<li className='two'><Link to={"#"}>채팅</Link></li>
-							</ul>
-						</nav>
-						</div>
+				<nav id="nav">
+					<ul>
+						<li className='one'><Link to={"/insertTrans"} >판매등록</Link></li>
+
+						<li className='one'><Link to={"/transPost"}>계정거래</Link></li>
+
+						<li className='one'><Link to={"/mypage"}>마이페이지</Link></li>
+
+						<li className='one'><Link to={"/mileage"}>마일리지</Link></li>
+
+						<li className='two'><Link to={"/csList"}>고객센터</Link></li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 	);
 }
