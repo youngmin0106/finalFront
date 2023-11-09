@@ -1,56 +1,81 @@
-.headercontainer .wrapper{
+.headercontainer .wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.headercontainer .fl_left{
+.headercontainer .fl_left {
   float: left;
 }
 
-.headercontainer .topnav{
+.headercontainer .topnav {
   position: relative;
   right: 50px;
 }
 
-.headercontainer .fl_right{
+.headercontainer .fl_right {
   float: right;
 }
 
-.headercontainer .fl_left img{
+.headercontainer .fl_left img {
   width: 15px;
 
 }
 
-.headercontainer #topbar{padding:15px 0; font-size:.8rem; text-transform:uppercase; }
+.headercontainer #topbar {
+  padding: 15px 0;
+  font-size: .8rem;
+  text-transform: uppercase;
+}
 
-.headercontainer #topbar *{margin:0; text-decoration : none}
-.headercontainer #topbar ul li{display:inline-block; margin-right:10px; padding-right:15px; border-right:1px solid;}
-.headercontainer #topbar ul li:last-child{margin-right:0; padding-right:0; border-right:none;}
-.headercontainer #topbar i{margin:0 5px 0 0; line-height:normal;}
+.headercontainer #topbar * {
+  margin: 0;
+  text-decoration: none
+}
 
-.headercontainer .row0, .row0 a{color:#474747; background-color:#EFEFEF;}
+.headercontainer #topbar ul li {
+  display: inline-block;
+  margin-right: 10px;
+  padding-right: 15px;
+  border-right: 1px solid;
+}
 
-.headercontainer #topbar ul li{border-color:rgba(0,0,0,.1);}
-.headercontainer #topbar > div:last-of-type li:first-child a{color:#00ADEF;}
+.headercontainer #topbar ul li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: none;
+}
 
-.headercontainer .headsh{
+.headercontainer #topbar i {
+  margin: 0 5px 0 0;
+  line-height: normal;
+}
+
+.headercontainer .row0,
+.row0 a {
+  color: #474747;
+  background-color: #EFEFEF;
+}
+
+.headercontainer #topbar ul li {
+  border-color: rgba(0, 0, 0, .1);
+}
+
+.headercontainer #topbar>div:last-of-type li:first-child a {
+  color: #00ADEF;
+}
+
+.headercontainer .headsh {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .headercontainer .headsh #search{
   width: 40%;
-  height: 40px;
+  height: 42px;
 
 }
 
-.headercontainer .headbtn{
-  height: 40px;
-  
-  
-}
-
-.headercontainer #nav > ul > li.current  {
+.headercontainer #nav>ul>li.current {
   background: #d52349;
   color: #fff !important;
   font-weight: 700;
@@ -60,27 +85,27 @@
   margin: 2.5em 0 0 0;
 }
 
-.headercontainer #nav > ul {
+.headercontainer #nav>ul {
   margin: 0;
   display: flex;
   justify-content: space-evenly;
 }
 
-.headercontainer #nav > ul > li {
+.headercontainer #nav>ul>li {
   display: inline-block;
   /* font-style: italic; */
   font-weight: bold;
   margin: 0 0.35em 0 0.35em;
-  
-  
+
+
 }
 
-.headercontainer li > a{
+.headercontainer li>a {
   display: inline;
 
 }
 
-.headercontainer #nav > ul > li >a{
+.headercontainer #nav>ul>li>a {
   border-radius: 5px;
   color: black;
   font-size: 20px;
@@ -96,18 +121,19 @@
 }
 
 
-.headercontainer .bigheader{
-  
-    text-align: center;
-    top: 30px;
-    margin-top: 50px;
-    height: 60px;
-    background-color:#519D9E ;
-    justify-content: center;
- 
-    
- 
+.headercontainer .bigheader {
+
+  text-align: center;
+  top: 30px;
+  margin-top: 50px;
+  height: 60px;
+  background-color: #519D9E;
+  justify-content: center;
+
+
+
 }
+
 @font-face {
   font-family: 'NanumSquareNeo-Variable';
   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
@@ -115,85 +141,60 @@
   font-style: normal;
 }
 
-.headercontainer{
+.headercontainer {
   margin: auto;
-  
+
 }
 
-.headercontainer .bigtabnav{
+.headercontainer .bigtabnav {
   position: relative;
   right: 20px;
   bottom: 23px;
-  
+
 }
 
-.headercontainer .mainlogo{
-  width: 200px;
-  height: 200px;
-  position: absolute;
-  left: 130px;
-  top: 25px;
-}
-
-.headercontainer #nav{
+.headercontainer #nav {
   padding-right: 25px;
-  border-width:1px 0;
-  list-style:none;
-  margin:0;
-  padding:0;
-  text-align:center;
-}
-.headercontainer #nav li{
-  display:inline;
-}
-.headercontainer #nav a{
-  display:inline-block;
-  padding:10px;
-
+  border-width: 1px 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-.headercontainer .one{
-  margin-left: 100px;
-  color: white;
+.headercontainer #nav li {
+  display: inline;
 }
 
-
-.headercontainer body{
-  background: #ffff;
-  font-family: 'Open Sans', sans-serif;
+.headercontainer #nav a {
+  display: inline-block;
+  padding: 10px;
 }
 
-.headercontainer .search {
-  width: 100%;
-  position: relative;
-  display: flex;
-}
-
-.headercontainer #search { 
-  width: 100%;
+.headercontainer #search {
   border: 3px solid #519D9E;
   border-right: none;
-  padding: 5px;
-  height: 20px;
+  padding: 10px;
   border-radius: 5px 0 0 5px;
   outline: none;
   color: black;
-}
 
-.headercontainer #search:focus{
-  color: black;
 }
 
 .headercontainer .searchButton {
   width: 80px;
-  height: 41px;
-  border: 0px solid #519D9E;
+  height: 45px;
+  border: 1px solid #519D9E;
   background: #519D9E;
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 21px;
 }
 
+.headercontainer .gameimg{
+  width: 12%;
+  height: 30%;
+}
 
