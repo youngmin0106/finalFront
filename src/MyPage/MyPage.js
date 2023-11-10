@@ -4,7 +4,6 @@ import tier3 from './tier3.png';
 import MyPageBar from './MyPageBar';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../component/Header';
 import { useEffect } from 'react';
 import axiosInstance from '../axiosInstance';
 

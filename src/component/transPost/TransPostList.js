@@ -3,6 +3,7 @@ import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
 import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link, useLocation } from "react-router-dom";
+import TransDone from "./TransDone";
 
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
@@ -19,12 +20,22 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       .then((response) => {
         setTransList(response.data);
         setShowList(response.data);
+        setSearchList(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+  // 선택한 게임에 따라 데이터를 필터링
+  useEffect(() => {
+    if (selectedGame) {
+      const filteredList = transList.filter((trans) => trans.game === selectedGame);
+      setShowList(filteredList);
+    } else {
+      setShowList(transList);
+    }
+  }, [selectedGame, transList]);
 
   const priceFilter = (postPrice, selectedPrice) => {
     switch (selectedPrice) {
@@ -67,47 +78,38 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
 
     console.log(searchList);
 
-    if(e.target.id === 'buy') {
-        setShowList(searchList.filter((trans => trans.trans === "READY")));
-      } else if (e.target.id === 'soldOut') {
-        setShowList(searchList.filter((trans => trans.trans === "DONE")));
-      } else {
-        setShowList(searchList);
-      }
-
-    }
-
-    const handleSort = (sortType) => {
-      let sortedList = [...showList];
-    
-      switch (sortType) {
-        case 'new':
-          sortedList.sort((a, b) => new Date(b.createdate) - new Date(a.createdate));
-          break;
-        case 'high':
-          sortedList.sort((a, b) => b.price - a.price);
-          break;
-        case 'low':
-          sortedList.sort((a, b) => a.price - b.price);
-          break;
-        default:
-          break;
-      }
-    
-      setShowList(sortedList);
-    };
-      
-    
-  
-  // 선택한 게임에 따라 데이터를 필터링
-  useEffect(() => {
-    if (selectedGame) {
-      const filteredList = transList.filter((trans) => trans.game === selectedGame);
-      setSearchList(filteredList);
+    if (e.target.id === 'buy') {
+      setShowList(searchList.filter((trans => trans.trans === "READY")));
+    } else if (e.target.id === 'soldOut') {
+      setShowList(searchList.filter((trans => trans.trans === "DONE")));
     } else {
-      setSearchList(transList);
+      setShowList(searchList);
     }
-  }, [selectedGame, transList]);
+
+  }
+
+  const handleSort = (sortType) => {
+    let sortedList = [...showList];
+
+    switch (sortType) {
+      case 'new':
+        sortedList.sort((a, b) => new Date(b.createdate) - new Date(a.createdate));
+        break;
+      case 'high':
+        sortedList.sort((a, b) => b.price - a.price);
+        break;
+      case 'low':
+        sortedList.sort((a, b) => a.price - b.price);
+        break;
+      default:
+        break;
+    }
+
+    setShowList(sortedList);
+  };
+
+
+
 
 
   // 취소 버튼 모든것을 초기화하는 함수
@@ -161,7 +163,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       <h3 className="title">물품리스트</h3>
       <div className="select">
         <div>
-          <input type="radio" id="all" name="list" onClick={transTypeFilter}  />
+          <input type="radio" id="all" name="list" onClick={transTypeFilter} />
           <label htmlFor="all">전체 목록</label>
           <input type="radio" id="buy" name="list" onClick={transTypeFilter} />
           <label htmlFor="buy">구매 가능한 목록</label>
@@ -171,9 +173,9 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
         <div>
           <input type="radio" id="new" name="order" onClick={() => handleSort('new')} />
           <label htmlFor="new">최신등록순</label>
-          <input type="radio" id="high" name="order" onClick={() => handleSort('high')}/>
+          <input type="radio" id="high" name="order" onClick={() => handleSort('high')} />
           <label htmlFor="high">높은가격순</label>
-          <input type="radio" id="low" name="order" onClick={() => handleSort('low')}/>
+          <input type="radio" id="low" name="order" onClick={() => handleSort('low')} />
           <label htmlFor="low">낮은가격순</label>
         </div>
       </div>
@@ -198,17 +200,23 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
               .map((trans, i) => {
                 console.log(trans)
                 return (
+
                   <tr key={i}>
-                    <td>{trans.server}</td>
-                    <td>{trans.game}</td>
-                    <td>
-                      <Link to={`/transDetail/${trans.id}`} className="titleDetail">
-                        {trans.title}
-                      </Link>
-                    </td>
-                    <td>{trans.price.toLocaleString('ko-KR')}원</td>
-                    <td>{trans.createdate}</td>
-                  </tr>
+                    
+                      <td>{trans.server}</td>
+                      <td>{trans.game}</td>
+                      <td>
+                        <Link to={`/transDetail/${trans.id}`} className="titleDetail">
+                          {trans.title}
+                        </Link>
+                      </td>
+
+                      <td>{trans.price.toLocaleString('ko-KR')}원</td>
+                      <td>{trans.createdate}</td>
+      
+                    </tr>
+
+
 
                 )
               })

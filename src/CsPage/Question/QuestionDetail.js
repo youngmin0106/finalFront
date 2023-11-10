@@ -20,32 +20,6 @@ function QuestionDetail({ userInfo, cs }) {
     navigate('/questions');
   }
 
-<<<<<<< HEAD
-  return(
-    <div className="WriteNotice">
-    <div className="table">
-      <div className="title">
-        <p className="th">제목</p>
-        <input className="writetitle" type="text" name="title" value={questionDetail.title} disabled />
-      </div>
-      <div className="writer">
-        <p className="th">작성자</p>
-        <p className="writename">{questionDetail.member.name}</p>
-      </div>
-    </div>
-    <div className="content">
-      <textarea
-        value={questionDetail.content}
-        disabled
-        name="content"
-      ></textarea>
-    </div>
-    <div className="clickbtn">
-      {
-        cs.member.username == questionDetail.member.username ?
-        <button  className="click" onClick={questionupdatebtn}>수정</button> :
-        <div></div>
-=======
   useEffect(() => {
     if (no.startsWith('질문')) {
       // '질문'인 경우, 파싱된 번호를 찾아서 설정
@@ -58,7 +32,6 @@ function QuestionDetail({ userInfo, cs }) {
       } else {
         // 묵 데이터가 없다면 404 페이지로 이동 또는 다른 처리 수행
         setLoding(false);
->>>>>>> develop
       }
     } else {
       // '질문'가 아닌 경우, 실제 데이터를 서버에서 가져오기
