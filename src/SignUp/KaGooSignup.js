@@ -109,7 +109,6 @@ function KaGooSignup({ userInfo, setIsAuth, setIsHeader }) {
       axiosInstance.put('/kagoosignup', KaGooData)
         .then((response) => {
           alert(response.data);
-          console.log(response.data);
           setIsAuth(true);
           setIsHeader(true);
           navigate("/");

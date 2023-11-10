@@ -42,15 +42,12 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
     axiosInstance.post('/login', loginData)
       .then((response) => {
         const jwt = response.headers.authorization;
-        console.log("로그인 성공");
         sessionStorage.setItem('jwt', jwt);
         setUserInfo(response.data.member[0]);
         setTrans({ member: response.data.member[0] });
         setCs({ member: response.data.member[0] });
         setIsAuth(true);
-        console.log(isAuth)
         navigate("/");
-
       })
       .catch((error) => {
         console.error(error);
@@ -106,12 +103,13 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
                 </Grid>
               </Grid><br />
 
-              <div className='loginBox'>
-                <a href="#!" onClick={() => {
-                  window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
-                }}>
-                  <img src={kakaoicon} alt="kakaoLoginImg"></img>
-                </a>
+                <div className='loginBox'>
+                  <a href="#!" onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
+                  }}>
+                    <img src={kakaoicon} alt="kakaoLoginImg"></img>
+                  </a>
 
                 <a href="#!" onClick={() => {
                   window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=token&scope=openid%20email%20profile`;

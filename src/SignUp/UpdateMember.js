@@ -117,7 +117,6 @@ function UpdateMember({ userInfo }) {
       axiosInstance.put('/updateMember', UpdateData)
         .then((response) => {
           alert(response.data);
-          console.log(response.data);
           navigate("/login-page")
         })
         .catch((error) => {

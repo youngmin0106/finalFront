@@ -134,17 +134,17 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
 
   const [userInfo, setUserInfo] = useState({ username: '', name: '' }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
-  
-  useEffect(() => {
-    const storedUserInfo = localStorage.getItem('userInfo');
-    if (storedUserInfo) {
-      setUserInfo(JSON.parse(storedUserInfo));
-    }
-  }, []);
 
-  useEffect(() => {
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
-  }, [userInfo]);
+  // useEffect(() => {
+  //   const storedUserInfo = localStorage.getItem('userInfo');
+  //   if (storedUserInfo) {
+  //     setUserInfo(JSON.parse(storedUserInfo));
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem('userInfo', JSON.stringify(userInfo));
+  // }, [userInfo]);
 
 
   const [trans, setTrans] = useState({
@@ -174,46 +174,59 @@ function App() {
 
   const [isHeader, setIsHeader] = useState(true);
 
+  // App.js 또는 해당 코드가 사용되는 컴포넌트에서 수정
   useEffect(() => {
-    
-  }, []);
+    const storedUserInfo = localStorage.getItem('userInfo');
+    if (storedUserInfo && !isAuth) {
+      setUserInfo(JSON.parse(storedUserInfo));
+    }
+  }, [isAuth]);
+
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem('userInfo');
+    if (isAuth && storedUserInfo && !userInfo.username) {
+      // userInfo가 변경되었지만 실제 값이 없는 경우 (로그인 시에만 로컬 스토리지 저장)
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    }
+  }, [userInfo, isAuth]);
+
 
   return (
     <div className="App">
       {isHeader ? <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} /> : ""}
       <Routes>
-        
+
         <Route path="/" element={<Main />} />
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} />} />
 
-        <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/cs' element={<Notice setIsAuth={setIsAuth} userInfo={userInfo} />} />
-        <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo}/>} />
+        <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo} />} />
         <Route path='/onetoone' element={<Onetoone setIsAuth={setIsAuth} userInfo={userInfo} />} />
-        <Route path='/onetoonewrite' element={<WriteOnetoOne  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
+        <Route path='/onetoonewrite' element={<WriteOnetoOne userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
-        <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
-        <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
-        <Route path='/notice/:no' element={<NoticeDetail  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
-        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
-        <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
-        <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />
-        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate  cs={cs}/>} />
+        <Route path='/questionwrite' element={<WriteQuestion userInfo={userInfo} cs={cs} setCs={setCs} />} />
+        <Route path='/questions/:no' element={<QuestionDetail userInfo={userInfo} cs={cs} />} />
+        <Route path='/notice/:no' element={<NoticeDetail userInfo={userInfo} cs={cs} setCs={setCs} />} />
+        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs} />} />
+        <Route path="/notice/:no/update" element={<NoticeUpdate userInfo={userInfo} cs={cs} />} />
+        <Route path='/questions/:no/update' element={<QuestionUpdate cs={cs} />} />
+        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate cs={cs} />} />
 
         <Route path="/member-type" element={<MemberType />} />
         <Route path="/member-agree" element={<MemberAgree />} />
         <Route path="/member-sign" element={<MemberSignup />} />
         <Route path="/signup-success" element={<SignupSuccess />} />
-        <Route path="/update-member" element={<UpdateMember userInfo={userInfo}/>} />
-        <Route path="/kaGoo-signup" element={<KaGooSignup userInfo = {userInfo} setIsAuth={setIsAuth} setIsHeader={setIsHeader}/>} />
-    
+        <Route path="/update-member" element={<UpdateMember userInfo={userInfo} />} />
+        <Route path="/kaGoo-signup" element={<KaGooSignup userInfo={userInfo} setIsAuth={setIsAuth} setIsHeader={setIsHeader} />} />
+
         <Route path="/login-page" element={<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
 
-        <Route path='/idserch' element={<IdSerch setIsHeader={setIsHeader}/>} />
+        <Route path='/idserch' element={<IdSerch setIsHeader={setIsHeader} />} />
 
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>

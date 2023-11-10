@@ -204,14 +204,14 @@
                 <Button id="signBtn" variant="contained" style={BtnStyle} onClick={ overLapIdChk }> 중복 체크 </Button>
               </div>
             </div>
-              <p className="idInspection"> 영문과 숫자로 조합된 4~12글자로 생성해주세요. </p>
+              <p className="idInspection">영문과 숫자로 조합된 4~12글자로 생성해주세요. </p>
 
             <div className="textFieldContainer">
               <p>비밀번호</p>
               <TextField sx={tfStyle} id="password" value={memberData.password} onChange = { inputChangeHandler } 
                 label="비밀번호 입력하세요." type="password" />
             </div>
-            <p className="pwInspection"> 영문 포함 + 숫자 포함 + 특수문자 + 길이 1~10자리 사이 문자열(반드시 모두 포함) </p>
+            <p className="pwInspection">영문 포함 + 숫자 포함 + 특수문자 + 길이 1~10자리 사이 문자열(반드시 모두 포함) </p>
 
 
             <div className="textFieldContainer">

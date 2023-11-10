@@ -34,8 +34,6 @@ function GoogleLogin({ setCs, setIsAuth, setUserInfo, setTrans }) {
         alert('로그인 실패');
         console.log(error);
       })
-  } else {
-    console.log('액세스토큰 오류');
   }
  
   return (

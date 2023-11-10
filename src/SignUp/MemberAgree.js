@@ -9,7 +9,7 @@ import PrivacyAgree from "../mockData/PrivacyAgree";
 import PolicyAgree from "../mockData/PolicyAgree";
 
 
-function MemberAgree({ progress }) {
+function MemberAgree() {
 
   const navigate = useNavigate();
 
