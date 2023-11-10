@@ -3,6 +3,7 @@ import './Main.css';
 import Carousel from 'react-bootstrap/Carousel';
 import announcement from "../../mockData/announcement";
 import question from "../../mockData/question";
+import option from "../../mockData/option";
 
 
 function Main() {
@@ -78,7 +79,17 @@ function Main() {
         <h6>바로가기</h6>
         <hr />
         <div>
-          <img className="gameImg" src="./img/gameIcon/FC온라인.png" onClick={() => {
+            {
+              option.map((game, i) => {
+                console.log(game);
+                return(
+                  <img key={i} className="gameImg" src={`./img/gameIcon/${game.id}.png`} onClick={() => {
+                    navigate("/transPost" , { state: {gameN : game.id} })
+                  }}/>
+                )
+              })
+            }
+          {/* <img className="gameImg" src="./img/gameIcon/FC온라인.png" onClick={() => {
             navigate("/transPost");
           }} />
           <img className="gameImg" src="./img/gameIcon/리그오브레전드.png" />
@@ -88,8 +99,8 @@ function Main() {
           <img className="gameImg" src="./img/gameIcon/서든어택.png" />
           <img className="gameImg" src="./img/gameIcon/던전앤파이터.png" />
           <img className="gameImg" src="./img/gameIcon/배틀그라운드.jpg" />
-          <img className="gameImg" src="./img/gameIcon/쿠키런.png" />
-        </div>
+        <img className="gameImg" src="./img/gameIcon/쿠키런.png" /> */}
+        </div> 
       </div>
 
       <div className="thirdLayout">

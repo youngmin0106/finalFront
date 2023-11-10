@@ -161,7 +161,6 @@ function App() {
   const [testTrans, setTestTrans] = useState(testBoardList)
   const [list, setList] = useState(listOption);
 
-
   return (
     <div>
       <Header />
@@ -183,7 +182,7 @@ function App() {
 
         {/* 게시글작성, 게시글 목록, 게시글 상세정보 */}
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
-        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
+        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} transDetails={transDetails} setTransDetails={setTransDetails} />} />
 
         {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}

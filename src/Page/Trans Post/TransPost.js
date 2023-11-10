@@ -4,7 +4,7 @@ import server from "../../mockData/server";
 import option from "../../mockData/option";
 import './TransPost.css';
 
-function TransPost({ isLoading, setIsLoading, trans }) {
+function TransPost({ isLoading, setIsLoading, trans}) {
   const [search, setSearch] = useState({
     keyword: '',
     price: '',
