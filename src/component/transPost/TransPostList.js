@@ -4,16 +4,14 @@ import './TransPostList.css';
 import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link, useLocation } from "react-router-dom";
 
-function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame}) {
+function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
   const [searchList, setSearchList] = useState([]); // 필터링 데이터
   const [currentPage, setCurrentPage] = useState(1); // 처음 현재페이지
   const itemsPerPage = 10; // 게시물 10개씩 
 
   const location = useLocation();
-  const gameName = location.state.gameN;
-
-  console.log(gameName);
+  const selectedGame = location.state ? location.state.game : ''; // 
 
   useEffect(() => {
     axiosInstance.get("/transPost")
@@ -44,25 +42,33 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
     }
   }
 
-      // 검색결과 필터 핸들러
-      const handlefilter = (searchTrem) => {
-        if (searchTrem) {
-          const filteredList = transList.filter((trans) => {
-            return (
-              trans.title.includes(search.keyword) &&
-              (!search.game || trans.game === search.game) &&
-              (!search.server || trans.server === search.server) &&
-              (!search.price || priceFilter(trans.price, search.price))
-            );
-          });
-          setSearchList(filteredList);
-    
-        } else {
-          setSearchList(transList);
-        }
-      }
-  
+  // 검색결과 필터 핸들러
+  const handlefilter = (searchTrem) => {
+    if (searchTrem) {
+      const filteredList = transList.filter((trans) => {
+        return (
+          trans.title.includes(search.keyword) &&
+          (!search.game || trans.game === search.game) &&
+          (!search.server || trans.server === search.server) &&
+          (!search.price || priceFilter(trans.price, search.price))
+        );
+      });
+      setSearchList(filteredList);
 
+    } else {
+      setSearchList(transList);
+    }
+  }
+
+  // 선택한 게임에 따라 데이터를 필터링
+  useEffect(() => {
+    if (selectedGame) {
+      const filteredList = transList.filter((trans) => trans.game === selectedGame);
+      setSearchList(filteredList);
+    } else {
+      setSearchList(transList);
+    }
+  }, [selectedGame, transList]);
 
 
   // 취소 버튼 모든것을 초기화하는 함수
@@ -141,6 +147,9 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
           </tr>
         </thead>
         <tbody>
+          {/* {
+            gameName && (searchList[?].game == gameName ? )
+          } */}
 
           {
             searchList

@@ -83,23 +83,15 @@ function Main() {
               option.map((game, i) => {
                 console.log(game);
                 return(
-                  <img key={i} className="gameImg" src={`./img/gameIcon/${game.id}.png`} onClick={() => {
-                    navigate("/transPost" , { state: {gameN : game.id} })
+                  <img  key={i}
+                  className="gameImg"
+                  src={`./img/gameIcon/${game.id}.png`}
+                  onClick={() => {
+                    navigate("/transPost", { state: { game: game.id } }); // 거래리스트로 갈때 props로 보내기
                   }}/>
                 )
               })
             }
-          {/* <img className="gameImg" src="./img/gameIcon/FC온라인.png" onClick={() => {
-            navigate("/transPost");
-          }} />
-          <img className="gameImg" src="./img/gameIcon/리그오브레전드.png" />
-          <img className="gameImg" src="./img/gameIcon/메이플스토리.png" />
-          <img className="gameImg" src="./img/gameIcon/로스트아크.png" />
-
-          <img className="gameImg" src="./img/gameIcon/서든어택.png" />
-          <img className="gameImg" src="./img/gameIcon/던전앤파이터.png" />
-          <img className="gameImg" src="./img/gameIcon/배틀그라운드.jpg" />
-        <img className="gameImg" src="./img/gameIcon/쿠키런.png" /> */}
         </div> 
       </div>
 
