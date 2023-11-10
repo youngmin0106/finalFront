@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
   const [searchList, setSearchList] = useState([]); // 필터링 데이터
+  const [showList, setShowList] = useState([]); // 필터링 된 데이터 초기값 담아두기 (구매 가능한 목록, 판매 완료된 목록 띄울때 필요)
   const [currentPage, setCurrentPage] = useState(1); // 처음 현재페이지
   const itemsPerPage = 10; // 게시물 10개씩 
 
@@ -15,7 +16,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
     axiosInstance.get("/transPost")
       .then((response) => {
         setTransList(response.data);
-        setSearchList(response.data);
+        setShowList(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -52,10 +53,49 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
         );
       });
       setSearchList(filteredList);
+      setShowList(filteredList);
     } else {
       setSearchList(transList);
+      setShowList(transList);
     }
+    document.querySelector('#all').checked = true;
   }
+
+  const transTypeFilter = (e) => {
+
+    console.log(searchList);
+
+    if(e.target.id === 'buy') {
+        setShowList(searchList.filter((trans => trans.trans === "READY")));
+      } else if (e.target.id === 'soldOut') {
+        setShowList(searchList.filter((trans => trans.trans === "DONE")));
+      } else {
+        setShowList(searchList);
+      }
+
+    }
+
+    const handleSort = (sortType) => {
+      let sortedList = [...showList];
+    
+      switch (sortType) {
+        case 'new':
+          sortedList.sort((a, b) => new Date(b.createdate) - new Date(a.createdate));
+          break;
+        case 'high':
+          sortedList.sort((a, b) => b.price - a.price);
+          break;
+        case 'low':
+          sortedList.sort((a, b) => a.price - b.price);
+          break;
+        default:
+          break;
+      }
+    
+      setShowList(sortedList);
+    };
+      
+    
   
 
   // 취소 버튼 모든것을 초기화하는 함수
@@ -91,14 +131,16 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       game: '',
       server: ''
     });
-    setSearchList(transList);
+    setShowList(transList);
   }
 
+  console.log(searchList)
 
   if (isLoading) {
     return <div>로딩중 ...</div>;
   }
   return (
+
     <div className="TransPostList">
       <div className="postListBtn">
         <button type="reset" className="noClick" onClick={cancelHandler}>검색 초기화</button>
@@ -107,19 +149,19 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       <h3 className="title">물품리스트</h3>
       <div className="select">
         <div>
-          <input type="radio" id="all" name="list" />
+          <input type="radio" id="all" name="list" onClick={transTypeFilter}  />
           <label htmlFor="all">전체 목록</label>
-          <input type="radio" id="buy" name="list" />
+          <input type="radio" id="buy" name="list" onClick={transTypeFilter} />
           <label htmlFor="buy">구매 가능한 목록</label>
-          <input type="radio" id="soldOut" name="list" />
+          <input type="radio" id="soldOut" name="list" onClick={transTypeFilter} />
           <label htmlFor="soldOut">판매 완료된 목록</label>
         </div>
         <div>
-          <input type="radio" id="new" name="order" />
+          <input type="radio" id="new" name="order" onClick={() => handleSort('new')} />
           <label htmlFor="new">최신등록순</label>
-          <input type="radio" id="high" name="order" />
+          <input type="radio" id="high" name="order" onClick={() => handleSort('high')}/>
           <label htmlFor="high">높은가격순</label>
-          <input type="radio" id="low" name="order" />
+          <input type="radio" id="low" name="order" onClick={() => handleSort('low')}/>
           <label htmlFor="low">낮은가격순</label>
         </div>
       </div>
@@ -136,9 +178,10 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
         <tbody>
 
           {
-            searchList
+            showList
               .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
               .map((trans, i) => {
+                console.log(trans)
                 return (
                   <tr key={i}>
                     <td>{trans.server}</td>

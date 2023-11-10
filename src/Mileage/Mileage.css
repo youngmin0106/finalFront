@@ -2,17 +2,19 @@
   /* style={{width : "500px", textAlign : "center", color : "#40A940", fontWeight : "bold", borderTop : "1px solid #40A940 ", height : "50px"} */
   width: 790px;
   text-align: center;
-  color : #40A940;
+  color : #519D9E;
   font-weight: bold;
-  border-top: 1px solid #40A940;
+  border-top: 1px solid #519D9E;
   border-bottom: 1px solid #eee;
   border-left: 1px solid #eee;
   height: 50px;
+  margin: auto;
 }
 
 .Mileage {
   margin-top: 5%;
-  margin-left: 25%;
+  /* margin-left: 25%; */
+  margin : auto;
   padding: 1px 16px;
   height: 1000px;
 }
@@ -53,7 +55,7 @@
 }
 
 .Mileage .payul li:hover {
-  background-color: #40A940;
+  background-color: #519D9E;
   opacity: 0.8;
   color: white;
 }

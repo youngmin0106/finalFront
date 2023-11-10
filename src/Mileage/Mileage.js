@@ -45,8 +45,8 @@ function Mileage( {userInfo, setUserInfo, trans, setTrans} ) {
   return (
     <div className="Mileage">
       <h4>마일리지 충전</h4>
-      <div className="choosePayment">충전수단 선택</div>
       <ul className='payul'>
+      <div className="choosePayment">충전수단 선택</div>
         <li onClick={() => handleItemClick("토스페이")}>토스페이</li>
         <li onClick={() => handleItemClick("신용카드")}>신용카드</li>
         <li onClick={() => handleItemClick("휴대폰")}>휴대폰</li>
@@ -67,7 +67,7 @@ function Mileage( {userInfo, setUserInfo, trans, setTrans} ) {
         {selectedItem === "카카오페이" && <div className='paypot'><KakaoPay userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></KakaoPay></div> }
         {/* {selectedItem === "전화결제" && <div className='payopt'><HPhone userInfo={userInfo} setUserInfo={setUserInfo}></HPhone> </div>} */}
       </div>
-    </div>
+      </div>
   );
 }
 

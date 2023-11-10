@@ -22,19 +22,6 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, trans
     price: ''
   });
 
-  // const getTier = () => {
-  //   if (transDetail.member.transactionPoints > 300) {
-  //     return <img src={platinum} style={{width : "100px", textAlign : "center"}} alt="플래티넘"></img>;
-  //   } else if (transDetail.member.transactionPoints > 100) {
-  //     return <img src={diamond} style={{width : "100px", textAlign : "center"}} alt="다이아몬드"></img>;
-  //   } else if (transDetail.member.transactionPoints > 50) {
-  //     return <img src={gold} style={{width : "100px", textAlign : "center"}} alt="골드"></img>;
-  //   } else if (transDetail.member.transactionPoints >= 5) {
-  //     return <img src={silver} style={{width : "100px", textAlign : "center"}} alt="실버"></img>;
-  //   } else {
-  //     return <img src={bronze} style={{width : "100px", textAlign : "center"}} alt="브론즈"></img>;
-  //   }
-  // };
   console.log(userInfo.mileage)
 
   const getTier = () => {
@@ -110,6 +97,7 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, trans
         })
     } else {
       alert("마일리지가 부족합니다")
+      navigate('/mileage')
     }
 
   }

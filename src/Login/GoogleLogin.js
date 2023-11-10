@@ -12,7 +12,8 @@ function GoogleLogin({ setUserInfo, setCs, setTrans }) {
     axiosInstance.post('/oauth/google', { accessToken: accessToken })
       .then(response => {
         const jwt = response.headers.authorization;
-        setUserInfo({username : response.data.member[0].username, name : response.data.member[0].name, mileage : response.data.member[0].mileage, transactionPoints : response.data.member[0].transactionPoints});
+        // 혹시 값안들어갈때 용도 : setUserInfo({username : response.data.member[0].username, name : response.data.member[0].name, mileage : response.data.member[0].mileage, transactionPoints : response.data.member[0].transactionPoints, phone : response.data.member[0].phone});
+        setUserInfo(response.data.member[0]);
         setTrans({ member: response.data.member[0] });
         setCs({ member: response.data.member[0] });
 

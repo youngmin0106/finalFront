@@ -81,50 +81,6 @@ const listOption = [
 ]
 
 
-const testBoardList = [
-  {
-    id: 2,
-    name: '홍길동',
-    content: "판매 테스트 1",
-    title: "테스트 거래 게시글 1",
-    memberid: 'test3',
-    price: 10000,
-    game: '메이플스토리',
-    server: '루나',
-    phone: '010-1234-5678',
-    buyerId: 'test1234',
-    sellerId: '(k)celpic_@naver.com',
-    transId: 1,
-    sellerChk: 'true'
-  },
-  {
-    id: 3,
-    name: '홍길동',
-    content: "판매 테스트 2",
-    title: "테스트 거래 게시글 2",
-    memberid: 'test3',
-    price: 20000,
-    game: '메이플스토리',
-    server: '루나',
-    phone: '010-1234-5678',
-    buyerId: 'test4',
-    sellerId: 'test3'
-  },
-  {
-    id: 4,
-    name: '홍길동',
-    content: "판매 테스트 3",
-    title: "테스트 거래 게시글 3",
-    memberid: 'test3',
-    price: 30000,
-    game: '메이플스토리',
-    server: '루나',
-    phone: '010-1234-5678',
-    buyerId: 'test4',
-    sellerId: 'test3'
-  }
-]
-
 function App() {
   const [transDetails, setTransDetails] = useState({
     id: '',
@@ -169,12 +125,6 @@ function App() {
     postId : '' // 원래 게시글 번호
   })
  
-  console.log(startTransInfo);
-
-
-  const [testTrans, setTestTrans] = useState(testBoardList)
-
-
   const [list, setList] = useState(listOption);
 
 
@@ -208,9 +158,9 @@ function App() {
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} IntransList={IntransList} />}></Route>
         <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
-        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
+        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} />}></Route>
-        <Route path='/testTrans/:id' element={<TestTrans userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans} IntransList={IntransList} setIntransList={setIntransList}></TestTrans>}></Route>
+        <Route path='/testTrans/:id' element={<TestTrans userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} IntransList={IntransList} setIntransList={setIntransList}></TestTrans>}></Route>
 
         {/* 헤더, 고객센터 . . */}
         <Route path='/' element={<Header isAuth={isAuth} setIsAuth={setIsAuth}/>}></Route>

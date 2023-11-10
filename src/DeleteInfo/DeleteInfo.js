@@ -7,12 +7,6 @@ import MyPageBar from "../MyPage/MyPageBar";
 import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 
-// const deleteInfo = (() => {
-  
-// })
-
-
-
 function DeleteInfo( {userInfo} ) {
 
   const [show, setShow] = useState(false);
@@ -20,6 +14,7 @@ function DeleteInfo( {userInfo} ) {
 
   const navigate = useNavigate();
 
+  console.log(userInfo)
   return (
     
     <div className="deleteInfo">

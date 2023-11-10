@@ -18,7 +18,8 @@ function MyPage({ point, userInfo, IntransList }) {
   const [mypage, setMypage] = useState({
    ready : '',
     ing : '',
-   done : '' 
+   done : '' ,
+   buying : '',
   })
 
 
@@ -97,14 +98,6 @@ function MyPage({ point, userInfo, IntransList }) {
       <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2} 원</div>
       <Link to='/mileage' style={{backgroundColor :"white", border : "white", color : "blue", fontWeight : "bold", textDecoration : "none"}}>충전</Link>
     </td>
-
-  {/* 나중에 구현 할수도 있음 (게시글 즐겨찾기) */}
-  {/* <td style={{ padding: "60px", border: "0.5px solid #eee", textAlign: "center" }}>
-      <div>♡</div>
-      <div>관심물품</div>
-      <div style={{ fontWeight: "bold", fontSize: "25px" }}>0 개</div>
-      <div>&nbsp;</div>
-    </td> */}
     </tr>
     </tbody>
 </table>
@@ -129,7 +122,7 @@ function MyPage({ point, userInfo, IntransList }) {
         </td>
 
         <td className='sellBox gradation4'>
-          <div className='round'>STEP 4</div>
+          <div className='round'>STEP 3</div>
           <div>판매 완료</div>
           <div>{mypage.done} 건</div>
         </td>
@@ -144,13 +137,7 @@ function MyPage({ point, userInfo, IntransList }) {
         <td className='sellBox gradation5'>
           <div className='round'>STEP 1</div>
           <div>구매중</div>
-          <div>0 건</div>
-        </td>
-
-        <td className='sellBox gradation7'>
-          <div className='round'>STEP 4</div>
-          <div>구매 완료</div>
-          <div>0 건</div>
+          <div>{mypage.buying} 건</div>
         </td>
       </tr>
     </tbody>
