@@ -74,7 +74,6 @@ function Cultureland({ userInfo, setUserInfo }) {
 
   return (
     <div className="payMain">
-      <br></br>
       <div>
         <h4>문화상품권</h4>
         <hr></hr>

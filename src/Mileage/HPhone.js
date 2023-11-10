@@ -7,7 +7,6 @@ function HPhone() {
 
   return (
     <div className="payMain">
-      <br></br>
       <div>
         <h4>전화결제</h4>
         <hr></hr>

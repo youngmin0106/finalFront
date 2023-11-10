@@ -7,11 +7,12 @@ function TeenCash() {
 
   return (
     <div className="payMain">
-      <br></br>
       <div>
         <h4>틴캐시</h4>
         <hr></hr>
-        <img src={notReady} alt="서비스준비중" width={"800px"}></img>
+        <div className="img">
+          <img src={notReady} alt="서비스준비중"></img>
+        </div>
         </div>
     </div>
   );

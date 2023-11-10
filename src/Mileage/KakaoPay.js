@@ -89,7 +89,6 @@ const KakaoPay = ({ userInfo, setUserInfo }) => {
 
   return (
     <div className='payMain'>
-      <br></br>
       <div>
         <h4>카카오페이</h4>
         <hr></hr>

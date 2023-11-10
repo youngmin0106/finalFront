@@ -88,7 +88,6 @@ const CreditCard = ( {userInfo, setUserInfo} ) => {
 
   return (
     <div className='payMain'>
-      <br></br>
       <div>
         <h4>신용카드</h4>
         <hr></hr>

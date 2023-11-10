@@ -88,7 +88,6 @@ const Payco = ( {userInfo, setUserInfo} ) => {
 
   return (
     <div className='payMain'>
-      <br></br>
       <div>
         <h4>페이코</h4>
         <hr></hr>

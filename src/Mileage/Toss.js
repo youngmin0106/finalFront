@@ -143,8 +143,7 @@ function Toss() {
   };
 
   return (
-    <div className="tossMain">
-      <br></br>
+    <div className="payMain">
       <div>
         <h4>토스페이</h4>
         <hr></hr>

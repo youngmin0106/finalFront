@@ -88,7 +88,6 @@ const Phone = ( {userInfo, setUserInfo} ) => {
 
   return (
     <div className='payMain'>
-      <br></br>
       <div>
         <h4>휴대폰 소액결제</h4>
         <hr></hr>
