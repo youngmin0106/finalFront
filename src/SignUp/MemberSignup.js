@@ -199,7 +199,7 @@ function MemberSignup() {
             <TextField sx={tfStyle} id="password" value={memberData.password} onChange = { inputChangeHandler } 
               label="비밀번호 입력하세요." type="password" />
           </div>
-          <p className="pwInspection"> 영문 포함 + 숫자 포함 + 특수문자 + 길이 1~10자리 사이 문자열(반드시 모두 포함) </p>
+          <p className="pwInspection"> 영문 대소문자 + 숫자  + 특수문자 + 길이 1~10자리 사이 문자열(반드시 모두 포함) </p>
 
 
           <div className="textFieldContainer">

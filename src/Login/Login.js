@@ -18,7 +18,7 @@ import { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
-function Login( {setUserInfo, setIsAuth, setCs, setTrans} ) {
+function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
   
   const defaultTheme = createTheme();
   const navigate = useNavigate();
@@ -47,11 +47,14 @@ function Login( {setUserInfo, setIsAuth, setCs, setTrans} ) {
         console.log(response.data)
         localStorage.setItem('id', loginData.username);
         sessionStorage.setItem('jwt', jwt);
-        setUserInfo(response.data.member[0]);
+        setUserInfo({
+          username : response.data.member[0].username,
+          name: response.data.member[0].name
+        });
         setTrans({member : response.data.member[0]});
         setCs({member : response.data.member[0]});
         setIsAuth(true);
-        navigate("/mypage");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
