@@ -1,24 +1,21 @@
+.headercontainer {
+  margin: auto;
+}
+
 .headercontainer .wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.headercontainer .fl_left {
-  float: left;
+.headercontainer .row0,
+.headercontainer .row0 a {
+  color: #474747;
+  background-color: #EFEFEF;
 }
 
-.headercontainer .topnav {
-  position: relative;
-  right: 50px;
-}
-
-.headercontainer .fl_right {
-  float: right;
-}
-
-.headercontainer .fl_left img {
-  width: 15px;
-
+.headercontainer #topbar * {
+  margin: 0;
+  text-decoration: none
 }
 
 .headercontainer #topbar {
@@ -27,9 +24,12 @@
   text-transform: uppercase;
 }
 
-.headercontainer #topbar * {
-  margin: 0;
-  text-decoration: none
+.headercontainer .fl_left {
+  float: left;
+}
+
+.headercontainer .fl_left img {
+  width: 15px;
 }
 
 .headercontainer #topbar ul li {
@@ -50,11 +50,15 @@
   line-height: normal;
 }
 
-.headercontainer .row0,
-.row0 a {
-  color: #474747;
-  background-color: #EFEFEF;
+.headercontainer .fl_right {
+  float: right;
 }
+
+.headercontainer .topnav {
+  position: relative;
+  right: 50px;
+}
+
 
 .headercontainer #topbar ul li {
   border-color: rgba(0, 0, 0, .1);
@@ -66,109 +70,17 @@
 
 .headercontainer .headsh {
   text-align: center;
-  margin-top: 30px;
+  margin: 50px auto;
+}
+
+.headercontainer .gameimg{
+  width: 12%;
+  height: 30%;
 }
 
 .headercontainer .headsh #search{
   width: 40%;
   height: 42px;
-
-}
-
-.headercontainer #nav>ul>li.current {
-  background: #d52349;
-  color: #fff !important;
-  font-weight: 700;
-}
-
-.headercontainer #nav {
-  margin: 2.5em 0 0 0;
-}
-
-.headercontainer #nav>ul {
-  margin: 0;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.headercontainer #nav>ul>li {
-  display: inline-block;
-  /* font-style: italic; */
-  font-weight: bold;
-  margin: 0 0.35em 0 0.35em;
-
-
-}
-
-.headercontainer li>a {
-  display: inline;
-
-}
-
-.headercontainer #nav>ul>li>a {
-  border-radius: 5px;
-  color: black;
-  font-size: 20px;
-  text-decoration: none;
-  padding: 0.6em 1.2em 0.6em 1.2em;
-  -moz-transition: background-color .25s ease-in-out;
-  -webkit-transition: background-color .25s ease-in-out;
-  -ms-transition: background-color .25s ease-in-out;
-  transition: background-color .25s ease-in-out;
-  outline: 0;
-  font-weight: normal;
-  color: white;
-}
-
-
-.headercontainer .bigheader {
-
-  text-align: center;
-  top: 30px;
-  margin-top: 50px;
-  height: 60px;
-  background-color: #519D9E;
-  justify-content: center;
-
-
-
-}
-
-@font-face {
-  font-family: 'NanumSquareNeo-Variable';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-.headercontainer {
-  margin: auto;
-
-}
-
-.headercontainer .bigtabnav {
-  position: relative;
-  right: 20px;
-  bottom: 23px;
-
-}
-
-.headercontainer #nav {
-  padding-right: 25px;
-  border-width: 1px 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-}
-
-.headercontainer #nav li {
-  display: inline;
-}
-
-.headercontainer #nav a {
-  display: inline-block;
-  padding: 10px;
 }
 
 .headercontainer #search {
@@ -193,8 +105,87 @@
   font-size: 21px;
 }
 
-.headercontainer .gameimg{
-  width: 12%;
-  height: 30%;
+.headercontainer #nav>ul>li.current {
+  background: #d52349;
+  color: #fff !important;
+  font-weight: 700;
 }
+
+.headercontainer #nav {
+  margin: 2.5em 0 0 0;
+}
+
+.headercontainer #nav>ul {
+  margin: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.headercontainer #nav>ul>li {
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 0.35em 0 0.35em;
+}
+
+.headercontainer li>a {
+  display: inline;
+}
+
+.headercontainer #nav>ul>li>a {
+  border-radius: 5px;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 0.6em 1.2em 0.6em 1.2em;
+  -moz-transition: background-color .25s ease-in-out;
+  -webkit-transition: background-color .25s ease-in-out;
+  -ms-transition: background-color .25s ease-in-out;
+  transition: background-color .25s ease-in-out;
+  outline: 0;
+  font-weight: normal;
+  color: white;
+}
+
+.headercontainer .bigheader {
+  text-align: center;
+  top: 30px;
+  height: 60px;
+  background-color: #519D9E;
+  justify-content: center;
+}
+
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.headercontainer .bigtabnav {
+  position: relative;
+  right: 20px;
+  bottom: 23px;
+}
+
+.headercontainer #nav {
+  padding-right: 25px;
+  border-width: 1px 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.headercontainer #nav li {
+  display: inline;
+}
+
+.headercontainer #nav a {
+  display: inline-block;
+  padding: 10px;
+}
+
+
+
+
 

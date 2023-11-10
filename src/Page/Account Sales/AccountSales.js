@@ -32,6 +32,7 @@ function AccountSales( {trans, setTrans} ) {
       <div className="title">
         <h1>계정 등록</h1>
       </div>
+
       <table>
         <tbody>
         <tr>
@@ -45,7 +46,7 @@ function AccountSales( {trans, setTrans} ) {
           <td>
             <span>
             <select name="game" onChange={handleSelectChange} value={selectedOption}>
-              <option defaultValue={"게임명선택"} className="t-2-1">게임명 선택▼</option>
+              <option defaultValue={"게임명선택"} className="t-2-1">게임명 선택</option>
               
               {
                 option.map((data, i) => {
@@ -61,7 +62,7 @@ function AccountSales( {trans, setTrans} ) {
   
             &nbsp;
             <select name="server" onChange={changeHandler}>
-            <option defaultValue={"서버선택"} className="t-2-2">서버 선택▼</option>
+            <option defaultValue={"서버선택"} className="t-2-2">서버 선택</option>
               {
                 server[`${selectedOption}`].map((data, i) => {
                   return(

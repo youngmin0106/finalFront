@@ -20,7 +20,7 @@ function GoogleLogin({ setUserInfo, setCs, setTrans }) {
         if (jwt) {
           sessionStorage.setItem('jwt', jwt);
           console.log(response.data.member[0]);
-          navigate('/mypage');
+          navigate('/');
         }
 
       }).catch(error => {

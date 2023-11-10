@@ -9,7 +9,7 @@ let option = [
   },
   {
     gameName: '메이플스토리',
-    id: 'MaypleStory'
+    id: 'MapleStory'
   },
   {
     gameName: '서든어택',
@@ -24,7 +24,7 @@ let option = [
     id: 'FcOnline'
   },
   {
-    gameName: '던전앤파이트',
+    gameName: '던전앤파이터',
     id: 'DF'
   },
   {

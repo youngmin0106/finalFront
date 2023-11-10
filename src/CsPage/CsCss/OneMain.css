@@ -133,12 +133,6 @@
   color: black;
 }
 
-
-
-.onemain .onetoonetab{
-  height : 250px 
-}
-
 .onemain  .linktitle{
   text-decoration: none;
   color: black;
@@ -147,4 +141,7 @@
 .onemain{
   width: 20%;
 
+}
+.onemain .onetoonetab{
+  height: 250px;
 }
