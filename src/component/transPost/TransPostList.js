@@ -5,6 +5,7 @@ import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link, useLocation } from "react-router-dom";
 import TransDone from "./TransDone";
 
+
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
   const [searchList, setSearchList] = useState([]); // 필터링 데이터
@@ -194,33 +195,27 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
             gameName && (searchList[?].game == gameName ? )
           } */}
 
-          {
-            showList
-              .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-              .map((trans, i) => {
-                console.log(trans)
-                return (
+          {showList
+            .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+            .map((trans, i) => (
+              <tr key={`row-${i}`}>
+                <td>{trans.server}</td>
+                <td>{trans.game}</td>
+                <td style={{ position: "relative", textAlign : "center", lineHeight : "2" }}>
+                  {trans.trans === "DONE" && (
+                    <div style={{ position: "absolute", top: "0%", left: "0%", width: "100%", height: "100%", textAlign: "center", backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
+                      판매완료
+                    </div>
+                  )}
+                  <Link to={`/transDetail/${trans.id}`} className="titleDetail">
+                    {trans.title}
+                  </Link>
+                </td>
+                <td>{`${trans.price.toLocaleString('ko-KR')}원`}</td>
+                <td>{trans.createdate}</td>
+              </tr>
+            ))}
 
-                  <tr key={i}>
-                    
-                      <td>{trans.server}</td>
-                      <td>{trans.game}</td>
-                      <td>
-                        <Link to={`/transDetail/${trans.id}`} className="titleDetail">
-                          {trans.title}
-                        </Link>
-                      </td>
-
-                      <td>{trans.price.toLocaleString('ko-KR')}원</td>
-                      <td>{trans.createdate}</td>
-      
-                    </tr>
-
-
-
-                )
-              })
-          }
 
         </tbody>
       </table>
