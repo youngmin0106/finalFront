@@ -1,7 +1,6 @@
-import MyPageBar from "./MyPageBar";
-import './ListPages.css';
+import MyPageBar from './MyPageBar';
+import './Css/ListPages.css';
 import { Button } from "react-bootstrap";
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axiosInstance from "../axiosInstance";
@@ -13,8 +12,6 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans, setIntra
   let content = '';
   let url = '';
   console.log({id})
-  
-  
   
   if ( id === '1' ) {
     content = list[0].name;
@@ -31,12 +28,6 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans, setIntra
   } else if(id === '5') {
     content = list[4].name;
     url = list[4].url
-  } else if(id === '6') {
-    content = list[5].name;
-    url = list[5].url
-  } else if(id === '7') {
-    content = list[6].name;
-    url = list[6].url
   }
   
   useEffect(() => {

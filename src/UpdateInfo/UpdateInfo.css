@@ -1,7 +1,7 @@
 .updateInfo {
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  min-height: 70dvh;
   border: 1px solid #eee;
 }
 

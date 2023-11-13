@@ -1,11 +1,12 @@
 import { Button } from "react-bootstrap";
 import axiosInstance from "../axiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
-import './TestTrans.css';
+import './Css/TestTrans.css';
 import { useEffect } from "react";
 import { useState } from "react";
+import MyPageBar from "./MyPageBar";
 
-function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setTrans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
+function TestTrans( {userInfo, setUserInfo, trans, setTrans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
 
   const [transInfo, setTransInfo] = useState({
 
@@ -14,14 +15,6 @@ function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setT
   const [intransInfo, setIntransInfo] = useState({
 
   })
-
-  // 인계
-  console.log("접속한 사용자 : " + userInfo.username);
-  console.log("거래중 게시글 구매자 :  " + intransInfo.buyerId)
-  console.log("거래중 게시글 인계여부 : " + intransInfo.sellerChk)
-  console.log(transInfo)
-  console.log(intransInfo)
-  
 
   const { id } = useParams();
 
@@ -73,11 +66,15 @@ function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setT
       });
   }
 
+  const returnHandler = () => {
+    navigate(-1);
+  }
+
   const testButton = () => {
     if (userInfo.username === intransInfo.buyerId && intransInfo.sellerChk && intransInfo.trans === "ING") {
-      return <Button onClick={takeOverBtn}>인수</Button>
+      return <Button onClick={takeOverBtn} className="takeOver">인수</Button>
     } else if (userInfo.username === intransInfo.sellerId && !intransInfo.sellerChk) {
-      return <Button onClick={turnOverBtn}>인계</Button>
+      return <Button onClick={turnOverBtn} className="turnOver">인계</Button>
     } else {
       return null;
     }
@@ -85,6 +82,9 @@ function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setT
 
   return (
     <div className="TestTrans" style={{marginTop : "5%"}}>
+
+      <div className="transWrapper">
+
       <table style={{textAlign : "center", border : "0.5px solid #eee", width : "800px"}}>
         <thead>
           <tr>
@@ -119,9 +119,6 @@ function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setT
             <td></td>
           </tr>
           
-
-
-
         </thead>
         <tbody>
       
@@ -129,44 +126,12 @@ function TestTrans( {userInfo, setUserInfo, testTrans, setTestTrans, trans, setT
         </tbody>
       </table>
           <br></br>
-          <div style={{marginRight : "80%"}}>
+          <div>
+          <Button className="returnHandler" onClick={returnHandler}>뒤로가기</Button>&nbsp;
           {testButton()}
           </div>
+      </div>
     </div>
-/* <div className='payMain'>
-<br></br>
-<div>
-  <h4>카카오페이</h4>
-  <hr></hr>
-  <table>
-    <tbody>
-      <tr>
-        <td style={tdStyle}>마일리지 종류</td>
-        <th style={thStyle}>구매전용 마일리지 (출금불가)</th>
-      </tr>
-      <tr>
-        <td style={tdStyle}>충전 수수료</td>
-        <th style={thStyle}>0%</th>
-      </tr>
-      <tr>
-        <td style={tdStyle}>충전 한도</td>
-        <th style={thStyle}>카카오페이 한도 확인 </th>
-      </tr>
-    </tbody>
-  </table>
-  <ul className="tossReadme">
-  </ul>
-</div>
-<hr></hr>
-<table>
-  <tbody>
-    <tr>
-      <td style={tdStyle}>충전신청금액</td>
-      <th style={thStyle}><Form.Control type="text" className="mileage" placeholder="1,000원 이상 결제가능"/></th>
-    </tr>
-  </tbody>
-</table>
-<hr></hr> */
   );
 }
 

@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import './MyPage.css';
+import '../MyPage/Css/MyPage.css';
 import tier3 from './tier3.png';
 import MyPageBar from './MyPageBar';
 import { useState } from 'react';
@@ -138,18 +138,15 @@ function MyPage({ point, userInfo, IntransList }) {
           <div>구매중</div>
           <div>{mypage.buying} 건</div>
         </td>
+        <td className='sellBox gradation6'>
+          <div className='round'>STEP 2</div>
+          <div>구매완료</div>
+          <div>{mypage.buyDone} 건</div>
+        </td>
       </tr>
     </tbody>
 </table>
     
-
-  {/* <p>overflow: auto; 를 사용하여 영역을 벗어나는 부분의 스크롤 유뮤를 자동으로 합니다.</p>
-  <p>화면을 스크롤해보면 왼쪽 메뉴바는 그대로 있고 오른쪽 내용만 스크롤됩니다.</p>
-  <p>....</p>
-  <p>....</p>
-  <p>....</p>
-  <p>....</p>
-  <p>....</p> */}
 
 </div>
 

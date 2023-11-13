@@ -3,7 +3,6 @@ import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
 import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link, useLocation } from "react-router-dom";
-import TransDone from "./TransDone";
 
 
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
@@ -15,6 +14,23 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
 
   const location = useLocation();
   const selectedGame = location.state ? location.state.game : ''; // 
+
+  const tdStyle = {
+    position : 'relative'
+  };
+
+  const divStyle = {
+    position : 'absolute',
+    top : '0%',
+    left : '0%',
+    width : '100%',
+    height : '100%',
+    textAlign : 'center',
+    backgroundColor : '#519D9E',
+    opacity : '0.5',
+    color : 'white',
+    fontSize : '25px'
+  };
 
   useEffect(() => {
     axiosInstance.get("/transPost")
@@ -199,11 +215,24 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
             .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
             .map((trans, i) => (
               <tr key={`row-${i}`}>
-                <td>{trans.server}</td>
-                <td>{trans.game}</td>
+                <td style={tdStyle}>
+                {trans.trans === "DONE" && (
+                  <div style={divStyle}>
+                    </div>
+                )}
+                  {trans.server}
+                  </td>
+
+                <td style={tdStyle}>
+                {trans.trans === "DONE" && (
+                  <div style={divStyle}>
+                  </div>
+                )}
+                {trans.game}</td>
+
                 <td style={{ position: "relative", textAlign : "center", lineHeight : "2" }}>
                   {trans.trans === "DONE" && (
-                    <div style={{ position: "absolute", top: "0%", left: "0%", width: "100%", height: "100%", textAlign: "center", backgroundColor: "rgba(0, 0, 0, 0.3)"}}>
+                    <div style={divStyle}>
                       판매완료
                     </div>
                   )}
@@ -211,8 +240,21 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
                     {trans.title}
                   </Link>
                 </td>
-                <td>{`${trans.price.toLocaleString('ko-KR')}원`}</td>
-                <td>{trans.createdate}</td>
+
+                <td style={tdStyle}>
+                  {trans.trans === "DONE" && (
+                    <div style={divStyle}>
+                    </div>
+                  )}
+                  {`${trans.price.toLocaleString('ko-KR')}원`}
+                  </td>
+
+                <td style={tdStyle}>
+                  {trans.trans === "DONE" && (
+                    <div style={divStyle}></div>
+                  )}
+                  {trans.createdate}
+                  </td>
               </tr>
             ))}
 

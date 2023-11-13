@@ -5,7 +5,7 @@ import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 
-function Cultureland({ userInfo, setUserInfo, trans, setTrans }) {
+function Cultureland({ userInfo, setUserInfo, trans }) {
 
 
   const tdStyle = {
@@ -18,8 +18,6 @@ function Cultureland({ userInfo, setUserInfo, trans, setTrans }) {
     fontWeight: 100
   };
 
-  console.log(trans)
-  console.log({...trans.member})
 
   const navigate = useNavigate();
 
@@ -51,8 +49,6 @@ function Cultureland({ userInfo, setUserInfo, trans, setTrans }) {
 
     setMoney(totalMoney);
 
-
-    console.log(totalMoney);
     return totalMoney;
   }
 

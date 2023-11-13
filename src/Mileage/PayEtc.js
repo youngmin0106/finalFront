@@ -1,13 +1,11 @@
-import { Button, Form } from "react-bootstrap";
 import './Toss.css';
 import notReady from './serviceNot.png'
 
 
-// 구현할 수도 있는 결제 내역
 function PayEtc() {
 
   const tdStyle = {
-    padding: '10px', // 필요에 따라 적절한 패딩 값으로 조정하세요
+    padding: '10px',
     fontWeight : 'bold'
   };
 

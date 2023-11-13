@@ -1,0 +1,57 @@
+.TestTrans {
+  margin-top: 5%;
+  width: 40%;
+  margin: auto;
+  padding: 1px 16px;
+}
+
+
+.TestTrans table {
+  margin: auto;
+}
+
+.TestTrans .turnOver {
+  background-color: #519D9E;
+  border: none;
+}
+
+.TestTrans .turnOver:hover {
+  background-color: #519D9E;
+  opacity: 0.7;
+}
+
+.TestTrans .takeOver {
+  background-color: #519D9E;
+  border: none;
+}
+
+.TestTrans .takeOver:hover {
+  background-color: #519D9E;
+  opacity: 0.7;
+}
+
+.TestTrans .returnHandler {
+  background-color: #519D9E;
+  border : none;
+}
+
+.TestTrans .returnHandler:hover {
+  background-color: #519D9E;
+  opacity: 0.7;
+  border: none;
+}
+
+.TestTrans .testTh {
+  border-right: 1px solid #eee;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #519D9E;
+  border-top : 1px solid #519D9E;
+}
+
+
+.TestTrans .testTd {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}

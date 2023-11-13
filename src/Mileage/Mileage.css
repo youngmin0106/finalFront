@@ -1,5 +1,4 @@
 .Mileage .choosePayment {
-  /* style={{width : "500px", textAlign : "center", color : "#40A940", fontWeight : "bold", borderTop : "1px solid #40A940 ", height : "50px"} */
   width: 790px;
   text-align: center;
   color : #519D9E;
@@ -13,21 +12,12 @@
 
 .Mileage {
   margin-top: 5%;
-  /* margin-left: 25%; */
   margin : auto;
   padding: 1px 16px;
   height: 1000px;
 }
 
-/* .payment {
-  border: 0.5px solid #eee;
-  border-top: none;
-  color: black;
-  background-color: white;
-  width: 20%;
-  height: 200px;
-  padding: 0px;
-} */
+
 
 
 .Mileage .payul {

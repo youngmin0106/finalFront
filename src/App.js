@@ -57,29 +57,19 @@ const listOption = [
   },
   {
     id: 3,
-    name: '판매 취소된',
-    url : '/listPages3'
-  },
-  {
-    id: 4,
     name: '판매 완료된',
-    url : '/listPages4'
+    url : '/listPages3'
   },
   // 나의 구매 물품 항목
   {
-    id: 5,
+    id: 4,
     name: '구매중인',
+    url : '/listPages4'
+  },
+  {
+    id: 5,
+    name : '구매 완료된',
     url : '/listPages5'
-  },
-  {
-    id: 6,
-    name: '구매 취소된',
-    url : '/listPages6'
-  },
-  {
-    id: 7,
-    name: '구매 완료된',
-    url : '/listPages7'
   }
 ]
 

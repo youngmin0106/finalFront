@@ -5,7 +5,6 @@ import Cultureland from './Cultureland';
 import CreditCard from './CreditCard';
 import Phone from './Phone';
 import BankTransfer from './BankTransfer';
-import HPhone from './HPhone';
 import TeenCash from './TeenCash';
 import KakaoPay from './KakaoPay';
 import Payco from './Payco';
@@ -17,30 +16,6 @@ function Mileage( {userInfo, setUserInfo, trans, setTrans} ) {
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
-
-  // 기존에 사용하려던 방식
-  // const getContent = () => {
-  //   switch (selectedItem) {
-  //     case "토스페이":
-  //       return <div>토스페이 내용</div>;
-  //     case "신용카드":
-  //       return <div>신용카드 충전 내용</div>;
-  //     case "휴대폰":
-  //       return <div>휴대폰(ARS) 충전 내용</div>;
-  //     case "무통장입금":
-  //       return <div>무통장 입금 내용</div>;
-  //     case "페이코":
-  //       return <div>페이코</div>;
-  //     case "문화상품권":
-  //       return <div>문화상품권 충전 내용</div>;
-  //     case "틴캐시":
-  //       return <div>틴캐시 내용</div>;
-  //     case "돈복사버그":
-  //       return <div>돈복사버그 내용</div>;
-  //     default:
-  //       return null;
-  //   }
-  // };
 
   return (
     <div className="Mileage">
@@ -65,7 +40,6 @@ function Mileage( {userInfo, setUserInfo, trans, setTrans} ) {
         {selectedItem === "문화상품권" && <div className='payopt'><Cultureland userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></Cultureland></div>}
         {selectedItem === "틴캐시" && <div className='payopt'><TeenCash></TeenCash></div>}
         {selectedItem === "카카오페이" && <div className='paypot'><KakaoPay userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans}></KakaoPay></div> }
-        {/* {selectedItem === "전화결제" && <div className='payopt'><HPhone userInfo={userInfo} setUserInfo={setUserInfo}></HPhone> </div>} */}
       </div>
       </div>
   );

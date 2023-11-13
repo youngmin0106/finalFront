@@ -12,18 +12,9 @@
   overflow: auto;
   border : 0.5px solid #eee;
   border-radius: 5px;
-  font-family: 'NanumSquareNeo-Variable';
-}
-
-@font-face {
-  font-family: 'NanumSquareNeo-Variable';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
 }
 
 .font {
-  font-family: "NanumSquareNeo-Variable";
   font-size: 15px;
 }
 
@@ -35,10 +26,6 @@
   font-weight: 300;
 }
 
-/* 1. #4AB34A
-2. #40A940
-3. #369F36
-4. #2C952C */
 
 .myPageBar li a {
   text-decoration: none;
