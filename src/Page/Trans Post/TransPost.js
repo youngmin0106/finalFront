@@ -4,7 +4,7 @@ import server from "../../mockData/server";
 import option from "../../mockData/option";
 import './TransPost.css';
 
-function TransPost({ isLoading, setIsLoading, trans }) {
+function TransPost({ isLoading, setIsLoading, trans}) {
   const [search, setSearch] = useState({
     keyword: '',
     price: '',
@@ -77,7 +77,6 @@ function TransPost({ isLoading, setIsLoading, trans }) {
   return (
     <>
       <div className="TransPost">
-        <h1 className="title">캐릭터 거래</h1>
         <table>
           <tbody>
             <tr>

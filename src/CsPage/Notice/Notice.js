@@ -3,6 +3,7 @@ import axiosInstance from "../../axiosInstance";
 import PaginationComponent from "../../component/PaginationComponent";
 import Search from "../../component/Search";
 import { Link } from "react-router-dom";
+import announcement from "../../mockData/announcement";
 
 function Notice({userInfo ,cs ,setCs}) {
   const [noticeList, setNoticeList] = useState([]);
@@ -34,7 +35,11 @@ function Notice({userInfo ,cs ,setCs}) {
       .get("/notice")
       .then((response) => {
        
-        setNoticeList(response.data);
+        setNoticeList([
+          ...announcement,
+          ...response.data
+        ]);
+
         setIsNoticeLoading(false);
       })
       .catch((error) => {

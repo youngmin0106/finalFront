@@ -5,7 +5,6 @@ import MyPageBar from './MyPageBar';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
 function MyPage({ point, userInfo }) {
 
   console.log(userInfo.mileage);

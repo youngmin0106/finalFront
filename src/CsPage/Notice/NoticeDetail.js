@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../axiosInstance";
+import announcement from "../../mockData/announcement";
 
 function NoticeDetail({ userInfo, setAuth, cs }) {
 

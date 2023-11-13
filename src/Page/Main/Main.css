@@ -1,0 +1,71 @@
+.Main {
+  width: 67%;
+  margin: auto;
+}
+
+.Main .carouselImg {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.Main h6 {
+  font-weight: bolder;
+}
+
+.Main .one {
+ margin-right: 30px;
+}
+
+.Main .firstLayout, .Main .thirdLayout  {
+  display: flex;
+  padding-top: 15px;
+  margin-top: 10px;
+}
+
+.Main .firstItem, .Main .thirdItem, .Main .secondLayout {
+  box-shadow: 1px 1px 3px 1px rgb(221, 221, 221);
+  padding: 20px 18px;
+  width: 50%;
+}
+
+.Main .linkTitle {
+  text-decoration: none;
+  color: black;
+}
+
+.Main .linkTitle:hover {
+  text-decoration: none;
+  color: #D1B6E1;
+}
+
+.Main iframe {
+  margin: 0.5px;
+  height: 200px;
+  width: 300px;
+}
+
+.Main .youtube {
+  display: flex;
+}
+
+.Main .secondLayout {
+  width: 100%;
+  padding-top: 15px;
+  margin-top: 25px;
+}
+
+.Main .cs {
+text-align: center;
+}
+
+.Main h2 {
+ color: #519D9E;
+ margin: 50px 0;
+}
+
+.Main .gameImg {
+  height: 134.5px;
+  margin: 10px;
+  border: 2px solid lightgray;
+  border-radius: 50%;
+}

@@ -22,7 +22,7 @@ let server = {
     '기타'
   ],
 
-  MaypleStory : [
+  MapleStory : [
     '아케인',
     '리부트',
     '엘리시움',

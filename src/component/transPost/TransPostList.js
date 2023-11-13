@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
 import PaginationRounded from "../Pagination/PaginationRounded";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
@@ -10,6 +10,8 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
   const [currentPage, setCurrentPage] = useState(1); // 처음 현재페이지
   const itemsPerPage = 10; // 게시물 10개씩 
 
+  const location = useLocation();
+  const selectedGame = location.state ? location.state.game : ''; // 
 
   useEffect(() => {
     axiosInstance.get("/transPost")
@@ -52,10 +54,22 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
         );
       });
       setSearchList(filteredList);
+
     } else {
       setSearchList(transList);
     }
   }
+
+  // 선택한 게임에 따라 데이터를 필터링
+  useEffect(() => {
+    if (selectedGame) {
+      const filteredList = transList.filter((trans) => trans.game === selectedGame);
+      setSearchList(filteredList);
+    } else {
+      setSearchList(transList);
+    }
+  }, [selectedGame, transList]);
+
 
   // 취소 버튼 모든것을 초기화하는 함수
   const cancelHandler = () => {
@@ -133,6 +147,9 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
           </tr>
         </thead>
         <tbody>
+          {/* {
+            gameName && (searchList[?].game == gameName ? )
+          } */}
 
           {
             searchList

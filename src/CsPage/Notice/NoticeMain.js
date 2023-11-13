@@ -12,8 +12,7 @@ function CsMain({cs,setCs}) {
   const [noticeList, setNoticeList] = useState([]);
 
   const loadNoticeList = () => {
-    axiosInstance
-      .get("/notice")
+    axiosInstance.get("/notice")
       .then((response) => {
         setNoticeList(response.data);
         const truncatedList = response.data.slice(0, 5).map((notice) => {
@@ -27,7 +26,7 @@ function CsMain({cs,setCs}) {
       })
       .catch((error) => {
         console.error(error);
-        setIsNoticeLoading(false);
+        setIsNoticeLoading(false); 
       });
   };
   

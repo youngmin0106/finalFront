@@ -1,13 +1,18 @@
+.myPage {
+  width: 70%;
+  margin: auto;
+}
+
 .myPage .ulList {
   list-style-type: none;
   background-color: none;
   width: 10%;
-  padding: 0px;
+   padding: 0px; 
   padding-left: 0px;
-  margin:  0px;
-  margin-left: 15%;
+   margin:  0px; 
+  margin-left: 7%;
   position: absolute;
-  height: 100%;
+  height: auto;
   overflow: auto;
   border : 0.5px solid #eee;
   border-radius: 5px;
