@@ -26,11 +26,14 @@ function Header({ isAuth, setIsAuth }) {
 				</div>
 			</div>
 			<div className='headsh'>
-				<Link to={'/'}>
+				{/* <Link to={'/'}>
 					<img src="/img/로고.png" className='gameimg' />
 					<br />
 					<input id="search" type="search" name="" placeholder="바로그인" disabled />
 					<button type="submit" className="searchButton" disabled>검색</button>
+				</Link> */}
+				<Link to={'/'}>
+				<img src='/img/헤더4.jpg'/>
 				</Link>
 			</div>
 			<div className='bigheader'>

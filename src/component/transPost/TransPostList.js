@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
-import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link, useLocation } from "react-router-dom";
+import PaginationComponent from "../pagination/PaginationComponent";
 
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
   const [transList, setTransList] = useState([]); // 기존 데이터
@@ -147,10 +147,6 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
           </tr>
         </thead>
         <tbody>
-          {/* {
-            gameName && (searchList[?].game == gameName ? )
-          } */}
-
           {
             searchList
               .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
@@ -174,7 +170,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
 
         </tbody>
       </table>
-      <PaginationRounded
+      <PaginationComponent
         currentPage={currentPage}
         itemsPerPage={itemsPerPage}
         totalItems={searchList.length}

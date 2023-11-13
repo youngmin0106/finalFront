@@ -8,15 +8,15 @@
   font-size: 14px;
 }
 
-.Footer .firstLayout, .Footer .secondLayout {
+.Footer .firstLayout {
   display: flex;
   justify-content: space-evenly;
   margin: 20px 0;
 }
 
 .Footer img {
-  height: 50px;
-  width: 120px;
+  height: 60px;
+  width: 140px;
 }
 
 .Footer p {
@@ -29,25 +29,6 @@
   display: flex;
 }
 
-.Footer .secondLayout {
-  border-top: 1px solid lightgray;
-  padding-top: 20px;
-}
-
-.Footer .secondLayout .firstItem {
+.Footer .firstLayout .firstItem {
   padding-top: 10px;
-}
-
-.Footer .linkTag {
-  text-decoration: none;
-  color: black;
-}
-
-.Footer .linkTag:hover {
-  text-decoration: none;
-  color: #D1B6E1;
- /* #9DC8C8
-    #58C9B9
-    #519D9E
-    #D1B6E1 */
 }

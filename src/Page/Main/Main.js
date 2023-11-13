@@ -15,27 +15,16 @@ function Main() {
       <div className="carouselImg">
         <Carousel>
           <Carousel.Item>
-            <img src="https://via.placeholder.com/1300x400" alt="샘플이미지" />
-            <Carousel.Caption>
-              <h3>First slide label</h3>
-              <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
+            <img src="./img/main/1번.jpg" alt="" />
+          
           </Carousel.Item>
           <Carousel.Item>
-            <img src="https://via.placeholder.com/1300x400" alt="샘플이미지" />
-            <Carousel.Caption>
-              <h3>Second slide label</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
+            <img src="./img/main/2번.jpg" alt="" />
+          
           </Carousel.Item>
           <Carousel.Item>
-            <img src="https://via.placeholder.com/1300x400" alt="샘플이미지" />
-            <Carousel.Caption>
-              <h3>Third slide label</h3>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-              </p>
-            </Carousel.Caption>
+            <img src="./img/main/3번.jpg" alt="" />
+           
           </Carousel.Item>
         </Carousel>
       </div>

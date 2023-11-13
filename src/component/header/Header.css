@@ -9,8 +9,8 @@
 
 .headercontainer .row0,
 .headercontainer .row0 a {
-  color: #474747;
-  background-color: #EFEFEF;
+  color: black;
+  background-color: #eeeeee;
 }
 
 .headercontainer #topbar * {
@@ -70,7 +70,7 @@
 
 .headercontainer .headsh {
   text-align: center;
-  margin: 50px auto;
+  /* margin: 50px auto; */
 }
 
 .headercontainer .gameimg{
@@ -150,8 +150,11 @@
   text-align: center;
   top: 30px;
   height: 60px;
-  background-color: #519D9E;
+  background: linear-gradient(to right, #47bea9, #96d0d1);
   justify-content: center;
+  
+ 
+ 
 }
 
 @font-face {
