@@ -72,7 +72,7 @@ function MyPageBar( { point, userInfo } ) {
         <li><a className="job" href="0" onClick={(e) => {
           e.preventDefault();
         }}>나의 정보 관리</a></li>
-        <li><Link to ="/updateInfo">회원정보 수정</Link></li>
+        <li><Link to ="/update-member">회원정보 수정</Link></li>
         <li><Link to ="/deleteInfo">회원 탈퇴</Link></li>
       </ul>
     </div>

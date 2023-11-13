@@ -3,6 +3,9 @@
   margin: 50px auto auto auto;
   width: 50%;
 }
+.AccountSales .title {
+  margin-top: 2%;
+}
 
 .AccountSales .insertbtn {
   text-align: center;

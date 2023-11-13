@@ -2,8 +2,6 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -18,14 +16,15 @@ import { useState } from 'react';
 import axiosInstance from '../axiosInstance';
 import { useNavigate } from 'react-router-dom';
 
-function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
-  
+
+function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
+
   const defaultTheme = createTheme();
   const navigate = useNavigate();
-  
+
   const [loginData, setLoginData] = useState({
-    username : '',
-    password : '',
+    username: '',
+    password: '',
   });
 
   const idPwInputHandler = (e) => {
@@ -41,18 +40,12 @@ function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
     e.preventDefault();
 
     axiosInstance.post('/login', loginData)
-    .then((response) => {
+      .then((response) => {
         const jwt = response.headers.authorization;
-        console.log("로그인 성공");
-        console.log(response.data)
-        localStorage.setItem('id', loginData.username);
         sessionStorage.setItem('jwt', jwt);
-        setUserInfo({
-          username : response.data.member[0].username,
-          name: response.data.member[0].name
-        });
-        setTrans({member : response.data.member[0]});
-        setCs({member : response.data.member[0]});
+        setUserInfo(response.data.member[0]);
+        setTrans({ member: response.data.member[0] });
+        setCs({ member: response.data.member[0] });
         setIsAuth(true);
         navigate("/");
       })
@@ -61,65 +54,78 @@ function Login( {setUserInfo, setIsAuth , setTrans, setCs} ) {
         alert("아이디 패스워드를 확인하세요.")
       });
   }
-console.log(setCs);
+
+  const idPwSerchOpen = () => {
+    window.open(
+      'http://localhost:3000/idserch',
+      '_blank',
+      'width=800, height=600');
+  }
+
+
   return (
 
-    <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box sx={{ 
-          marginTop: 8, 
-          display: 'flex', 
-          flexDirection: 'column',
-          alignItems: 'center',
+    <div className='LoginComponent'>
+
+      <ThemeProvider theme={defaultTheme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
-        >
+          >
 
-    <Typography component="h1" variant="h5"> 로그인 </Typography>
+            <Typography component="h1" variant="h5"> 로그인 </Typography>
 
-    <Box component="form" noValidate sx={{ mt: 1 }}>
-    <TextField margin="normal" required fullWidth id="username"
-      label="아이디" name="username" autoComplete="username" autoFocus 
-      onChange={idPwInputHandler} value={loginData.username} />
+            <Box component="form" noValidate sx={{ mt: 1 }}>
+              <TextField margin="normal" required fullWidth id="username"
+                label="아이디" name="username" autoComplete="username" autoFocus
+                onChange={idPwInputHandler} value={loginData.username} />
 
-    <TextField margin="normal" required fullWidth label="비밀번호" 
-      type="password" id="password" autoComplete="current-password"
-      onChange={idPwInputHandler} value={loginData.password} />
+              <TextField margin="normal" required fullWidth label="비밀번호"
+                type="password" id="password" autoComplete="current-password"
+                onChange={idPwInputHandler} value={loginData.password} />
 
-    <FormControlLabel control={<Checkbox value="remember" color="primary" />}
-      label="아이디 저장" />
+              <Button type="submit" fullWidth variant="contained"
+                style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }}
+                onClick={loginBtnClickHandler}> 로그인 </Button>
 
-    <Button type="submit" fullWidth variant="contained" 
-      style={{ backgroundColor: "#9DC8C8" }} sx={{ mt: 3, mb: 1 }} 
-      onClick={loginBtnClickHandler}> 로그인 </Button>
-              
-    <div className='loginBox'>
-      <a href="#!" onClick={() => {
-        window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=ccc3b6d2fedd138aa407aa4112b315cd&redirect_uri=http://localhost:3000/oauth/kakao`;
-      }}>
-      <img src={kakaoicon} alt = "kakaoLoginImg"></img></a>
-      
-      <a href="#!" onClick={() => {
-         window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=677438077141-5kscmapicvkvh641v83fooil8lj4661s.apps.googleusercontent.com&redirect_uri=http://localhost:3000/oauth/google&response_type=token&scope=openid%20email%20profile`;
-      }}><img src={googleico} alt = "googleLoginImg"></img></a>
-      <a href="#!"><img src={navericon} alt = "naverLoginImg"></img></a>
-    </div>
-    
-    <Grid container>
-      <Grid item xs>
-        <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 아이디 찾기 </Link>
-      </Grid>
-      <Grid item xs>
-        <Link href="#" style={{ textDecoration: "none" }} variant="body2"> 비밀번호 찾기 </Link>
-      </Grid>
-      <Grid item>
-        <Link href="/member-sign" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
-      </Grid>
-    </Grid>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#!" onClick={idPwSerchOpen} style={{ textDecoration: "none" }} variant="body2"> 아이디/비밀번호 찾기 </Link>
+                </Grid>
+
+                <Grid item>
+                  <Link href="/member-type" style={{ textDecoration: "none" }} variant="body2"> {"회원가입"} </Link>
+                </Grid>
+              </Grid><br />
+
+                <div className='loginBox'>
+                  <a href="#!" onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
+                  }}>
+                    <img src={kakaoicon} alt="kakaoLoginImg"></img>
+                  </a>
+
+                <a href="#!" onClick={() => {
+                  window.location.href = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=token&scope=openid%20email%20profile`;
+                }}>
+                  <img src={googleico} alt="googleLoginImg"></img></a>
+
+                <a href="#!" onClick={() => {
+                  alert("카카오 or 구글을 이용하세요");
+                }}><img src={navericon} alt="naverLoginImg"></img></a>
+              </div>
+              <span className="socialtext">간편 회원가입</span>
+            </Box>
           </Box>
-        </Box>
-      </Container>
-    </ThemeProvider>
+        </Container>
+      </ThemeProvider>
+    </div>
   );
 }
 
