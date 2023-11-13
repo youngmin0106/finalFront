@@ -81,7 +81,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 				<nav id="nav">
 					<ul>
 						{isAuth ? <li style={{ cursor: 'pointer' }} className='one'> <Link to={"/insertTrans"}>판매등록</Link></li>
-							: <li onClick={notLoginAlert} className='one'> <Link onClick={notLoginAlert}>판매등록</Link></li>}
+							: <li onClick={notLoginAlert} className='one'> <Link>판매등록</Link></li>}
 
 						<li className='one'><Link to={"/transPost"}>물품목록</Link></li>
 
