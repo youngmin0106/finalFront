@@ -1,9 +1,9 @@
-.MemberSignup {
+.kaGooSignup {
   width: 70%;
   margin-left : 15%;
 }
 
-.MemberSignup .signupForm {
+.kaGooSignup .signupForm {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   padding: 20px;
@@ -14,67 +14,61 @@
   text-align: center;
 }
 
-.MemberSignup .textFieldContainer {
+.kaGooSignup .textFieldContainer {
   display: flex;
   align-items: center;
 }
 
-.MemberSignup .textFieldContainer p {
+.kaGooSignup .textFieldContainer p {
   margin-right: 10px;
 }
 
-.MemberSignup p {
+.kaGooSignup p {
   width: 10%;
   font-size: 13px;
   font-weight: bold;
 }
 
-.MemberSignup .underBtn {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 2%;
-}
-
-.MemberSignup .rightBtn {
+.kaGooSignup .rightBtn {
   display: flex;
   gap: 5px;
+  margin-left: 79%;
+  margin-top: 1%;
 }
 
-.MemberSignup .errorMsg {
+.kaGooSignup .errorMsg {
   width: 20%;
   margin-left: 8%;
 }
 
-.MemberSignup .idInspection {
+.kaGooSignup .idInspection {
   width: 40%;
-  margin-left: 4  .5%;
+  margin-left: 9%;
   font-weight: normal;
 }
-.MemberSignup  .pwInspection {
-  width:50%;
-  margin-left: 85px;
+.kaGooSignup  .pwInspection {
+  width: 69%;
+  margin-left: 8%;
   font-weight: normal;
 }
 
-.MemberSignup .blueText {
+.kaGooSignup .blueText {
   color : blue;
 }
-.MemberSignup .redText {
+.kaGooSignup .redText {
   color : red;
 }
 
-.MemberSignup .BtnTextField {
+.kaGooSignup .BtnTextField {
   display: flex;
   width: 79%;
 }
 
-.MemberSignup .signBtn {
+.kaGooSignup .signBtn {
   margin-bottom: 5%;
 }
 
-.MemberSignup .myaddressBox {
+.kaGooSignup .myaddressBox {
   width: 400px;
   height: 400px;
 }

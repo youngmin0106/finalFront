@@ -25,7 +25,7 @@ function SignupSuccess() {
 
           <div className='mainBtn'>
             <Button variant="contained" onClick={() => 
-                navigate("/mypage")}> 메인 페이지로 이동 </Button>
+                navigate("/")}> 메인 페이지로 이동 </Button>
           </div>
         </div>
 

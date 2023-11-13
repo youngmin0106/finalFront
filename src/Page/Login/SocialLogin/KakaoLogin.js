@@ -2,36 +2,40 @@
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../../axiosInstance";
 
-function KakaoLogin( {setIsAuth, setUserInfo, setTrans, userInfo, setCs} ) {
+
+function KakaoLogin({ setIsAuth, setUserInfo, setTrans, setCs ,userInfo}) {
 
 
   const URL = window.location.href;
   const match = /code=([^&]+)/.exec(URL);
   const navigate = useNavigate();
 
-  if(match) {
+  if (match) {
+
     const code = decodeURIComponent(match[1]);
-    
-    axiosInstance.post('/oauth/kakao', {code:code})
+
+    axiosInstance.post('/oauth/kakao', { code: code })
       .then(response => {
         const jwt = response.headers.authorization;
-        setUserInfo({
-          username : response.data.member[0].username,
-          name: response.data.member[0].name
-        });
-        setTrans({member : response.data.member[0]});
-        setCs({member : response.data.member[0]});
 
-        if(jwt) {
+        setUserInfo(response.data.member[0]);
+        setTrans({ member: response.data.member[0] });
+        setCs({ member: response.data.member[0] });
+
+        if (jwt) {
           sessionStorage.setItem('jwt', jwt);
-          console.log(response.data.member[0]);
-          navigate('/');
+          if (response.data.member[0].birthdate === null) {
+            alert("추가 정보를 입력하세요.");
+            navigate("/kaGoo-signup");
+          } else {
+            navigate("/");
+            setIsAuth(true);
+          }
         }
-        
       }).catch(error => {
-        console.log(error);   
-      })  
-    }
+        console.log(error);
+      })
+  }
 
   return (
     <div>
@@ -44,3 +48,6 @@ function KakaoLogin( {setIsAuth, setUserInfo, setTrans, userInfo, setCs} ) {
 }
 
 export default KakaoLogin;
+
+
+
