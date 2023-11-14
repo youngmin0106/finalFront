@@ -1,12 +1,11 @@
 import { Button } from "react-bootstrap";
 import axiosInstance from "../axiosInstance";
 import { useNavigate, useParams } from "react-router-dom";
-import './Css/TestTrans.css';
+import './Css/InTrans.css';
 import { useEffect } from "react";
 import { useState } from "react";
-import MyPageBar from "./MyPageBar";
 
-function TestTrans( {userInfo, setUserInfo, trans, setTrans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
+function InTrans( {userInfo, setUserInfo, trans, setTrans, startTransInfo, setStartTransInfo, transDetail, IntransList, setIntransList } ) {
 
   const [transInfo, setTransInfo] = useState({
 
@@ -81,7 +80,7 @@ function TestTrans( {userInfo, setUserInfo, trans, setTrans, startTransInfo, set
   }
 
   return (
-    <div className="TestTrans" style={{marginTop : "5%"}}>
+    <div className="InTrans" style={{marginTop : "5%"}}>
 
       <div className="transWrapper">
 
@@ -135,4 +134,4 @@ function TestTrans( {userInfo, setUserInfo, trans, setTrans, startTransInfo, set
   );
 }
 
-export default TestTrans;
+export default InTrans;

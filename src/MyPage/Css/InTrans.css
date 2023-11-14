@@ -1,4 +1,4 @@
-.TestTrans {
+.InTrans {
   margin-top: 5%;
   width: 40%;
   margin: auto;
@@ -6,42 +6,42 @@
 }
 
 
-.TestTrans table {
+.InTrans table {
   margin: auto;
 }
 
-.TestTrans .turnOver {
+.InTrans .turnOver {
   background-color: #519D9E;
   border: none;
 }
 
-.TestTrans .turnOver:hover {
+.InTrans .turnOver:hover {
   background-color: #519D9E;
   opacity: 0.7;
 }
 
-.TestTrans .takeOver {
+.InTrans .takeOver {
   background-color: #519D9E;
   border: none;
 }
 
-.TestTrans .takeOver:hover {
+.InTrans .takeOver:hover {
   background-color: #519D9E;
   opacity: 0.7;
 }
 
-.TestTrans .returnHandler {
+.InTrans .returnHandler {
   background-color: #519D9E;
   border : none;
 }
 
-.TestTrans .returnHandler:hover {
+.InTrans .returnHandler:hover {
   background-color: #519D9E;
   opacity: 0.7;
   border: none;
 }
 
-.TestTrans .testTh {
+.InTrans .testTh {
   border-right: 1px solid #eee;
   padding-bottom: 10px;
   padding-top: 10px;
@@ -50,7 +50,7 @@
 }
 
 
-.TestTrans .testTd {
+.InTrans .testTd {
   padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;

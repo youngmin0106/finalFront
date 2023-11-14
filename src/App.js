@@ -39,8 +39,8 @@ import DeleteInfo from './DeleteInfo/DeleteInfo';
 import MyPage from './MyPage/MyPage';
 import ListPages from './MyPage/ListPages';
 import Mileage from './Mileage/Mileage';
-import TestTrans from './MyPage/TestTrans';
 import Footer from './component/footer/Footer';
+import InTrans from './MyPage/InTrans';
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -150,7 +150,7 @@ function App() {
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} />}></Route>
-        <Route path='/testTrans/:id' element={<TestTrans userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} IntransList={IntransList} setIntransList={setIntransList}></TestTrans>}></Route>
+        <Route path='/inTrans/:id' element={<InTrans userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} IntransList={IntransList} setIntransList={setIntransList}></InTrans>}></Route>
 
         {/* 헤더, 고객센터 . . */}
         <Route path='/' element={<Header isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>
