@@ -1,0 +1,74 @@
+.UpdateMember {
+  width: 70%;
+  margin-left : 15%;
+}
+
+.UpdateMember .signupForm {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%; 
+  margin: auto;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.UpdateMember .textFieldContainer {
+  display: flex;
+  align-items: center;
+}
+
+.UpdateMember .textFieldContainer p {
+  margin-right: 10px;
+}
+
+.UpdateMember p {
+  width: 10%;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.UpdateMember .rightBtn {
+  display: flex;
+  gap: 5px;
+  margin-left: 79%;
+  margin-top: 1%;
+}
+
+.UpdateMember .errorMsg {
+  width: 20%;
+  margin-left: 8%;
+}
+
+.UpdateMember .idInspection {
+  width: 40%;
+  margin-left: 9%;
+  font-weight: normal;
+}
+.UpdateMember  .pwInspection {
+  width: 69%;
+  margin-left: 8%;
+  font-weight: normal;
+}
+
+.UpdateMember .blueText {
+  color : blue;
+}
+.UpdateMember .redText {
+  color : red;
+}
+
+.UpdateMember .BtnTextField {
+  display: flex;
+  width: 79%;
+}
+
+.UpdateMember .signBtn {
+  margin-bottom: 5%;
+}
+
+.UpdateMember .myaddressBox {
+  width: 400px;
+  height: 400px;
+}

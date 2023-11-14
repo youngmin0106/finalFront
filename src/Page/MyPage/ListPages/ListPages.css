@@ -1,0 +1,28 @@
+.listPages .main{
+  margin-left: 30%;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+
+.listPages .chat {
+  background-color: black;
+  opacity: 0.5;
+  border: none;
+}
+
+.listPages .chat:hover {
+  background-color: #519D9E ;
+  color: white;
+}
+
+.listPages .prevChat {
+  background-color: black;
+  opacity: 0.5;
+  border: none;
+}
+
+.listPages .prevChat:hover {
+  background-color: #519D9E ;
+  color: white;
+}

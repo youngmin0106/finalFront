@@ -1,0 +1,13 @@
+.payMain {
+  width: 100%;
+  margin-top: 70px;
+}
+
+.payMain .img {
+  width: 60%;
+  margin: auto;
+}
+
+.payMain .img img {
+  width: 100%;
+}

@@ -1,0 +1,14 @@
+
+.LoginComponent .loginBox {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+.LoginComponent .socialtext {
+    font-Size: 12px;
+    text-align: center;
+    display: block;
+    margin: auto;
+}

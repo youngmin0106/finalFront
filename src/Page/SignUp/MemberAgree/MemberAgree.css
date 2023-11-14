@@ -1,0 +1,53 @@
+.MemberAgree {
+  width: 70%;
+  margin-left : 15%;
+}
+
+.MemberAgree .agreePage {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f7f7f7;
+  overflow: auto;
+  margin-top: 5%;
+}
+
+.MemberAgree .agreePage label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.MemberAgree .agreePage ul {
+  list-style: none;
+  padding: 0;
+}
+
+.MemberAgree .agreePage li {
+  margin-bottom: 10px;
+}
+
+.MemberAgree .agreePage textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  resize: none;
+}
+
+.MemberAgree .agreeButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  
+}
+
+.MemberAgree .agreeButton #back {
+  margin-right: 3%;
+}
+
+
+
