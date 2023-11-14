@@ -27,19 +27,19 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 
 	const [username, setUsername] = useState("");  // username 추가
 	useEffect(() => {
-    const storedUserInfo = localStorage.getItem('userInfo');
-    if (storedUserInfo) {
-      const parsedUserInfo = JSON.parse(storedUserInfo);
-      setUsername(parsedUserInfo.name || ""); // userInfo.name이 null이면 빈 문자열로 설정
-    }
-  }, []);
+		const storedUserInfo = localStorage.getItem('userInfo');
+		if (storedUserInfo) {
+			const parsedUserInfo = JSON.parse(storedUserInfo);
+			setUsername(parsedUserInfo.name || ""); // userInfo.name이 null이면 빈 문자열로 설정
+		}
+	}, []);
 
-  useEffect(() => {
-    if (userInfo.name) {
-      setUsername(userInfo.name);
-      localStorage.setItem('userInfo', JSON.stringify(userInfo));
-    }
-  }, [userInfo]);
+	useEffect(() => {
+		if (userInfo.name) {
+			setUsername(userInfo.name);
+			localStorage.setItem('userInfo', JSON.stringify(userInfo));
+		}
+	}, [userInfo]);
 
 	return (
 		<div className='headercontainer'>
@@ -48,7 +48,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 					<div className="fl_left">
 						<ul className="nospace">
 							<li><Link to={"/"}><i className="fa fa-lg fa-home"></i>HOME</Link></li>
-							<li><i className="fa fa-envelope-o"><img src="img/minilogo.png" alt="logo" /></i></li>
+							<li><i className="fa fa-envelope-o"><img src={`${process.env.PUBLIC_URL}/img/minilogo.png`} alt="logo" /></i></li>
 						</ul>
 					</div>
 					<div className="fl_right">
@@ -56,8 +56,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 
 							{isAuth ?
 								<>
-									<li style={{ cursor: 'pointer' }} onClick={() => { navigate("/mypage") }}>마이페이지</li>
-									<li style={{ cursor: 'pointer' }} onClick={() => { navigate("/insertTrans") }}>판매등록</li>
+
 									{/* <li>{userInfo.name}님 환영합니다.</li> */}
 									{userInfo.name && <li>{userInfo.name}님 환영합니다.</li>}
 									<li style={{ cursor: 'pointer' }} onClick={handleLogout}>로그아웃</li>
@@ -73,9 +72,9 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 				</div>
 			</div>
 			<div className='headsh'>
-				<img src="/img/gamepng.png" className='gameimg' alt='' />
-				<input id="search" type="search" name="" placeholder="아이디바다" disabled />
-				<button type="submit" className="searchButton" disabled>검색</button>
+				<Link to={'/'}>
+					<img src='/img/헤더4.jpg' />
+				</Link>
 			</div>
 			<div className='bigheader'>
 				<nav id="nav">
@@ -91,7 +90,8 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 						{isAuth ? <li className='one'><Link to={"/mileage"}>마일리지 충전</Link></li>
 							: <li onClick={notLoginAlert} className='one'><Link>마일리지 충전</Link></li>}
 
-						<li className='one'><Link to={"/csList"}>고객센터</Link></li>
+						{isAuth ? <li className='one'><Link to={"/csList"}>고객센터</Link></li> :
+						<li onClick={notLoginAlert} className='one'><Link>고객센터</Link></li>}
 					</ul>
 				</nav>
 			</div>

@@ -6,16 +6,12 @@ function Footer() {
   return (
     <div className="Footer">
       <div className="firstLayout">
-        <Link to={'/'} className="linkTag">
-          <b>회사소개</b>
-        </Link>
+        <b>회사소개</b>
         <b>이용약관</b>
         <b>개인정보 처리방침</b>
         <b>청소년 보호정책</b>
         <b>이메일수집거부</b>
-        <Link to={'/csList'} className="linkTag">
-          <b>고객센터</b>
-        </Link>
+        <b>고객센터</b>
       </div>
       <div className="secondLayout">
         <div className="logo">

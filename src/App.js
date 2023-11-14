@@ -1,47 +1,48 @@
 
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import DeleteInfo from './DeleteInfo/DeleteInfo';
-import MyPage from './MyPage/MyPage';
-import ListPages from './MyPage/ListPages';
-import Mileage from './Mileage/Mileage';
-import TestTrans from './MyPage/TestTrans';
 import './App.css';
 import Header from './component/header/Header';
 import Main from './Page/Main/Main';
-import Notice from './CsPage/Notice/Notice';
-import NoticeDetail from './CsPage/Notice/NoticeDetail';
-import NoticeUpdate from './CsPage/Notice/NoticeUpdate';
-import Questions from './CsPage/Question/Question';
-import QuestionDetail from './CsPage/Question/QuestionDetail';
-import QuestionUpdate from './CsPage/Question/QuestionUpdate';
-import Onetoone from './CsPage/OnetoOne/Onetoone';
-import OnetoOneDetail from './CsPage/OnetoOne/OnetoOneDetail';
-import OnetoOneUpdate from './CsPage/OnetoOne/OnetoOneUpdate';
-import WriteNotice from './CsPage/Notice/WriteNotice';
-import WriteQuestion from './CsPage/Question/WriteQuestion';
-import WriteOnetoOne from './CsPage/OnetoOne/WriteOnetoOne';
+
+import CsList from './Page/Cs/CsList';
+import Reply from './Page/Cs/Reply/Reply';
+import Notice from './Page/Cs/Notice/Notice';
+import NoticeDetail from './Page/Cs/Notice/NoticeDetail';
+import NoticeUpdate from './Page/Cs/Notice/NoticeUpdate';
+import Questions from './Page/Cs/Question/Question';
+import QuestionDetail from './Page/Cs/Question/QuestionDetail';
+import QuestionUpdate from './Page/Cs/Question/QuestionUpdate';
+import Onetoone from './Page/Cs/OneToOne/Onetoone';
+import OnetoOneDetail from './Page/Cs/OneToOne/OnetoOneDetail';
+import OnetoOneUpdate from './Page/Cs/OneToOne/OnetoOneUpdate';
+import WriteNotice from './Page/Cs/Notice/WriteNotice';
+import WriteQuestion from './Page/Cs/Question/WriteQuestion';
+import WriteOnetoOne from './Page/Cs/OneToOne/WriteOnetoOne';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MemberType from './SignUp/MemberType';
-import MemberAgree from './SignUp/MemberAgree';
-import MemberSignup from './SignUp/MemberSignup';
-import SignupSuccess from './SignUp/SignUpSuccess';
-import Login from './Login/Login';
-import KakaoLogin from './Login/KakaoLogin';
-import GoogleLogin from './Login/GoogleLogin';
-import AccountSales from './Page/Account Sales/AccountSales'
-import TransPost from './Page/Trans Post/TransPost'
-import TransDetail from './Page/Trans Detail/TransDetail'
-import CsList from './CsPage/CsList';
-import IdSerch from './Login/IdSerch';
-import UpdateMember from './SignUp/UpdateMember';
-import KaGooSignup from './SignUp/KaGooSignup';
-import UpdateInfo from './UpdateInfo/UpdateInfo';
-import Footer from './component/footer/Footer';
-import InTrans from './MyPage/InTrans';
+import MemberType from './Page/SignUp/MemberType/MemberType'
+import MemberAgree from './Page/SignUp/MemberAgree/MemberAgree';
+import MemberSignup from './Page/SignUp/MemberSignup/MemberSignup';
+import SignupSuccess from './Page/SignUp/SignUpSuccess/SignUpSuccess';
+import Login from './Page/Login/Login';
+import KakaoLogin from './Page/Login/SocialLogin/KakaoLogin';
+import GoogleLogin from './Page/Login/SocialLogin/GoogleLogin';
+
+import AccountSales from './Page/Account Sales/AccountSales';
+import TransPost from './Page/Trans Post/TransPost';
+import TransDetail from './Page/Trans Detail/TransDetail';
+import IdSerch from './Page/Login/IdSerch';
+import UpdateMember from './Page/SignUp/UpdateMember/UpdateMember';
+import KaGooSignup from './Page/SignUp/KagooSignup/KaGooSignup';
 import { useEffect } from 'react';
 
+import DeleteInfo from './Page/MyPage/DeleteInfo/DeleteInfo';
+import MyPage from './Page/MyPage/MyPage/MyPage';
+import ListPages from './Page/MyPage/ListPages/ListPages';
+import Mileage from './Page/Mileage/Mileage';
+import InTrans from './Page/MyPage/TestTrans/InTrans';
+import Footer from './component/footer/Footer';
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -137,14 +138,13 @@ function App() {
       {isHeader ? <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} /> : ""}
       <Routes>
 
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main isAuth={isAuth}/>} />
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} isAuth={isAuth}/>} />
 
         {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} IntransList={IntransList} />}></Route>
-        <Route path='/updateInfo' element={<UpdateInfo userInfo={userInfo} />}></Route>
         <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
         <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
         <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} />}></Route>
@@ -176,10 +176,8 @@ function App() {
         <Route path="/login-page" element={<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
-
-
-
       </Routes>
+      <Footer />
 
     </div>
 
@@ -187,5 +185,3 @@ function App() {
 }
 
 export default App;
-
-

@@ -3,11 +3,11 @@ import './TransDetail.css';
 import axiosInstance from '../../axiosInstance';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import bronze from '../../MyPage/Tier/bronze.png';
-import silver from '../../MyPage/Tier/silver.png';
-import gold from '../../MyPage/Tier/gold.png';
-import diamond from '../../MyPage/Tier/diamond.png';
-import platinum from '../../MyPage/Tier/platinum.png';
+import bronze from '../../Page/MyPage/Tier/bronze.png';
+import silver from '../../Page/MyPage/Tier/silver.png';
+import gold from '../../Page/MyPage/Tier/gold.png';
+import diamond from '../../Page/MyPage/Tier/diamond.png';
+import platinum from '../../Page/MyPage/Tier/platinum.png';
 
 const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTransDetails, isAuth }) => {
   const navigate = useNavigate();
@@ -84,9 +84,8 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
 
 
   const startTransHandler = () => {
-<<<<<<< HEAD
     if (userInfo.mileage >= transDetail.price) {
-      axiosInstance.post('/startTrans', { startTransInfo: startTransInfo, sellerId: startTransInfo.member.username, buyerId: userInfo.username, postId: id, transDetail: transDetail })
+      axiosInstance.post('/startTrans', { startTransInfo: startTransInfo, sellerId: transDetail.member.username, buyerId: userInfo.username, postId: id, transDetail: transDetail })
         .then(response => {
           alert(response.data);
           console.log('구매요청 완료');
@@ -96,26 +95,12 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
         }).catch(error => {
           console.log(error);
         })
+    } else if(!isAuth){
+      alert("로그인 후 이용가능합니다.")
+      navigate('/login-page')
     } else {
       alert("마일리지가 부족합니다")
       navigate('/mileage')
-=======
-
-    if(isAuth){
-      axiosInstance.post('/startTrans', {startTransInfo : startTransInfo, sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
-      .then(response => {
-        alert(response.data);
-        console.log('구매요청 완료');
-        console.log(startTransInfo);
-        setStartTransInfo({sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
-        navigate('/testTrans');
-      }).catch(error => {
-        console.log(error);
-      })
-    } else {
-      alert("로그인 후 이용하세요");
-      navigate("/login-page");
->>>>>>> develop
     }
 
   }
@@ -200,7 +185,7 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
         <button className='cancel' onClick={() => {
           navigate('/transPost');
         }}>취소</button>
-        {trans.member.username !== transDetail.member.username && transDetail.trans === "READY" &&  (
+       {trans.member.username !== null && trans.member.username !== transDetail.member.username && transDetail.trans === "READY" &&  (
           <button className='buy' onClick={startTransHandler}>구매요청</button>
         )}
       </div>

@@ -1,0 +1,55 @@
+.csList{
+  width: 80%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 140px;
+  margin: 100px auto auto;
+}
+
+.sidebar{
+  width: 10%;
+}
+
+.sidebar .ulListcs{
+  list-style-type: none;
+  background-color: none;
+  width: 10%;
+  padding: 0px;
+  padding-left: 0px;
+  margin:  0px;
+  position: absolute;
+  overflow: auto;
+  border : 0.5px solid #eee;
+  border-radius: 5px;  
+}
+
+.sidebar .ulListcs .font {
+  font-family: "NanumSquareNeo-Variable";
+  font-size: 15px;
+}
+
+.sidebar .ulListcs li a {
+  text-decoration: none;
+  display: block;
+  color: #000;
+  padding: 8px 15px 8px 15px;
+  font-weight: 300;
+}
+
+.sidebar .ulListcs li a.job {
+  background-color: blue;
+  color: #fff;
+}
+
+.sidebar .ulListcs li a:hover:not(.job) {
+  background-color: #333;
+  color: #fff;
+}
+
+.sidebar .ulListcs div .main{
+  margin-left: 20%;
+  padding: 1px 16px;
+  height: 1000px;
+}
+

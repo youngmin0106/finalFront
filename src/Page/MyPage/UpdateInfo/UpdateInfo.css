@@ -1,0 +1,20 @@
+.updateInfo {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  border: 1px solid #eee;
+}
+
+.updateInfo .userId {
+  font-size: 15px;
+}
+
+.updateInfo .loginUserId {
+  font-size : 12px;
+  font-weight: bold;
+}
+
+.updateInfo .bar {
+  border-bottom: 1px solid #eee;
+  margin: 15px;
+}

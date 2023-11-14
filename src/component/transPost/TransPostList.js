@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import './TransPostList.css';
-import PaginationRounded from "../Pagination/PaginationRounded";
 import { Link, useLocation } from "react-router-dom";
+import PaginationComponent from "../pagination/PaginationComponent";
 
 
 function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck, setSelectedGame }) {
@@ -38,6 +38,13 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
         setTransList(response.data);
         setShowList(response.data);
         setSearchList(response.data);
+        const truncatedList = response.data.slice(0, 5).map((showList) => {
+          if (showList.title.length > 15) {
+            showList.title = showList.title.slice(0, 15) + " ..."; // 제목 길이 제한
+          }
+          return showList;
+        });
+        setShowList(truncatedList)
         setIsLoading(false);
       })
       .catch((error) => {
@@ -163,6 +170,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
       server: ''
     });
     setShowList(transList);
+    setSearchList(transList);
   }
 
   console.log(searchList)
@@ -207,10 +215,6 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
           </tr>
         </thead>
         <tbody>
-          {/* {
-            gameName && (searchList[?].game == gameName ? )
-          } */}
-
           {showList
             .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
             .map((trans, i) => (
@@ -261,7 +265,7 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
 
         </tbody>
       </table>
-      <PaginationRounded
+      <PaginationComponent
         currentPage={currentPage}
         itemsPerPage={itemsPerPage}
         totalItems={searchList.length}
