@@ -56,8 +56,7 @@ function Header({ isAuth, setIsAuth, userInfo }) {
 
 							{isAuth ?
 								<>
-									<li style={{ cursor: 'pointer' }} onClick={() => { navigate("/mypage") }}>마이페이지</li>
-									<li style={{ cursor: 'pointer' }} onClick={() => { navigate("/insertTrans") }}>판매등록</li>
+								
 									{/* <li>{userInfo.name}님 환영합니다.</li> */}
 									{userInfo.name && <li>{userInfo.name}님 환영합니다.</li>}
 									<li style={{ cursor: 'pointer' }} onClick={handleLogout}>로그아웃</li>

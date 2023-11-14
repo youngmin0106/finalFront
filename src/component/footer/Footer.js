@@ -1,9 +1,19 @@
+import { Link, useNavigate } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <div className="Footer">
       <div className="firstLayout">
+        <b>회사소개</b>
+        <b>이용약관</b>
+        <b>개인정보 처리방침</b>
+        <b>청소년 보호정책</b>
+        <b>이메일수집거부</b>
+        <b>고객센터</b>
+      </div>
+      <div className="secondLayout">
         <div className="logo">
           <img src="/img/로고.png" />
         </div>
