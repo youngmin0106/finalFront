@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function MyPageBar( { point, userInfo } ) {
+function MyPageBar( { userInfo } ) {
  
   const getTier = () => {
     if (userInfo.transactionPoints > 300) {
@@ -42,7 +42,6 @@ function MyPageBar( { point, userInfo } ) {
   return (
     <div className='myPageBar'>
       <br></br>
-      {/* <h2 style={{marginLeft : "10%", marginBottom : "2%", fontSize : "25px"}}><Link to = "/mypage">- 마이페이지</Link></h2> */}
 
 
       <ul className='ulList' style={{borderTop : "2px solid #519D9E"}}>
@@ -56,18 +55,15 @@ function MyPageBar( { point, userInfo } ) {
         }}>나의 판매 물품</a></li>
         <li><Link to = "/listPages/1">내가 등록한 물품</Link></li>
         <li><Link to = "/listPages/2">판매중</Link></li>
-        <li><Link to = "/listPages/3">판매 취소완료</Link></li>
-        <li><Link to = "/listPages/4">판매 완료</Link></li>
+        <li><Link to = "/listPages/3">판매 완료</Link></li>
         <li><a className="job" href="0" onClick={(e) => {
           e.preventDefault();
         }}>나의 구매 물품</a></li>
-        <li><Link to = "/listPages/5">구매중</Link></li>
-        <li><Link to = "/listPages/6">구매 취소완료</Link></li>
-        <li><Link to = "/listPages/7">구매 취소</Link></li>
+        <li><Link to = "/listPages/4">구매중</Link></li>
+        <li><Link to = "/listPages/5">구매 완료</Link></li>
         <li><a className="job" href="0" onClick={(e) => {
           e.preventDefault();
         }}>마일리지 관리</a></li>
-        <li><a href="1">마일리지 내역</a></li>
         <li><Link to ="/mileage" >마일리지 충전</Link></li>
         <li><a className="job" href="0" onClick={(e) => {
           e.preventDefault();

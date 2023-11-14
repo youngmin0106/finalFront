@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../axiosInstance";
 import announcement from "../../../mockData/announcement";
 
-function NoticeDetail({ userInfo, setAuth, cs }) {
+function NoticeDetail({ cs }) {
 
   const { no } = useParams();
   const [noticeDetail, setNoticeDetail] = useState();
@@ -22,16 +21,33 @@ function NoticeDetail({ userInfo, setAuth, cs }) {
   }
 
   useEffect(() => {
-    axiosInstance.get(`/notice/${no}`)
-      .then(response => {
-        setNoticeDetail(response.data);
+    if (no.startsWith('공지')) {
+      // '공지'인 경우, 파싱된 번호를 찾아서 설정
+      const noticeNo = parseInt(no.replace('공지', ''), 10);
+      const mockData = announcement.find(item => item.no === `공지${noticeNo}`);
 
+      if (mockData) {
+        setNoticeDetail(mockData);
         setLoding(false);
-      }).catch(error => {
-        console.log(error);
+
+      } else {
+        // 묵 데이터가 없다면 404 페이지로 이동 또는 다른 처리 수행
         setLoding(false);
-      })
-  }, [no])
+      }
+    } else {
+      // '공지'가 아닌 경우, 실제 데이터를 서버에서 가져오기
+      axiosInstance.get(`/notice/${no}`)
+        .then(response => {
+          setNoticeDetail(response.data);
+          setLoding(false);
+        })
+        .catch(error => {
+          console.log(error);
+          setLoding(false);
+        });
+    }
+  }, [no]);
+
 
   if (loding)
     return <div>로딩중</div>
@@ -42,7 +58,7 @@ function NoticeDetail({ userInfo, setAuth, cs }) {
       <div className="table">
         <div className="title">
           <p className="th">제목</p>
-          <input className="writetitle" type="text" name="title" defaultValue={noticeDetail.title} disabled />
+          <input className="writetitle" type="text" name="title" value={noticeDetail.title} disabled />
         </div>
         <div className="writer">
           <p className="th">작성자</p>
@@ -58,20 +74,17 @@ function NoticeDetail({ userInfo, setAuth, cs }) {
       </div>
       <div className="clickbtn">
         {
-
-          cs.member.username === noticeDetail.member.username ?
-            <Button variant="outline-primary" className="sumitbtn" onClick={csupdatebtn}>수정</Button>
-
+          cs.member.username == noticeDetail.member.username ?
+            <button className="click" onClick={csupdatebtn}>수정</button>
             :
             <div></div>
 
         }
         {
-          cs.member.username === noticeDetail.member.username ?
-            <button variant="outline-danger" className="resetbtn" type="reset"
-
+          cs.member.username == noticeDetail.member.username ?
+            <button className="noClick" type="reset"
               onClick={() => {
-                if (cs.member.username !== noticeDetail.member.username) {
+                if (cs.member.username != noticeDetail.member.username) {
                   alert('작성자만 삭제가능합니다.');
                   console.log(cs.member);
                   console.log(noticeDetail.member)

@@ -41,7 +41,7 @@ import DeleteInfo from './Page/MyPage/DeleteInfo/DeleteInfo';
 import MyPage from './Page/MyPage/MyPage/MyPage';
 import ListPages from './Page/MyPage/ListPages/ListPages';
 import Mileage from './Page/Mileage/Mileage';
-import TestTrans from './Page/MyPage/TestTrans/TestTrans';
+import InTrans from './Page/MyPage/TestTrans/InTrans';
 import Footer from './component/footer/Footer';
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
@@ -49,76 +49,29 @@ const listOption = [
   // 나의 판매 물품 항목
   {
     id: 1,
-    name: '등록한'
+    name: '등록한',
+    url : '/listPages1'
   },
   {
     id: 2,
-    name: '거래중인'
+    name: '거래중인',
+    url : '/listPages2'
   },
   {
     id: 3,
-    name: '판매 취소된'
-  },
-  {
-    id: 4,
-    name: '판매 완료된'
+    name: '판매 완료된',
+    url : '/listPages3'
   },
   // 나의 구매 물품 항목
   {
-    id: 5,
-    name: '구매중인'
-  },
-  {
-    id: 6,
-    name: '구매 취소된'
-  },
-  {
-    id: 7,
-    name: '구매 완료된'
-  }
-]
-
-const testBoardList = [
-  {
-    id: 2,
-    name: '홍길동',
-    content: "판매 테스트 1",
-    title: "테스트 거래 게시글 1",
-    memberid: 'test3',
-    price: 10000,
-    game: '메이플스토리',
-    server: '루나',
-    phone: '010-1234-5678',
-    buyerId: 'test1234',
-    sellerId: '(k)celpic_@naver.com',
-    transId: 1,
-    sellerChk: 'true'
-  },
-  {
-    id: 3,
-    name: '홍길동',
-    content: "판매 테스트 2",
-    title: "테스트 거래 게시글 2",
-    memberid: 'test3',
-    price: 20000,
-    game: '메이플스토리',
-    server: '루나',
-    phone: '010-1234-5678',
-    buyerId: 'test4',
-    sellerId: 'test3'
-  },
-  {
     id: 4,
-    name: '홍길동',
-    content: "판매 테스트 3",
-    title: "테스트 거래 게시글 3",
-    memberid: 'test3',
-    price: 30000,
-    game: '메이플스토리',
-    server: '루나',
-    phone: '010-1234-5678',
-    buyerId: 'test4',
-    sellerId: 'test3'
+    name: '구매중인',
+    url : '/listPages4'
+  },
+  {
+    id: 5,
+    name : '구매 완료된',
+    url : '/listPages5'
   }
 ]
 
@@ -137,7 +90,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);  // 로딩중
   const [isAuth, setIsAuth] = useState(false);  // 로그아웃상태
 
-  const [userInfo, setUserInfo] = useState({ username: '', name: '' }); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
+
+  const [userInfo, setUserInfo] = useState({username:'', name:''}); // 서버로부터 받아온 사용자 정보를 저장할 state 생성
+
+  // 거래중 게시글 받아놓는 state
+  const [IntransList, setIntransList] = useState([ 
+    
+  ]); 
+  
 
   const [trans, setTrans] = useState({
     price: '',
@@ -160,9 +120,7 @@ function App() {
     buyerId: "",  //구매하려는 사용자 아이디 (현재 로그인 사용자)
     postId: '' // 원래 게시글 번호
   })
-
-  const [testTrans, setTestTrans] = useState(testBoardList)
-
+ 
   const [list, setList] = useState(listOption);
 
   const [isHeader, setIsHeader] = useState(true);
@@ -185,6 +143,15 @@ function App() {
         <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
         <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} isAuth={isAuth}/>} />
 
+        {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}
+        <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} IntransList={IntransList} />}></Route>
+        <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
+        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} trans={trans} IntransList={IntransList} setIntransList={setIntransList}/>}></Route> {/* 보내주는 값들이 다 다름 */}
+        <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} />}></Route>
+        <Route path='/inTrans/:id' element={<InTrans userInfo={userInfo} setUserInfo={setUserInfo} trans={trans} setTrans={setTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} IntransList={IntransList} setIntransList={setIntransList}></InTrans>}></Route>
+
+        {/* 헤더, 고객센터 . . */}
+        <Route path='/' element={<Header isAuth={isAuth} setIsAuth={setIsAuth} />}></Route>
         <Route path='/csList' element={<CsList setIsAuth={setIsAuth} userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/cs' element={<Notice setIsAuth={setIsAuth} userInfo={userInfo} />} />
         <Route path='/questions' element={<Questions setIsAuth={setIsAuth} userInfo={userInfo} />} />
@@ -209,21 +176,12 @@ function App() {
         <Route path="/login-page" element={<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
         <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
-
-        <Route path='/idserch' element={<IdSerch setIsHeader={setIsHeader} />} />
-
-        <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} />}></Route>
-        <Route path='/deleteInfo' element={<DeleteInfo userInfo={userInfo} />}></Route>
-        <Route path='/listPages/:id' element={<ListPages list={list} userInfo={userInfo} testTrans={testTrans} trans={trans} />}></Route> {/* 보내주는 값들이 다 다름 */}
-        <Route path='/mileage' element={<Mileage userInfo={userInfo} setUserInfo={setUserInfo} />}></Route>
-        <Route path='/testTrans' element={<TestTrans userInfo={userInfo} trans={trans} testTrans={testTrans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} setTestTrans={setTestTrans}></TestTrans>}></Route>
       </Routes>
-    <Footer/>
+      <Footer />
+
     </div>
 
   );
 }
 
 export default App;
-
-

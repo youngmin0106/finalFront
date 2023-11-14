@@ -36,6 +36,7 @@
   font-weight:  500;
   font-size: 15px;
   float: left;
+  background-color: white;
 }
 
 .TransDetail tr, .TransDetail th, .TransDetail td {
@@ -142,6 +143,7 @@
   font-weight: bolder;
   color: #af82c9;
   text-align:right;
+  background-color: white;
 }
 
 .TransDetail .detailBtn {

@@ -3,6 +3,11 @@ import './TransDetail.css';
 import axiosInstance from '../../axiosInstance';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
+import bronze from '../../Page/MyPage/Tier/bronze.png';
+import silver from '../../Page/MyPage/Tier/silver.png';
+import gold from '../../Page/MyPage/Tier/gold.png';
+import diamond from '../../Page/MyPage/Tier/diamond.png';
+import platinum from '../../Page/MyPage/Tier/platinum.png';
 
 const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTransDetails, isAuth }) => {
   const navigate = useNavigate();
@@ -17,8 +22,37 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
     price: ''
   });
 
- 
- 
+  console.log(userInfo.mileage)
+
+  const getTier = () => {
+    if (transDetail.member.transactionPoints > 300) {
+      return platinum; // 이미지 파일의 경로를 반환
+    } else if (transDetail.member.transactionPoints > 100) {
+      return diamond; // 이미지 파일의 경로를 반환
+    } else if (transDetail.member.transactionPoints > 50) {
+      return gold; // 이미지 파일의 경로를 반환
+    } else if (transDetail.member.transactionPoints >= 5) {
+      return silver; // 이미지 파일의 경로를 반환
+    } else {
+      return bronze; // 이미지 파일의 경로를 반환
+    }
+  };
+
+  const getTierValue = () => {
+    if (transDetail.member.transactionPoints > 300) {
+      return "챌린저";
+    } else if (transDetail.member.transactionPoints > 100) {
+      return "다이아몬드";
+    } else if (transDetail.member.transactionPoints > 50) {
+      return "골드";
+    } else if (transDetail.member.transactionPoints >= 5) {
+      return "실버";
+    } else {
+      return "브론즈";
+    }
+  };
+
+
   const changeHandler = (e) => {
     setTransDetail({
       ...transDetail,
@@ -35,6 +69,8 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
           ...startTransInfo,
           ...response.data
         }));
+        console.log(trans)
+        console.log(userInfo)
 
       }).catch((error) => {
         console.log(error);
@@ -43,35 +79,41 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
 
   console.log("trans : " + trans);
   console.log("transDetail : " + transDetail)
-  
+
   const isDisabled = trans.member.username !== transDetail.member.username;
 
 
   const startTransHandler = () => {
-
-    if(isAuth){
-      axiosInstance.post('/startTrans', {startTransInfo : startTransInfo, sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
-      .then(response => {
-        alert(response.data);
-        console.log('구매요청 완료');
-        console.log(startTransInfo);
-        setStartTransInfo({sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
-        navigate('/testTrans');
-      }).catch(error => {
-        console.log(error);
-      })
+    if (userInfo.mileage >= transDetail.price) {
+      axiosInstance.post('/startTrans', { startTransInfo: startTransInfo, sellerId: transDetail.member.username, buyerId: userInfo.username, postId: id, transDetail: transDetail })
+        .then(response => {
+          alert(response.data);
+          console.log('구매요청 완료');
+          console.log(startTransInfo);
+          setStartTransInfo({ sellerId: startTransInfo.member.username, buyerId: userInfo.username, postId: id, transDetail: transDetail })
+          navigate('/mypage');
+        }).catch(error => {
+          console.log(error);
+        })
+    } else if(!isAuth){
+      alert("로그인 후 이용가능합니다.")
+      navigate('/login-page')
     } else {
-      alert("로그인 후 이용하세요");
-      navigate("/login-page");
+      alert("마일리지가 부족합니다")
+      navigate('/mileage')
     }
 
   }
 
   return (
+    // 로그인한 사람과 작성자가 같지 않으면 disabled 조건 걸기
+    // 같으면 수정삭제 버튼 보이게 하기???
+    
     <div className="TransDetail">
+      <br></br>
       <div className='firstLayout'>
         <Card style={{ width: '15rem', height: '212px' }}>
-          <Card.Img variant="top" src="../img/samplebronze.png" className='gradeImg' />
+          <Card.Img variant="top" src={getTier()} className='gradeImg' />
           <Card.Body>
             <Card.Title className='grade'>멤버등급</Card.Title>
             <Card.Text>
@@ -143,9 +185,9 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTr
         <button className='cancel' onClick={() => {
           navigate('/transPost');
         }}>취소</button>
-       {trans.member.username !== transDetail.member.username && (
-      <button className='buy' onClick={startTransHandler}>구매요청</button>
-    )}
+       {trans.member.username !== null && trans.member.username !== transDetail.member.username && transDetail.trans === "READY" &&  (
+          <button className='buy' onClick={startTransHandler}>구매요청</button>
+        )}
       </div>
     </div>
   )

@@ -1,8 +1,6 @@
-import { Button, Form } from "react-bootstrap";
 import './Toss.css';
 import notReady from './img/serviceNot.png'
 
-// 일반전화(ARS) 결제 (근데 못함)
 function HPhone() {
 
   return (

@@ -1,41 +1,39 @@
 import MyPageBar from "../MyPageBar/MyPageBar";
 import './ListPages.css';
 import { Button } from "react-bootstrap";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import axiosInstance from "../../../axiosInstance";
 
 
-function ListPages( {list, pageType, point, userInfo, testTrans, trans} ) {
+function ListPages( {list, pageType, point, userInfo, testTrans, trans, setIntransList, IntransList} ) {
 
   let {id} = useParams();
   let content = '';
+  let url = '';
   console.log({id})
   
   if ( id === '1' ) {
     content = list[0].name;
+    url = list[0].url;
   } else if(id === '2') {
     content = list[1].name;
+    url = list[1].url;
   } else if(id === '3') {
     content = list[2].name;
+    url = list[2].url
   } else if(id === '4') {
     content = list[3].name;
+    url = list[3].url
   } else if(id === '5') {
     content = list[4].name;
-  } else if(id === '6') {
-    content = list[5].name;
-  } else if(id === '7') {
-    content = list[6].name;
+    url = list[4].url
   }
-
-  const [intransList, setIntransList] = useState({
-
-  });
-
+  
   useEffect(() => {
+    let encodedUsername = encodeURIComponent(userInfo.username);
 
-    axiosInstance.get('/testTrans/', {username : userInfo.username})
+    axiosInstance.get(url + `/${encodedUsername}`)
     .then((response) => {
       console.log(response.data);
       setIntransList(response.data);
@@ -44,14 +42,14 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans} ) {
       console.log(error);
     })
     
-  }, [])
+  }, [id, list, setIntransList, userInfo.username])
 
   return (
     <div className="listPages">
       <MyPageBar point={point} userInfo={userInfo}></MyPageBar>
     
       <div className="main">
-      <h6 style={{fontWeight : "bold"}}>{userInfo.username}님의 {content} 물품 (전체 : $개)</h6>
+      <h6 style={{fontWeight : "bold"}}>{userInfo.username}님의 {content} 물품 {IntransList.length}개</h6>
       <table>
 
         <tbody style={{border : "0.5px solid #eee", borderTop : "0.5px solid #519D9E"}}>
@@ -64,15 +62,15 @@ function ListPages( {list, pageType, point, userInfo, testTrans, trans} ) {
 
         {
           <tfoot style={{textAlign: "center"}}>
-          {testTrans.map((testTrans, index) => (
+          {IntransList && IntransList.map((intransList, index) => (
             <tr key={index} style={{paddingTop: "20px", borderBottom : "0.5px solid #eee"}}>
               <td style={{paddingTop: "20px"}}>
-                <span style={{fontWeight : "bold"}}><a href="/testTrans">{testTrans.title}</a></span><br /> {/* 판매 제목 */}
-                {testTrans.date} <br /> {/* 판매 시간 */}
-                판매자: {userInfo.username} &nbsp; 연락처: {userInfo.phone}
+                <span style={{fontWeight : "bold"}}><Link to = {`/inTrans/${intransList.id}`}>{intransList.title}</Link></span><br /> {/* 판매 제목 */}
+                {intransList.date} <br /> {/* 판매 시간 */}
+                판매자: {intransList.member.username} &nbsp; 연락처: {intransList.member.phone}
               </td>
               <td>
-                <span style={{color: "blue", fontWeight: "bold"}}>{testTrans.price}</span>원
+                <span style={{color: "blue", fontWeight: "bold"}}>{intransList.price}</span>원
               </td> {/* 판매 가격 */}
               <td>
                 <Button className="chat">채팅</Button>{' '}&nbsp;

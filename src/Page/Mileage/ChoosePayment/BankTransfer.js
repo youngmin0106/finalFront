@@ -1,5 +1,3 @@
-
-import { Button, Form } from "react-bootstrap";
 import './Toss.css';
 import notReady from './img/serviceNot.png'
 
