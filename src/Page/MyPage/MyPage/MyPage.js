@@ -87,14 +87,19 @@ function MyPage({ point, userInfo, IntransList }) {
           <Button onClick={toggleImage} className='showImage'>{showImage ? '닫기' : '등급보기'}</Button>
           <p></p>
 
-          <tr>
-            <td style={{ padding: "60px", border: "0.5px solid #eee", borderTop: "2px solid #519D9E", borderRadius: "5px", textAlign: "center" }}>
-              <div>~</div>
-              <div>내 보유 마일리지</div>
-              <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2} 원</div>
-              <Link to='/mileage' style={{ backgroundColor: "white", border: "white", color: "blue", fontWeight: "bold", textDecoration: "none" }}>충전</Link>
-            </td>
-          </tr>
+          <table width={"882px"}>
+            <tbody>
+
+              <tr>
+                <td style={{ padding: "60px", border: "0.5px solid #eee", borderTop: "2px solid #519D9E", borderRadius: "5px", textAlign: "center" }}>
+                  <div>~</div>
+                  <div>내 보유 마일리지</div>
+                  <div style={{ fontWeight: "bold", fontSize: "25px" }}>{number2} 원</div>
+                  <Link to='/mileage' style={{ backgroundColor: "white", border: "white", color: "blue", fontWeight: "bold", textDecoration: "none" }}>충전</Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
       <br></br>
       <h3 style={{ fontSize: "20px" }}>▶ 거래현황</h3>
 

@@ -5,11 +5,11 @@
 }
 
 .replyWrite .comment-list{
-  height: 50px;
+  height: 100%;
 }
 
 .replyWrite .replyListmap{
-  height: 50px;
+  height: 100%;
 }
 
 .replyWrite .add-reply{

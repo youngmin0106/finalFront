@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import axiosInstance from "../../../axiosInstance";
 import Reply from "../Reply/Reply";
@@ -34,7 +33,7 @@ function OnetoOneDetail({ userInfo, cs }) {
 
 
   return (
-    <>
+    <div className="detailAll">
     <div className="WriteNotice">
     <div className="table">
       <div className="title">
@@ -86,7 +85,7 @@ function OnetoOneDetail({ userInfo, cs }) {
           <div></div>
           
         }
-        </>
+       </div>
     
 
   );

@@ -39,8 +39,8 @@ function TransPostList({ isLoading, setIsLoading, search, setSearch, setIsCheck,
         setShowList(response.data);
         setSearchList(response.data);
         const truncatedList = response.data.slice(0, 5).map((showList) => {
-          if (showList.title.length > 27) {
-            showList.title = showList.title.slice(0, 27) + " ..."; // 제목 길이 제한
+          if (showList.title.length > 15) {
+            showList.title = showList.title.slice(0, 15) + " ..."; // 제목 길이 제한
           }
           return showList;
         });
