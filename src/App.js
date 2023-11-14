@@ -1,13 +1,14 @@
 
-import './App.css';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-
+import DeleteInfo from './DeleteInfo/DeleteInfo';
+import MyPage from './MyPage/MyPage';
+import ListPages from './MyPage/ListPages';
+import Mileage from './Mileage/Mileage';
+import TestTrans from './MyPage/TestTrans';
+import './App.css';
 import Header from './component/header/Header';
 import Main from './Page/Main/Main';
-
-import CsList from './CsPage/CsList';
-import Reply from './CsPage/Reply/Reply';
 import Notice from './CsPage/Notice/Notice';
 import NoticeDetail from './CsPage/Notice/NoticeDetail';
 import NoticeUpdate from './CsPage/Notice/NoticeUpdate';
@@ -29,18 +30,18 @@ import SignupSuccess from './SignUp/SignUpSuccess';
 import Login from './Login/Login';
 import KakaoLogin from './Login/KakaoLogin';
 import GoogleLogin from './Login/GoogleLogin';
-
 import AccountSales from './Page/Account Sales/AccountSales'
 import TransPost from './Page/Trans Post/TransPost'
 import TransDetail from './Page/Trans Detail/TransDetail'
-
+import CsList from './CsPage/CsList';
+import IdSerch from './Login/IdSerch';
+import UpdateMember from './SignUp/UpdateMember';
+import KaGooSignup from './SignUp/KaGooSignup';
 import UpdateInfo from './UpdateInfo/UpdateInfo';
-import DeleteInfo from './DeleteInfo/DeleteInfo';
-import MyPage from './MyPage/MyPage';
-import ListPages from './MyPage/ListPages';
-import Mileage from './Mileage/Mileage';
 import Footer from './component/footer/Footer';
 import InTrans from './MyPage/InTrans';
+import { useEffect } from 'react';
+
 
 // listOption : 마이페이지 좌측 리스트 나의 판매/구매 물품 항목들 눌렀을때 상단에 뜨는 문구 state로 저장
 const listOption = [
@@ -73,8 +74,8 @@ const listOption = [
   }
 ]
 
-
 function App() {
+
   const [transDetails, setTransDetails] = useState({
     id: '',
     title: '',
@@ -105,10 +106,11 @@ function App() {
     content: '',
     member: userInfo
   });
+
   const [cs, setCs] = useState({
     title: '',
     content: '',
-    member: userInfo.username
+    member: userInfo
   })
 
 
@@ -120,29 +122,25 @@ function App() {
  
   const [list, setList] = useState(listOption);
 
+  const [isHeader, setIsHeader] = useState(true);
+
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem('userInfo');
+    if (isAuth && storedUserInfo && !userInfo.username) {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    }
+  }, [userInfo, isAuth]);
+
+
   return (
-    <div>
-      <Header />
+    <div className="App">
+      {isHeader ? <Header isAuth={isAuth} setIsAuth={setIsAuth} userInfo={userInfo} /> : ""}
       <Routes>
 
-        {/*  */}
         <Route path="/" element={<Main />} />
-        <Route path="/member-type" element={<MemberType />} />
-        <Route path="/member-agree" element={<MemberAgree />} />
-        <Route path="/member-sign" element={<MemberSignup />} />
-
-        {/* 회원가입, 로그인, 카카오 로그인, 구글 로그인 */}
-        <Route path="/signup-success" element={<SignupSuccess />} />
-        <Route path="/login-page" element={<Login setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} setCs={setCs} />} />
-        <Route path='/oauth/kakao' element={<KakaoLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} setCs={setCs}/>} />
-        <Route path='/oauth/google' element={<GoogleLogin setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} setCs={setCs} />} />
-
-        <Route path='' element={<testTrans trans={trans} userInfo={userInfo}></testTrans>} />
-
-        {/* 게시글작성, 게시글 목록, 게시글 상세정보 */}
         <Route path='/insertTrans' element={<AccountSales userInfo={userInfo} trans={trans} setTrans={setTrans} />} />
-        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading}/>} />
-        <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} startTransInfo={startTransInfo} setStartTransInfo={setStartTransInfo} transDetails={transDetails} setTransDetails={setTransDetails} />} />
+        <Route path='/transPost' element={<TransPost userInfo={userInfo} isLoading={isLoading} setIsLoading={setIsLoading} />} />
+        <Route path='/transDetail/:id' element={<TransDetail userInfo={userInfo} trans={trans} isAuth={isAuth}/>} />
 
         {/* 마이페이지, 회원정보 수정, 회원탈퇴, 마이페이지 물품탭, 마일리지 충전,  */}
         <Route path='/mypage' element={<MyPage list={list} userInfo={userInfo} IntransList={IntransList} />}></Route>
@@ -160,21 +158,34 @@ function App() {
         <Route path='/onetoone' element={<Onetoone setIsAuth={setIsAuth} userInfo={userInfo} />} />
         <Route path='/onetoonewrite' element={<WriteOnetoOne userInfo={userInfo} cs={cs} setCs={setCs} />} />
         <Route path='/noticewirte' element={<WriteNotice userInfo={userInfo} cs={cs} setCs={setCs} />} />
-        <Route path='/questionwrite' element={<WriteQuestion  userInfo={userInfo} cs={cs} setCs={setCs}/>} />
-        <Route path='/questions/:no' element={<QuestionDetail  userInfo={userInfo} cs={cs}/>} />
-        <Route path='/notice/:no' element={<NoticeDetail  cs={cs}/>} />
-        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs}/>} />
-        <Route path="/notice/:no/update" element={<NoticeUpdate   userInfo={userInfo} cs={cs}/>} />
-        <Route path='/questions/:no/update' element={<QuestionUpdate  cs={cs}/>} />
-        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate  cs={cs}/>} />
+        <Route path='/questionwrite' element={<WriteQuestion userInfo={userInfo} cs={cs} setCs={setCs} />} />
+        <Route path='/questions/:no' element={<QuestionDetail userInfo={userInfo} cs={cs} />} />
+        <Route path='/notice/:no' element={<NoticeDetail userInfo={userInfo} cs={cs} setCs={setCs} />} />
+        <Route path='/onetoone/:no' element={<OnetoOneDetail userInfo={userInfo} cs={cs} />} />
+        <Route path="/notice/:no/update" element={<NoticeUpdate userInfo={userInfo} cs={cs} />} />
+        <Route path='/questions/:no/update' element={<QuestionUpdate cs={cs} />} />
+        <Route path='/onetoone/:no/update' element={<OnetoOneUpdate cs={cs} />} />
+
+        <Route path="/member-type" element={<MemberType />} />
+        <Route path="/member-agree" element={<MemberAgree />} />
+        <Route path="/member-sign" element={<MemberSignup />} />
+        <Route path="/signup-success" element={<SignupSuccess />} />
+        <Route path="/update-member" element={<UpdateMember userInfo={userInfo} />} />
+        <Route path="/kaGoo-signup" element={<KaGooSignup userInfo={userInfo} setIsAuth={setIsAuth} setIsHeader={setIsHeader} />} />
+
+        <Route path="/login-page" element={<Login setCs={setCs} setIsAuth={setIsAuth} isAuth={isAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
+        <Route path='/oauth/kakao' element={<KakaoLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} userInfo={userInfo} setTrans={setTrans} />} />
+        <Route path='/oauth/google' element={<GoogleLogin setCs={setCs} setIsAuth={setIsAuth} setUserInfo={setUserInfo} setTrans={setTrans} />} />
+
+
+
       </Routes>
 
-      <Footer />
     </div>
-
-
 
   );
 }
 
 export default App;
+
+

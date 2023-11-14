@@ -9,7 +9,7 @@ import gold from '../../MyPage/Tier/gold.png';
 import diamond from '../../MyPage/Tier/diamond.png';
 import platinum from '../../MyPage/Tier/platinum.png';
 
-const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, transDetails, setTransDetails }) => {
+const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, setTransDetails, isAuth }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [transDetail, setTransDetail] = useState({
@@ -84,6 +84,7 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, trans
 
 
   const startTransHandler = () => {
+<<<<<<< HEAD
     if (userInfo.mileage >= transDetail.price) {
       axiosInstance.post('/startTrans', { startTransInfo: startTransInfo, sellerId: startTransInfo.member.username, buyerId: userInfo.username, postId: id, transDetail: transDetail })
         .then(response => {
@@ -98,6 +99,23 @@ const TransDetail = ({ trans, userInfo, setStartTransInfo, startTransInfo, trans
     } else {
       alert("마일리지가 부족합니다")
       navigate('/mileage')
+=======
+
+    if(isAuth){
+      axiosInstance.post('/startTrans', {startTransInfo : startTransInfo, sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
+      .then(response => {
+        alert(response.data);
+        console.log('구매요청 완료');
+        console.log(startTransInfo);
+        setStartTransInfo({sellerId : startTransInfo.member.username, buyerId : userInfo.username, postId : id, transDetail : transDetail})
+        navigate('/testTrans');
+      }).catch(error => {
+        console.log(error);
+      })
+    } else {
+      alert("로그인 후 이용하세요");
+      navigate("/login-page");
+>>>>>>> develop
     }
 
   }
