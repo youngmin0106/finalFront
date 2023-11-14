@@ -3,7 +3,7 @@ import "./Reply.css";
 import ReplyItem from "./ReplyItem/ReplyItem";
 import axiosInstance from "../../../axiosInstance";
 
-
+/////
 function Reply({ oneDetail, cs }) {
 
   const [reply, setReply] = useState({
