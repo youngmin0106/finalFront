@@ -96,7 +96,7 @@ function NoticeDetail({ cs }) {
                     navigate('/cs');
                   }).catch(error => {
                     console.log(error);
-                  })
+                  }) 
               }}
             >삭제</button> : <div></div>
         }
