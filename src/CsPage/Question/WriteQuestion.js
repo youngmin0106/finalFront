@@ -6,6 +6,8 @@ import { useState } from "react";
 
 function WriteQuestion({userInfo ,cs , setCs}){
 
+  console.log(cs);
+
   const navigate = useNavigate();
   const changeHandler = (e) =>{
     setCs({

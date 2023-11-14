@@ -2,16 +2,10 @@ import { useRef, useState } from "react";
 import { Button, Form, Overlay } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './DeleteInfo.css';
-import '../MyPage/MyPageBar.css';
+import '../MyPage/Css/MyPageBar.css';
 import MyPageBar from "../MyPage/MyPageBar";
 import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
-
-// const deleteInfo = (() => {
-  
-// })
-
-
 
 function DeleteInfo( {userInfo} ) {
 
@@ -20,6 +14,7 @@ function DeleteInfo( {userInfo} ) {
 
   const navigate = useNavigate();
 
+  console.log(userInfo)
   return (
     
     <div className="deleteInfo">
@@ -73,7 +68,7 @@ function DeleteInfo( {userInfo} ) {
       </Overlay>
       &nbsp;
       <Button onClick={() => {
-        axiosInstance.post('/unregister', userInfo) // 로그인에서 구현한 정보 추가해야함, MemberController
+        axiosInstance.post('/unregister', userInfo) 
         .then(response => {
           alert("회원탈퇴 완료");
           navigate('/');

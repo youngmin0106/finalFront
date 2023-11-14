@@ -8,10 +8,10 @@ function GoogleLogin({ setCs, setIsAuth, setUserInfo, setTrans }) {
   const match = /access_token=([^&]+)/.exec(URL);
   const navigate = useNavigate();
 
-  if(match) {
+  if (match) {
     const accessToken = decodeURIComponent(match[1]);
 
-    axiosInstance.post('/oauth/google', {accessToken : accessToken})
+    axiosInstance.post('/oauth/google', { accessToken: accessToken })
       .then(response => {
         const jwt = response.headers.authorization;
         
@@ -35,7 +35,7 @@ function GoogleLogin({ setCs, setIsAuth, setUserInfo, setTrans }) {
         console.log(error);
       })
   }
- 
+
   return (
     <>
       <h1>로그인 중입니다.</h1>

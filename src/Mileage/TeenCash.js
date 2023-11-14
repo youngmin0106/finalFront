@@ -1,8 +1,7 @@
-import { Button, Form } from "react-bootstrap";
 import './Toss.css';
 import notReady from './serviceNot.png'
 
-// 구현할 수도 있는 결제방식 (틴캐시)
+
 function TeenCash() {
 
   return (

@@ -5,7 +5,7 @@ import axiosInstance from "../axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 
-function Cultureland({ userInfo, setUserInfo }) {
+function Cultureland({ userInfo, setUserInfo, trans }) {
 
 
   const tdStyle = {
@@ -17,6 +17,7 @@ function Cultureland({ userInfo, setUserInfo }) {
     padding: '10px',
     fontWeight: 100
   };
+
 
   const navigate = useNavigate();
 
@@ -48,8 +49,6 @@ function Cultureland({ userInfo, setUserInfo }) {
 
     setMoney(totalMoney);
 
-
-    console.log(totalMoney);
     return totalMoney;
   }
 
@@ -86,7 +85,7 @@ function Cultureland({ userInfo, setUserInfo }) {
             </tr>
             <tr>
               <td style={tdStyle}>충전 수수료</td>
-              <th style={thStyle}>30%</th>
+              <th style={thStyle}>0%</th>
             </tr>
             <tr>
               <td style={tdStyle}>충전 한도</td>

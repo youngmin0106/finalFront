@@ -39,7 +39,7 @@ function OnetoOneDetail({ userInfo, cs }) {
     <div className="table">
       <div className="title">
         <p className="th">제목</p>
-        <input className="writetitle" type="text" name="title" value={oneDetail.title} disabled />
+        <input className="writetitle" type="text" name="title" value={oneDetail.title} style={{backgroundColor : "white"}} disabled />
       </div>
       <div className="writer">
         <p className="th">작성자</p>

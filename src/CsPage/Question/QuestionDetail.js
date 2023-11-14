@@ -59,7 +59,7 @@ function QuestionDetail({ userInfo, cs }) {
       <div className="table">
         <div className="title">
           <p className="th">제목</p>
-          <input className="writetitle" type="text" name="title" value={questionDetail.title} disabled />
+          <input className="writetitle" type="text" name="title" value={questionDetail.title} style={{background : "none"}} disabled />
         </div>
         <div className="writer">
           <p className="th">작성자</p>
