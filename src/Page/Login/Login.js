@@ -57,7 +57,7 @@ function Login({ setUserInfo, setIsAuth, setCs, isAuth, setTrans }) {
 
   const idPwSerchOpen = () => {
     window.open(
-      'http://localhost:3000/idserch',
+      'https://testft-f9647.web.app/idserch',
       '_blank',
       'width=800, height=600');
   }

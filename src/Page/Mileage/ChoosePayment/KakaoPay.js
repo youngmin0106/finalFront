@@ -60,7 +60,7 @@ const KakaoPay = ({ userInfo, setUserInfo }) => {
       buyer_postcode: '123-456',
     }, async (rsp) => {
       try {
-        const { data } = await axios.post('http://localhost:8282/verifyIamport/' + rsp.imp_uid);
+        const { data } = await axios.post(`${process.env.REACT_APP_SERVER_URL}/verifyIamport/` + rsp.imp_uid);
         console.log(userInfo)
         console.log(totalMoney)
         console.log(data)
